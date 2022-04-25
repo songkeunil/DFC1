@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<!-- <typeAlias type="com.onestop.GJ.member.vo.MemberVO"  alias="memberVO" />
+	  	<typeAlias type="com.onestop.GJ.board.notice.vo.BoardNoticeVO"  alias="boardNoticeVO" />
+		<typeAlias type="com.onestop.GJ.board.notice.vo.BoardNoticeImageVO"  alias="boardNoticeImageVO" />
+		<typeAlias type="com.onestop.GJ.board.QNA.vo.QnaVO"  alias="QnaVO" />
+		<typeAlias type="com.onestop.GJ.board.data.vo.BoardDataVO"  alias="boardDataVO" />
+		<typeAlias type="com.onestop.GJ.board.data.vo.BoardDataImageVO"  alias="boardDataImageVO" />
+		<typeAlias type="com.onestop.GJ.board.free.vo.BoardFreeVO"  alias="boardFreeVO" />
+		<typeAlias type="com.onestop.GJ.board.free.vo.BoardFreeImageVO"  alias="boardFreeImageVO" />
+		<typeAlias type="com.onestop.GJ.admin.member.vo.AdminMemberVO"  alias="adminMemberVO" />
+		관리자 신청 
+		<typeAlias type="com.onestop.GJ.admin.apply.mon.vo.AdminMonApplyVO"  alias="adminMonApplyVO" /> 
+		<typeAlias type="com.onestop.GJ.admin.apply.rent.vo.AdminRentApplyVO"  alias="adminRentApplyVO" /> 
+		<typeAlias type="com.onestop.GJ.admin.apply.share.vo.AdminShareApplyVO"  alias="adminShareApplyVO" /> 
+		
+		<typeAlias type="com.onestop.GJ.admin.board.notice.vo.AdminNoticeVO"  alias="adminNoticeVO" />
+		<typeAlias type="com.onestop.GJ.admin.board.notice.vo.AdminNoticeImageVO"  alias="adminNoticeImageVO" />
+		<typeAlias type="com.onestop.GJ.admin.board.data.vo.AdminDataVO"  alias="adminDataVO" />
+		<typeAlias type="com.onestop.GJ.admin.board.data.vo.AdminDataImageVO"  alias="adminDataImageVO" />
+		<typeAlias type="com.onestop.GJ.admin.board.free.vo.AdminFreeVO"  alias="adminFreeVO" />
+		<typeAlias type="com.onestop.GJ.admin.board.free.vo.AdminFreeImageVO"  alias="adminFreeImageVO" />
+		<typeAlias type="com.onestop.GJ.admin.board.QNA.vo.AdminQnaVO"  alias="adminQnaVO" />
+		<typeAlias type="com.onestop.GJ.admin.stats.vo.AdminStatsVO"  alias="adminStatsVO" />
+		
+		
+		<typeAlias type="com.onestop.GJ.apply.mon23.vo.ApplyMonVO"  alias="ApplyMonVO" />
+		<typeAlias type="com.onestop.GJ.apply.mon23.vo.ApplyMonFileVO"  alias="ApplyMonFileVO" />
+		
+		<typeAlias type="com.onestop.GJ.apply.rent.vo.ApplyRentVO"  alias="ApplyRentVO" />
+		<typeAlias type="com.onestop.GJ.apply.rent.vo.ApplyRentFileVO"  alias="ApplyRentFileVO" />
+		
+		<typeAlias type="com.onestop.GJ.apply.rent_return.vo.ApplyRentReturnVO"  alias="ApplyRentReturnVO" />
+		<typeAlias type="com.onestop.GJ.apply.rent_return.vo.ApplyRentReturnFileVO"  alias="ApplyRentReturnFileVO" />
+		
+		<typeAlias type="com.onestop.GJ.apply.back.vo.ApplyBackVO"  alias="ApplyBackVO" />
+		<typeAlias type="com.onestop.GJ.apply.back.vo.ApplyBackFileVO"  alias="ApplyBackFileVO" />
+		
+		<typeAlias type="com.onestop.GJ.apply.share.vo.ApplyShareVO"  alias="ApplyShareVO" />
+		<typeAlias type="com.onestop.GJ.apply.share.vo.ApplyShareFileVO"  alias="ApplyShareFileVO" />
+ -->
+	</typeAliases>
+
+</configuration>
+
+
+
