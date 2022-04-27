@@ -19,11 +19,10 @@
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-<<<<<<< HEAD
-		<param-value>/WEB-INF/spring/mybatis-context.xml</param-value>
-=======
-		<param-value>/WEB-INF/spring/action-mybatis.xml</param-value>
->>>>>>> kangryun
+		<param-value>
+		/WEB-INF/spring/mybatis-context.xml
+		/WEB-INF/spring/action-mybatis.xml
+		</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->

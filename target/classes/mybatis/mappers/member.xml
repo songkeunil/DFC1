@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-<<<<<<< HEAD
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.member">
 
-=======
-      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="mapper.member">
 
   <select id="loginById"  resultType="memberVO"   parameterType="memberVO" >
 	<![CDATA[
@@ -52,5 +47,4 @@
   </delete> -->
 
   
->>>>>>> kangryun
 </mapper>
