@@ -9,21 +9,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.djplat.project.member.service.MemberService;
 import com.djplat.project.member.vo.MemberVO;
 
-@Controller
-public class MemberControllerImpl implements MemberController{
+@Controller("memberController")
+public class MemberControllerImpl implements MemberController {
 
 	@Autowired
 	private MemberService memberService;
-	
+
 	@Autowired
 	private MemberVO memberVO;
-	
-	
+
 	@Override
 	@RequestMapping(value = "/member/login.do", method = RequestMethod.POST)
 	public String login(@ModelAttribute("member") MemberVO member, RedirectAttributes rAttr, HttpServletRequest request,
@@ -52,5 +52,11 @@ public class MemberControllerImpl implements MemberController{
 		return "result";
 	}
 
-	
+	@RequestMapping(value = { "/", "/main.do" }, method = RequestMethod.GET)
+	private ModelAndView main(HttpServletRequest request, HttpServletResponse response) {
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(viewName);
+		return mav;
+	}
 }

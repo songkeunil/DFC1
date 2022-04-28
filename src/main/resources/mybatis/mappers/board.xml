@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.board">
+<resultMap id="articlesResult" type="articleVO">
+    <result property="level" column="brd_cc" />
+    <result property="articleNO" column="brd_no" />
+    <result property="parentNO" column="parentNO" />
+    <result property="title" column="brd_title" />
+    <result property="content" column="content" />
+    <result property="writeDate" column="writeDate" />
+    <result property="imageFileName" column="imageFileName" />
+  </resultMap> 
+
+  <select id="selectAllArticlesList" resultMap="articlesResult"   >
+    <![CDATA[
+      SELECT level, articleNO, parentNO, title, content, writeDate, imageFileName, id
+      from youngplace_board
+      START WITH  parentNO=0
+      CONNECT BY PRIOR articleNO=parentNO 
+      ORDER SIBLINGS BY articleNO DESC		
+    ]]>
+  </select>
+
+</mapper>

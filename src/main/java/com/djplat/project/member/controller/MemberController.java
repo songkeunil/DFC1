@@ -11,7 +11,6 @@ import com.djplat.project.member.vo.MemberVO;
 
 public interface MemberController {
 
-	public String login(@ModelAttribute("member") MemberVO member,
-			RedirectAttributes rAttr,
-			HttpServletRequest request, HttpServletResponse response, Model model) throws Exception;
+	public String login(@ModelAttribute("member") MemberVO member, RedirectAttributes rAttr, HttpServletRequest request,
+			HttpServletResponse response, Model model) throws Exception;
 }
