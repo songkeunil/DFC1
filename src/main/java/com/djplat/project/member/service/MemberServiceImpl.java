@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.djplat.project.member.dao.MemberDAO;
 import com.djplat.project.member.vo.MemberVO;
 
-@Service
+//@Service
 public class MemberServiceImpl implements MemberService{
 
 	@Autowired
