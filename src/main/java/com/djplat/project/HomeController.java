@@ -20,6 +20,11 @@ public class HomeController {
 	@Autowired
 	SignUpService signUpService;
 	
+	@RequestMapping("/main")
+	public String main(Model model) {
+		return "main";
+	}
+	
 	@RequestMapping("/main.html")
 	public String home(Model model) {
 		return "home";
