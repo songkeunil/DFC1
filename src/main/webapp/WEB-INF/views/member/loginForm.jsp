@@ -1,51 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"
-	 isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
-<!DOCTYPE html >
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<c:if test='${not empty message }'>
-<script>
-window.onload=function()
-{
-  result();
-}
-
-function result(){
-	alert("아이디나  비밀번호가 틀립니다. 다시 로그인해주세요");
-}
-</script>
-</c:if>
+ <link href="${path}/resources/css/loginForm.css" rel="stylesheet"/> 	
+<meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
-	<H3>회원 로그인 창</H3>
-	<DIV id="detail_table">
-	<form action="${contextPath}/member/login.do" method="post">
-		<TABLE>
-			<TBODY>
-				<TR class="dot_line">
-					<TD class="fixed_join">아이디</TD>
-					<TD><input name="member_id" type="text" size="20" /></TD>
-				</TR>
-				<TR class="solid_line">
-					<TD class="fixed_join">비밀번호</TD>
-					<TD><input name="member_pw" type="password" size="20" /></TD>
-				</TR>
-			</TBODY>
-		</TABLE>
-		<br><br>
-		<INPUT	type="submit" value="로그인"> 
-		<INPUT type="button" value="초기화">
-		
-		<Br><br>
-		   <a href="#">아이디 찾기</a>  | 
-		   <a href="#">비밀번호 찾기</a> | 
-		   <a href="${contextPath}/member/addMember.do">회원가입</a>    | 
-		   <a href="#">고객 센터</a>
-					   
-	</form>		
+<main class="form-all">
+        <form>
+            <img class="form-img" src="${path}/resources/image/logo.png">
+            <div class="form-login">
+            <div class="form-title">로그인</div></br>
+             <div class="form-id"><input type="text" class="form-control-id" id="floatingInput" placeholder="ID"></div> 
+                <div class="form-pw"><input type="password" class="form-control-pw" id="floatingPassword" placeholder="Password"></div></br>
+                <div class="button"><button class="btn-primary" type="submit">로그인</button></div>
+            </div></br>
+                <div class = "form-find">
+                <li><a target="_blank" href="https://nid.naver.com/user2/help/idInquiry?lang=ko_KR" class="find-text">ID 찾기</a></li> 
+                 <li><a target="_blank" href="https://nid.naver.com/user2/help/pwInquiry?lang=ko_KR" class="find-text">PW 찾기</a></li>
+                <li><a target="_blank" href="https://nid.naver.com/user2/V2Join?m=agree&lang=ko_KR" class="find-text">회원가입</a></li>    
+                </div></br> 
+            <p class="form-copyright">© 안구건조</p>
+        </form>
+    </main>
 </body>
 </html>

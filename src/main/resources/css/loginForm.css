@@ -1,0 +1,70 @@
+@font-face {
+    font-family: 'Eoe_Zno_L';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/Eoe_Zno_L.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Eoe_Zno_EB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/Eoe_Zno_EB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    height: 100%;
+    font-family: 'Eoe_Zno_L';
+    display: flex;
+    align-items: center;
+    padding-top: 160px;
+    list-style: none;
+}
+
+.form-all {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+
+}
+
+.form-img {
+    width: 100%;
+    margin: auto;
+}
+
+.form-title {
+    text-align: center;
+    font-family: 'Eoe_Zno_EB';
+    font-size: 40px;
+}
+
+.form-login {
+    text-align: center;
+    list-style: none;
+
+}
+
+.form-id{
+padding-bottom: 5px;
+}
+.form-find{
+	text-align :center;
+	
+}
+.form-find li{
+	display:inline-block;
+	
+}
+.form-find a{
+	
+	border:1px; 
+solid:red;}
+
+
+.form-copyright {
+    text-align: center;
+}
+
+
