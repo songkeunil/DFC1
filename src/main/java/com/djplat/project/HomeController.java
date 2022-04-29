@@ -37,7 +37,16 @@ public class HomeController {
 
 	@Autowired
 	SignUpService signUpService;
+<<<<<<< HEAD
 
+=======
+	
+	@RequestMapping("/main")
+	public String main(Model model) {
+		return "main";
+	}
+	
+>>>>>>> 5620b0af21f24a0e05ba114996144ff71d372e1a
 	@RequestMapping("/main.html")
 	public String home(Model model) {
 		return "home";

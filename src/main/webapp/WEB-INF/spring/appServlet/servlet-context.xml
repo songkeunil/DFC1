@@ -17,10 +17,21 @@
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<!-- 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+	</beans:bean> -->
+	
+	<!-- tiles viewResolver사용. -->
+	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<beans:property name="definitions">
+			<beans:list>
+				<beans:value>classpath:tiles/*.xml</beans:value>
+			</beans:list>
+		</beans:property>
+		<beans:property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles2.SpringBeanPreparerFactory" />
 	</beans:bean>
+<<<<<<< HEAD
 	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 		<beans:property name="definitions">
 			<beans:list>
@@ -35,6 +46,18 @@
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView" />
      </beans:bean>
+=======
+	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
+	</beans:bean>
+	
+	<!-- 다중 파일 업로드 기능 -->
+	<!-- <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="52428800" />
+		<beans:property name="maxInMemorySize" value="1000000" />
+		<beans:property name="defaultEncoding" value="utf-8" />
+	</beans:bean> -->
+>>>>>>> 5620b0af21f24a0e05ba114996144ff71d372e1a
 	
 	<context:component-scan base-package="com.djplat.project" />
 	<!-- ViewName 인터셉트 -->    

@@ -130,8 +130,13 @@
      &nbsp;<a href="http://www.goso.co.kr/bbs/board.php?bo_table=testDB&gclid=EAIaIQobChMI5ZuF2M-z9wIVN8EWBR3wKwLLEAAYASAAEgJsTPD_BwE" target='_blank'>소비자고발센터</a>&nbsp;|
      &nbsp;<a href="https://www.swc.mil.kr:444/" target='_blank' text>특수전사령부</a></div>
  	<div class="grid3"> 
+<<<<<<< HEAD
 	<img class="ggiri" src="resources/image/elephant.png" alt="ggiri_logo">
     <img class="DaeJeon" src="resources/image/DaeJeon.png" alt="Daejeon_logo"> 
+=======
+	<img class="ggiri" src="/pro30/resources/image/elephant.png" alt="ggiri_logo">
+    <img class="DaeJeon" src="/pro30/resources/image/DaeJeon.png" alt="Daejeon_logo"> 
+>>>>>>> 5620b0af21f24a0e05ba114996144ff71d372e1a
     </div>
      <div class="grid4"> &nbsp;<a href="https://www.president.go.kr/" target='_blank' text>청와대</a></div>
      <div class="grid5"> &nbsp;<a href="https://www.whitehouse.gov/" target='_blank' text>백악관</a></div>
@@ -145,11 +150,14 @@
  </div>
 
 
+<<<<<<< HEAD
 
 <!-- 
 <p> e-mail:admin@test.com</p> 
 <p> 회사주소:서울시 강동구</p>
 <p>찾아오는 길:<a href="#">약도</a></p>
  -->
+=======
+>>>>>>> 5620b0af21f24a0e05ba114996144ff71d372e1a
 </body>
 </html>
