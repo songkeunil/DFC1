@@ -34,6 +34,12 @@ public class UserVO implements UserDetails{
 	public String getPassword() {
 		return password;
 	}
+	
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public String getUsername() {
 		return id;

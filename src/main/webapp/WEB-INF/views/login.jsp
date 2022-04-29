@@ -12,8 +12,8 @@
 <body>
 <main class="form-all">
         <form action="login_check" method="post">
-        <c:if test="${param.ng!=null}">
-			<p> error : <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/> </p>
+        <c:if test="${LoginFailMessage != null}">
+			<p> error : <c:out value="${LoginFailMessage}"/> </p>
 		</c:if>
             <img class="form-img" src="${path}/resources/image/logo.png">
             <div class="form-title">로그인</div></br>

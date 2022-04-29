@@ -24,6 +24,7 @@
 	
 	<context:component-scan base-package="com.djplat.project" />
 	
-	
+	<!-- security, 비밀번호암호화 -->
+	<beans:bean id="bPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 	
 </beans:beans>

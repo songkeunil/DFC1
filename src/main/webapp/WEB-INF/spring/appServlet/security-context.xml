@@ -9,12 +9,15 @@
 
 
 	<s:http auto-config="true" use-expressions="true">
+	
 		<s:form-login
 			username-parameter="user_id"
 			password-parameter="user_pw"
 			login-processing-url="/login_check" 
 			login-page="/login.html" 
-			authentication-failure-url="/login.html?ng"
+			default-target-url="/home.html"
+			authentication-failure-handler-ref="loginFailHandler"
+			authentication-success-handler-ref="loginSuccessHandler"
 		/>
 		<s:logout 
 			logout-url="/security_logout"
@@ -22,23 +25,16 @@
 			invalidate-session="true"
 			delete-cookies="true"
 		/>
-		<s:intercept-url pattern="/login.html*" access="isAnonymous()"/>
-		<s:intercept-url pattern="/home.html*" access="hasRole('ROLE_USER')"/>
-		<s:intercept-url pattern="/admin.html*" access="hasRole('ROLE_ADMIN')"/>
-		<s:access-denied-handler error-page="/"/>
+	<!-- 	<s:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+		<s:intercept-url pattern="/user/**" access="hasRole('ROLE_USER')"/>
+		<s:intercept-url pattern="/**" access="permitAll"/> -->
+		
+		<s:access-denied-handler ref="accessFailHandler"/>
 	</s:http>
 		
 	<s:authentication-manager>
-		<s:authentication-provider user-service-ref="loginService"/>
+		<s:authentication-provider ref="loginAuthenticationProvider"/>
 	</s:authentication-manager>
 	
-<!-- 	<s:authentication-manager>
-		<s:authentication-provider>
-			<s:user-service>
-				<s:user name="codelove" password="1365" authorities="ROLE_USER"/>
-				<s:user name="kimcoder" password="1366" authorities="ROLE_USER, ROLE_ADMIN"/>
-			</s:user-service>
-		</s:authentication-provider>
-	</s:authentication-manager> -->
 	
 </beans>

@@ -13,8 +13,10 @@ import com.djplat.project.member.vo.UserVO;
 public interface MemberDAO {
 
 	 
-	public MemberVO loginById(MemberVO memberVO) throws DataAccessException;
+//	public MemberVO loginById(MemberVO memberVO) throws DataAccessException;
 	
 	public UserVO selectUser(String username);
 	public ArrayList<String> getAuthList(String username);
+	public void userSignUp(String username, String password, char enable);
+	public void giveAuth(String username, String authority);
 }

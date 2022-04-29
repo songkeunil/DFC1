@@ -3,7 +3,7 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.djplat.project.MemberDAO">
+<mapper namespace="com.djplat.project.member.dao.MemberDAO">
 
 <!-- 	<select id="loginById"  resultType="memberVO"   parameterType="memberVO" >
 		<![CDATA[
@@ -20,5 +20,13 @@
 		SELECT AUTHORITY FROM USERAUTH WHERE ID=#{param1}
 	</select>
 
+
+	<insert id="userSignUp">
+		INSERT INTO USERACC VALUES(#{param1},#{param2},#{param3})
+	</insert>
+	
+	<insert id="giveAuth">
+		INSERT INTO USERAUTH VALUES(#{param1},#{param2})
+	</insert>
   
 </mapper>
