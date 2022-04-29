@@ -6,10 +6,8 @@
 	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
 		<put-attribute name="title" value="레이아웃 페이지" />
 		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
-<<<<<<< HEAD
 <!-- 		<put-attribute name="side" value="/WEB-INF/views/common/side.jsp" />-->		
-=======
->>>>>>> 5620b0af21f24a0e05ba114996144ff71d372e1a
+
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 		<!-- <put-attribute name="quickMenu" value="/WEB-INF/views/common/quickMenu.jsp" /> -->
