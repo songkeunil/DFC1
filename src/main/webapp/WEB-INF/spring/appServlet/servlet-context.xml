@@ -31,23 +31,13 @@
 		</beans:property>
 		<beans:property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles2.SpringBeanPreparerFactory" />
 	</beans:bean>
-	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
-		<beans:property name="definitions">
-			<beans:list>
-				<beans:value>classpath:tiles/*.xml</beans:value>
-			</beans:list>
-		</beans:property>
-		<beans:property name="preparerFactoryClass"
-			          value="org.springframework.web.servlet.view.tiles2.SpringBeanPreparerFactory" />
-     </beans:bean>
+	
 
      <beans:bean id="viewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView" />
      </beans:bean>
-	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
-	</beans:bean>
+
 	
 	<!-- 다중 파일 업로드 기능 -->
 	<!-- <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -58,12 +48,12 @@
 	
 	<context:component-scan base-package="com.djplat.project" />
 	<!-- ViewName 인터셉트 -->    
-<mvc:interceptors>
+<!-- <mvc:interceptors>
     	<mvc:interceptor>
 	      <mvc:mapping path="/*/*.do"/>
 	   <beans:bean class="com.djplat.project.interceptor.ViewNameInterceptor" />
 	</mvc:interceptor>
-</mvc:interceptors>
+</mvc:interceptors> -->
  	
 	
 	

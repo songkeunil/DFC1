@@ -14,4 +14,4 @@
 	<input type="submit" value="회원등록">
 </form>
 </body>
-</html>
+</html> 
