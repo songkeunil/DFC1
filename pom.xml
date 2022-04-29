@@ -258,7 +258,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 		    <version>${org.aspectj-version}</version>
 		</dependency>
 	
-<<<<<<< HEAD
+
 	<!-- security -->
 	  <dependency>
 	    <groupId>org.springframework.security</groupId>
@@ -273,7 +273,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 	    <version>4.1.2.RELEASE</version>
 	  </dependency>
 
-=======
+
 	
 		<!-- security -->
 		  <dependency>
@@ -297,7 +297,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 		     <version>${spring.security.version}</version>
 		  </dependency>
 	
->>>>>>> 3138dff9f6fbbb0b2d7d0b840b6fb42c80a28ff8
+
 	</dependencies>
 	
 	

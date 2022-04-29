@@ -37,7 +37,6 @@
      </beans:bean>
 	
 	<context:component-scan base-package="com.djplat.project" />
-<<<<<<< HEAD
 	<!-- ViewName 인터셉트 -->    
 <mvc:interceptors>
     	<mvc:interceptor>
@@ -47,10 +46,8 @@
 </mvc:interceptors>
  	
 	
-=======
 	
 	<!-- security, 비밀번호암호화 -->
 	<beans:bean id="bPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
->>>>>>> 3138dff9f6fbbb0b2d7d0b840b6fb42c80a28ff8
 	
 </beans:beans>
