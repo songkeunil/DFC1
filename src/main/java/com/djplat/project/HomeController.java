@@ -20,7 +20,7 @@ public class HomeController {
 	@Autowired
 	SignUpService signUpService;
 	
-	@RequestMapping("/home.html")
+	@RequestMapping("/main.html")
 	public String home(Model model) {
 		return "home";
 	}
@@ -32,14 +32,14 @@ public class HomeController {
 //		request.setAttribute("ipAddress", ipAddress);
 //		return "user";
 //	}
-//	
-//	@RequestMapping("/admin")
-//	public String admin(HttpServletRequest request, Model model, Authentication authentication) {
-//		WebAuthenticationDetails wDetails = (WebAuthenticationDetails) authentication.getDetails();
-//		String ipAddress = wDetails.getRemoteAddress();
-//		request.setAttribute("ipAddress", ipAddress);
-//		return "admin";
-//	}
+	
+	@RequestMapping("/admin")
+	public String admin(HttpServletRequest request, Model model, Authentication authentication) {
+		WebAuthenticationDetails wDetails = (WebAuthenticationDetails) authentication.getDetails();
+		String ipAddress = wDetails.getRemoteAddress();
+		request.setAttribute("ipAddress", ipAddress);
+		return "admin";
+	}
 	
 	@RequestMapping("/login.html")
 	public String login(HttpServletRequest request, Model model, Authentication authentication) {

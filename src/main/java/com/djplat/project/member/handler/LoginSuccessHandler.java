@@ -30,11 +30,15 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		String prevPage = (String) request.getSession().getAttribute("prevPage");
 		if(prevPage!=null) request.getSession().removeAttribute("prevPage");
 		
-		String uri = request.getContextPath();
+		String uri = request.getContextPath() + "/main.html";
 		//경우1 일 경우 uri에 경로 저장
 		if(savedRequest!=null) uri = savedRequest.getRedirectUrl();
 		//경우2 일 경우 uri에 경로 저장
 		else if(prevPage!=null) uri = prevPage;
 		response.sendRedirect(uri);
+		
+		// 로그인 성공했을때 일로 오는거니까
+		// uri + home.html
+		// response.sendRedirect(uri);
 	}
 }

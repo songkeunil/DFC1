@@ -9,19 +9,19 @@
 
 
 	<s:http auto-config="true" use-expressions="true">
-	
+		
 		<s:form-login
 			username-parameter="user_id"
 			password-parameter="user_pw"
 			login-processing-url="/login_check" 
 			login-page="/login.html" 
-			default-target-url="/home.html"
+			default-target-url="/main.html"
 			authentication-failure-handler-ref="loginFailHandler"
 			authentication-success-handler-ref="loginSuccessHandler"
 		/>
 		<s:logout 
 			logout-url="/security_logout"
-			logout-success-url="/home.html"
+			logout-success-url="/main.html"
 			invalidate-session="true"
 			delete-cookies="true"
 		/>
