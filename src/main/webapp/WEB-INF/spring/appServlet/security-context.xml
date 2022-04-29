@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:s="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+
+	<s:http auto-config="true" use-expressions="true">
+		
+		<s:form-login
+			username-parameter="user_id"
+			password-parameter="user_pw"
+			login-processing-url="/login_check" 
+			login-page="/login.html" 
+			default-target-url="/main.html"
+			authentication-failure-handler-ref="loginFailHandler"
+			authentication-success-handler-ref="loginSuccessHandler"
+		/>
+		<s:logout 
+			logout-url="/security_logout"
+			logout-success-url="/main.html"
+			invalidate-session="true"
+			delete-cookies="true"
+		/>
+	<!-- 	<s:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+		<s:intercept-url pattern="/user/**" access="hasRole('ROLE_USER')"/>
+		<s:intercept-url pattern="/**" access="permitAll"/> -->
+		
+		<s:access-denied-handler ref="accessFailHandler"/>
+	</s:http>
+		
+	<s:authentication-manager>
+		<s:authentication-provider ref="loginAuthenticationProvider"/>
+	</s:authentication-manager>
+	
+	
+</beans>

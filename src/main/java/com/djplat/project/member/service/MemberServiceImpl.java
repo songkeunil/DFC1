@@ -6,16 +6,16 @@ import org.springframework.stereotype.Service;
 import com.djplat.project.member.dao.MemberDAO;
 import com.djplat.project.member.vo.MemberVO;
 
-@Service
-public class MemberServiceImpl implements MemberService{
+//@Service
+public class MemberServiceImpl {
 
 	@Autowired
 	private MemberDAO memberDAO;
 	
-	@Override
-	public MemberVO login(MemberVO memberVO) throws Exception {
-		return memberDAO.loginById(memberVO);
-	}
+//	@Override
+//	public MemberVO login(MemberVO memberVO) throws Exception {
+//		return memberDAO.loginById(memberVO);
+//	}
 	
 
 }

@@ -15,8 +15,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.djplat.project.member.service.MemberService;
 import com.djplat.project.member.vo.MemberVO;
 
+<<<<<<< HEAD
 @Controller("memberController")
 public class MemberControllerImpl implements MemberController {
+=======
+//@Controller
+public class MemberControllerImpl implements MemberController{
+>>>>>>> 3138dff9f6fbbb0b2d7d0b840b6fb42c80a28ff8
 
 	@Autowired
 	private MemberService memberService;
