@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>
-	Sign up
+	Sign up!!!
 </h1>
 <form action="signUp.html" method="post">
 	ID : <input type="text" name="id"><br>
