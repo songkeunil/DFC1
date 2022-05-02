@@ -1,4 +1,4 @@
-package com.djplat.project.member.vo;
+package com.djplat.project.common.vo;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,15 +11,15 @@ import org.springframework.stereotype.Component;
 @Component("UserVO")
 public class UserVO implements UserDetails{
 
-	private String id;
-	private String password;
-	private boolean enabled;
-	private ArrayList<GrantedAuthority> authority;
+	private String member_id;
+	private String member_pw;
+	private boolean member_enabled;
+	private ArrayList<GrantedAuthority> member_right;
 	
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return authority;
+		return member_right;
 	}
 	
 	public void setAuthority(ArrayList<String> authList) {
@@ -27,22 +27,22 @@ public class UserVO implements UserDetails{
 		for(int i=0;i<authList.size();i++) {
 			auth.add(new SimpleGrantedAuthority(authList.get(i)));
 		}
-		this.authority=auth;
+		this.member_right=auth;
 	}
 	
 	@Override
 	public String getPassword() {
-		return password;
+		return member_pw;
 	}
 	
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.member_pw = password;
 	}
 
 	@Override
 	public String getUsername() {
-		return id;
+		return member_id;
 	}
 	@Override
 	public boolean isAccountNonExpired() {
@@ -58,7 +58,7 @@ public class UserVO implements UserDetails{
 	}
 	@Override
 	public boolean isEnabled() {
-		return enabled;
+		return member_enabled;
 	}
 	
 	

@@ -5,6 +5,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.djplat.project.member.vo.MemberVO"  alias="memberVO" />
-		<typeAlias type="com.djplat.project.member.vo.UserVO"  alias="userVO" />
+		<typeAlias type="com.djplat.project.common.vo.UserVO"  alias="userVO" />
 	</typeAliases>
 </configuration>

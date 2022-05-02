@@ -10,7 +10,7 @@
 
 	<script>
 		alert("이미 로그인 상태거나 접근 권한이 없는 페이지입니다. 메인 홈페이지로 이동합니다.");
-		window.location.replace("http://localhost:8080/djplat");
+		window.location.replace("http://localhost:8080/djplat/main.html");
 	</script>
 </body>
 </html>

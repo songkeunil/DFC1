@@ -9,8 +9,8 @@
 	Sign up!!!
 </h1>
 <form action="signUp.html" method="post">
-	ID : <input type="text" name="id"><br>
-	PW : <input type="password" name="password"><br>
+	ID : <input type="text" name="member_id"><br>
+	PW : <input type="password" name="member_pw"><br>
 	<input type="submit" value="회원등록">
 </form>
 </body>

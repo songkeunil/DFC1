@@ -1,4 +1,4 @@
-package com.djplat.project.member.service;
+package com.djplat.project.common.service;
 
 import java.util.ArrayList;
 
@@ -9,8 +9,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.djplat.project.member.dao.MemberDAO;
-import com.djplat.project.member.vo.UserVO;
+import com.djplat.project.common.dao.SecurityDAO;
+import com.djplat.project.common.vo.UserVO;
 
 @Service("loginService")
 public class LoginService implements UserDetailsService{
@@ -22,10 +22,10 @@ public class LoginService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 		ArrayList<String> authList = new ArrayList<String>();
-		MemberDAO memberDAO = sqlSession.getMapper(MemberDAO.class);
+		SecurityDAO dao = sqlSession.getMapper(SecurityDAO.class);
 		
-		UserVO userVO = memberDAO.selectUser(username);
-		authList = memberDAO.getAuthList(username);
+		UserVO userVO = dao.selectUser(username);
+		authList = dao.getAuthList(username);
 		
 		if (userVO == null) { //User을 찾지 못했을 경우
 			throw new UsernameNotFoundException(username);

@@ -1,4 +1,4 @@
-package com.djplat.project.member.handler;
+package com.djplat.project.common.security;
 
 import java.io.IOException;
 
