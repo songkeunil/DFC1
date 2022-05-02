@@ -1,10 +1,10 @@
-#hrap {
+header #hrap {
         width: 100%;
         height: 2000px;
     }
 
 
-    #toprap {
+header    #toprap {
         width: 100%;
         height: 150px;
         /*        background: gray;*/
@@ -12,14 +12,14 @@
         position: fixed;
     }
 
-    #top {
+header    #top {
         width: 1400px;
         height: 150px;
 /*                background: red;*/
         margin: 0 auto;
     }
 
-    #logo {
+header    #logo {
         width: 220px;
         height: 150px;
         float: left;
@@ -27,7 +27,7 @@
         margin-left: 100px;
     }
 
-    #search {
+header    #search {
         width: 500px;
         height: 50px;
         float: left;
@@ -36,7 +36,7 @@
 /*        background: blue;*/
     }
 
-    #search input {
+ header   #search input {
         width: 410px;
         height: 45px;
         border-radius: 20px 0px 0px 20px;
@@ -50,7 +50,7 @@
         outline: none;
     }
 
-    #searchbtn {
+ header   #searchbtn {
         width: 50px;
         height: 49px;
         border-radius: 0px 20px 20px 0px;
@@ -59,12 +59,12 @@
         padding-right: 3px;
         padding-top: 2px;
     }
-    #searchbtn:hover{
+ header   #searchbtn:hover{
         cursor:pointer;
         color: #18A8F1;
     }
 
-    #login {
+ header   #login {
         width: 220px;
         height: 50px;
 /*          background: green;*/
@@ -74,19 +74,19 @@
         
     }
 
-    .log {
+header    .log {
         color: #6E6E6E;
         font-weight: bold;
     }
 
-    .log:hover {
+header    .log:hover {
         color: #18A8F1;
         font-weight: bold;
 
     }
 /*    GNB 시작   */
 
-    #nav {
+ header   #nav {
         width: 100%;
         height: 50px;
         /*        background: yellow;*/
@@ -98,7 +98,7 @@
 
     }
 
-    .nav {
+ header   .nav {
         width: 1400px;
         height: 50px;
         margin: 0 auto;
@@ -108,7 +108,7 @@
 
     }
 
-    .nav-item {
+header    .nav-item {
         width: 200px;
         height: 50px;
         float: left;
@@ -118,7 +118,7 @@
         /*        border: 1px solid red;*/
     }
 
-    .nav-link {
+header    .nav-link {
 /*        background: red;*/
         display: inline-block;
         width: 170px;
@@ -127,38 +127,38 @@
    
     }
     
-    .sub li {
+header .sub li {
         border-bottom: 1px solid gray;
         border-right: 1px solid gray;
         border-left: 1px solid gray;
         
     }
-    .sub li a{
+header .sub li a{
         display: inline-block;
         width: 170px;
         color: black;
         position: relative;
     }
 /*   드롭다운 효과 시작 */
-    .nav-link:hover + .sub {
+header    .nav-link:hover + .sub {
     height: 210px;
 }
-.sub {
+header .sub {
     height: 0;
     transition: height 0.3s linear;
     overflow: hidden;
 /*    border-bottom: 1px solid gray;*/
 }
-.sub:hover {
+header .sub:hover {
     height: 210px;
     
 }
 /*   드롭다운 효과 끝 */
 /*    밑줄 효과 시작 */
-    .bi-search{
+ header   .bi-search{
         font-size: 20px;
     }
-    .sub li a:before {
+ header   .sub li a:before {
     content: '';
     position: absolute; /*부모 요소에는 position: relative를 주어야 한다.*/
     background-color: #18A8F1;
@@ -174,12 +174,12 @@
 }
 
 /*태그가 호버링 되면 가상 요소의 크기를 100%로 키우기*/
-.sub li a:hover:before {
+header .sub li a:hover:before {
     width: 100%;
 }
 
 
-.nav-link:before {
+header .nav-link:before {
     content: '';
     position: absolute; /*부모 요소에는 position: relative를 주어야 한다.*/
     background-color: #18A8F1;
@@ -195,7 +195,7 @@
 }
 
 /*태그가 호버링 되면 가상 요소의 크기를 100%로 키우기*/
-.nav-link:hover:before {
+header .nav-link:hover:before {
     width: 100%;
 }
 /*    밑줄효과 끝 */

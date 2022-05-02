@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
- <link href="${path}/resources/css/loginForm.css" rel="stylesheet"/> 	
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>

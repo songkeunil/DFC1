@@ -2,10 +2,14 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="${path}/resources/css/loginForm.css" rel="stylesheet" type="text/css" media="screen"/> 	
+<link href="${path}/resources/css/header.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="${path}/resources/css/font.css" rel="stylesheet" type="text/css" media="screen"/>
 <style>
 	#container {
 		width: 100%;
@@ -14,12 +18,12 @@
 		border: 0px solid #bcbcbc;
 	}
 	
-	#header {
+/* 	#header {
 		padding: 5px;
 		margin-bottom: 5px;
 		border: 0px solid #bcbcbc;
 		background-color: lightgreen;
-	}
+	} */
 	
 	#sidebar-left {
 		width: 15%;

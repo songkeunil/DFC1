@@ -5,18 +5,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="${path}/resources/css/header.css" rel="stylesheet"/>
-<link href="${path}/resources/css/font.css" rel="stylesheet"/>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+<link href="${path}/resources/css/header.css" rel="stylesheet" type="text/css" media="screen"/>
+
 </head>
 <body>
        <div id='hrap'>
         <div id='toprap'>
             <div id='top'>
                 <div id='logo'>
-                    <a href='#'><img class="form-img" src="${path}/resources/image/logo.png"></a>
+                    <a href='#'><img class="form-img" src="resources/image/logo.png"></a>
                 </div>
                 <div id='search'>
                     <input type="text" Placeholder='검색어를 입력해주세요'>

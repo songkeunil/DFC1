@@ -12,6 +12,4 @@ public interface MemberDAO {
 
 	public MemberVO login(Map loginMap) throws DataAccessException;
 
-//	public MemberVO loginById(MemberVO memberVO) throws DataAccessException;
-
 }
