@@ -1,5 +1,7 @@
 package com.djplat.project.member.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,13 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.djplat.project.member.service.MemberService;
 import com.djplat.project.member.vo.MemberVO;
 
 @Controller("memberController")
+@RequestMapping(value = "/member")
 public class MemberControllerImpl implements MemberController {
 
 	@Autowired
@@ -30,7 +32,7 @@ public class MemberControllerImpl implements MemberController {
 			HttpServletResponse response, Model model) throws Exception {
 
 //		ModelAndView mav = new ModelAndView();
-		memberVO = memberService.login(member);
+		memberVO = memberService.login((Map) member);
 //		if(memberVO != null) {
 //		    HttpSession session = request.getSession();
 //		    session.setAttribute("member", memberVO);
@@ -52,11 +54,11 @@ public class MemberControllerImpl implements MemberController {
 		return "result";
 	}
 
-	@RequestMapping(value = { "/", "/main.do" }, method = RequestMethod.GET)
-	private ModelAndView main(HttpServletRequest request, HttpServletResponse response) {
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName(viewName);
-		return mav;
-	}
+//	@RequestMapping(value = { "/", "/main.do" }, method = RequestMethod.GET)
+//	private ModelAndView main(HttpServletRequest request, HttpServletResponse response) {
+//		String viewName = (String) request.getAttribute("viewName");
+//		ModelAndView mav = new ModelAndView();
+//		mav.setViewName(viewName);
+//		return mav;
+//	}
 }

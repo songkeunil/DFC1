@@ -1,201 +1,202 @@
+#hrap {
+        width: 100%;
+        height: 2000px;
+    }
 
 
+    #toprap {
+        width: 100%;
+        height: 150px;
+        /*        background: gray;*/
+        margin: 0;
+        position: fixed;
+    }
 
+    #top {
+        width: 1400px;
+        height: 150px;
+/*                background: red;*/
+        margin: 0 auto;
+    }
 
-/*          네비 시작  */
-#navrap {
-    width: 1700px;
-    height: 50px;
-    margin: 0 auto;
-    padding-left: 57px;
-    padding-right: 57px;
-}
+    #logo {
+        width: 220px;
+        height: 150px;
+        float: left;
+/*                background: yellow;*/
+        margin-left: 100px;
+    }
 
-.nav-link {
-    width: 200px;
-    text-align: center;
-}
+    #search {
+        width: 500px;
+        height: 50px;
+        float: left;
+        margin-top: 60px;
+        margin-left: 130px;
+/*        background: blue;*/
+    }
 
-.nav-link:hover {
-    color: #000;
-    display: inline-block;
-    margin: 0;
-    text-transform: uppercase;
+    #search input {
+        width: 410px;
+        height: 45px;
+        border-radius: 20px 0px 0px 20px;
+        float: left;
+        border: 2px solid #18A8F1;
+        padding-left: 20px;
+        font-size: 15px;
+    }
 
-}
+    input:focus {
+        outline: none;
+    }
 
-.nav-link:after {
-    display: block;
-    content: '';
-    border-bottom: solid 3px #18A8F1;
-    transform: scaleX(0);
-    transition: transform 250ms ease-in-out;
-}
+    #searchbtn {
+        width: 50px;
+        height: 49px;
+        border-radius: 0px 20px 20px 0px;
+        border: 2px solid #18A8F1;
+        background: white;
+        padding-right: 3px;
+        padding-top: 2px;
+    }
+    #searchbtn:hover{
+        cursor:pointer;
+        color: #18A8F1;
+    }
 
-.nav-link:hover:after {
-    transform: scaleX(1);
-}
+    #login {
+        width: 220px;
+        height: 50px;
+/*          background: green;*/
+        float: right;
+        padding-top: 85px;
+        margin-right: 100px;
+        
+    }
 
-.nav-link.fromRight:after {
-    transform-origin: 100% 50%;
-}
+    .log {
+        color: #6E6E6E;
+        font-weight: bold;
+    }
 
-.nav-link.fromLeft:after {
-    transform-origin: 0% 50%;
-}
+    .log:hover {
+        color: #18A8F1;
+        font-weight: bold;
 
+    }
+/*    GNB 시작   */
 
-#nav {
-    width: 100%;
-    height: 50px;
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
-    font-weight: bold;
-    font-size: 17px;
-    margin-top: 150px;
-    position: fixed;
-    float: left;
-    z-index: 999;
-    padding-top: 2px;
+    #nav {
+        width: 100%;
+        height: 50px;
+        /*        background: yellow;*/
+        border-top: 1px solid gray;
+        border-bottom: 1px solid gray;
+        position: fixed;
+        margin: 0 auto;
+        margin-top: 150px;
+
+    }
+
+    .nav {
+        width: 1400px;
+        height: 50px;
+        margin: 0 auto;
+        /*        background: green;*/
+        text-align: center;
+        font-weight: bold;     
+
+    }
+
+    .nav-item {
+        width: 200px;
+        height: 50px;
+        float: left;
+        margin: 0 auto;
+        /*        background: magenta;*/
+        line-height: 50px;
+        /*        border: 1px solid red;*/
+    }
+
+    .nav-link {
+/*        background: red;*/
+        display: inline-block;
+        width: 170px;
+        position: relative;
+        
+   
+    }
     
+    .sub li {
+        border-bottom: 1px solid gray;
+        border-right: 1px solid gray;
+        border-left: 1px solid gray;
+        
+    }
+    .sub li a{
+        display: inline-block;
+        width: 170px;
+        color: black;
+        position: relative;
+    }
+/*   드롭다운 효과 시작 */
+    .nav-link:hover + .sub {
+    height: 210px;
 }
-
-.nav-item {
-    margin: 0 auto;
-
-}
-
-/*        네비 드롭다운 시작 */
-#nav li a {
-    text-decoration: none;
-    color: black;
-    margin-left: 12px;
-}
-
-#nav li {
-    list-style: none;
-}
-
-
-.sub li {
-    background: white;
-    width: 246px;
-    border-bottom: 1px solid gray;
-    border-left: 1px solid gray;
-    border-right: 1px solid gray;
-    margin-left: -53px;
-    height: 50px;
-    font-size: 20px;
-    text-align: center;
-    padding-top: 5px;
-
-}
-.sub li a{
-    display:inline-block;
-    width: 200px
-}
-
-.nav-link:hover + .sub {
-    height: 200px;
-
-}
-
 .sub {
     height: 0;
     transition: height 0.3s linear;
     overflow: hidden;
-    border-left: 1px solid gray;
+/*    border-bottom: 1px solid gray;*/
+}
+.sub:hover {
+    height: 210px;
     
 }
+/*   드롭다운 효과 끝 */
+/*    밑줄 효과 시작 */
+    .bi-search{
+        font-size: 20px;
+    }
+    .sub li a:before {
+    content: '';
+    position: absolute; /*부모 요소에는 position: relative를 주어야 한다.*/
+    background-color: #18A8F1;
+    height: 2px; /*밑줄 굵기*/
 
-.sub:hover {
-    height: 200px;
+    width: 0; /*초기에 보이지 않도록*/
+    bottom: 0; /*a태그 아래에 위치시키기*/
+    transition: 1s; /*애니메이션 동작 실행 시간 정의*/
 
+    /*가상 요소를 가운데로 이동시키기*/
+    left: 50%;
+    transform: translateX(-50%) ;
 }
 
-
-
-
-
-/*        네비 드롭다운  끝 */
-
-/*          네비 끝 */
-
-
-
-#top {
+/*태그가 호버링 되면 가상 요소의 크기를 100%로 키우기*/
+.sub li a:hover:before {
     width: 100%;
-    height: 200px;
-    position: fixed;
-    float: left;
-    z-index: 999;
-    background: white;
 }
 
-#toprap {
-    width: 1700px;
-    height: 200px;
-    margin: 0 auto;
-    padding-right: 50px;
+
+.nav-link:before {
+    content: '';
+    position: absolute; /*부모 요소에는 position: relative를 주어야 한다.*/
+    background-color: #18A8F1;
+    height: 2px; /*밑줄 굵기*/
+
+    width: 0; /*초기에 보이지 않도록*/
+    bottom: 0; /*a태그 아래에 위치시키기*/
+    transition: 1s; /*애니메이션 동작 실행 시간 정의*/
+
+    /*가상 요소를 가운데로 이동시키기*/
+    left: 50%;
+    transform: translateX(-50%) ;
 }
 
-#logo {
-    float: left;
-    margin-left: 130px;
+/*태그가 호버링 되면 가상 요소의 크기를 100%로 키우기*/
+.nav-link:hover:before {
+    width: 100%;
 }
-
-#search {
-    width: 500px;
-    height: 170px;
-    float: left;
-    padding-top: 60px;
-    margin-left: 270px;
-}
-
-input {
-    width: 80%;
-    height: 50px;
-    border: 2px solid #18A8F1;
-    padding: 10px 12px;
-    float: left;
-    border-radius: 50px 0px 0px 50px;
-}
-
-input:focus {
-    outline: none;
-}
-
-#login {
-    width: 300px;
-    height: 100px;
-    float: right;
-    padding-top: 75px;
-    margin-right: 50px;
-    font-size: 18px;
-}
-
-.log {
-    color: black;
-    text-decoration: none;
-}
-
-.log:hover {
-    color: #18A8F1;
-    font-weight: bold;
-
-}
-
-#btn {
-    width: 50px;
-    height: 50px;
-    border: 2px solid #18A8F1;
-    float: left;
-    color: #18A8F1;
-    display: inline-block;
-    background-color: white;
-    border-radius: 0px 50px 50px 00px;
-}
-#btn svg{
-    margin-right: 4px;
-    margin-bottom: 2px;
-}
+/*    밑줄효과 끝 */
+   
