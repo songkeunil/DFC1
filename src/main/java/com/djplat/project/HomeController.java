@@ -18,7 +18,6 @@ import com.djplat.project.common.service.SignUpService;
 
 @Controller
 public class HomeController {
-<<<<<<< HEAD
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@RequestMapping(value = "/", method = { RequestMethod.POST, RequestMethod.GET })
@@ -100,8 +99,5 @@ public class HomeController {
 		else
 			return "signUpView";
 	}
-=======
-	
-	
->>>>>>> f165846f6092386aa62cfcac80dfcbe0b45aee8c
+
 }
