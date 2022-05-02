@@ -1,4 +1,4 @@
-package com.djplat.project.member.provider;
+package com.djplat.project.common.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AccountExpiredException;
@@ -14,9 +14,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.djplat.project.member.vo.UserVO;
+import com.djplat.project.common.vo.UserVO;
 
-@Service("loginAuthenticationProvider")
+@Service
 public class LoginAuthenticationProvider implements AuthenticationProvider{
 
 	@Autowired

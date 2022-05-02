@@ -1,4 +1,4 @@
-package com.djplat.project.member.handler;
+package com.djplat.project.common.security;
 
 import java.io.IOException;
 
@@ -37,8 +37,5 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		else if(prevPage!=null) uri = prevPage;
 		response.sendRedirect(uri);
 		
-		// 로그인 성공했을때 일로 오는거니까
-		// uri + home.html
-		// response.sendRedirect(uri);
 	}
 }
