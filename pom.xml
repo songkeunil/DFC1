@@ -5,8 +5,8 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.spring</groupId>
-	<artifactId>mytest04</artifactId>
-	<name>spring_test04</name>
+	<artifactId>djplat</artifactId>
+	<name>djplat</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -275,7 +275,28 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 		    <artifactId>spring-security-taglibs</artifactId>
 		     <version>${spring.security.version}</version>
 		  </dependency>
-	
+
+<dependency>
+    <groupId>javax.activation</groupId>
+    <artifactId>activation</artifactId>
+    <version>1.1.1</version>
+</dependency>
+ <dependency>
+       <groupId>javax.activation</groupId>
+       <artifactId>activation</artifactId>
+       <version>1.1</version>
+   </dependency>
+
+   <dependency>
+       <groupId>javax.mail</groupId>
+       <artifactId>mail</artifactId>
+       <version>1.4.7</version>
+   </dependency>
+     <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
 	</dependencies>
 	
 	

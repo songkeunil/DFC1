@@ -28,8 +28,8 @@ public class FileDownloadController {
 		FileInputStream in = new FileInputStream(image);
 		byte[] buffer = new byte[1024 * 8];
 		while (true) {
-			int count = in.read(buffer); //
-			if (count == -1) //
+			int count = in.read(buffer); // 
+			if (count == -1) // 
 				break;
 			out.write(buffer, 0, count);
 		}
