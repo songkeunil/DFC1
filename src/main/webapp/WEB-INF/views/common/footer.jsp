@@ -131,15 +131,8 @@
      &nbsp;<a href="http://www.goso.co.kr/bbs/board.php?bo_table=testDB&gclid=EAIaIQobChMI5ZuF2M-z9wIVN8EWBR3wKwLLEAAYASAAEgJsTPD_BwE" target='_blank'>소비자고발센터</a>&nbsp;|
      &nbsp;<a href="https://www.swc.mil.kr:444/" target='_blank' text>특수전사령부</a></div>
  	<div class="grid3"> 
-<<<<<<< HEAD
-	<img class="ggiri" src="resources/image/elephant.png" alt="ggiri_logo">
-    <img class="DaeJeon" src="resources/image/DaeJeon.png" alt="Daejeon_logo"> 
-	<img class="ggiri" src="resources/image/elephant.png" alt="ggiri_logo">
-    <img class="DaeJeon" src="resources/image/DaeJeon.png" alt="Daejeon_logo"> 
-=======
 	<img class="ggiri" src="${path }/resources/image/elephant.png" alt="ggiri_logo">
     <img class="DaeJeon" src="${path }/resources/image/daejeon.jpg" alt="Daejeon_logo"> 
->>>>>>> 57b46a52d8a3668608b4b213276512d65d28a977
     </div>
      <div class="grid4"> &nbsp;<a href="https://www.president.go.kr/" target='_blank' text>청와대</a></div>
      <div class="grid5"> &nbsp;<a href="https://www.whitehouse.gov/" target='_blank' text>백악관</a></div>
@@ -153,11 +146,5 @@
  </div>
 
 
-
-<!-- 
-<p> e-mail:admin@test.com</p> 
-<p> 회사주소:서울시 강동구</p>
-<p>찾아오는 길:<a href="#">약도</a></p>
- -->
 </body>
 </html>

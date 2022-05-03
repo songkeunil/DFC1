@@ -13,11 +13,6 @@
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
  -->
 <meta charset="UTF-8">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
-
-<link href="${path}/resources/css/loginForm.css" rel="stylesheet" type="text/css" media="screen"/> 	
-<link href="${path}/resources/css/header.css" rel="stylesheet" />
-<link href="${path}/resources/css/font.css" rel="stylesheet" type="text/css" media="screen"/>
 <style>
 	#container {
 		width: 100%;
@@ -26,11 +21,7 @@
 		border: 0px solid #bcbcbc;
 	}
 	
-<<<<<<< HEAD
-/* 	#header {
-=======
 /* 	#header1 {
->>>>>>> 57b46a52d8a3668608b4b213276512d65d28a977
 		padding: 5px;
 		margin-bottom: 5px;
 		border: 0px solid #bcbcbc;
