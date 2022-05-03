@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.djplat.project.common.service.SignUpService;
 
 /**
  * Handles requests for the application home page.
@@ -17,8 +16,7 @@ import com.djplat.project.common.service.SignUpService;
 @Controller
 public class CommonController {
 	
-	@Autowired
-	SignUpService signUpService;
+	
 	
 	@RequestMapping("/main.html")
 	public String main(Model model) {
@@ -26,13 +24,13 @@ public class CommonController {
 	}
 	
 	
-	@RequestMapping("/admin")
-	public String admin(HttpServletRequest request, Model model, Authentication authentication) {
-		WebAuthenticationDetails wDetails = (WebAuthenticationDetails) authentication.getDetails();
-		String ipAddress = wDetails.getRemoteAddress();
-		request.setAttribute("ipAddress", ipAddress);
-		return "admin";
-	}
+//	@RequestMapping("/admin")
+//	public String admin(HttpServletRequest request, Model model, Authentication authentication) {
+//		WebAuthenticationDetails wDetails = (WebAuthenticationDetails) authentication.getDetails();
+//		String ipAddress = wDetails.getRemoteAddress();
+//		request.setAttribute("ipAddress", ipAddress);
+//		return "admin";
+//	}
 	
 	@RequestMapping("/login.html")
 	public String login(HttpServletRequest request, Model model, Authentication authentication) {
@@ -47,21 +45,10 @@ public class CommonController {
 	}
 	
     //로그인 버튼이 있는 페이지
-	@RequestMapping("/loginLinkPage.html")
-	public String loginLinkPage(Model model) {
-		return "loginLinkPage";
-	}
+//	@RequestMapping("/loginLinkPage.html")
+//	public String loginLinkPage(Model model) {
+//		return "loginLinkPage";
+//	}
 
-	@RequestMapping("/signUpView.html")
-	public String signUpView(Model model) {
-		return "signUpView";
-	}
-		
-	@RequestMapping("/signUp.html")
-	public String signUp(HttpServletRequest request, Model model) {
-		//사용자가 입력한 정보를 파라미터로 넘김
-		boolean isInserted = signUpService.insertUserInfo(request.getParameter("member_id"), request.getParameter("member_pw"));
-		if(isInserted) return "login";
-		else return "signUpView";
-	}
+
 }

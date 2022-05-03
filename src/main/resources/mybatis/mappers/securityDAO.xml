@@ -7,22 +7,37 @@
 
 
 	<select id="selectUser" resultType="userVO">
-		SELECT * FROM MEMBER WHERE MEMBER_ID=#{param1}
+		SELECT * 
+		FROM MEMBER 
+		WHERE MEMBER_ID=#{param1}
 	</select>
 	
 	<select id="getAuthList" resultType="String">
-		SELECT MEMBER_RIGHT FROM MEMBER WHERE MEMBER_ID=#{param1}
+		SELECT MEMBER_RIGHT 
+		FROM MEMBER 
+		WHERE MEMBER_ID=#{param1}
 	</select>
 
 
-	<insert id="userSignUp">
-		INSERT INTO MEMBER(MEMBER_ID, MEMBER_PW, MEMBER_ENABLED, MEMBER_NAME,MEMBER_GENDER,MEMBER_BIRTH,
-		MEMBER_PHONENO,MEMBER_EMAIL,MEMBER_ADDRESS) 
-		VALUES(#{param1},#{param2},#{param3},'홍길동','M','22/03/02',010,'1111','1111')
+	<insert id="userSignUp" parameterType="memberVO">
+		INSERT INTO MEMBER
+			(
+			MEMBER_ID, MEMBER_PW,
+			MEMBER_NAME, MEMBER_GENDER, MEMBER_BIRTH, MEMBER_PHONENO, MEMBER_EMAIL, MEMBER_ADDRESS,
+			MEMBER_GROUP, MEMBER_EAGREE, MEMBER_LAST_LOG,
+			MEMBER_RIGHT, MEMBER_ENABLED
+			) 
+		VALUES
+			(
+			#{MEMBER_ID}, #{MEMBER_PW},
+			#{MEMBER_NAME}, #{MEMBER_GENDER}, #{MEMBER_BIRTH}, #{MEMBER_PHONENO}, #{MEMBER_EMAIL}, #{MEMBER_ADDRESS},
+			'group', #{MEMBER_EAGREE}, sysdate,
+			'ROLE_USER', '1'
+			)
 	</insert>
 	
-	<insert id="giveAuth">
+<!-- 	<insert id="giveAuth">
 		INSERT INTO MEMBER(MEMBER_ID, MEMBER_RIGHT) VALUES(#{param1},#{param2})
-	</insert>
+	</insert> -->
   
 </mapper>
