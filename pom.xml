@@ -4,15 +4,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-<<<<<<< HEAD
 	<groupId>com.spring</groupId>
-	<artifactId>djplat</artifactId>
-	<name>djplat</name>
-=======
-	<groupId>com.djplat</groupId>
-	<artifactId>project</artifactId>
-	<name>project</name>
->>>>>>> 6c16681240134e86c73536422abc83e0ebada7c1
+	<artifactId>mytest04</artifactId>
+	<name>spring_test04</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -195,11 +189,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 	      <version>2.2.2</version>
         </dependency>
         <dependency>
-	      <groupId>org.apache.tiles</groupId>
-	      <artifactId>tiles-extras</artifactId>
-	      <version>2.2.2</version>
-        </dependency>
-        <dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-extras</artifactId>
 			<version>2.2.2</version>
@@ -246,24 +235,9 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 		
 		<!-- AOP -->
 		<dependency>
-<<<<<<< HEAD
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
 			<version>${org.springframework-version}</version>
-=======
-		  <groupId>org.springframework</groupId>
-		  <artifactId>spring-aop</artifactId>
-		  <version>${org.springframework-version}</version>
-	  </dependency>
-	  
-	  <!-- 오라클 드라이버 -->
-	  <dependency>
-			<groupId>jdbc.oracle</groupId>
-			<artifactId>OracleDriver</artifactId>
-			<version>12.1.0.2.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc7.jar</systemPath>
->>>>>>> 6c16681240134e86c73536422abc83e0ebada7c1
 		</dependency>
 
 
@@ -306,28 +280,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 		    <artifactId>spring-security-taglibs</artifactId>
 		     <version>${spring.security.version}</version>
 		  </dependency>
-
-<dependency>
-    <groupId>javax.activation</groupId>
-    <artifactId>activation</artifactId>
-    <version>1.1.1</version>
-</dependency>
- <dependency>
-       <groupId>javax.activation</groupId>
-       <artifactId>activation</artifactId>
-       <version>1.1</version>
-   </dependency>
-
-   <dependency>
-       <groupId>javax.mail</groupId>
-       <artifactId>mail</artifactId>
-       <version>1.4.7</version>
-   </dependency>
-     <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${org.springframework-version}</version>
-        </dependency>
+	
 	</dependencies>
 	
 	
