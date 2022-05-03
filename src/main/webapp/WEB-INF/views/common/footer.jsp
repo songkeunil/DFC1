@@ -132,8 +132,8 @@
  	<div class="grid3"> 
 	<img class="ggiri" src="resources/image/elephant.png" alt="ggiri_logo">
     <img class="DaeJeon" src="resources/image/DaeJeon.png" alt="Daejeon_logo"> 
-	<img class="ggiri" src="/pro30/resources/image/elephant.png" alt="ggiri_logo">
-    <img class="DaeJeon" src="/pro30/resources/image/DaeJeon.png" alt="Daejeon_logo"> 
+	<img class="ggiri" src="resources/image/elephant.png" alt="ggiri_logo">
+    <img class="DaeJeon" src="resources/image/DaeJeon.png" alt="Daejeon_logo"> 
     </div>
      <div class="grid4"> &nbsp;<a href="https://www.president.go.kr/" target='_blank' text>청와대</a></div>
      <div class="grid5"> &nbsp;<a href="https://www.whitehouse.gov/" target='_blank' text>백악관</a></div>

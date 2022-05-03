@@ -7,8 +7,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+
 <link href="${path}/resources/css/loginForm.css" rel="stylesheet" type="text/css" media="screen"/> 	
-<link href="${path}/resources/css/header.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="${path}/resources/css/header.css" rel="stylesheet" />
 <link href="${path}/resources/css/font.css" rel="stylesheet" type="text/css" media="screen"/>
 <style>
 	#container {

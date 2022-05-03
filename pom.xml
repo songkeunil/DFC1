@@ -188,6 +188,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 	      <artifactId>tiles-servlet</artifactId>
 	      <version>2.2.2</version>
         </dependency>
+        <dependency>
+	      <groupId>org.apache.tiles</groupId>
+	      <artifactId>tiles-extras</artifactId>
+	      <version>2.2.2</version>
+        </dependency>
         
         
         <!-- file up/down -->
