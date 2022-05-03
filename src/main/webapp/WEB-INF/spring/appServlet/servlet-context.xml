@@ -62,6 +62,13 @@
 </mvc:interceptors> -->
  	
 	
+	<!-- 멀티파트 리졸버(다중 파일 업로드 BEAN) -->
+	<beans:bean id="multipartResolver" 
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="52428800"></beans:property>
+		<beans:property name="maxInMemorySize" value="1000000"></beans:property>
+		<beans:property name="defaultEncoding" value="utf-8"></beans:property>
+	</beans:bean>
 	
 	<!-- security, 비밀번호암호화 -->
 	<beans:bean id="bPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
