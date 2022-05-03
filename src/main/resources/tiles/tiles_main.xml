@@ -18,9 +18,9 @@
 		<put-attribute name="body" value="/WEB-INF/views/main.jsp" />
 	</definition>
 	
-	<definition name="login" extends="baseLayout">
-		<put-attribute name="title" value="로그인페이지" />
-		<put-attribute name="body" value="/WEB-INF/views/security/login.jsp" />
+	<definition name="login" template="/WEB-INF/views/security/login.jsp">
+		<!-- <put-attribute name="title" value="로그인페이지" /> -->
+		<!-- <put-attribute name="body" value="/WEB-INF/views/security/login.jsp" /> -->
 	</definition>
 	
 	<definition name="duplicate" extends="baseLayout">
@@ -28,9 +28,9 @@
 		<put-attribute name="body" value="/WEB-INF/views/security/duplicateLoginAlert.jsp" />
 	</definition>
 	
-	<definition name="signUpView" extends="baseLayout">
-		<put-attribute name="title" value="회원가입페이지" />
-		<put-attribute name="body" value="/WEB-INF/views/security/signUpView.jsp" />
+	<definition name="signForm" template="/WEB-INF/views/member/signForm.jsp">
+	<!-- 	<put-attribute name="title" value="회원가입페이지" /> -->
+		<!-- <put-attribute name="body" value="/WEB-INF/views/member/signForm.jsp" /> -->
 	</definition>
 	
 </tiles-definitions>

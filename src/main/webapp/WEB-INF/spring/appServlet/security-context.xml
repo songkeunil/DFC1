@@ -18,7 +18,7 @@
 			password-parameter="user_pw"
 			login-processing-url="/login_check" 
 			login-page="/login.html" 
-			default-target-url="/main.html"
+			default-target-url="/main"
 			authentication-failure-handler-ref="loginFailHandler"
 			authentication-success-handler-ref="loginSuccessHandler"
 		/>

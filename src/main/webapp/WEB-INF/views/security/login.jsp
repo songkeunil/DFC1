@@ -5,7 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
  <link href="${path}/resources/css/loginForm.css" rel="stylesheet"/>
+=======
+ <link href="${path}/resources/css/login.css" rel="stylesheet"/> 	
+>>>>>>> 57b46a52d8a3668608b4b213276512d65d28a977
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>

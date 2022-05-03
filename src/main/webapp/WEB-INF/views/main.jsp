@@ -146,7 +146,11 @@
             float: left;
         }
         
+<<<<<<< HEAD
         a[class*="nav"] {
+=======
+        a[class*="b_nav"] {
+>>>>>>> 57b46a52d8a3668608b4b213276512d65d28a977
             font-size: 25px;
 /*            font-weight:500;*/
         }
@@ -233,12 +237,20 @@
 
         }
 
+<<<<<<< HEAD
         span {
+=======
+    span {
+>>>>>>> 57b46a52d8a3668608b4b213276512d65d28a977
             font-size: 35px;
             font-weight: bold;
             color: blue;
             
+<<<<<<< HEAD
         }
+=======
+        } 
+>>>>>>> 57b46a52d8a3668608b4b213276512d65d28a977
         .b_mid_container_01_title > h2::before{
             content: '';
             display: block;
@@ -263,6 +275,7 @@
                     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                         <div class="slideImg carousel-inner">
                             <div class="carousel-item active">
+<<<<<<< HEAD
                                 <img src="/djplat/resources/image/01.jpg" class="main_slide_01 w-100" alt="...">
                             </div>
                             <div class="carousel-item ">
@@ -270,6 +283,15 @@
                             </div>
                             <div class="carousel-item">
                                 <img src="/djplat/resources/image/04.jpg" class="main_slide_03 w-100" alt="...">
+=======
+                                <img src="/pro30/resources/image/01.jpg" class="main_slide_01 w-100" alt="...">
+                            </div>
+                            <div class="carousel-item ">
+                                <img src="/pro30/resources/image/02.jpg" class="main_slide_02 w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="/pro30/resources/image/04.jpg" class="main_slide_03 w-100" alt="...">
+>>>>>>> 57b46a52d8a3668608b4b213276512d65d28a977
                             </div>
                         </div>
                     </div>
@@ -294,6 +316,7 @@
                         NOTICE</h2>
                    </div>
                    <div class="b_mid_container_01_detail">
+<<<<<<< HEAD
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
@@ -303,6 +326,17 @@
                     </li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+=======
+                <ul class="b_nav nav-tabs" id="myTab" role="tablist">
+                    <li class="b_nav-item" role="presentation">
+                        <a class="b_nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+                    </li>
+                    <li class="b_nav-item" role="presentation">
+                        <a class="b_nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+                    </li>
+                    <li class="b_nav-item" role="presentation">
+                        <a class="b_nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+>>>>>>> 57b46a52d8a3668608b4b213276512d65d28a977
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
@@ -406,6 +440,7 @@
                 <div class="b_bot_container_02">
                     <div id="box">
                        <a href="https://namu.wiki/w/%EA%B7%B8%EC%9B%AC(%EB%A6%AC%EA%B7%B8%20%EC%98%A4%EB%B8%8C%20%EB%A0%88%EC%A0%84%EB%93%9C)">
+<<<<<<< HEAD
                         <img class="bot_img01" src="/djplat/resources/image/01.jpg"></a>
                         <a href="https://namu.wiki/w/%EC%9C%A0%EB%AF%B8(%EB%A6%AC%EA%B7%B8%20%EC%98%A4%EB%B8%8C%20%EB%A0%88%EC%A0%84%EB%93%9C)"><img class="bot_img02" src="/pro30/resources/image/02.jpg"></a>
                         <a href="https://namu.wiki/w/%EB%B9%84%EC%97%90%EA%B3%A0"><img class="bot_img03" src="/pro30/resources/image/03.jpg"></a>
@@ -413,6 +448,15 @@
                         <img class="bot_img04" src="/djplat/resources/image/3840x1080.jpg">
                         <img class="bot_img04" src="/djplat/resources/image/arthas.jpg">
                         <img class="bot_img04" src="/djplat/resources/image/nuclear.jpg">
+=======
+                        <img class="bot_img01" src="/pro30/resources/image/01.jpg"></a>
+                        <a href="https://namu.wiki/w/%EC%9C%A0%EB%AF%B8(%EB%A6%AC%EA%B7%B8%20%EC%98%A4%EB%B8%8C%20%EB%A0%88%EC%A0%84%EB%93%9C)"><img class="bot_img02" src="/pro30/resources/image/02.jpg"></a>
+                        <a href="https://namu.wiki/w/%EB%B9%84%EC%97%90%EA%B3%A0"><img class="bot_img03" src="/pro30/resources/image/03.jpg"></a>
+                        <img class="bot_img04" src="/pro30/resources/image/04.jpg">
+                        <img class="bot_img04" src="/pro30/resources/image/3840x1080.jpg">
+                        <img class="bot_img04" src="/pro30/resources/image/arthas.jpg">
+                        <img class="bot_img04" src="/pro30/resources/image/nuclear.jpg">
+>>>>>>> 57b46a52d8a3668608b4b213276512d65d28a977
                     </div>
                 </div>
 

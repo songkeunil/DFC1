@@ -1,8 +1,17 @@
 package com.djplat.project;
 
+<<<<<<< HEAD
 import org.springframework.stereotype.Controller;
 
 @Controller
+=======
+
+
+/**
+ * Handles requests for the application home page.
+ */
+//@Controller
+>>>>>>> 57b46a52d8a3668608b4b213276512d65d28a977
 public class HomeController {
 //	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 //

@@ -12,13 +12,14 @@ public class MemberVO {
 	private String member_pw;
 	private String member_gender;
 	private Date member_birth;
-	private int member_phoneno;
+	private String member_phoneno;
 	private String member_email;
 	private String member_address;
 	private String member_group;
 	private String member_right;
-	private int member_eagree;
+	private String member_eagree;
 	private Date member_last_log;
+	private String member_enabled;
 	
 	
 	public String getMember_id() {
@@ -51,10 +52,10 @@ public class MemberVO {
 	public void setMember_birth(Date member_birth) {
 		this.member_birth = member_birth;
 	}
-	public int getMember_phoneno() {
+	public String getMember_phoneno() {
 		return member_phoneno;
 	}
-	public void setMember_phoneno(int member_phoneno) {
+	public void setMember_phoneno(String member_phoneno) {
 		this.member_phoneno = member_phoneno;
 	}
 	public String getMember_email() {
@@ -81,10 +82,10 @@ public class MemberVO {
 	public void setMember_right(String member_right) {
 		this.member_right = member_right;
 	}
-	public int getMember_eagree() {
+	public String getMember_eagree() {
 		return member_eagree;
 	}
-	public void setMember_eagree(int member_eagree) {
+	public void setMember_eagree(String member_eagree) {
 		this.member_eagree = member_eagree;
 	}
 	public Date getMember_last_log() {
@@ -93,8 +94,11 @@ public class MemberVO {
 	public void setMember_last_log(Date member_last_log) {
 		this.member_last_log = member_last_log;
 	}
-	
-	
-	
+	public String getMember_enabled() {
+		return member_enabled;
+	}
+	public void setMember_enabled(String member_enabled) {
+		this.member_enabled = member_enabled;
+	}
 	
 }

@@ -6,6 +6,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<link href="${path}/resources/css/header.css" rel="stylesheet"/>
+<link href="${path}/resources/css/font.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+ -->
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
@@ -20,14 +26,18 @@
 		border: 0px solid #bcbcbc;
 	}
 	
+<<<<<<< HEAD
 /* 	#header {
+=======
+/* 	#header1 {
+>>>>>>> 57b46a52d8a3668608b4b213276512d65d28a977
 		padding: 5px;
 		margin-bottom: 5px;
 		border: 0px solid #bcbcbc;
 		background-color: lightgreen;
 	} */
 	
-	#sidebar-left {
+/* 	#sidebar-left {
 		width: 15%;
 		height: 700px;
 		padding: 5px;
@@ -37,7 +47,7 @@
 		background-color: yellow;
 		border: 0px solid #bcbcbc;
 		font-size: 10px;
-	}
+	} */
 	
 	#content {
 		width: 75%;
@@ -54,12 +64,13 @@
 		background-color: lightblue;
 	}
 </style>
+
 <!-- tiles_member.xml의 name="title"의 value를 가져온다. -->
 <title><tiles:insertAttribute name="title" /></title>
 </head>
 <body>
 	<div id="container">
-		<div id="header">
+		<div id="header1">
 			<tiles:insertAttribute name="header" /> <!-- name="header"의 jsp표시 -->
 		</div>
 		<div id="content">
