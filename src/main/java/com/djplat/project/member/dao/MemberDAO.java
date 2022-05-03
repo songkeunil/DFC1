@@ -13,8 +13,8 @@ public interface MemberDAO {
 
 	 
 //	public MemberVO loginById(MemberVO memberVO) throws DataAccessException;
-	public void userSignUp(String username, String password, char enable);
+//	public void userSignUp(String username, String password, char enable);
 	public void userSignUp(MemberVO memberVO);
-	public void giveAuth(String username, String authority);
+//	public void giveAuth(String username, String authority);
 
 }

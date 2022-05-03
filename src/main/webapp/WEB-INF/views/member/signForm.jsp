@@ -29,7 +29,7 @@
 <form action="${path}/signUp.do" method="post">
     <!-- header -->
     <div id="header">
-        <a href="https://www.naver.com" title="회원가입"><img src="${path}/resources/image/logo.png"></a>
+        <a href="${path }/main.html" title="회원가입"><img src="${path}/resources/image/logo.png"></a>
          <h3 class="main-name">회원가입</h3>
     </div>
 

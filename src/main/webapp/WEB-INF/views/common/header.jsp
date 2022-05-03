@@ -15,7 +15,7 @@
         <div id='h-toprap'>
             <div id='h-top'>
                 <div id='h-logo'>
-                    <a href='/main'><img src="${path}/resources/image/logo.png"></a>
+                    <a href="${path}/main.html"><img src="${path}/resources/image/logo.png"></a>
                 </div>
                 <div id='h-search'>
                     <input type="text" Placeholder='검색어를 입력해주세요'>
