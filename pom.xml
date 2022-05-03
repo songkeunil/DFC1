@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.spring</groupId>
-	<artifactId>mytest04</artifactId>
-	<name>spring_test04</name>
+	<groupId>com.djplat</groupId>
+	<artifactId>project</artifactId>
+	<name>project</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -214,6 +214,15 @@
 		  <artifactId>spring-aop</artifactId>
 		  <version>${org.springframework-version}</version>
 	  </dependency>
+	  
+	  <!-- 오라클 드라이버 -->
+	  <dependency>
+			<groupId>jdbc.oracle</groupId>
+			<artifactId>OracleDriver</artifactId>
+			<version>12.1.0.2.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc7.jar</systemPath>
+		</dependency>
 
 	<!-- AspectJ -->
 	<dependency>
