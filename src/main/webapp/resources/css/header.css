@@ -135,7 +135,8 @@
     .h-sub li {
         border-bottom: 1px solid gray;
         border-right: 1px solid gray;
-        border-left: 1px solid gray;
+        border-left: 1px solid gray; 
+        background:white;
         
     }
     .h-sub li a{

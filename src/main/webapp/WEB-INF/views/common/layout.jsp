@@ -17,7 +17,7 @@
 	#container {
 		width: 100%;
 		margin: 0px auto;
-		text-align: center;
+		/* text-align: center; */
 		border: 0px solid #bcbcbc;
 	}
 	
@@ -40,7 +40,7 @@
 		font-size: 10px;
 	} */
 	
-	#content {
+/* 	#content {
 		width: 75%;
 		padding: 5px;
 		margin-right: 5px;
@@ -53,7 +53,8 @@
 		padding: 5px;
 		border: 0px solid #bcbcbc;
 		background-color: lightblue;
-	}
+	} */
+	
 </style>
 
 <!-- tiles_member.xml의 name="title"의 value를 가져온다. -->
