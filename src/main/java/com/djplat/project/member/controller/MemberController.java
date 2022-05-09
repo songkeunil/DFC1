@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.djplat.project.member.service.MemberService;
 import com.djplat.project.member.service.SignUpService;
 import com.djplat.project.member.vo.MemberVO;
 
 @Controller("memberController")
 //@RequestMapping("/member")
 public class MemberController {
-<<<<<<< HEAD
 
 //	public String login(@ModelAttribute("member") MemberVO member, RedirectAttributes rAttr, HttpServletRequest request,
 //			HttpServletResponse response, Model model) throws Exception;
@@ -25,22 +25,14 @@ public class MemberController {
 //	@Autowired
 //	private MemberService memberService;
 
-=======
-	
->>>>>>> b0c70076f5382faa3ddeeb0da1cd7d432606dc17
 //	@Autowired
 //	private MemberVO memberVO;
 
 	@Autowired
 	SignUpService signUpService;
-<<<<<<< HEAD
-
-=======
-	
 	@Autowired
 	MemberService memberService;
 	
->>>>>>> b0c70076f5382faa3ddeeb0da1cd7d432606dc17
 	@RequestMapping("/signForm.html")
 	public String signForm(Model model) {
 		return "signForm";
