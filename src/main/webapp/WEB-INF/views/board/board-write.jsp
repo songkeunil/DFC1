@@ -7,6 +7,7 @@
 <head>
 <link id="contextPath" data-path="<c:url value='/'/>" />
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
 <!-- CSS -->
@@ -14,23 +15,14 @@
 <link href="${path}/resources/css/font.css" rel="stylesheet" />
 
 <!-- SmartEditor2 라이브러리 --><!--  아래 2개의 라이브러리를 추가해줍니다. --> 
-<script type="text/javascript" src="se2/js/HuskyEZCreator.js" charset="utf-8"></script> 
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="${path}/se2/js/HuskyEZCreator.js" charset="utf-8"></script> 
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
 
 
-<script>
-var oEditors = [];
-nhn.husky.EZCreator.createInIFrame({
- oAppRef: oEditors,
- elPlaceHolder: "ir1",
- sSkinURI: "$('#contextPath').data('path')"+"libs/se2/SmartEditor2Skin.html",
- fCreator: "createSEditor2"
-});
-</script>
+
 </head>
 <body>
 	<!-- SmartEditor2 --> 
