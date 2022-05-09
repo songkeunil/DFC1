@@ -22,7 +22,7 @@
 	<form action="login_check" method="post" class="from-center">
 		
 		<c:if test="${LoginFailMessage != null}">
-		<p> <c:out value="${LoginFailMessage}"/> </p>
+		<p style="color:red; font-weight:bold"> <c:out value="${LoginFailMessage}"/> </p>
 		</c:if>
 		
 	<div>

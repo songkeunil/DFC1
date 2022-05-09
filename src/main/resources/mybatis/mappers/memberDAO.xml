@@ -5,6 +5,7 @@
 
 <mapper namespace="com.djplat.project.member.dao.MemberDAO">
 
+	<!-- 회원가입 -->
 	<insert id="userSignUp" parameterType="memberVO">
 		INSERT INTO MEMBER
 			(
@@ -22,5 +23,19 @@
 			)
 	</insert>
 	
+  	<!-- 아이디 중복확인 -->
+  	<select id="duplicateID" parameterType="String" resultType="String">
+  		SELECT DECODE(COUNT(*), 1, 'TRUE', 0, 'FALSE')
+  		FROM MEMBER
+  		WHERE MEMBER_ID = #{member_id}
+  	</select>
+  
+	<!-- 회원탈퇴 -->  
+  	<update id="deleteID" parameterType="String">
+  		UPDATE MEMBER
+  		SET MEMBER_ENABLED='0'
+  		WHERE MEMBER_ID = #{member_id}
+  	</update>
+  
   
 </mapper>
