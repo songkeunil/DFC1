@@ -9,14 +9,14 @@
 		INSERT INTO MEMBER
 			(
 			MEMBER_ID, MEMBER_PW,
-			MEMBER_NAME, MEMBER_GENDER, MEMBER_BIRTH, MEMBER_PHONENO, MEMBER_EMAIL, MEMBER_ADDRESS,
+			MEMBER_NAME, MEMBER_GENDER, MEMBER_BIRTH, MEMBER_PHONENO, MEMBER_EMAIL, MEMBER_ADDRESS, MEMBER_ADDRNUM,
 			MEMBER_GROUP, MEMBER_EAGREE, MEMBER_LAST_LOG,
 			MEMBER_RIGHT, MEMBER_ENABLED
 			) 
 		VALUES
 			(
 			#{member_id}, #{member_pw},
-			#{member_name}, #{member_gender}, #{member_birth}, #{member_phoneno}, #{member_email}, #{member_address},
+			#{member_name}, #{member_gender}, #{member_birth}, #{member_phoneno}, #{member_email}, #{member_address}, #{member_addrnum},
 			'group', #{member_eagree}, sysdate,
 			'ROLE_USER', '1'
 			)

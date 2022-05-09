@@ -20,6 +20,7 @@ public class MemberVO {
 	private String member_eagree;
 	private Date member_last_log;
 	private String member_enabled;
+	private String member_addrnum;
 	
 	
 	public String getMember_id() {
@@ -99,6 +100,12 @@ public class MemberVO {
 	}
 	public void setMember_enabled(String member_enabled) {
 		this.member_enabled = member_enabled;
+	}
+	public String getMember_addrnum() {
+		return member_addrnum;
+	}
+	public void setMember_addrnum(String member_addrnum) {
+		this.member_addrnum = member_addrnum;
 	}
 	
 }

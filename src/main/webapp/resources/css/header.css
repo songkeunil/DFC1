@@ -69,12 +69,20 @@
     }
 
     #h-login {
+<<<<<<< HEAD
         width: 220px;
+=======
+        width: 320px;
+>>>>>>> 86a46129f09f9a379fd2e1087ede519d2e414e08
         height: 50px;
 /*          background: green;*/
         float: right;
         padding-top: 85px;
         margin-right: 100px;
+<<<<<<< HEAD
+=======
+/*         font-weight: bold; */
+>>>>>>> 86a46129f09f9a379fd2e1087ede519d2e414e08
         
     }
 
@@ -135,8 +143,12 @@
     .h-sub li {
         border-bottom: 1px solid gray;
         border-right: 1px solid gray;
+<<<<<<< HEAD
         border-left: 1px solid gray; 
         background:white;
+=======
+        border-left: 1px solid gray;
+>>>>>>> 86a46129f09f9a379fd2e1087ede519d2e414e08
         
     }
     .h-sub li a{

@@ -11,9 +11,22 @@
     font-weight: normal;
     font-style: normal;
 }
+<<<<<<< HEAD
 
 loginForm body {
     height: 100%;
+=======
+@font-face {
+    font-family: 'Eoe_Zno_B';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/Eoe_Zno_B.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	
+    height: 110%;
+>>>>>>> 86a46129f09f9a379fd2e1087ede519d2e414e08
     font-family: 'Eoe_Zno_L';
     display: flex;
     align-items: center;
@@ -23,32 +36,54 @@ loginForm body {
 
 .form-all {
     width: 100%;
+<<<<<<< HEAD
     max-width: 330px;
     padding: 15px;
     margin: auto;
+=======
+    max-width:500px;
+    padding: 15px;
+    margin: auto;
+    text-align: center;
+>>>>>>> 86a46129f09f9a379fd2e1087ede519d2e414e08
 
 }
 
 .form-img {
+<<<<<<< HEAD
     width: 100%;
     margin: auto;
 }
 
 .form-title {
     text-align: center;
+=======
+margin: auto;
+    
+}
+
+.form-title {
+>>>>>>> 86a46129f09f9a379fd2e1087ede519d2e414e08
     font-family: 'Eoe_Zno_EB';
     font-size: 40px;
 }
 
 .form-login {
+<<<<<<< HEAD
     text-align: center;
     list-style: none;
 
+=======
+	text-align: center;
+    list-style: none;
+    margin:auto;
+>>>>>>> 86a46129f09f9a379fd2e1087ede519d2e414e08
 }
 
 .form-id{
 padding-bottom: 5px;
 }
+<<<<<<< HEAD
 .form-find{
 	text-align :center;
 	
@@ -62,9 +97,52 @@ padding-bottom: 5px;
 	border:1px; 
 solid:red;}
 
+=======
+.form-pw{
+padding-bottom: 10px;
+}
+
+.form-button{
+	font-family: 'Eoe_Zno_B';
+	font-size: 15px;
+	padding-bottom: 10px;
+}
+
+
+.form-find .test {
+	font-family: 'Eoe_Zno_B';
+	list-style: none;
+	text-align: center;
+	margin-right: 30px;
+	
+}
+li{
+	display:inline-block;
+}
+
+.form-find a:link {
+  color : Black;
+  text-decoration: none;
+}
+.form-find a:visited {
+  color : #0099FF;
+}
+.form-find a:hover {
+  color : red;
+  text-decoration:underline;
+}
+
+
+/* .test li{float:left; margin-right:5px;} */
+.test li::after{padding-left:5px; content:"|";}
+.test li:last-child::after{content:"";}
+>>>>>>> 86a46129f09f9a379fd2e1087ede519d2e414e08
 
 .form-copyright {
     text-align: center;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 86a46129f09f9a379fd2e1087ede519d2e414e08
