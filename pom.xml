@@ -4,15 +4,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-<<<<<<< HEAD
 	<groupId>com.spring</groupId>
-	<artifactId>djplat</artifactId>
-	<name>djplat</name>
-=======
-	<groupId>com.djplat</groupId>
-	<artifactId>project</artifactId>
-	<name>project</name>
->>>>>>> 1a546691634b551650a3603a8362342537e9d123
+	<artifactId>mytest04</artifactId>
+	<name>spring_test04</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -134,7 +128,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 			<scope>test</scope>
 		</dependency>
 		
-<<<<<<< HEAD
 		
 		<!-- JDBC 설정하기 -->
      	<dependency>
@@ -149,25 +142,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.29</version>
 		</dependency>
-=======
-		<!-- 오라클 드라이버 -->
-	 	<dependency>
-			<groupId>jdbc.oracle</groupId>
-			<artifactId>OracleDriver</artifactId>
-			<version>12.1.0.2.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc7.jar</systemPath>
-		</dependency>
-
-		<!-- <dependency>
-			<groupId>jdbc.oracle</groupId>
-			<artifactId>OracleDriver</artifactId>
-			<version>12.1.0.2.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc6.jar</systemPath>
-		</dependency> -->
-
->>>>>>> 1a546691634b551650a3603a8362342537e9d123
      
      
 		<!-- myBatis 설정관련 라이브러리 -->
@@ -212,11 +186,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
         <dependency>
 	      <groupId>org.apache.tiles</groupId>
 	      <artifactId>tiles-servlet</artifactId>
-	      <version>2.2.2</version>
-        </dependency>
-        <dependency>
-	      <groupId>org.apache.tiles</groupId>
-	      <artifactId>tiles-extras</artifactId>
 	      <version>2.2.2</version>
         </dependency>
         <dependency>
@@ -266,7 +235,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 		
 		<!-- AOP -->
 		<dependency>
-<<<<<<< HEAD
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
 			<version>${org.springframework-version}</version>
@@ -312,62 +280,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 		    <artifactId>spring-security-taglibs</artifactId>
 		     <version>${spring.security.version}</version>
 		  </dependency>
-
-<dependency>
-    <groupId>javax.activation</groupId>
-    <artifactId>activation</artifactId>
-    <version>1.1.1</version>
-</dependency>
- <dependency>
-       <groupId>javax.activation</groupId>
-       <artifactId>activation</artifactId>
-       <version>1.1</version>
-   </dependency>
-
-   <dependency>
-       <groupId>javax.mail</groupId>
-       <artifactId>mail</artifactId>
-       <version>1.4.7</version>
-   </dependency>
-     <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${org.springframework-version}</version>
-        </dependency>
-=======
-		  <groupId>org.springframework</groupId>
-		  <artifactId>spring-aop</artifactId>
-		  <version>${org.springframework-version}</version>
-	  </dependency>
-	  
-	  
-
-	<!-- AspectJ -->
-	<dependency>
-	    <groupId>org.aspectj</groupId>
-	    <artifactId>aspectjrt</artifactId>
-	    <version>${org.aspectj-version}</version>
-	</dependency>
- 
-	<dependency>
-	    <groupId>org.aspectj</groupId>
-	    <artifactId>aspectjweaver</artifactId>
-	    <version>${org.aspectj-version}</version>
-	</dependency>
-	 
-	<dependency>
-	    <groupId>org.aspectj</groupId>
-	    <artifactId>aspectjtools</artifactId>
-	    <version>${org.aspectj-version}</version>
-	</dependency>
 	
-	<dependency>
-		<groupId>com.fasterxml.jackson.core</groupId>
-		<artifactId>jackson-databind</artifactId>
-		<version>2.5.4</version>
-	</dependency>
-	
->>>>>>> 1a546691634b551650a3603a8362342537e9d123
 	</dependencies>
 	
 	
