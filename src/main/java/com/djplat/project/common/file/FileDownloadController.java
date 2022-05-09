@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+<<<<<<< HEAD
 import net.coobird.thumbnailator.Thumbnails;
 
 @Controller
@@ -30,12 +31,33 @@ public class FileDownloadController {
 		while (true) {
 			int count = in.read(buffer); // 
 			if (count == -1) // 
+=======
+@Controller
+public class FileDownloadController {
+	private static final String ARTICLE_IMAGE_REPO = "C:\\board\\article_image";
+	@RequestMapping("/download.do")
+	protected void download(@RequestParam("imageFileName") String imageFileName,
+							@RequestParam("articleNO") String articleNO,
+			                 HttpServletResponse response)throws Exception {
+		OutputStream out = response.getOutputStream();
+		String downFile = ARTICLE_IMAGE_REPO + "\\" +articleNO+"\\"+ imageFileName;
+		File file = new File(downFile);
+
+		response.setHeader("Cache-Control", "no-cache");
+		response.addHeader("Content-disposition", "attachment; fileName=" + imageFileName);
+		FileInputStream in = new FileInputStream(file);
+		byte[] buffer = new byte[1024 * 8];
+		while (true) {
+			int count = in.read(buffer); 
+			if (count == -1) 
+>>>>>>> 1a546691634b551650a3603a8362342537e9d123
 				break;
 			out.write(buffer, 0, count);
 		}
 		in.close();
 		out.close();
 	}
+<<<<<<< HEAD
 
 	@RequestMapping("/thumbnails.do")
 	protected void thumbnails(@RequestParam("fileName") String fileName, @RequestParam("goods_id") String goods_id,
@@ -51,4 +73,6 @@ public class FileDownloadController {
 		out.write(buffer);
 		out.close();
 	}
+=======
+>>>>>>> 1a546691634b551650a3603a8362342537e9d123
 }
