@@ -20,9 +20,9 @@
 
 <script>
 
-	//생년월일
     $(function() {
-        $('.datepicker').datepicker({
+    	//생년월일
+    	$('.datepicker').datepicker({
             showOn: "button",
             dateFormat: "yy-mm-dd",
             showOtherMonths: true,
@@ -42,8 +42,183 @@
             maxDate: "+5y", //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)*/
             yearRange: "-100:+10",
         });
-       /* $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)*/
-    })
+       	/* $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)*/
+    
+    	
+    	//모든 공백 체크 정규식
+		var empJ = /\s/g;
+       	
+		//아이디 정규식
+		var idJ = /^[a-z0-9]{5,20}$/;
+		/* var idc = false; */
+		$("#id").focusout(function(){
+		     if($('#id').val() == ""){
+		   		$('#idch').text('*필수 정보입니다.');
+		   	  	$('#idch').css('color', 'red');
+		   		return false;
+			}else if(!idJ.test($(this).val())){
+				$('#idch').text('*5~20자의 영문 소문자, 숫자만 사용가능합니다')
+				$('#idch').css('color', 'red') 
+		   		return false;
+			/* }else if($(this).val().indexOf("admin") != -1){
+				$('#idch').text('admin이 포함된 아이디는 사용할 수 없습니다.')
+				$('#idch').css('color', 'red') 
+				return false; */
+	       }else{
+		         idc = true;
+		         /* $("#idch").hide(); */
+		         
+		 		/*  $("#overlay").click(function(){ */
+					var id = $("#id").val();
+						$.ajax({
+							type:'post'
+							,url:'${path}/duplicateID.do'
+							,data:{member_id : id }
+							,success:function(obj){
+							console.log(obj);
+							if(obj != 'TRUE'){
+								/* alert('사용할 수 있는 아이디 입니다.'); */
+								$('#idch').text('*사용할 수 있는 아이디입니다.')
+								$('#idch').css('color', 'green') 
+								overChk= true;
+							}else{
+								$('#idch').text('*이미 사용중인 아이디 입니다.')
+								$('#idch').css('color', 'red') 
+								/* alert('이미 사용중인 아이디 입니다.'); */
+							}
+						}
+						,error:function(e){
+							console.log(e);
+						}
+					});				
+				/* }); */	
+		         return true;
+		     }
+		 });
+		
+		//비밀번호 정규식
+		var pwJ = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/; 
+		
+	    //비밀번호
+		/* $('#pwch1').text('6~20자의 영문 소문자, 숫자만 사용가능합니다') */
+		$('#pwch1').css('color', 'red') 
+	   	$("#pswd1").focusout(function(){
+		     if($('#pswd1').val() == ""){
+		    	$('#pwch1').text('*필수 정보입니다.');
+			   	$('#pwch1').css('color', 'red');
+				return false;
+			 }else if(!pwJ.test($(this).val())){
+				$('#pwch1').text('*6~20자, 하나이상의  영문 대∙소문자,특수문자,숫자를 사용합니다')
+				$('#pwch1').css('color', 'red') 
+				return false;
+		     }else{
+		        pwc2 = true;
+		        $('#pwch1').hide();
+		        return true;
+			 }
+		});
+		//비밀번호 재확인
+		$("#pswd2").keyup(function(){
+		    if($(this).val()!=$("#pswd1").val()){
+		        $("#pwch2").html("*비밀번호가 다릅니다");
+		        $("#pwch2").css("color",'red');
+		        pwc = false;
+		    }else{
+		        $("#pwch2").html("*비밀번호가 일치합니다");
+		        $("#pwch2").css("color",'blue');
+		        pwc = true;
+		    }
+		});
+		//비밀번호 불일치 확인
+		$("#pswd1").keyup(function(){
+		    if($(this).val()!=$("#pswd2").val()){
+		        $("#pwch2").html("*비밀번호가 다릅니다");
+		        $("#pwch2").css("color",'red');
+		        pwc = false;
+		
+		    }else{
+		        $("#pwch2").html("*비밀번호가 일치합니다");
+		        $("#pwch2").css("color",'blue');
+		        pwc = true;
+		    }
+		});
+		
+		//이름 정규식
+		var nameJ = /^[가-힣]{2,6}$/;
+		$("#name").focusout(function(){
+		   if($('#name').val() == ""){
+			   $('#namech').text('*필수 정보입니다.');
+			   $('#namech').css('color', 'red');
+		   }else if(!nameJ.test($(this).val())){
+				$('#namech').text('*한글만 사용가능합니다.')
+				$('#namech').css('color', 'red') 
+				return false;
+		   }else{
+		       namec = true;
+		       $('#namech').hide();
+		   }
+		});
+		
+		//핸드폰번호 정규식
+		var phoneJ = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
+		$("#mobile").focusout(function(){
+		   if($('#mobile').val() == ""){
+			   $('#phonech').text('*필수 정보입니다.');
+			   $('#phonech').css('color', 'red');
+		   }else if(!phoneJ.test($(this).val())){
+				$('#phonech').text('*-없이 숫자만 입력가능합니다.')
+				$('#phonech').css('color', 'red') 
+				return false;
+		   }else{
+		       phonec = true;
+		       $('#phonech').hide();
+		   }
+		});
+		
+		//이메일 정규식
+		var emailJ = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+		$("#email").focusout(function(){
+		 	if($('#email').val() == ""){
+			    $('#emailch').text('*필수 정보입니다.');
+			    $('#emailch').css('color', 'red');
+			    /* $(this).focus(); 
+				return false; */
+	    	}else if(!emailJ.test($(this).val())){
+				$('#emailch').text('*정확한 이메일 형식으로 입력합니다.')
+				$('#emailch').css('color', 'red') 
+				return false;
+		   }else{
+		       	emailc = true;
+		       	$('#emailch').hide();
+		       	return true;
+		   	}
+		});
+		
+		//아이디 중복체크
+/* 		$("#overlay").click(function(){
+			var id = $("#id").val();
+				$.ajax({
+					type:'post'
+					,url:'${path}/duplicateID.do'
+					,data:{member_id : id }
+					,success:function(obj){
+					console.log(obj);
+					if(obj != 'TRUE'){
+						alert('사용할 수 있는 아이디 입니다.');
+						overChk= true;
+					}else{
+						alert('이미 사용중인 아이디 입니다.');
+					}
+				}
+				,error:function(e){
+					console.log(e);
+				}
+			});				
+		});	 */
+	
+		
+		
+    })//DOC end.
 
 	//주소
    function sample4_execDaumPostcode() {
@@ -82,25 +257,70 @@
 	                document.getElementById("sample4_extraAddress").value = '';
 	            } */
 	
-	            var guideTextBox = document.getElementById("guide");
+	            /* var guideTextBox = document.getElementById("guide");
 	            // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
 	            if(data.autoRoadAddress) {
 	                var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
 	                guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
 	                guideTextBox.style.display = 'block';
 	
-	            } /* else if(data.autoJibunAddress) {
-	                var expJibunAddr = data.autoJibunAddress;
-	                guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
-	                guideTextBox.style.display = 'block';
-	            } */ else {
+	            } else {
 	                guideTextBox.innerHTML = '';
 	                guideTextBox.style.display = 'none';
-	            }
+	            } */
 	        }
 	    }).open();
 	}
     
+    
+    var overChk = false;
+    var idc = false;
+    var pwc = false;
+    var pwc2 = false;
+	var namec = false;
+	var phonec = false;
+	var emailc = false;
+
+    //등록
+	function regist(){
+		
+		var id = $("#id").val();
+		var pw = $("#pswd1").val();
+		var pw2 = $("#pswd2").val();
+		var name = $("#name").val();
+		var birth = $("#birth").val();
+		var gender = $("#gender").val();
+		var phone = $("#mobile").val();
+		var addr = $("#sample4_jibunAddress").val();
+		var email = $("#email").val();
+		
+		if(idc == false || id === ""){
+		    alert('아이디를 확인 해 주세요')
+		    return pass;
+		}else if(overChk == false){
+		    alert('아이디 중복 검사를 해주세요')
+		}else if(pwc == false|| pw2 === "" || pwc2 == false){
+		    alert('비밀번호를 확인 해 주세요')
+		}else if(namec == false || name === ""){
+			alert('이름을 입력해주세요')
+		}else if( birth === ""){
+		 	alert('생일을 입력해주세요')
+		}else if( gender === ""){
+		 	alert('성별을 입력해주세요')
+		}else if(phonec == false || phone === ""){
+		    alert('전화번호를 입력해주세요.')
+		}else if(addr == ""){
+		 	alert('주소를 선택해주세요')
+		}else if(emailc == false || email === ""){
+			alert('이메일을 입력해주세요')
+		}/* else if(emoverChk == false){
+			alert('이메일을 중복 검사를 해주세요')
+		} */else{
+		    $('form').submit();
+		} 
+	};		
+
+		    
     
 </script>
 
@@ -116,8 +336,9 @@
 
     <!-- header -->
     <div id="header">
-        <a href="${path }/main.html" title="회원가입"><img src="${path}/resources/image/logo.png"></a>
-         <h3 class="main-name">회원가입</h3>
+        <a href="${path }/main.html" title="회원가입">
+        <img src="${path}/resources/image/logo.png"></a>
+        <h3 class="main-name">회원가입</h3>
     </div>
 
 
@@ -131,48 +352,63 @@
             <div>
                 <h3 class="join_title">
                     <label for="id">아이디</label>
+                    &nbsp<span id="idch"></span>
                 </h3>
+                 <!-- <h3 id="idch" class="reg_check"> </h3> -->
                 <span class="box int_id">
-                    <input type="text" id="id" name="member_id" class="int" maxlength="20">
-                </span>
+                    <input type="text" id="id" name="member_id" class="intid" maxlength="20">
+<!--  					<input type="button" id="overlay" class="buttons_id" onclick="overlay()" value="중복 체크" /><br/>                    
+ -->                </span> 
+                
                 <span class="error_next_box"></span>
+               
             </div>
 
             <!-- PW1 -->
             <div>
-                <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
+                <h3 class="join_title">
+                <label for="pswd1">비밀번호</label>
+                 &nbsp<span id="pwch1"></span>
+                </h3>
                 <span class="box int_pass">
                     <input type="password" id="pswd1" name="member_pw" class="int" maxlength="20">
                     <span id="alertTxt">사용불가</span>
-
                 </span>
                 <span class="error_next_box"></span>
+                <!-- <p id="pwch1" class="reg_check"> </p> -->
             </div>
 
             <!-- PW2 -->
             <div>
-                <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
+                <h3 class="join_title">
+                <label for="pswd2">비밀번호 재확인</label>
+                &nbsp<span id="pwch2"></span>
+                </h3>
                 <span class="box int_pass_check">
                     <input type="password" id="pswd2" class="int" maxlength="20">
-
                 </span>
                 <span class="error_next_box"></span>
+                <!-- <p id="pwch2" class="reg_check"> </p> -->
             </div>
 
             <!-- NAME -->
             <div>
-                <h3 class="join_title"><label for="name">이름</label></h3>
+                <h3 class="join_title">
+                <label for="name">이름</label>
+                &nbsp<span id="namech"></span>
+                </h3>
                 <span class="box int_name">
                     <input type="text" id="name" name="member_name"class="int" maxlength="20">
                 </span>
                 <span class="error_next_box"></span>
+                <!-- <p id="namech" class="reg_check"> </p> -->
             </div>
 
             <!-- BIRTH -->
           	<div>
                 <h3 class="join_title"><label for="name">생년월일</label></h3>
                 <span class="box date_name">
-                    <input type="text" class="datepicker" name="member_birth" maxlength="20">
+                    <input type="text" id="birth" class="datepicker" name="member_birth" maxlength="20">
                 </span>
             </div>
 
@@ -191,14 +427,18 @@
 
             <!-- MOBILE -->
             <div>
-                <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
+                <h3 class="join_title">
+                <label for="phoneNo">휴대전화</label>
+                &nbsp<span id="phonech"></span>
+                </h3>
                 <span class="box int_mobile">
                     <input type="tel" id="mobile" name="member_phoneno" class="int" maxlength="16" placeholder="전화번호 입력">
                 </span>
                 <span class="error_next_box"></span>
+               <!--  <p id="phonech" class="reg_check"> </p> -->
             </div>
 
-            <!-- addres -->
+            <!-- address -->
 			<div>
                 <h3 class="join_title">주소</h3>
                 <span class="box int_addr">
@@ -212,42 +452,47 @@
 
             <!-- EMAIL -->
             <div>
-                <h3 class="join_title"><label for="email">이메일<span class="optional"></span></label></h3>
+                <h3 class="join_title">
+                <label for="email">이메일<span class="optional"></span></label>
+                &nbsp<span id="emailch"></span>
+                </h3>
                 <span class="box int_email">
                     <input type="text" id="email" name="member_email" class="int" maxlength="100" placeholder="선택입력">
                 </span>
                 <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>
+                <!-- <p id="emailch" class="reg_check"> </p> -->
             </div>
 
 			<!-- E-mail agree -->
 			<br>
 			<div class="mail-agree">
-              
-              <label for="emailagree">
-              <input type="radio" id="emailagree" name="member_eagree" class="agree_chk" value="1">[선택]이메일서비스신청 수신동의
-              </label>
-               <label for="emailagree">
-              <input type="radio" id="emailagree" name="member_eagree" class="agree_chk" value="0">비동의
-              </label>
-               <ul class="explan_txt">
-               <li>고객님께서는 위의 개인정보 및 회원정보 수정 등을 통해 추가로 수집하는 개인정보에<br/>
-                  	대해 동의하지 않거나 개인정보를 기재하지 않음으로써 거부하실 수 있습니다.<br/>
-                  	다만 이때 회원 대상 서비스가 제한될 수 있습니다.
-                </li>
+              	<div class="mail-agreeok">
+	               	<label for="emailagree">
+	              		<input type="radio" id="emailagree" name="member_eagree" class="agree_chk" value="0">비동의
+	              	</label>
+	              	<br>
+	              	<label for="emailagree">
+	              		<input type="radio" id="emailagree" name="member_eagree" class="agree_chk" value="1" checked>[선택]이메일서비스신청 수신동의
+	              	</label>
+            	</div>
+               	<ul class="explan_txt">
+               	<li>고객님께서는 위의 개인정보 및 회원정보 수정 등을 통해 추가로 수집하는 개인정보에
+                  	대해 동의하지 않거나 개인정보를 기재하지 않음으로써 거부하실 수 있습니다.
+                  	다만 이때 회원 대상 서비스가 제한될 수 있습니다.</li>
+                </ul>
             </div>
             
-          
             <!-- JOIN BTN-->
             <div class="btn_area">
-                <button  id="btnJoin">
+                <button type="button" id="btnJoin" onclick="regist()">
                     <span>가입하기</span>
                 </button>
             </div>
+            
         </div>
-        <!-- content-->
-        <!--  <input type="submit" value="가입"> -->
     </div>
     
 </form>
+
 </body>
 </html>
