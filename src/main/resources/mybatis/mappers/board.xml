@@ -4,45 +4,48 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.board">
-<resultMap id="articlesResult" type="articleVO">
-    <result property="BRD_NO" column="BRD_NO" />
-    <result property="TITLE" column="TITLE" />
-    <result property="YOUNG_CONTEXT" column="YOUNG_CONTEXT" />
-    <result property="CC" column="CC" />
-    <result property="W_DATE" column="W_DATE" />
-    <result property="HITS" column="HITS" />
-    <result property="PUBLICOPEN" column="PUBLICOPEN" />
+<resultMap id="articlesResult" type="ArticleVO">
+    <result property="brd_no" column="brd_no" />
+    <result property="title" column="title" />
+    <result property="young_context" column="young_context" />
+    <result property="cc" column="cc" />
+    <result property="w_date" column="w_date" />
+    <result property="hits" column="hits" />
+    <result property="publicopen" column="publicopen" />
+    <result property="member_id" column="member_id" />
   
   </resultMap> 
 
 	<!-- 글 리스트 -->
   <select id="selectAllArticlesList" parameterType= "java.util.Map" resultMap="articlesResult">
   	<![CDATA[
-  		SELECT BRD_NO, TITLE, YOUNG_CONTEXT, CC, W_DATE, HITS, PUBLICOPEN
-		FROM YOUNGROLE_BOARD
-		ORDER BY BRD_NO DESC
+		SELECT * FROM
+		(SELECT ROWNUM as recNum, brd_no, title, young_context,
+		cc, w_date, hits, publicopen, member_id FROM YOUNGROLE_BOARD 
+		ORDER BY recNum DESC) 
+		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*10+1 and (#{section}-1)*100 + #{pageNum}*10
   	]]>
   </select>
   
   <!-- 페이지 넘버링 -->
   <select id="selectTotArticles" resultType="int">
   	<![CDATA[
-  		select count(BRD_NO) from YOUNGROLE_BOARD
+  		select count(brd_no) from YOUNGROLE_BOARD
   	]]>
   </select>
  
  <!-- 새글 작성 -->
  <select id="insertNewArticle" parameterType="java.util.Map">
  	<![CDATA[
- 		INSERT INTO YOUNGROLE_BOARD(BRD_NO, TITLE, YOUNG_CONTEXT, CC, W_DATE, HITS, PUBLICOPEN)
- 		VALUES(#{BRD_NO},#{TITLE},#{YOUNG_CONTEXT},#{CC},#{W_DATE},#{HITS},#{PUBLICOPEN})
+ 		INSERT INTO YOUNGROLE_BOARD(brd_no, title, young_context, cc, w_date, hits, publicopen,member_id)
+ 		VALUES(#{brd_no},#{title},#{young_context},#{cc},#{w_date},#{hits},#{publicopen},#{member_id})
  	]]>
  </select>
  
  <!-- 새글 번호 생성 -->
  <select id="selectNewArticleNO" resultType="int">
  	<![CDATA[
- 		SELECT nvl(max(BRD_NO, 0) + 1 from YOUNGROLE_BOARD
+ 		SELECT nvl(max(brd_no), 0) + 1 from YOUNGROLE_BOARD
  	]]>
  </select>
  
@@ -50,7 +53,7 @@
  <select id="selectArticle" resultType="articleVO" parameterType="int">
  	<![CDATA[
  		SELECT * from YOUNGROLE_BOARD
- 		WHERE BRD_NO = #{BRD_NO}
+ 		WHERE brd_no = #{brd_no}
  	]]>
  </select>
  
@@ -58,16 +61,16 @@
  <!-- 글 수정하기 -->
  <update id="updateArticle" parameterType="java.util.Map">
  	update YOUNGROLE_BOARD
- 	set TITLE=#{TITLE}, YOUNG_CONTEXT=#{YOUNG_CONTEXT}
- 	where BRD_NO=#{BRD_NO}
+ 	set title=#{title}, young_context=#{young_context}
+ 	where brd_no=#{brd_no}
  </update>
  
  <delete id="deleteArticle" parameterType="int">
  	<![CDATA[
  		delete from YOUNGROLE_BOARD
- 		where BRD_NO in (
- 			SELECT BRD_NO FROM YOUNGROLE_BOARD
- 			START WITH BRD_NO = #{BRD_NO})
+ 		where brd_no in (
+ 			SELECT brd_no FROM YOUNGROLE_BOARD
+ 			START WITH brd_no = #{brd_no})
  	]]>
  </delete>
  

@@ -27,9 +27,13 @@ public class BoardServiceImpl implements BoardService {
 	BoardDAO boardDAO;
 	
 	@Override
-	public List<ArticleVO> listArticles() throws Exception{
-	List<ArticleVO> articlesList =  boardDAO.selectAllArticlesList();
-    return articlesList;
+	public Map listArticles(Map pagingMap) throws Exception{
+	Map articlesMap = new HashMap();
+	List<ArticleVO> articlesList =  boardDAO.selectAllArticlesList(pagingMap);
+	int totArticles = boardDAO.selectTotArticles();
+	articlesMap.put("articlesList", articlesList);
+	articlesMap.put("totArticles", totArticles);
+    return articlesMap;
 	}
 	
 	@Override
@@ -38,9 +42,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public Map viewArticle(int articleNO) throws Exception {
+	public Map viewArticle(int brd_no) throws Exception {
 		Map articleMap = new HashMap();
-		ArticleVO articleVO = boardDAO.selectArticle(articleNO);
+		ArticleVO articleVO = boardDAO.selectArticle(brd_no);
 //		List<ImageVO> imageFileList = boardDAO.selectImageFileList(articleNO);
 		articleMap.put("article", articleVO);
 //		articleMap.put("imageFileList", imageFileList);
@@ -53,7 +57,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public void removeArticle(int articleNO) throws Exception {
-		boardDAO.deleteArticle(articleNO);
+	public void removeArticle(int brd_no) throws Exception {
+		boardDAO.deleteArticle(brd_no);
 	}
 }

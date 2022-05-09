@@ -1,6 +1,6 @@
 package com.djplat.project.board.vo;
 
-import java.util.Date;
+import java.sql.Date;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,65 +8,64 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Component("articleVO")
 public class ArticleVO {
-	private int BRD_NO;
-	private String TITLE;
-	private String YOUNG_CONTEXT;
-	private String CC;
-	private Date W_DATE;
-	private int HITS;
-	private String PUBLICOPEN;
-	private String MEMBER_ID;
-	
-	
-	public int getBRD_NO() {
-		return BRD_NO;
+	private int brd_no; //글 번호  1
+	private String title; //글 제목  3
+	private String young_context; //글 내용
+	private String cc; //분류  2
+	private Date w_date; //작성일   4
+	private int hits; //조회수 5
+	private String publicopen; //공개여부
+	private String member_id; // 회원아이디
+	public int getBrd_no() {
+		return brd_no;
 	}
-	public void setBRD_NO(int bRD_NO) {
-		BRD_NO = bRD_NO;
+	public void setBrd_no(int brd_no) {
+		this.brd_no = brd_no;
 	}
-	public String getTITLE() {
-		return TITLE;
+	public String getTitle() {
+		return title;
 	}
-	public void setTITLE(String tITLE) {
-		TITLE = tITLE;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public String getYOUNG_CONTEXT() {
-		return YOUNG_CONTEXT;
+	public String getYoung_context() {
+		return young_context;
 	}
-	public void setYOUNG_CONTEXT(String yOUNG_CONTEXT) {
-		YOUNG_CONTEXT = yOUNG_CONTEXT;
+	public void setYoung_context(String young_context) {
+		this.young_context = young_context;
 	}
-	public String getCC() {
-		return CC;
+	public String getCc() {
+		return cc;
 	}
-	public void setCC(String cC) {
-		CC = cC;
+	public void setCc(String cc) {
+		this.cc = cc;
 	}
-	public Date getW_DATE() {
-		return W_DATE;
+	public Date getW_date() {
+		return w_date;
 	}
-	public void setW_DATE(Date w_DATE) {
-		W_DATE = w_DATE;
+	public void setW_date(Date w_date) {
+		this.w_date = w_date;
 	}
-	public int getHITS() {
-		return HITS;
+	public int getHits() {
+		return hits;
 	}
-	public void setHITS(int hITS) {
-		HITS = hITS;
+	public void setHits(int hits) {
+		this.hits = hits;
 	}
-	public String getPUBLICOPEN() {
-		return PUBLICOPEN;
+	public String getPublicopen() {
+		return publicopen;
 	}
-	public void setPUBLICOPEN(String pUBLICOPEN) {
-		PUBLICOPEN = pUBLICOPEN;
+	public void setPublicopen(String publicopen) {
+		this.publicopen = publicopen;
 	}
-	public String getMEMBER_ID() {
-		return MEMBER_ID;
+	public String getMember_id() {
+		return member_id;
 	}
-	public void setMEMBER_ID(String mEMBER_ID) {
-		MEMBER_ID = mEMBER_ID;
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
 	}
 	
-
-
+	
+	
+	
 }

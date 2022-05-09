@@ -8,29 +8,22 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.accessibility.AccessibleAction;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.fileupload.UploadContext;
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.djplat.project.board.service.BoardService;
 import com.djplat.project.board.vo.ArticleVO;
@@ -38,7 +31,8 @@ import com.djplat.project.member.vo.MemberVO;
 
 
 
-@RestController
+
+
 @Controller("boardController")
 public class BoardControllerImpl implements BoardController {
 	private static final String ARTICLE_IMAGE_REPO = "C:\\board\\article_image";
@@ -52,9 +46,20 @@ public class BoardControllerImpl implements BoardController {
 	@RequestMapping(value= "/board/listArticles.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String)request.getAttribute("viewName");
-		List articlesList = boardService.listArticles();
+		String _section = request.getParameter("section");
+		String _pageNum = request.getParameter("pageNum");
+		int section = Integer.parseInt(((_section==null)?"1":_section));
+		int pageNum = Integer.parseInt(((_pageNum==null)?"1":_pageNum));
+		
+		Map pagingMap = new HashMap();
+		pagingMap.put("section", section);
+		pagingMap.put("pageNum", pageNum);
+		Map articlesMap = boardService.listArticles(pagingMap);
+		articlesMap.put("section", section);
+		articlesMap.put("pageNum", pageNum);
+
 		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("articlesList", articlesList);
+		mav.addObject("articlesMap", articlesMap);
 		return mav;
 	}
 	
@@ -141,13 +146,14 @@ public class BoardControllerImpl implements BoardController {
 	  
 	  //글 상세창 보기
 		@RequestMapping(value="/board/viewArticle.do" ,method = RequestMethod.GET)
-		public ModelAndView viewArticle(@RequestParam("BRD_NO") int BRD_NO,
+		public ModelAndView viewArticle(@RequestParam("brd_no") int brd_no,
 				  HttpServletRequest request, HttpServletResponse response) throws Exception{
 			String viewName = (String)request.getAttribute("viewName");
-			Map articleMap=boardService.viewArticle(BRD_NO);
+			Map articleMap=boardService.viewArticle(brd_no);
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName(viewName);
 			mav.addObject("articleMap", articleMap);
+			System.out.println(mav);
 			return mav;
 		}
 	  
@@ -169,7 +175,7 @@ public class BoardControllerImpl implements BoardController {
 //		List<String> imageFileName= upload(multipartRequest);
 //		articleMap.put("imageFileName", imageFileName);
 		
-		String BRD_NO=(String)articleMap.get("BRD_NO");
+		String brd_no=(String)articleMap.get("brd_no");
 		String message;
 		ResponseEntity resEnt=null;
 		HttpHeaders responseHeaders = new HttpHeaders();
@@ -187,7 +193,7 @@ public class BoardControllerImpl implements BoardController {
 //	       }	
 	       message = "<script>";
 		   message += " alert('글을 수정했습니다.');";
-		   message += " location.href='"+multipartRequest.getContextPath()+"/board/viewArticle.do?BRD_NO="+BRD_NO+"';";
+		   message += " location.href='"+multipartRequest.getContextPath()+"/board/viewArticle.do?BRD_NO="+brd_no+"';";
 		   message +=" </script>";
 	       resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 	    }catch(Exception e) {
@@ -195,7 +201,7 @@ public class BoardControllerImpl implements BoardController {
 //	      srcFile.delete();
 	      message = "<script>";
 		  message += " alert('오류가 발생했습니다.다시 수정해주세요');";
-		  message += " location.href='"+multipartRequest.getContextPath()+"/board/viewArticle.do?BRD_NO="+BRD_NO+"';";
+		  message += " location.href='"+multipartRequest.getContextPath()+"/board/viewArticle.do?BRD_NO="+brd_no+"';";
 		  message +=" </script>";
 	      resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 	    }
@@ -207,7 +213,7 @@ public class BoardControllerImpl implements BoardController {
 	  @Override
 	  @RequestMapping(value = "/board/removeArticle.do" , method = RequestMethod.POST)
 	  @ResponseBody
-	  public ResponseEntity removeArticle(@RequestParam("BRD_NO") int BRD_NO,
+	  public ResponseEntity removeArticle(@RequestParam("brd_no") int brd_no,
 			  							  HttpServletRequest request, 
 			  							  HttpServletResponse response) throws Exception{
 		  
@@ -217,7 +223,7 @@ public class BoardControllerImpl implements BoardController {
 		  HttpHeaders responseHeaders = new HttpHeaders();
 		  responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 		  try {
-			  boardService.removeArticle(BRD_NO);
+			  boardService.removeArticle(brd_no);
 //				File destDir = new File(ARTICLE_IMAGE_REPO+"\\"+BRD_NO);
 //				FileUtils.deleteDirectory(destDir);
 				

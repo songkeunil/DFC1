@@ -8,7 +8,7 @@
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
-		<java-version>1.6</java-version>
+		<java-version>1.8</java-version>
 		<org.springframework-version>4.1.1.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
@@ -117,14 +117,23 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- JDBC 설정하기 -->
-     <dependency>
-	    <groupId>oracle.jdbc</groupId>
-	    <artifactId>OracleDriver</artifactId>
-	    <version>12.1.0.2.0</version>
-	    <scope>system</scope>
-	    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc7.jar</systemPath>
-      </dependency>
+		<!-- 오라클 드라이버 -->
+	 	<dependency>
+			<groupId>jdbc.oracle</groupId>
+			<artifactId>OracleDriver</artifactId>
+			<version>12.1.0.2.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc7.jar</systemPath>
+		</dependency>
+
+		<!-- <dependency>
+			<groupId>jdbc.oracle</groupId>
+			<artifactId>OracleDriver</artifactId>
+			<version>12.1.0.2.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc6.jar</systemPath>
+		</dependency> -->
+
      
       
       <dependency>
@@ -215,14 +224,7 @@
 		  <version>${org.springframework-version}</version>
 	  </dependency>
 	  
-	  <!-- 오라클 드라이버 -->
-	  <dependency>
-			<groupId>jdbc.oracle</groupId>
-			<artifactId>OracleDriver</artifactId>
-			<version>12.1.0.2.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc7.jar</systemPath>
-		</dependency>
+	  
 
 	<!-- AspectJ -->
 	<dependency>
@@ -242,6 +244,13 @@
 	    <artifactId>aspectjtools</artifactId>
 	    <version>${org.aspectj-version}</version>
 	</dependency>
+	
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>2.5.4</version>
+	</dependency>
+	
 	</dependencies>
     <build>
         <plugins>

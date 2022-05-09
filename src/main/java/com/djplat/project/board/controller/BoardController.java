@@ -14,13 +14,13 @@ public interface BoardController {
 
 	public ModelAndView listArticles(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ResponseEntity  addNewArticle(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception;
-	public ModelAndView viewArticle(@RequestParam("BRD_NO") int BRD_NO,
+	public ModelAndView viewArticle(@RequestParam("brd_no") int brd_no,
 			  HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ResponseEntity modArticle(MultipartHttpServletRequest multipartRequest,  
 		    HttpServletResponse response) throws Exception;
-	public ResponseEntity removeArticle(@RequestParam("BRD_NO") int BRD_NO,
-			  HttpServletRequest request, 
-			  HttpServletResponse response) throws Exception;
+	 public ResponseEntity removeArticle(@RequestParam("brd_no") int brd_no,
+				  HttpServletRequest request, 
+				  HttpServletResponse response) throws Exception;
 	
 
 }
