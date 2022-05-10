@@ -20,4 +20,13 @@ public interface MemberDAO {
 	
 	//회원탈퇴
 	public String deleteID(String member_id);
+
+
+	//유저인증키생성메서드
+	public int GetKey(String user_id, String key);
+	//회원 인증키 바꾸는 메서드
+	public int alter_member_auth(String member_id, String key);
+
+	
+
 }

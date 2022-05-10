@@ -3,6 +3,8 @@ package com.djplat.project.common.vo;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,7 +17,6 @@ public class UserVO implements UserDetails{
 	private String member_pw;
 	private boolean member_enabled;
 	private ArrayList<GrantedAuthority> member_right;
-	
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

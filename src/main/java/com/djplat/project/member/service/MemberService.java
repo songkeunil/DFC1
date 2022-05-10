@@ -26,4 +26,6 @@ public class MemberService {
 		MemberDAO dao = sqlSession.getMapper(MemberDAO.class);
 		dao.deleteID(member_id);
 	}
+	
+	
 }
