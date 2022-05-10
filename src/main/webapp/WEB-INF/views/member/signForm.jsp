@@ -294,30 +294,63 @@
 		var addr = $("#sample4_jibunAddress").val();
 		var email = $("#email").val();
 		
+		let result = true;
+		
 		if(idc == false || id === ""){
 		    alert('아이디를 확인 해 주세요')
-		    return pass;
-		}else if(overChk == false){
+		    result = false;
+		}
+			
+		if(overChk == false){
 		    alert('아이디 중복 검사를 해주세요')
-		}else if(pwc == false|| pw2 === "" || pwc2 == false){
+		    result = false;
+		}
+		
+		if(pwc == false|| pw2 === "" || pwc2 == false){
 		    alert('비밀번호를 확인 해 주세요')
-		}else if(namec == false || name === ""){
+		    result = false;
+		}
+		
+		if(namec == false || name === ""){
 			alert('이름을 입력해주세요')
-		}else if( birth === ""){
+			result = false;
+		}
+		
+		if( birth === ""){
 		 	alert('생일을 입력해주세요')
-		}else if( gender === ""){
+		 	result = false;
+		}
+		
+		if( gender === ""){
 		 	alert('성별을 입력해주세요')
-		}else if(phonec == false || phone === ""){
+		 	result = false;
+		}
+		
+		if(phonec == false || phone === ""){
 		    alert('전화번호를 입력해주세요.')
-		}else if(addr == ""){
+		    result = false;
+		}
+		
+		if(addr == ""){
 		 	alert('주소를 선택해주세요')
-		}else if(emailc == false || email === ""){
+		 	result = false;
+		}
+		
+		if(emailc == false || email === ""){
 			alert('이메일을 입력해주세요')
-		}/* else if(emoverChk == false){
+			result = false;
+		}
+		
+		/* if(emoverChk == false){
 			alert('이메일을 중복 검사를 해주세요')
-		} */else{
-		    $('form').submit();
-		} 
+		} */
+		
+		if(!result){
+		    alter("check")
+		    return false;
+		}
+		
+		$('form').submit();
 	};		
 
 		    
