@@ -32,7 +32,10 @@
 	<!-- 	<put-attribute name="title" value="회원가입페이지" /> -->
 		<!-- <put-attribute name="body" value="/WEB-INF/views/member/signForm.jsp" /> -->
 	</definition>
-	
+	<definition name="/registerEmail" template="/WEB-INF/views/member/registerEmail.jsp">
+	<!-- 	<put-attribute name="title" value="회원가입페이지" /> -->
+		<!-- <put-attribute name="body" value="/WEB-INF/views/member/signForm.jsp" /> -->
+	</definition>
 </tiles-definitions>
 
 

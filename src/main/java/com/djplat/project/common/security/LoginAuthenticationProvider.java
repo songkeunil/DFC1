@@ -45,8 +45,9 @@ public class LoginAuthenticationProvider implements AuthenticationProvider{
 			throw new AccountExpiredException(userId); //계정 만료
 		} else if (!userVO.isCredentialsNonExpired()) {
 			throw new CredentialsExpiredException(userId); //비밀번호 만료
+		} else if(!userVO.isEmail()) {
+			throw new AccountExpiredException(userId); //이메일인증필요
 		}
-		
 		//로그인 성공
 		userVO.setPassword(null);
 		

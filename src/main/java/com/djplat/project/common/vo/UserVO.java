@@ -16,6 +16,7 @@ public class UserVO implements UserDetails{
 	private String member_id;
 	private String member_pw;
 	private boolean member_enabled;
+	private boolean member_auth;
 	private ArrayList<GrantedAuthority> member_right;
 	
 	@Override
@@ -60,6 +61,9 @@ public class UserVO implements UserDetails{
 	@Override
 	public boolean isEnabled() {
 		return member_enabled;
+	}
+	public boolean isEmail() {
+		return member_auth;
 	}
 	
 	

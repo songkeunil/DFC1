@@ -36,12 +36,12 @@
   		SET MEMBER_ENABLED='0'
   		WHERE MEMBER_ID = #{member_id}
   	</update>
-  	<!-- 인증키 생성 -->
+  <!-- 	
     <update id="GetKey" parameterType="Map">
     	UPDATE MEMBER SET MEMBER_AUTH = #{param2} where member_id = #{param2}
     </update>
-    <!-- 회원 인증키(난수) 1로 변경 -->
+    회원 인증키(난수) 1로 변경
   	<update id="alter_member_auth" parameterType="map">
   		UPDATE MEMBER SET MEMBER_AUTH = '1' WHERE MEMBER_ID = #{PARAM1} AND MEMBER_AUTH = #{PARAM2}
-  	</update>
+  	</update> -->
 </mapper>

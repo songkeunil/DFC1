@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.djplat.project.mail.service.MailService;
 import com.djplat.project.member.service.MemberService;
 import com.djplat.project.member.service.SignUpService;
-import com.djplat.project.member.service.UserMailSendService;
 import com.djplat.project.member.vo.MemberVO;
 
 @Controller("memberController")
@@ -33,21 +34,30 @@ public class MemberController {
 	SignUpService signUpService;
 	@Autowired
 	MemberService memberService;
-	
+	@Autowired
+	MailService mailService;
 	@RequestMapping("/signForm.html")
 	public String signForm(Model model) {
 		return "signForm";
 	}
 
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST)
-	public String signUp(@ModelAttribute("memberVO") MemberVO memberVO, HttpServletRequest request) {
+	public String signUp(@ModelAttribute("memberVO") MemberVO memberVO, HttpServletRequest request,RedirectAttributes rttr, Model model) throws Exception {
 		// 사용자가 입력한 정보를 파라미터로 넘김
+		mailService.register(memberVO);
+		model.addAttribute("member", memberVO);
+		
+		//회원가입과 동시에 이메일 발송
+		rttr.addAttribute("memberEmail", memberVO.getMember_email()); 
+		rttr.addAttribute("memberId", memberVO.getMember_id());
 		System.out.println(memberVO.getMember_pw());
 		boolean isInserted = signUpService.insertUserInfo(memberVO);
+		
 		if (isInserted)
 			return "login";
 		else
 			return "signForm";
+		
 	}
 	
 	@ResponseBody
@@ -61,25 +71,29 @@ public class MemberController {
 	@RequestMapping(value="/deleteID.do")
 	public String deleteID(@RequestParam("member_id") String member_id, HttpServletRequest request) {
 		memberService.deleteID(member_id);
+		
 		return "main";
 	}
-	
-	@Autowired
-	private UserMailSendService mailsender;
-	//이메일보내기메서드
-	@RequestMapping(value = "/member/reg", method = RequestMethod.POST)
-	public String userRegPass(MemberVO memberVO, Model model, HttpServletRequest request) {
-
-	;
-		// 인증 메일 보내기 메서드
-		mailsender.mailSendWithUserKey(memberVO.getMember_email(), memberVO.getMember_id(), request);
-
-		return "redirect:/";
+	@RequestMapping(value="registerEmail", method=RequestMethod.GET)
+	public String emailConfirm(String memberEmail,Model model)throws Exception{
+		mailService.memberAuth(memberEmail);
+		model.addAttribute("memberEmail", memberEmail);
+		
+		return "/registerEmail";
 	}
-	// e-mail 인증 컨트롤러
-	@RequestMapping(value = "alter_member_auth", method = RequestMethod.GET)
-	public String key_alterConfirm(@RequestParam("user_id") String user_id, @RequestParam("user_key") String key) {
-		mailsender.alter_userKey_service(user_id, key); // mailsender의 경우 @Autowired
-		return "user/userRegSuccess";
-		}
+	
+//	//이메일보내기
+//	@RequestMapping(value = "/register", method=RequestMethod.POST)
+//	public String register(MemberVO memberVO, RedirectAttributes rttr, Model model)throws Exception{
+//	
+//		mailService.register(memberVO);
+//		model.addAttribute("member", memberVO);
+//		
+//		
+////		rttr.addFlashAttribute("msg", "가입이 완료되었습니다");
+//		rttr.addAttribute("memberEmail", memberVO.getMember_email());
+//		rttr.addAttribute("memberId", memberVO.getMember_id());
+//		
+//		return "/member/signForm";
+//}
 }

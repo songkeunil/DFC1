@@ -31,13 +31,13 @@ public class LoginFailHandler implements AuthenticationFailureHandler {
 			request.setAttribute("LoginFailMessage", "아이디 또는 비밀번호가 일치하지 않습니다.");
 		}
 		else if(exception instanceof DisabledException) {
-			request.setAttribute("LoginFailMessage", "현재 사용할 수 없는 계정입니다.");
+			request.setAttribute("LoginFailMessage", "접근 불가능한 계정입니다.");
 		}
 		else if(exception instanceof LockedException) {
 			request.setAttribute("LoginFailMessage", "현재 잠긴 계정입니다.");
 		}
 		else if(exception instanceof AccountExpiredException) {
-			request.setAttribute("LoginFailMessage", "이미 만료된 계정입니다.");
+			request.setAttribute("LoginFailMessage", "이메일 인증이 필요한 계정입니다.");
 		}
 		else if(exception instanceof CredentialsExpiredException) {
 			request.setAttribute("LoginFailMessage", "비밀번호가 만료된 계정입니다.");
