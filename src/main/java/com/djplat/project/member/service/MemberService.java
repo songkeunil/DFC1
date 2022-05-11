@@ -1,5 +1,6 @@
 package com.djplat.project.member.service;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -33,8 +34,9 @@ public class MemberService {
 		MemberDAO dao = sqlSession.getMapper(MemberDAO.class);
 		dao.deleteID(member_id);
 	}
+	
+
+	}
 
 	
 
-	
-}

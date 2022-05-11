@@ -4,13 +4,19 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.mail">
-
+  <resultMap id="MemberVOResultMap" type="MemberVO">
+	<result property="member_id" column="MEMBER_ID"/>
+	<result property="member_pw" column="MEMBER_PW"/>
+	<result property="member_name" column="MEMBER_NAME"/>
+	<result property="member_email" column="MEMBER_EMAIL"/>
+	</resultMap>
 <!-- 	<insert id="createAuthKey">
 		insert into MEMBER_AUTH values(#{memberEmail},#{authKey})
 	</insert> -->
-<update id="memberAuth">
-<![CDATA[
-	update MEMBER set MEMBER_AUTH = 1 where (select count(*) from member_right where MEMBER_EMAIL=#{memberEmail})>0]]>
-</update>
-  
+  <select id="findId" resultMap="MemberVOResultMap" >
+  		select * from MEMBER where MEMBER_EMAIL = #{memberEmail}
+  </select>
+<select id="findIdCheck" resultType="int">
+		select count(*) from MEMBER where MEMBER_Email = #{memberEmail}
+</select>
 </mapper>

@@ -1,6 +1,7 @@
 package com.djplat.project.mail.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -37,5 +38,13 @@ public class MailDAOImpl implements MailDAO{
 	public void register(MemberVO memberVO) throws Exception{
 		
 	}
-
+	@Override
+	public List<MemberVO> findId(String memberEmail)throws Exception{
+		return sqlSession.selectList("mapper.mail.findId", memberEmail);
+	}
+	
+	@Override
+	public int findIdCheck(String memberEmail)throws Exception{
+		return sqlsession.selectOne("mapper.mail.findIdCheck", memberEmail);
+	}
 }

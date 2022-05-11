@@ -1,4 +1,6 @@
 package com.djplat.project.member.dao;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.djplat.project.member.vo.MemberVO;
@@ -21,6 +23,9 @@ public interface MemberDAO {
 	//회원탈퇴
 	public String deleteID(String member_id);
 
+
+//	public int findIdCheck(String member_email);
+	
 //	public void GetKey(String user_id, String key);
 
 

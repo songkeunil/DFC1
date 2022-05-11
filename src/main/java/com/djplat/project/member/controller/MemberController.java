@@ -82,18 +82,10 @@ public class MemberController {
 		return "/registerEmail";
 	}
 	
-//	//이메일보내기
-//	@RequestMapping(value = "/register", method=RequestMethod.POST)
-//	public String register(MemberVO memberVO, RedirectAttributes rttr, Model model)throws Exception{
-//	
-//		mailService.register(memberVO);
-//		model.addAttribute("member", memberVO);
-//		
-//		
-////		rttr.addFlashAttribute("msg", "가입이 완료되었습니다");
-//		rttr.addAttribute("memberEmail", memberVO.getMember_email());
-//		rttr.addAttribute("memberId", memberVO.getMember_id());
-//		
-//		return "/member/signForm";
-//}
+//	@RequestMapping(value="/findIdView.html", method=RequestMethod.GET)
+//	public String findIdView() throws Exception{
+//		return"/findIdView";
+//	}
+	
+	
 }

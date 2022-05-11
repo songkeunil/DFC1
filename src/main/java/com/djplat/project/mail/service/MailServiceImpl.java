@@ -1,5 +1,7 @@
 package com.djplat.project.mail.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +46,13 @@ public class MailServiceImpl implements MailService {
 	public void memberAuth(String memberEmail) throws Exception{
 		mailDAO.memberAuth(memberEmail);
 	}
-
-	
+	@Override
+	public List<MemberVO> findId(String memberEmail) throws Exception{
+		return mailDAO.findId(memberEmail);
+	}
+	@Override
+	public int findIdCheck(String memberEmail) throws Exception{
+		return mailDAO.findIdCheck(memberEmail);
+	}
 	
 }
