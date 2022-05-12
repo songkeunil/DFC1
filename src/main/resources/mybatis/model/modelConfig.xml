@@ -3,6 +3,14 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+  <settings>
+
+        <setting name="jdbcTypeForNull" value="NULL"/>
+
+    </settings>
+
+
+
 	<typeAliases>
 		<typeAlias type="com.djplat.project.member.vo.MemberVO"  alias="memberVO" />
 		<typeAlias type="com.djplat.project.common.vo.UserVO"  alias="userVO" />

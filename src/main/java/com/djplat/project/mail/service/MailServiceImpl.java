@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -54,5 +55,27 @@ public class MailServiceImpl implements MailService {
 	public int findIdCheck(String memberEmail) throws Exception{
 		return mailDAO.findIdCheck(memberEmail);
 	}
-	
+	@Override
+	public int findPwCheck(MemberVO memberVO)throws Exception{
+		return mailDAO.findPwCheck(memberVO);
+	}
+	@Override
+	public void findPw(String memberEmail,String memberId) throws Exception{
+		String memberKey = new TempKey().getKey(6, false);
+		String memberPw = BCrypt.hashpw(memberKey, BCrypt.gensalt());
+		mailDAO.findPw(memberPw, memberEmail, memberId);
+		MailUtils sendMail = new MailUtils(mailSender);
+		sendMail.setSubject("[청춘끼리 임시 비밀번호 입니다]"); //메일 제목
+		sendMail.setText(
+				"<h1>임시비밀번호 발급</h1>"+
+				"<br/>"+memberId+"님"+
+			   "<br/>비밀번호 찾기를 통한 임시 비밀번호 입니다."+
+			   "<br/>임시 비밀번호  : <h2>"+memberKey+"</h2>"+
+			   "<br/>로그인 후 비밀번호 변경을 해주세요."+
+			   "<a href='http://localhost:8090/djplat/login.html"+
+			   ">로그인 페이지</a>");
+		sendMail.setFrom("chunkkiri@gmail.com", "청춘끼리");
+		sendMail.setTo(memberEmail);
+		sendMail.send();
+	}
 }

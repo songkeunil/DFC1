@@ -6,7 +6,7 @@
 	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
 		<put-attribute name="title" value="레이아웃 페이지" />
 		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
-<!-- 		<put-attribute name="side" value="/WEB-INF/views/common/side.jsp" />-->		
+		<put-attribute name="side" value="/WEB-INF/views/common/admin_sidebar.jsp" />		
 
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />  
@@ -34,10 +34,15 @@
 	</definition>
 	<definition name="/registerEmail" template="/WEB-INF/views/member/registerEmail.jsp">
 	</definition>
-		<definition name="/findIdView" template="/WEB-INF/views/member/findIdView.jsp">
+	<!-- 아이디찾기 -->
+	<definition name="/findIdView" template="/WEB-INF/views/member/findIdView.jsp">
+	</definition>
+	<!-- 비밀번호찾기 -->
 	
-	<!-- 	<put-attribute name="title" value="회원가입페이지" /> -->
-		<!-- <put-attribute name="body" value="/WEB-INF/views/member/signForm.jsp" /> -->
+
+	<definition name="/member/findPwView" template="/WEB-INF/views/member/findPwView.jsp">
+	</definition>
+	<definition name="/member/findPw" template="/WEB-INF/views/member/findPw.jsp">
 	</definition>
 </tiles-definitions>
 

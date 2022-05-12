@@ -45,7 +45,7 @@ rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCE
     <div class = "form-find">
 	    <ul class="test">
 	    	<li><a href="${path }/findIdView" class="find-text">ID 찾기</a></li> 
-	    	<li><a href="https://nid.naver.com/user2/help/pwInquiry?lang=ko_KR" class="find-text">PW 찾기</a></li>
+	    	<li><a href="${path }/findPwView" class="find-text">PW 찾기</a></li>
 	    	<li><a href="${path }/signForm.html" class="find-text">회원가입</a></li>    
 	    </ul>
     </div></br> 

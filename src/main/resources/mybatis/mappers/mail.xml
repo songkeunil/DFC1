@@ -16,7 +16,14 @@
   <select id="findId" resultMap="MemberVOResultMap" >
   		select * from MEMBER where MEMBER_EMAIL = #{memberEmail}
   </select>
-<select id="findIdCheck" resultType="int">
+<select id="findIdCheck" resultType="int" >
 		select count(*) from MEMBER where MEMBER_Email = #{memberEmail}
 </select>
+	<update id="findPw">
+	update MEMBER set MEMBER_PW = #{memberKey} where MEMBER_EMAIL = #{member_email} and MEMBER_ID = #{member_id}
+	</update>
+	
+	<select id="findPwCheck" resultType="int">
+		select count(*) from MEMBER where MEMBER_Email = #{member_email} and MEMBER_ID = #{member_id}
+	</select>
 </mapper>

@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'Eoe_Zno_B';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/Eoe_Zno_B.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+     z-index: 1;
+}
+
+/*ol,
+ul,
+li {
+    list-style: none;
+}*/
+a {
+    text-decoration: none;
+    
+}
+
+
+
+.S_bar_wrap {
+    width: 200px;
+    height: 2000px;
+    float: left;
+    background: pink;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#S_bar {
+    width: 200px;
+    background: green;
+
+}
+
+
+#S_bar li a {
+    display: block;
+    padding: 0 10px;
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    letter-spacing: 2px;
+}
+
+#S_bar > .S_bar_menu1 > a {
+
+
+    background-color: coral;
+    color: #fff;
+    font-family: 'Eoe_Zno_B';
+}
+
+#S_bar .S_bar_menu1.on {
+    background-color: red;
+}
+
+#S_bar .S_bar_menu2 {
+    display: none;
+}
+
+#S_bar .S_bar_menu2 a {
+    background-color: #fff;
+    color: #0d6efd;
+    font-family: 'Eoe_Zno_L';
+
+}
+
+#S_bar .S_bar_menu2 a:hover {
+    background-color: rgba(0, 0, 0, 0.500);
+    color: #fff;
+}
+
+li {
+    list-style: none;
+}

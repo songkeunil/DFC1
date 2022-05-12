@@ -65,6 +65,15 @@
 		<div id="header1">
 			<tiles:insertAttribute name="header" /> <!-- name="header"의 jsp표시 -->
 		</div>
+		
+		<!-- 관리자 로그인시 사이드바 노출 -->
+		
+		<c:if test="${member.mamber_id eq 'admin123'}">
+		<div id="side">
+			<tiles:insertAttribute name="side" /> <!-- main.jsp -->
+		</div>
+		</c:if>
+		
 		<div id="content">
 			<tiles:insertAttribute name="body" /> <!-- main.jsp -->
 		</div>

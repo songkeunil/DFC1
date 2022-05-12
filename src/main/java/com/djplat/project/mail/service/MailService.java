@@ -11,6 +11,7 @@ public interface MailService {
 	public void register(MemberVO memberVO) throws Exception;
 	public List<MemberVO> findId(String memberEmail)throws Exception;
 	public int findIdCheck(String memberEmail)throws Exception;
-
+	public void findPw(String memberEmail, String memberId) throws Exception;
+	public int findPwCheck(MemberVO memberVO) throws Exception;
 	} 
 

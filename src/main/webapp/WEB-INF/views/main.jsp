@@ -282,14 +282,9 @@
                             </div>
                             <div class="carousel-item">
                                 <img src="/djplat/resources/image/04.jpg" class="main_slide_03 w-100" alt="...">
-                                <img src="/djplat/resources/resources/image/01.jpg" class="main_slide_01 w-100" alt="...">
+                                
                             </div>
-                            <div class="carousel-item ">
-                                <img src="/djplat/resources/resources/image/02.jpg" class="main_slide_02 w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/djplat/resources/resources/image/04.jpg" class="main_slide_03 w-100" alt="...">
-                            </div>
+                            
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -433,20 +428,13 @@
                 </div>
                 <div class="b_bot_container_02">
                     <div id="box">
-                       <a href="https://namu.wiki/w/%EA%B7%B8%EC%9B%AC(%EB%A6%AC%EA%B7%B8%20%EC%98%A4%EB%B8%8C%20%EB%A0%88%EC%A0%84%EB%93%9C)">
-                        <img class="bot_img01" src="/djplat/resources/image/01.jpg"></a>
-                        <a href="https://namu.wiki/w/%EC%9C%A0%EB%AF%B8(%EB%A6%AC%EA%B7%B8%20%EC%98%A4%EB%B8%8C%20%EB%A0%88%EC%A0%84%EB%93%9C)"><img class="bot_img02" src="/djplat/resources/resources/image/02.jpg"></a>
-                        <a href="https://namu.wiki/w/%EB%B9%84%EC%97%90%EA%B3%A0"><img class="bot_img03" src="/djplat/resources/resources/image/03.jpg"></a>
-                        <img class="bot_img04" src="/djplat/resources/image/04.jpg">
-                        <img class="bot_img04" src="/djplat/resources/image/3840x1080.jpg">
-                        <img class="bot_img04" src="/djplat/resources/image/arthas.jpg">
-                        <img class="bot_img04" src="/djplat/resources/image/nuclear.jpg">
+                      
+                       
+                       
                         <img class="bot_img01" src="/djplat/resources/resources/image/01.jpg"></a>
                         <a href="https://namu.wiki/w/%EC%9C%A0%EB%AF%B8(%EB%A6%AC%EA%B7%B8%20%EC%98%A4%EB%B8%8C%20%EB%A0%88%EC%A0%84%EB%93%9C)"><img class="bot_img02" src="/djplat/resources/resources/image/02.jpg"></a>
                         <a href="https://namu.wiki/w/%EB%B9%84%EC%97%90%EA%B3%A0"><img class="bot_img03" src="/djplat/resources/resources/image/03.jpg"></a>
-                        <img class="bot_img04" src="/djplat/resources/image/04.jpg">
-                        <img class="bot_img04" src="/djplat/resources/image/3840x1080.jpg">
-                        <img class="bot_img04" src="/djplat/resources/resources/image/arthas.jpg">
+                    
                         <img class="bot_img04" src="/djplat/resources/resources/image/nuclear.jpg">
                     </div>
                 </div>

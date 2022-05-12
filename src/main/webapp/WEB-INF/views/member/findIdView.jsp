@@ -32,10 +32,10 @@ window.onload=function()
 <button type="submit" class="btn btn-primary btn-user btn-block">Find ID</button>
 </form>
  <hr>
-  <a href="/member/loginView" class="btn btn-facebook btn-user btn-block">Login</a>
+  <a href="/djplat/login.html" class="btn btn-facebook btn-user btn-block">Login</a>
   <hr>
   <div class="text-center">
-<a class="small" href="/board/list">메인페이지</a>
+<a class="small" href="/djplat/main.html">메인페이지</a>
 </div>
 </body>
 </html>

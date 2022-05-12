@@ -40,11 +40,24 @@ public class MailDAOImpl implements MailDAO{
 	}
 	@Override
 	public List<MemberVO> findId(String memberEmail)throws Exception{
-		return sqlSession.selectList("mapper.mail.findId", memberEmail);
+		return sqlsession.selectList("mapper.mail.findId", memberEmail);
 	}
 	
 	@Override
 	public int findIdCheck(String memberEmail)throws Exception{
 		return sqlsession.selectOne("mapper.mail.findIdCheck", memberEmail);
+	}
+	@Override
+	public int findPwCheck(MemberVO memberVO) throws Exception{
+		return sqlsession.selectOne("mapper.mail.findPwCheck",memberVO);
+	}
+	@Override	      
+	public int findPw(String memberEmail, String memberId,String memberPw) throws Exception{
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("member_email", memberEmail);
+		map.put("member_id", memberId);
+		map.put("memberPw", memberPw);
+		return sqlsession.update("mapper.mail.findPw",map);
+		
 	}
 }
