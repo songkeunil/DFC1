@@ -134,7 +134,13 @@
 			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc6.jar</systemPath>
 		</dependency> -->
 
-     
+	<!-- 검색을 위한 json 라이브러리 -->
+     <dependency>
+     	<groupId>net.sf.json-lib</groupId>
+     	<artifactId>json-lib</artifactId>
+     	<version>2.4</version>
+     	<classifier>jdk15</classifier>
+     </dependency>
       
       <dependency>
           <groupId>mysql</groupId>

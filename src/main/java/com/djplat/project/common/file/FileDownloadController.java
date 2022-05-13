@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class FileDownloadController {
-	private static final String ARTICLE_IMAGE_REPO = "C:\\board\\article_image";
-	@RequestMapping("/download.do")
-	protected void download(@RequestParam("imageFileName") String imageFileName,
-							@RequestParam("articleNO") String articleNO,
+	private static final String ARTICLE_FILE_REPO = "C:\\board\\article_file";
+	@RequestMapping("/board/download.do")
+	protected void download(@RequestParam("articleFileName") String articleFileName,
+							@RequestParam("brd_no") int brd_no,
 			                 HttpServletResponse response)throws Exception {
 		OutputStream out = response.getOutputStream();
-		String downFile = ARTICLE_IMAGE_REPO + "\\" +articleNO+"\\"+ imageFileName;
+		String downFile = ARTICLE_FILE_REPO + "\\" +brd_no+"\\"+ articleFileName;
 		File file = new File(downFile);
 
 		response.setHeader("Cache-Control", "no-cache");
-		response.addHeader("Content-disposition", "attachment; fileName=" + imageFileName);
+		response.addHeader("Content-disposition", "attachment; fileName=" + articleFileName);
 		FileInputStream in = new FileInputStream(file);
 		byte[] buffer = new byte[1024 * 8];
 		while (true) {

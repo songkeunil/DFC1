@@ -7,71 +7,148 @@
 <resultMap id="articlesResult" type="ArticleVO">
     <result property="brd_no" column="brd_no" />
     <result property="title" column="title" />
-    <result property="young_context" column="young_context" />
+    <result property="support_context" column="support_context" />
     <result property="cc" column="cc" />
     <result property="w_date" column="w_date" />
     <result property="hits" column="hits" />
-    <result property="publicopen" column="publicopen" />
-    <result property="member_id" column="member_id" />
-  
+    <result property="ylike" column="ylike" />
+    <result property="member_id" column="member_id" />  
   </resultMap> 
-
+ 
+<resultMap id="artResult" type="FileVO">
+	<result property="articleFileNO" column="articleFileNO" />
+	<result property="brd_no" column="brd_no" />
+	<result property="articleFileName" column="articleFileName" />
+  </resultMap>
+ 
 	<!-- 글 리스트 -->
   <select id="selectAllArticlesList" parameterType= "java.util.Map" resultMap="articlesResult">
   	<![CDATA[
-		SELECT * FROM
-		(SELECT ROWNUM as recNum, brd_no, title, young_context,
-		cc, w_date, hits, publicopen, member_id FROM YOUNGROLE_BOARD 
-		ORDER BY recNum DESC) 
+		SELECT a.* FROM
+		(SELECT ROW_NUMBER() over (ORDER BY brd_no DESC) as recNum, brd_no, title, support_context,
+		cc, w_date, hits, ylike, member_id FROM YOUNGSUPPORT_BOARD 
+		) a
 		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*10+1 and (#{section}-1)*100 + #{pageNum}*10
   	]]>
   </select>
-  
+
   <!-- 페이지 넘버링 -->
   <select id="selectTotArticles" resultType="int">
   	<![CDATA[
-  		select count(brd_no) from YOUNGROLE_BOARD
+  		SELECT count(brd_no) FROM YOUNGSUPPORT_BOARD
   	]]>
   </select>
  
  <!-- 새글 작성 -->
  <select id="insertNewArticle" parameterType="java.util.Map">
  	<![CDATA[
- 		INSERT INTO YOUNGROLE_BOARD(brd_no, title, young_context, cc, w_date, hits, publicopen,member_id)
- 		VALUES(#{brd_no},#{title},#{young_context},#{cc},#{w_date},#{hits},#{publicopen},#{member_id})
+ 		INSERT INTO YOUNGSUPPORT_BOARD(brd_no, title, support_context, cc, w_date, hits, ylike,member_id)
+ 		VALUES(#{brd_no},#{title},#{support_context},#{cc},sysdate,0,0,#{member_id})
  	]]>
  </select>
  
- <!-- 새글 번호 생성 -->
+ <!-- 파일 청부 -->
+ <select id="insertNewArticleFile" parameterType="java.util.Map">
+ 	<foreach item="item" collection="list" open="INSERT ALL" separator=" " close="SELECT * FROM DUAL">
+ 		INTO YOUNGSUPPORT_FILE(articleFileNO, articleFileName, brd_no, regDate) 
+ 		VALUES(#{item.articleFileNO}, #{item.articleFileName}, #{item.brd_no}, sysdate)
+ 	</foreach>
+ </select>
+
+
+  <!-- 새글 번호 생성 -->
  <select id="selectNewArticleNO" resultType="int">
  	<![CDATA[
- 		SELECT nvl(max(brd_no), 0) + 1 from YOUNGROLE_BOARD
+ 		SELECT nvl(max(brd_no), 0) + 1 FROM YOUNGSUPPORT_BOARD
  	]]>
  </select>
  
- <!-- 글 번호를 통한 상세 창 추적 -->
+ <!-- 첨부 파일 번호 생성 -->
+ <select id="selectNewArticleFileNO" resultType="int">
+ 	<![CDATA[
+ 		SELECT nvl(max(articleFileNO), 0) FROM YOUNGSUPPORT_FILE
+ 	]]>
+ </select>
+ 
+ <!-- 글 상세창 표시 -->
  <select id="selectArticle" resultType="articleVO" parameterType="int">
  	<![CDATA[
- 		SELECT * from YOUNGROLE_BOARD
+ 		SELECT * FROM YOUNGSUPPORT_BOARD
  		WHERE brd_no = #{brd_no}
  	]]>
  </select>
  
+   <!-- 상세창 내부 첨부파일 표시 -->
+ <select id="selectArticleFileList" parameterType="int" resultMap="artResult">
+  	<![CDATA[
+  		SELECT * FROM YOUNGSUPPORT_FILE
+  		WHERE brd_no = #{brd_no}
+  		ORDER BY articleFileNO
+  	]]>
+  </select>
+ 
  
  <!-- 글 수정하기 -->
  <update id="updateArticle" parameterType="java.util.Map">
- 	update YOUNGROLE_BOARD
- 	set title=#{title}, young_context=#{young_context}
- 	where brd_no=#{brd_no}
+ 	UPDATE YOUNGSUPPORT_BOARD
+ 	SET title=#{title}, support_context=#{support_context}
+ 	WHERE brd_no=#{brd_no}
  </update>
  
+ <update id="updateArticleFile" parameterType="java.util.List">
+ 	<foreach collection="list" item="item" separator=";" open="DECLARE BEGIN" close="; END;">
+ 		<choose>
+ 			<when test="item.articleFileName !=null ">
+ 				UPDATE YOUNGSUPPORT_FILE
+ 				SET articleFileName = #{item.articleFileName}
+ 				WHERE
+ 				brd_no = #{item.brd_no}
+ 				and articleFileNO = #{item.articleFileNO}
+ 			</when>
+ 			<otherwise>
+ 				<!-- 공백 수행 -->
+ 			</otherwise>
+ 		</choose>
+ 	</foreach>
+ </update>
+ 
+  <insert id="insertModNewFile" parameterType="java.util.Map">
+		<foreach item="item" collection="list" open="INSERT ALL" separator=" " close="SELECT * FROM DUAL">
+			INTO YOUNGSUPPORT_FILE(articleFileNO, articleFileName, brd_no, regDate)
+			VALUES (#{item.articleFileNO},
+						#{item.articleFileName},
+						#{item.brd_no},
+						sysdate)
+		</foreach>
+	</insert>
+ 
+ <!-- 글 삭제하기 -->
  <delete id="deleteArticle" parameterType="int">
  	<![CDATA[
- 		delete from YOUNGROLE_BOARD
- 		where brd_no in (
- 			SELECT brd_no FROM YOUNGROLE_BOARD
- 			START WITH brd_no = #{brd_no})
+ 		DELETE FROM YOUNGSUPPORT_BOARD
+ 		WHERE brd_no in (
+ 		SELECT brd_no FROM YOUNGSUPPORT_FILE
+ 		START WITH brd_no = #{brd_no}
  	]]>
  </delete>
  
+  	<delete id="deleteModArticleFile" parameterType="FileVO">
+	    <![CDATA[
+	      delete from YOUNGSUPPORT_FILE
+	      where brd_no = #{brd_no}
+	      and articleFileNO = #{articleFileNO}
+	    ]]>
+	</delete>
+ 
+  <!-- 게시판 검색 기능 -->
+  <select id="selectArticleBySearchWord" parameterType="java.util.Map" resultMap="articlesResult">
+  	<![CDATA[
+  		SELECT Y.* FROM YOUNGSUPPORT_BOARD Y
+  		WHERE Y.title LIKE '%'||#{searchWord}||'%'
+  		ORDER BY Y.brd_no DESC
+  	]]>
+  </select>
+  
+
+  
  </mapper>

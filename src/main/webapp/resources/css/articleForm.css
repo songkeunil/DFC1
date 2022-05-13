@@ -1,0 +1,236 @@
+#y-boardrap {
+    width: 1400px;
+    height: 1300px;
+    margin: 0 auto;
+}
+
+#y-boardtop {
+    width: 1000px;
+    height: 145px;
+    margin: 0 auto;
+    border-bottom: 1px solid #A4A4A4;
+    margin-bottom: 50px;
+}
+.y-h2 {
+    width: 130px;
+    height: 30px;
+    border-bottom: 3px solid #18A8F1;
+}
+.y-p {
+    color: #848484;
+    font-size: 14px;
+}
+#y-boardtop a {
+    text-decoration: none;
+    color: #848484;
+}
+#y-write{
+    width: 1000px;
+    height: 1200px;
+    margin: 0 auto;
+}
+
+#y-writetitle{
+    width: 980px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 20px;
+    background: #F2F2F2;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+    margin: 0 auto;
+}
+
+#y-writetitle h3{
+	margin: 0 auto;
+}
+
+#y-writetop{
+    width: 1000px;
+    height: 125px;
+    margin-top: 25px;
+}
+.y-writetop-option{
+    width: 1000px;
+    height: 50px;
+    line-height: 45px;
+    
+}
+.y-writetop-option-name{
+    width: 50px;
+    height: 50px;
+    font-weight: bold;
+    float: left;
+    padding-left: 50px;
+    
+}
+.y-writetop-option-box{
+    
+    height: 50px;
+    float: left;
+   
+}
+.y-writetop-option-box input{
+    margin-top: 8.5px;
+    zoom:1.5;
+    margin-right: 5px;
+    margin-left: 10px 
+        
+}
+.y-writetop-title{
+   width: 1000px;
+   height: 50px;
+   line-height: 45px; 
+}
+.y-writetop-title-ti{
+    width: 65px;
+    height: 50px;
+    font-weight: bold;
+    float: left;
+    padding-left: 50px;  
+}
+.y-writetop-title-input{
+    width: 570px;
+    height: 50px;
+    float: left;
+    
+}
+.y-writetop-title-input input{
+    width: 540px;
+    height: 30px;
+    padding-left: 10px;
+    border: 1px solid #A4A4A4;
+}
+.y-writetop-title-input input:focus {
+        outline: none;
+}
+
+.y-writetop-title-btn{
+    width: 310px;
+    height: 50px;
+    float:left; 
+}
+.y-writetop-title-btn button{
+    width: 100px;
+    height: 30px;
+    background: white;
+   border: 1px solid #A4A4A4;
+    line-height: 5px;
+}
+.y-writetop-title-btn button:hover{
+    
+    background: #F2F2F2;
+    cursor: pointer;
+}
+
+#y-writemiddle{
+    width: 1000px;
+    height: 500px;
+    background: skyblue;
+}
+#ir1{
+    padding: 10px;
+    width: 980px;
+    height: 470px;
+}
+
+
+#y-writebottom{
+    width: 1000px;
+    height: 380px;
+    line-height: 45px;
+}
+.y-writebottom-link{
+    width: 1000px;
+    height: 50px;
+}
+.y-writebottom-link-name{
+     width: 65px;
+    height: 50px;
+    font-weight: bold;
+    float: left;
+    padding-left: 50px;  
+}
+.y-writebottom-link-input{
+   width: 885px;
+    height: 50px;
+    float: left;
+}
+.y-writebottom-link-input input{
+     width: 875px;
+    height: 30px;
+    padding-left: 10px;
+    border: 1px solid #A4A4A4;
+}
+.y-writebottom-link-input input:focus {
+        outline: none;
+    }
+
+
+.y-writebottom-file{
+    width: 1000px;
+    height: 50px;
+}
+.y-writebottom-file-name{
+    width: 65px;
+    height: 50px;
+    font-weight: bold;
+    float: left;
+    padding-left: 50px;
+}
+
+.y-writebottom-file-btn{
+    width: 885px;
+    height: 50px;
+    float: left;
+    
+}
+.y-writebottom-file-btn button{
+    width: 100px;
+    height: 30px;
+    background: white;
+    line-height: 5px;
+    border: 1px solid #A4A4A4;
+   
+}
+.y-writebottom-file-btn button:hover{
+    
+    background: #F2F2F2;
+    cursor: pointer;
+}
+.y-writebottom-file-insert{
+    width: 885px;
+    height: 40px;
+    float: left;  
+}
+
+.y-writebottom-file-insert-input{
+    width: 500px;
+    height: 22px;
+    border: 1px solid #A4A4A4;
+    font-size: 12px;
+}
+#y-write-buttonrap{
+    width: 1000px;
+    height: 100px;
+}
+.y-write-button{
+    width: 300px;
+    height: 50px;
+    margin: 0 auto;
+}
+.y-write-button button{
+    width: 100px;
+    height: 30px;
+    margin-left: 30px;
+    background: white;
+    font-weight: bold;
+    border: 2px solid #18A8F1;
+}
+.y-write-button button:hover{
+    cursor: pointer;
+    background: #18A8F1;
+}
+.bi-check-lg{
+    font-size: 15px;
+}

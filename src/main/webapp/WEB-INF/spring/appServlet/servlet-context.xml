@@ -28,7 +28,7 @@
 <mvc:interceptors>
 	<mvc:interceptor>
 		<mvc:mapping path="/*/*.do"/>
-		<beans:bean class="com.djplat.project.common.interceptor.ViewNameInterceptor"></beans:bean>
+		<beans:bean class="com.djplat.project.common.interceptor.ViewNameInterceptor"/>
 	</mvc:interceptor>
 </mvc:interceptors>
 	
@@ -36,9 +36,9 @@
 	<!-- 멀티파트 리졸버(다중 파일 업로드 BEAN) -->
 	<beans:bean id="multipartResolver" 
 	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<beans:property name="maxUploadSize" value="52428800"></beans:property>
-		<beans:property name="maxInMemorySize" value="1000000"></beans:property>
-		<beans:property name="defaultEncoding" value="utf-8"></beans:property>
+		<beans:property name="maxUploadSize" value="52428800" />
+		<beans:property name="maxInMemorySize" value="52428800" />
+		<beans:property name="defaultEncoding" value="utf-8"/>
 	</beans:bean>
 	
 	

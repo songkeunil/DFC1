@@ -8,14 +8,31 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Component("articleVO")
 public class ArticleVO {
-	private int brd_no; //글 번호  1
-	private String title; //글 제목  3
-	private String young_context; //글 내용
-	private String cc; //분류  2
-	private Date w_date; //작성일   4
-	private int hits; //조회수 5
-	private String publicopen; //공개여부
-	private String member_id; // 회원아이디
+	private int recNum;
+	private int brd_no; //글 번호 
+	private String title; //글 제목 
+	private String support_context; //글 내용
+	private String cc; //분류 
+	private Date w_date; //작성일  
+	private int hits; //조회수
+	private int ylike; //좋아요
+	private String member_id; //회원아이디
+	
+	
+	
+	@Override
+	public String toString() {
+		return "ArticleVO [recNum=" + recNum + ", brd_no=" + brd_no + ", title=" + title + ", support_context="
+				+ support_context + ", cc=" + cc + ", w_date=" + w_date + ", hits=" + hits + ", ylike=" + ylike
+				+ ", member_id=" + member_id + "]";
+	}
+	
+	public int getRecNum() {
+		return recNum;
+	}
+	public void setRecNum(int recNum) {
+		this.recNum = recNum;
+	}
 	public int getBrd_no() {
 		return brd_no;
 	}
@@ -28,11 +45,11 @@ public class ArticleVO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getYoung_context() {
-		return young_context;
+	public String getSupport_context() {
+		return support_context;
 	}
-	public void setYoung_context(String young_context) {
-		this.young_context = young_context;
+	public void setSupport_context(String support_context) {
+		this.support_context = support_context;
 	}
 	public String getCc() {
 		return cc;
@@ -52,11 +69,11 @@ public class ArticleVO {
 	public void setHits(int hits) {
 		this.hits = hits;
 	}
-	public String getPublicopen() {
-		return publicopen;
+	public int getYlike() {
+		return ylike;
 	}
-	public void setPublicopen(String publicopen) {
-		this.publicopen = publicopen;
+	public void setYlike(int ylike) {
+		this.ylike = ylike;
 	}
 	public String getMember_id() {
 		return member_id;
@@ -64,8 +81,5 @@ public class ArticleVO {
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
-	
-	
-	
 	
 }

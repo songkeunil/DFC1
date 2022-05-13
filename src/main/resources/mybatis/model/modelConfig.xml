@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
-
+	
 <configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+		
 	<typeAliases>
-		<typeAlias type="com.djplat.project.member.vo.MemberVO"  alias="memberVO" />
-		<typeAlias type="com.djplat.project.board.vo.ArticleVO"  alias="articleVO" />
+		<typeAlias type="com.djplat.project.member.vo.MemberVO" alias="memberVO" />
+		<typeAlias type="com.djplat.project.board.vo.ArticleVO" alias="articleVO" />
+		<typeAlias type="com.djplat.project.board.service.FileVO" alias="fileVO"/>
 	</typeAliases>
 </configuration>

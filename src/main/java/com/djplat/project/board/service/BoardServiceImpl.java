@@ -38,26 +38,59 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public int addNewArticle(Map articleMap) throws Exception{
-		return boardDAO.insertNewArticle(articleMap);
+		int brd_no = boardDAO.insertNewArticle(articleMap);
+		articleMap.put("brd_no", brd_no);
+		boardDAO.insertNewArticleFile(articleMap);
+		return brd_no;
 	}
 	
 	@Override
 	public Map viewArticle(int brd_no) throws Exception {
 		Map articleMap = new HashMap();
 		ArticleVO articleVO = boardDAO.selectArticle(brd_no);
-//		List<ImageVO> imageFileList = boardDAO.selectImageFileList(articleNO);
+		List<ArticleVO> articleFileList = boardDAO.selectArticleFileList(brd_no);
 		articleMap.put("article", articleVO);
-//		articleMap.put("imageFileList", imageFileList);
+		articleMap.put("articleFileList", articleFileList);
 		return articleMap;
 	}
 	
 	@Override
 	public void modArticle(Map articleMap) throws Exception {
 		boardDAO.updateArticle(articleMap);
+		
+		List<FileVO> articleFileList = (List<FileVO>)articleMap.get("articleFileList");
+		List<FileVO> modAddFileList = (List<FileVO>)articleMap.get("modAddFileList");
+		
+		if(articleFileList != null && articleFileList.size() != 0) {
+			int added_file_num = Integer.parseInt((String) articleMap.get("added_file_num"));
+			int pre_file_num = Integer.parseInt((String) articleMap.get("pre_file_num"));
+			
+			if(pre_file_num < added_file_num) {
+				boardDAO.updateArticleFile(articleMap);
+				boardDAO.insertModNewFile(articleMap);
+			}else {
+				boardDAO.updateArticleFile(articleMap);
+			}
+		}else if(modAddFileList != null && modAddFileList.size() != 0){
+			boardDAO.insertModNewFile(articleMap);
+		}
 	}
 	
 	@Override
 	public void removeArticle(int brd_no) throws Exception {
 		boardDAO.deleteArticle(brd_no);
 	}
+	
+//	@Override
+//	public void removeModFile(FileVO fileVO) throws Exception{
+//		boardDAO.delete);
+//	}
+	
+	
+	@Override
+	public List searchArticles(String searchWord) throws Exception{
+		List<ArticleVO> articlesList=boardDAO.selectArticlesBySearchWord(searchWord);
+		return articlesList;
+	}
+	
 }
