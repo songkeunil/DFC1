@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.ByteBuffer;
@@ -233,6 +234,8 @@ public class BoardControllerImpl implements BoardController {
 		int pre_file_num = Integer.parseInt((String) articleMap.get("pre_file_num"));
 		List<FileVO> articleFileList = new ArrayList<FileVO>();
 		List<FileVO> modAddFileList = new ArrayList<FileVO>();
+		System.out.println(articleMap.toString());
+		
 		
 		if(fileList != null && fileList.size() !=0) {
 			String[] articleFileNO = (String[]) articleMap.get("articleFileNO");
@@ -329,6 +332,7 @@ public class BoardControllerImpl implements BoardController {
 					}
 				}
 			} else {
+
 				fileList.add(null);
 			}
 		}
@@ -371,6 +375,42 @@ public class BoardControllerImpl implements BoardController {
 			}
 			return resEnt;
 	  }
+	  
+	  
+	// 수정하기에서 이미지 삭제 기능
+		@RequestMapping(value = "/board/removeModFile.do", method = RequestMethod.POST)
+		@ResponseBody
+		public void removeModFile(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+			request.setCharacterEncoding("utf-8");
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter writer = response.getWriter();
+
+			try {
+				String articleFileNO = (String) request.getParameter("articleFileNO");
+				String articleFileName = (String) request.getParameter("articleFileName");
+				String brd_no = (String) request.getParameter("brd_no");
+				
+				System.out.println("imageFileNO = " + articleFileNO);
+				System.out.println("articleNO = " + brd_no);
+
+				FileVO fileVO = new FileVO();
+				fileVO.setBrd_no(Integer.parseInt(brd_no));
+				fileVO.setArticleFileNO(Integer.parseInt(articleFileNO));
+				boardService.removeModFile(fileVO);
+				
+				File oldFile = new File(ARTICLE_FILE_REPO + "\\" + brd_no + "\\" + articleFileName);
+				oldFile.delete();
+				
+				writer.print("success");
+			} catch (Exception e) {
+				writer.print("failed");
+			}
+
+		}
+	  
+	  
+	  
 	  
 	  //다중 업로드
 	  private List<String> upload(MultipartHttpServletRequest multipartRequest) throws Exception{

@@ -60,7 +60,7 @@ public class BoardServiceImpl implements BoardService {
 		
 		List<FileVO> articleFileList = (List<FileVO>)articleMap.get("articleFileList");
 		List<FileVO> modAddFileList = (List<FileVO>)articleMap.get("modAddFileList");
-		
+
 		if(articleFileList != null && articleFileList.size() != 0) {
 			int added_file_num = Integer.parseInt((String) articleMap.get("added_file_num"));
 			int pre_file_num = Integer.parseInt((String) articleMap.get("pre_file_num"));
@@ -81,10 +81,10 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.deleteArticle(brd_no);
 	}
 	
-//	@Override
-//	public void removeModFile(FileVO fileVO) throws Exception{
-//		boardDAO.delete);
-//	}
+	@Override
+	public void removeModFile(FileVO fileVO) throws Exception {
+		boardDAO.deleteModArticleFile(fileVO);
+	}
 	
 	
 	@Override

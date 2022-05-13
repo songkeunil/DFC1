@@ -23,6 +23,8 @@
 		obj.action = "${contextPath}/board/listArticles.do";
 		obj.submit();
 	}
+	
+	
 </script>
 </head>
 <body>
@@ -105,7 +107,8 @@
 								<tr id="${status.count}">
 									<td>첨부파일${status.count}</td>
 									<td><input type="hidden" name="articleFileNO"
-										value="${item.articleFileNO}" /> <input type="hidden"
+										value="${item.articleFileNO}" /> 
+										<input type="hidden"
 										name="oldFileName" value="${item.articleFileName}" />
 										${item.articleFileNO} ${item.articleFileName}
 										<input type="file" value="articleFileName${status.count}" name = "OriginalFileName${status.count}"></td>
@@ -147,11 +150,3 @@
 
 </body>
 </html>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("input[name=testInput]").each(function(index, item) {
-			alert($(item).attr("value1") + ", " + $(item).attr("value2"));
-		});
-	});
-</script>

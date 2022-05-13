@@ -16,5 +16,6 @@ public interface BoardService {
 	public Map viewArticle(int brd_no) throws Exception;
 	public void modArticle(Map articleMap) throws Exception;
 	public void removeArticle(int brd_no) throws Exception;
+	public void removeModFile(FileVO fileVO) throws Exception;
 	public List searchArticles(String searchWord) throws Exception;
 }

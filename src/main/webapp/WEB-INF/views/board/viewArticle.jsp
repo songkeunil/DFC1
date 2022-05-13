@@ -46,9 +46,9 @@
 		 form.setAttribute("method", "post");
 		 form.setAttribute("action", url);
 	     var brd_noInput = document.createElement("input");
-	     articleNOInput.setAttribute("type","hidden");
-	     articleNOInput.setAttribute("name","brd_no");
-	     articleNOInput.setAttribute("value", brd_no);
+	     brd_noInput.setAttribute("type","hidden");
+	     brd_noInput.setAttribute("name","brd_no");
+	     brd_noInput.setAttribute("value", brd_no);
 		 
 	     form.appendChild(brd_noInput);
 	     document.body.appendChild(form);
@@ -90,14 +90,13 @@
 
 			<form name="downloadForm" method="post" action="${contextPath }/board/download.do?brd_no=${article.brd_no}">
             	<c:if test="${not empty articleFileList && articleFileList !='null'}">
+            	            <td>첨부파일</td>
+            	            <br><br>
             		<c:forEach var="item" items="${articleFileList}" varStatus="status">
             			<tr>
-            				<td>
-            					첨부파일
-            				</td><br><br>
             					<td>
             						<input type="submit" name="articleFileName" value="${item.articleFileName }"/>
-            					</td><br>
+            					</td><br><br>
             			</tr>
             		</c:forEach>
             	</c:if>
@@ -166,7 +165,7 @@
                 	<button type='button' onclick="location.href='#'" >다음<i class="y-bi bi-chevron-right"></i></button>
             	</div>
 	      			<button type="button"><a href="${contextPath}/board/forModShowArticles.do?brd_no=${article.brd_no}">수정하기</a></button>
-	      			<button type="button">삭제하기</button>
+	      			<input type="button" onclick="fn_remove_article('${contextPath}/board/removeArticle.do', ${article.brd_no})" value="삭제하기">
             	<div class = 'y-detail-bottom-right'>
                 	<button type='button' onclick="location.href='#'" ><i class="y-bi bi-pencil"></i>글쓰기</button>
                 	<button type='button' onclick="location.href='#'" ><i class="bi bi-justify"></i>목록</button>

@@ -126,9 +126,7 @@
  <delete id="deleteArticle" parameterType="int">
  	<![CDATA[
  		DELETE FROM YOUNGSUPPORT_BOARD
- 		WHERE brd_no in (
- 		SELECT brd_no FROM YOUNGSUPPORT_FILE
- 		START WITH brd_no = #{brd_no}
+ 		WHERE brd_no = #{brd_no}
  	]]>
  </delete>
  
