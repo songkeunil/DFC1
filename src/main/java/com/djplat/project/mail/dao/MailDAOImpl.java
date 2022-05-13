@@ -54,8 +54,8 @@ public class MailDAOImpl implements MailDAO{
 	@Override	      
 	public int findPw(String memberEmail, String memberId,String memberPw) throws Exception{
 		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("member_email", memberEmail);
-		map.put("member_id", memberId);
+		map.put("memberEmail", memberEmail);
+		map.put("memberId", memberId);
 		map.put("memberPw", memberPw);
 		return sqlsession.update("mapper.mail.findPw",map);
 		

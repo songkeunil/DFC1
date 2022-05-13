@@ -28,7 +28,7 @@
 			<h1 class="h4 text-gray-900 mb-2">비밀번호 찾기</h1>
 			<p class="mb-4">아이디와 이메일을 입력해주세요!</p>
 		</div>
-		<form class="user" action="/djplat/findPw" method="post">
+		<form class="user" action="${contextPath}/findPw" method="post">
 			<div class="form-group">
 				<input type="text" class="form-control form-control-user"
 					id="memberId" aria-describedby="IdHelp" name="member_id"

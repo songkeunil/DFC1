@@ -9,8 +9,8 @@
 <head>
     <meta charset="UTF-8">
     <title>ADMIN SIDEBAR</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="font.css">
+<!--     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+ -->    <link rel="stylesheet" href="font.css">
     <link rel="stylesheet" href="header.css">
     
     <link href="${path}/resources/css/admin_sidebar.css" rel="stylesheet"/>

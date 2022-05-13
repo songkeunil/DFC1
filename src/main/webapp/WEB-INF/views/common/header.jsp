@@ -10,10 +10,99 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+       $(function(){
+           var flag = true;
+           $('.h-log').click(function(){
+               if(flag){
+                   $('#sidebar-container').animate({right:'0px'}, 0);
+               }else{
+                   $('#sidebar-container').animate({right:'-300px'}, 2);
+               }
+               flag = !flag;
+           });
+           $('.smenu').hover(function(){
+               $(this).stop().animate({opacity:1},300);
+           }, function(){
+               $(this).stop().animate({opacity:0.7},300);
+           });
+                          
+       });
+    </script>
+<style>
+#sidebar-container{
+            position: fixed;
+            top: 0px;
+            width: 100px;
+            height: 100%;
+            right: -300px;
+            z-index: 99998;
+            background: yellow;
+        }
+        
+        #sidebar-container .siderbar-head {
+            width: 300px;
+            height: 10px;
+            position: absolute;
+            top: 10px;
+            z-index: 10;   
+            background: black;
+        }
+        
+        .bg-navy{
+            background-color: rgb(50, 60, 70);
+            color: #fff;
+        }
+        
+        .home{
+            
+            float: left;
+            width: 100px;
+            height: 200px;
+            background: black;
+            color:white;
+            z-index: 99998;
+            }
+        
+        .sidebar-content{
+            position: relative;
+            height: 100%;
+/*            padding: 0px 15px;*/
+            overflow: auto;
+            overflow-x: hidden;            
+            background: pink;
+        }
+        
+        .sidebar-content > ul > li{
+            top: 10px;
+            position: relative;
+            width: 200px;
+            height: 40px;            
+            background: white;
+            opacity: 0.7;
+        }
+</style>
 </head>
 
 <body>
+<!---------------- 사이드바  -------------------------->
+   <div id = "sidebar-container">       
+      <div class="sidebar-head bg-navy"></div>
+       <div class = "sidebar-content">
+          <ul>              
+              <li class="smenu">메뉴1</li>
+              <li class="smenu">메뉴2</li>
+              <li class="smenu">메뉴3</li>
+              <li class="smenu">메뉴4</li>
+              <li class="smenu">메뉴5</li>
+              <li class="smenu">메뉴6</li>
+              <li class="smenu">메뉴7</li>
+          </ul>
+       </div>
+    </div>
        <div id='h-hrap'>
+       
         <div id='h-toprap'>
             <div id='h-top'>
                 <div id='h-logo'>
