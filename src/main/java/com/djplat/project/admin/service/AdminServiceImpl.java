@@ -31,4 +31,8 @@ public class AdminServiceImpl implements AdminService{
  public int deleteMember(String id) throws DataAccessException{
 	 return adminDAO.deleteMember(id);
  }
+ @Override
+ public int totalMembers() throws DataAccessException{
+	 return adminDAO.totalMembers();
+ }
 }

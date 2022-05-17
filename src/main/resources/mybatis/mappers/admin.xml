@@ -19,4 +19,10 @@
   		WHERE MEMBER_ID = #{member_id}
   	</update>
 
+
+<select id="totalMembers" resultType="int">
+	<![CDATA[
+	select count(member_id) from MEMBER
+	]]>
+</select>
 </mapper>

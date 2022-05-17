@@ -45,8 +45,11 @@ public class AdminControllerImpl extends MultiActionController implements AdminC
 			paging.put("pageNum",1);
 		}
 		List<MemberVO> listMembers = adminservice.listMembers(paging);
+		int totalMembers = adminservice.totalMembers();
 		ModelAndView mav = new ModelAndView(viewName);		
 		mav.addObject("listMembers", listMembers);
+		mav.addObject("paging", paging);
+		mav.addObject("totalMembers",totalMembers);
 		return mav;
 	}
 	@Override

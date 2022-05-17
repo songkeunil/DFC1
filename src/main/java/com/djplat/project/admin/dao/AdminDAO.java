@@ -15,6 +15,8 @@ public interface AdminDAO {
 
 	public List<MemberVO> selectAllMemberList(HashMap<String,Integer> paging) throws DataAccessException;
 
+	public int totalMembers() throws DataAccessException;
+
 
 //	public MemberVO loginById(MemberVO memberVO) throws DataAccessException;
 

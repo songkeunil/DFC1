@@ -33,4 +33,9 @@ public class AdminDAOImpl implements AdminDAO {
 		int result = sqlSession.delete("mapper.admin.deleteMember",id);
 		return result;
 	}
+	@Override
+	public int totalMembers() throws DataAccessException{
+		int totalMembers = sqlSession.selectOne("mapper.admin.totalMembers");
+		return totalMembers;
+	}
 }

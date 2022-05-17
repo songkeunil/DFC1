@@ -15,6 +15,8 @@ public interface AdminService {
 
 	public int deleteMember(String id) throws DataAccessException;
 
+	public int totalMembers() throws DataAccessException;
+
 
 
 
