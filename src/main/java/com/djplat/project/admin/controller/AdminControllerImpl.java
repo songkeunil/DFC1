@@ -1,5 +1,6 @@
 package com.djplat.project.admin.controller;
 
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 
@@ -61,8 +62,40 @@ public class AdminControllerImpl extends MultiActionController implements AdminC
 		ModelAndView mav = new ModelAndView("redirect:/admin/listMembers.do");
 		return mav;
 	}
+	@RequestMapping(value="/admin/modifyMemberInfo.do" ,method={RequestMethod.POST,RequestMethod.GET})
+	public void modifyMemberInfo(HttpServletRequest request, HttpServletResponse response)  throws Exception{
+		HashMap<String,String> memberMap=new HashMap<String,String>();
+		String val[]=null;
+		PrintWriter pw=response.getWriter();
+		String member_id=request.getParameter("member_id");
+		String mod_type=request.getParameter("mod_type");
+		String value =request.getParameter("value");
+		
+		if(mod_type.equals("member_birth")){
+			val=value.split(",");
+			memberMap.put("member_birth",val[0]);
+			
+		}else if(mod_type.equals("member_phoneno")){
+			val=value.split(",");
+			memberMap.put("member_phoneno",val[0]);
 	
+	
+		}else if(mod_type.equals("email")){
+			val=value.split(",");
+			memberMap.put("email1",val[0]);
+			memberMap.put("email2",val[1]);
+			memberMap.put("emailsts_yn", val[2]);
+		}
+		
+		memberMap.put("member_id", member_id);
+		
+		adminservice.modifyMemberInfo(memberMap);
+		pw.print("mod_success");
+		pw.close();		
+		
+	}
 
+	
 	
 	public ModelAndView form(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);

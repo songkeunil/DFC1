@@ -38,4 +38,8 @@ public class AdminDAOImpl implements AdminDAO {
 		int totalMembers = sqlSession.selectOne("mapper.admin.totalMembers");
 		return totalMembers;
 	}
+	@Override
+	public void modifyMemberInfo(HashMap<String, String> memberMap)throws DataAccessException{
+		sqlSession.update("mapper.admin.modifyMemberInfo",memberMap);
+	}
 }

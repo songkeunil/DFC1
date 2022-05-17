@@ -17,6 +17,8 @@ public interface AdminService {
 
 	public int totalMembers() throws DataAccessException;
 
+	public void modifyMemberInfo(HashMap<String, String> memberMap)throws DataAccessException;
+
 
 
 

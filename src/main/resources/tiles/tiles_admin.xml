@@ -8,7 +8,10 @@
       <put-attribute name="title" value="회원목록창" />
       <put-attribute name="body" value="/WEB-INF/views/admin/board.jsp" />
    </definition>
-  
+   <definition name="/admin/modifyMemberInfo" extends="baseLayout">
+      <put-attribute name="title" value="회원목록창" />
+      <put-attribute name="body" value="/WEB-INF/views/admin/adminMemberEdit.jsp" />
+   </definition>
 </tiles-definitions>
 
 

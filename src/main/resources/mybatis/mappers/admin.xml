@@ -25,4 +25,23 @@
 	select count(member_id) from MEMBER
 	]]>
 </select>
+
+
+<update id="modifyMemberInfo" parameterType="java.util.HashMap">
+	   update member
+			   <set>
+			      <if test=" member_pw!='' and member_pw!=null">
+			        member_pw=#{member_pw},
+			      </if>
+			      
+			       <if test=" member_birth!='' and member_birth!=null">
+			         member_birth=#{member_birth},
+			      </if>
+					<if test=" member_phoneno!='' and member_phoneno!=null">
+			        member_phoneno=#{member_phonenos},
+			      </if>	     
+			   </set>
+		where 
+		member_id=#{member_id}
+	</update>	
 </mapper>

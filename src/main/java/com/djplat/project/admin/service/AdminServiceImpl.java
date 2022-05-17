@@ -34,5 +34,13 @@ public class AdminServiceImpl implements AdminService{
  @Override
  public int totalMembers() throws DataAccessException{
 	 return adminDAO.totalMembers();
+	 
  }
+ 
+ @Override
+public void modifyMemberInfo(HashMap<String, String> memberMap) throws DataAccessException{
+	 String member_id=(String)memberMap.get("member_id");
+	 adminDAO.modifyMemberInfo(memberMap);
+ }
+
 }

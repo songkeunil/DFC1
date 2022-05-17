@@ -17,6 +17,8 @@ public interface AdminDAO {
 
 	public int totalMembers() throws DataAccessException;
 
+	public void modifyMemberInfo(HashMap<String, String> memberMap)throws DataAccessException;
+
 
 //	public MemberVO loginById(MemberVO memberVO) throws DataAccessException;
 
