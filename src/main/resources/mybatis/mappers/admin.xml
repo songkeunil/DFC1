@@ -5,10 +5,12 @@
 
 <mapper namespace="mapper.admin">
 
-
-<select id="selectAllMemberList" parameterType="memberVO">
+           
+<select id="memberList" resultType="memberVO" >
     <![CDATA[
-       select * from member order by member_id desc	 	
+    select * from
+     (select rownum as recNum, member_ID,MEmber_phoneno,member_last_log,member_name,member_email from member order by member_id desc)
+     where recNum between(#{section}-1)*100  + (#{pageNum}-1)*10+1 and (#{section}-1)*100+#{pageNum}*10
       ]]>
 </select>
 <update id="deleteMember" parameterType="String">

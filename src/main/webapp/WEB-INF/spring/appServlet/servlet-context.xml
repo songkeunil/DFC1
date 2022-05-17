@@ -57,6 +57,7 @@
  <mvc:interceptors>
     	<mvc:interceptor>
 	      <mvc:mapping path="/*/*.do"/>
+	      
 	   <beans:bean class="com.djplat.project.common.interceptor.ViewNameInterceptor" />
 	</mvc:interceptor>
 </mvc:interceptors> 

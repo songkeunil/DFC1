@@ -1,14 +1,17 @@
 package com.djplat.project.admin.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
+
+import com.djplat.project.member.vo.MemberVO;
 
 import oracle.net.aso.e;
 
 public interface AdminService {
 
-	public List listMembers() throws DataAccessException;
+	public List<MemberVO> listMembers(HashMap<String,Integer> paging) throws DataAccessException;
 
 	public int deleteMember(String id) throws DataAccessException;
 

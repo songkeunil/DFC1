@@ -25,86 +25,79 @@
             <table class="y-table">
                 <thead>
                     <tr class='y-tr'>
-                        <th id=y-th-1>번호</th>
-                        <th id=y-th-2>글제목</th>
-                        <th id=y-th-3>날짜</th>
-                        <th id=y-th-4>조회</th>
-                        <th id=y-th-5>추천</th>
+                        <th id=y-th-1>아이디</th>
+                        <th id=y-th-2>이름</th>
+                        <th id=y-th-3>최종접속시간</th>
+                        <th id=y-th-4>이메일</th>
+                        <th id=y-th-5>휴대전화번호</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class='y-tr'>
-                        <td>1</td>
-                        <td class='y-text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2020.08.20</td>
-                        <td>101</td>
-                        <td>22</td>
-                    </tr>
-                    <tr class='y-tr'>
-                        <td>2</td>
-                        <td class='y-text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2020.08.20</td>
-                        <td>101</td>
-                        <td>22</td>
-                    </tr>
-                    <tr class='y-tr'>
-                        <td>3</td>
-                        <td class='y-text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2020.08.20</td>
-                        <td>101</td>
-                        <td>22</td>
-                    </tr>
-                    <tr class='y-tr'>
-                        <td>4</td>
-                        <td class='y-text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2020.08.20</td>
-                        <td>101</td>
-                        <td>22</td>
-                    </tr>
-                    <tr class='y-tr'>
-                        <td>5</td>
-                        <td class='y-text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2020.08.20</td>
-                        <td>101</td>
-                        <td>22</td>
-                    </tr>
-                    <tr class='y-tr'>
-                        <td>6</td>
-                        <td class='y-text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2020.08.20</td>
-                        <td>101</td>
-                        <td>22</td>
-                    </tr>
-                    <tr class='y-tr'>
-                        <td>7</td>
-                        <td class='y-text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2020.08.20</td>
-                        <td>101</td>
-                        <td>22</td>
-                    </tr>
-                    <tr class='y-tr'>
-                        <td>8</td>
-                        <td class='y-text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2020.08.20</td>
-                        <td>101</td>
-                        <td>22</td>
-                    </tr>
-                    <tr class='y-tr'>
-                        <td>9</td>
-                        <td class='y-text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2020.08.20</td>
-                        <td>101</td>
-                        <td>22</td>
-                    </tr>
-                    <tr class='y-tr'>
-                        <td>10</td>
-                        <td class='y-text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2020.08.20</td>
-                        <td>101</td>
-                        <td>22</td>
-                    </tr>
+                <c:choose>
+  <c:when test="${empty listMembers}" >
+    <tr  height="10">
+      <td colspan="4">
+         <p align="center">
+            <b><span style="font-size:9pt;">등록된 글이 없습니다.</span></b>
+        </p>
+      </td>  
+    </tr>
+  </c:when>
+ <c:when test="${!empty listMembers}" >
+  <c:forEach var="admin" items="${listMembers}" varStatus="articleNum">             
+    
+     <tr class='y-tr'>
+ 					    <td>${admin.member_id}</td>
+                    	<td>${admin.member_name}</td>                
+                    	<td>${admin.member_last_log}</td>                
+                    	<td>${admin.member_email}</td>                
+                    	<td>${admin.member_phoneno}</td> 
+	</tr>
+    </c:forEach>
+     </c:when>
+    </c:choose>
+</table>
+
+<!-- <div class="cls2">
+ --><%--  <c:if test="${totArticles != null }" > --%>
+<%--       <c:choose>
+        <c:when test="${totArticles >100 }">  <!-- 글 개수가 100 초과인경우 -->
+	      <c:forEach   var="page" begin="1" end="10" step="1" >
+	         <c:if test="${section >1 && page==1 }">
+	          <a class="no-uline" href="${contextPath }/board/listArticles.do?section=${section-1}&pageNum=${(section-1)*10 +1 }">&nbsp; pre </a>
+	         </c:if>
+	          <a class="no-uline" href="${contextPath }/board/listArticles.do?section=${section}&pageNum=${page}">${(section-1)*10 +page } </a>
+	         <c:if test="${page ==10 }">
+	          <a class="no-uline" href="${contextPath }/board/listArticles.do?section=${section+1}&pageNum=${section*10+1}">&nbsp; next</a>
+	         </c:if>
+	      </c:forEach> --%>
+  <%--       </c:when>
+	          <c:when test="${totArticles ==100 }" >  <!--등록된 글 개수가 100개인경우  -->
+	      <c:forEach   var="page" begin="1" end="10" step="1" >
+	        <a class="no-uline"  href="#">${page } </a>
+	      </c:forEach>
+        </c:when>
+        
+        <c:when test="${totArticles< 100 }" >   <!--등록된 글 개수가 100개 미만인 경우  -->
+	      <c:forEach   var="page" begin="1" end="${totArticles/10 +1}" step="1" >
+	         <c:choose>
+	           <c:when test="${page==pageNum }">
+	            <a class="sel-page"  href="${contextPath }/board/listArticles.do?section=${section}&pageNum=${page}">${page } </a>
+	          </c:when>
+	          <c:otherwise>
+	            <a class="no-uline"  href="${contextPath }/board/listArticles.do?section=${section}&pageNum=${page}">${page } </a>
+	          </c:otherwise>
+	        </c:choose>
+	      </c:forEach>
+        </c:when>
+      </c:choose>
+    </c:if> --%>
+<!-- </div>
+ -->
+
                 </tbody>
             </table>
+            
         </div>
         <div id='y-boardfooter'>
            <div id = 'y-boardbtnbox'>

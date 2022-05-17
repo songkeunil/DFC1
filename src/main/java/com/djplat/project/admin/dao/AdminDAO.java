@@ -1,5 +1,6 @@
 package com.djplat.project.admin.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
@@ -12,7 +13,7 @@ public interface AdminDAO {
 
 	public int deleteMember(String id) throws DataAccessException;
 
-	public List selectAllMemberList() throws DataAccessException;
+	public List<MemberVO> selectAllMemberList(HashMap<String,Integer> paging) throws DataAccessException;
 
 
 //	public MemberVO loginById(MemberVO memberVO) throws DataAccessException;

@@ -21,9 +21,15 @@ public class MemberVO {
 	private Date member_last_log;
 	private String member_enabled;
 	private String member_addrnum;
-
+	private int rec_Num;
 	
 
+	public int getRec_Num() {
+		return rec_Num;
+	}
+	public void setRec_Num(int rec_Num) {
+		this.rec_Num = rec_Num;
+	}
 	public String getMember_id() {
 		return member_id;
 	}

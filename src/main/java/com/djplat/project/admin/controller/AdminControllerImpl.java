@@ -1,42 +1,52 @@
 package com.djplat.project.admin.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 import com.djplat.project.admin.service.AdminService;
+import com.djplat.project.member.vo.MemberVO;
 
-@Controller
+@Controller("adminController")
 public class AdminControllerImpl extends MultiActionController implements AdminController {
-	private AdminService adminservice;
-	public void setAdminService(AdminService adminService) {
-		this.adminservice = adminService;
-	}
+	@Autowired
+	AdminService adminservice;
+//	public void setAdminService(AdminService adminService) {
+//		this.adminservice = adminService;
+//	}
 	
 //	@Override
 //	@RequestMapping(value = "/admin/listMembers.do", method = {RequestMethod.GET, RequestMethod.POST})
 //	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception{
 //		String viewName = getViewName(request);
-//		List membersList = adminservice.listMembers();
+//		List listMembers = adminservice.listMembers();
 //		ModelAndView mav =new ModelAndView(viewName);
 //		return mav;
 //	}
+
 	@Override
-	@RequestMapping(value = "/admin/listMembers.do", method = {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@RequestMapping(value = "/admin/listMembers.do", method = {RequestMethod.GET ,RequestMethod.POST})
+	public ModelAndView listMembers(@RequestParam HashMap<String,Integer> paging, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("html/text;charset=utf-8");
 		String viewName = (String) request.getAttribute("viewName");
-		List membersList = adminservice.listMembers();
-		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("membersList", membersList);
+		if(paging.isEmpty()) {
+			paging.put("section",1);
+			paging.put("pageNum",1);
+		}
+		List<MemberVO> listMembers = adminservice.listMembers(paging);
+		ModelAndView mav = new ModelAndView(viewName);		
+		mav.addObject("listMembers", listMembers);
 		return mav;
 	}
 	@Override
