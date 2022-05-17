@@ -147,6 +147,31 @@
   	]]>
   </select>
   
-
+  <!-- 조회수 기능  -->
+  <update id="viewArticleCounter" parameterType="int">
+  	<![CDATA[
+		UPDATE YOUNGSUPPORT_BOARD
+		SET HITS = HITS + 1
+		WHERE brd_no = #{brd_no}
+	]]>
+  </update>
   
+  <!-- 좋아요 체크 기능 -->
+  <update id="enableLikeCheck" parameterType="HashMap">
+  	UPDATE YOUNGSUPPORT_LIKE
+  	SET like_check = like_check + 1
+  	WHERE member_id = #{member_id} AND brd_no = #{brd_no}
+  </update>
+  
+  <!-- 좋아요 체크 해제 기능 -->
+  <update id="disableLikeCheck" parameterType="HashMap">
+  	UPDATE YOUNGSUPPORT_LIKE
+  	SET like_check = 0
+  	WHERE member_id = #{member_id} AND brd_no = #{brd_no}
+  </update>
+  
+  <!-- 가입/탈퇴 회원 관련 좋아요 기능 -->
+  <!-- 좋아요 추가 -->
+  <insert id="c"></insert>
+  <!-- 좋아요 삭제 -->
  </mapper>

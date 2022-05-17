@@ -1,4 +1,4 @@
-package com.djplat.project.board.service;
+package com.djplat.project.board.vo;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -7,7 +7,7 @@ import java.sql.Date;
 
 public class FileVO {
 
-	public int articleFileNO;
+	private int articleFileNO;
 	private String articleFileName;
 	private Date regDate;
 	private int brd_no;

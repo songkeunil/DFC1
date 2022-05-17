@@ -21,6 +21,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.CharSet;
@@ -43,8 +44,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.DispatcherServletWebRequest;
 
 import com.djplat.project.board.service.BoardService;
-import com.djplat.project.board.service.FileVO;
 import com.djplat.project.board.vo.ArticleVO;
+import com.djplat.project.board.vo.FileVO;
+import com.djplat.project.board.vo.LikeVO;
 import com.djplat.project.member.vo.MemberVO;
 
 import net.sf.json.JSONObject;
@@ -61,6 +63,7 @@ public class BoardControllerImpl implements BoardController {
 	private BoardService boardService;
 	@Autowired
 	private ArticleVO articleVO;
+	
 	
 	//글 목록 창
 	@Override
@@ -190,6 +193,7 @@ public class BoardControllerImpl implements BoardController {
 			System.out.println(mav);
 			return mav;
 		}
+
 		
 	  // 수정용 상세창 보기
 		@RequestMapping(value="/board/forModShowArticles.do" ,method = RequestMethod.GET)
@@ -210,6 +214,7 @@ public class BoardControllerImpl implements BoardController {
 	  @ResponseBody
 	  public ResponseEntity modArticle(MultipartHttpServletRequest multipartRequest,  
 	    HttpServletResponse response) throws Exception{
+		String dummy = "dummy.txt";//더미 파일
 	    multipartRequest.setCharacterEncoding("utf-8");
 		Map<String,Object> articleMap = new HashMap<String, Object>();
 		Enumeration enu=multipartRequest.getParameterNames();
@@ -266,7 +271,8 @@ public class BoardControllerImpl implements BoardController {
 				for (int i = 0; i < fileList.size(); i++) {
 					String fileName = fileList.get(i);
 					if (i  < pre_file_num ) {
-						if (fileName != null) {
+//						if (fileName != null) {
+						if (fileName != dummy) {
 							File srcFile = new File(ARTICLE_FILE_REPO + "\\" + "temp" + "\\" + fileName);
 							File destDir = new File(ARTICLE_FILE_REPO + "\\" + brd_no);
 							FileUtils.moveFileToDirectory(srcFile, destDir, true);
@@ -277,6 +283,15 @@ public class BoardControllerImpl implements BoardController {
 							File oldFile = new File(ARTICLE_FILE_REPO + "\\" + brd_no + "\\" + oldFileName);
 							oldFile.delete();
 						}
+						//임시 수정
+						else if(fileName == dummy){
+							String[] oldName = (String[]) articleMap.get("oldFileName");
+							String oldFileName = oldName[i];
+
+							File oldFile = new File(ARTICLE_FILE_REPO + "\\" + brd_no + "\\" + oldFileName);
+							oldFile.delete();
+						}
+						//임시 수정
 					}else {
 						if (fileName != null) {
 							File srcFile = new File(ARTICLE_FILE_REPO + "\\" + "temp" + "\\" + fileName);
@@ -316,6 +331,7 @@ public class BoardControllerImpl implements BoardController {
 	
 	//파일 동시 수정
 	private List<String> uploadModArticleFile(MultipartHttpServletRequest multipartRequest) throws Exception {
+		String dummy = "dummy.txt";//더미 파일
 		List<String> fileList = new ArrayList<String>();
 		Iterator<String> fileNames = multipartRequest.getFileNames();
 		while(fileNames.hasNext()) {
@@ -332,11 +348,10 @@ public class BoardControllerImpl implements BoardController {
 					}
 				}
 			} else {
-
-				fileList.add(null);
+//				fileList.add(null);
+				fileList.add(dummy);
 			}
 		}
-		System.out.println(fileList.toString());
 		return fileList;
 	}
 	  
@@ -377,7 +392,7 @@ public class BoardControllerImpl implements BoardController {
 	  }
 	  
 	  
-	// 수정하기에서 이미지 삭제 기능
+	// 수정하기에서 파일 삭제 기능
 		@RequestMapping(value = "/board/removeModFile.do", method = RequestMethod.POST)
 		@ResponseBody
 		public void removeModFile(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -491,7 +506,28 @@ public class BoardControllerImpl implements BoardController {
 			return mav;
 		}
 		
+		
+		//좋아요
+		@ResponseBody
+		@RequestMapping(value = "/board/like.do", method = RequestMethod.GET,
+				produces = "text/plain;charset=UTF-8")
+		public String like(@RequestParam("brd_no") int brd_no,
+						   @RequestParam("member_id") String member_id,
+				 HttpServletRequest request,
+				 HttpServletResponse response) throws Exception {
+			
+			JSONObject obj = new JSONObject();
+			 
+		    ArrayList<String> msgs = new ArrayList<String>();
+		    HashMap <String, Object> hashMap = new HashMap<String, Object>();
+		    hashMap.put("brd_no", brd_no);
+		    hashMap.put("member_id", member_id);
+		    LikeVO likeVO = likeVO.read(hashMap);
+		    
+		    BoardVO boardVO = boardProc.read(boardno);
 
+			return null;
+		}
 		
 
 

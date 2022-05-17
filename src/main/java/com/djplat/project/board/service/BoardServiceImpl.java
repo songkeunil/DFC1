@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.djplat.project.board.dao.BoardDAO;
 import com.djplat.project.board.vo.ArticleVO;
+import com.djplat.project.board.vo.FileVO;
 
 
 
@@ -49,6 +50,7 @@ public class BoardServiceImpl implements BoardService {
 		Map articleMap = new HashMap();
 		ArticleVO articleVO = boardDAO.selectArticle(brd_no);
 		List<ArticleVO> articleFileList = boardDAO.selectArticleFileList(brd_no);
+		boardDAO.viewArticleCounter(brd_no);
 		articleMap.put("article", articleVO);
 		articleMap.put("articleFileList", articleFileList);
 		return articleMap;
@@ -93,4 +95,8 @@ public class BoardServiceImpl implements BoardService {
 		return articlesList;
 	}
 	
+	@Override
+	public void updateViewCounter(int brd_no) throws Exception{
+		boardDAO.viewArticleCounter(brd_no);
+	}
 }

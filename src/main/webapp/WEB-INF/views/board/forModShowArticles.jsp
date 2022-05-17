@@ -103,15 +103,17 @@
 					</div>
 					<c:choose>
 						<c:when test="${not empty articleFile && articleFile!='null' }">
+							<tr>
+								<td>첨부파일</td>
+							</tr><br>
 							<c:forEach var="item" items="${articleFile}" varStatus="status">
 								<tr id="${status.count}">
-									<td>첨부파일${status.count}</td>
-									<td><input type="hidden" name="articleFileNO"
-										value="${item.articleFileNO}" /> 
-										<input type="hidden"
-										name="oldFileName" value="${item.articleFileName}" />
-										${item.articleFileNO} ${item.articleFileName}
-										<input type="file" value="articleFileName${status.count}" name = "OriginalFileName${status.count}"></td>
+									<td>
+										<input type="hidden" name="articleFileNO" value="${item.articleFileNO}" /> 
+										<input type="hidden" name="oldFileName" value="${item.articleFileName}" />
+										${item.articleFileName}
+										<input type="file" value="articleFileName${status.count}" name = "OriginalFileName${status.count}">
+									</td>
 								</tr>
 								<br>
 								<c:if test="${status.last eq true }">
@@ -119,10 +121,11 @@
 									<input type="hidden" name="pre_file_num" value="${status.count}" />
 									<!-- 기존의 이미지수 -->
 									<input type="hidden" id="added_file_num" name="added_file_num"
-										value="${status.count}" />
+										value="${status.count}"/>
 									<!--   수정시 새로 추가된 이미지 수  -->
 								</c:if>
 							</c:forEach>
+							
 						</c:when>
 						<c:otherwise>
 							<c:set var="fil_index" value="${0}" />

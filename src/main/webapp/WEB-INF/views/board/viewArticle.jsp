@@ -53,8 +53,40 @@
 	     form.appendChild(brd_noInput);
 	     document.body.appendChild(form);
 	     form.submit();
-	 
 	 }
+	
+	function like_func(){
+		  var frm_read = $('#frm_read');
+		  var boardno = $('#boardno', frm_read).val();
+		  //var mno = $('#mno', frm_read).val();
+		  //console.log("boardno, mno : " + boardno +","+ mno);
+		  
+		  $.ajax({
+		    url: "../board/like.do",
+		    type: "GET",
+		    cache: false,
+		    dataType: "json",
+		    data: 'brd_no=' +brd_no,
+		    success: function(data) {
+		      var msg = '';
+		      var like_img = '';
+		      msg += data.msg;
+		      alert(msg);
+		      
+		      if(data.like_check == 0){
+		        like_img = "./images/dislike.png";
+		      } else {
+		        like_img = "./images/like.png";
+		      }      
+		      $('#like_img', frm_read).attr('src', like_img);
+		      $('#like_cnt').html(data.like_cnt);
+		      $('#like_check').html(data.like_check);
+		    },
+		    error: function(request, status, error){
+		      alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		    }
+		  });
+		}
  </script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
@@ -62,7 +94,7 @@
 <body>
 <div id='y-boardrap'>
         <div id='y-boardtop'>
-            <h2 class='y-h2'>자유게시판<br></h2><br>
+            <h2 class='y-h2'>청춘지원소식<br></h2><br>
             <p class='y-p'>자유게시판은 자유롭게 의견을 게시 할 수 있는 열린공간입니다. 상업성 광고, 저속한 표현,특정인에 대한 비방, 정치적 목적이나 성향, 동일인이라고 인정되는 자가 동일 <br>또는 유사 내용을 반복한 게시글 등은 관리자에 의해
                 통보없이 삭제될 수 있습니다. <br>또한, 홈페이지를 통하여 불법유해 정보를 게시하거나 배포하면 정보통신망 이용촉진 및 정보보호 등에 관한 법률 제74조에 의거<br> 1년이하의 징역 또는 1천만원 이하의 벌금에 처해질 수 있습니다.</p>
             <br>
@@ -81,28 +113,28 @@
                 </table>
             </div>
             <div id='y-detail-main'>${article.support_context}</div>
-            <div id='y-detail-like-rap'>
-                <button class='y-detail-like'>
+            	<div id='y-detail-like-rap'>
+                	<button class='y-detail-like'>
                     <i class="bi bi-hand-thumbs-up">${article.ylike}</i>
-
-                </button>
-            </div>
+                	</button>
+            	</div>
 
 			<form name="downloadForm" method="post" action="${contextPath }/board/download.do?brd_no=${article.brd_no}">
             	<c:if test="${not empty articleFileList && articleFileList !='null'}">
             	            <td>첨부파일</td>
             	            <br><br>
-            		<c:forEach var="item" items="${articleFileList}" varStatus="status">
-            			<tr>
+            			<c:forEach var="item" items="${articleFileList}" varStatus="status">
+            				<c:if test="${item.articleFileName != 'dummy.txt'}">
+            				<tr>
             					<td>
             						<input type="submit" name="articleFileName" value="${item.articleFileName }"/>
             					</td><br><br>
-            			</tr>
-            		</c:forEach>
-            	</c:if>
+            				</tr>
+            				</c:if>
+            			</c:forEach>
+            		</c:if>
             </form>
            <br><br>
-            
             
             
             

@@ -14,8 +14,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.djplat.project.board.service.BoardService;
-import com.djplat.project.board.service.FileVO;
 import com.djplat.project.board.vo.ArticleVO;
+import com.djplat.project.board.vo.FileVO;
 
 
 
@@ -52,6 +52,11 @@ public class BoardDAOImpl implements BoardDAO {
 		List<ArticleVO> articleFileList = null;
 		articleFileList = sqlSession.selectList("mapper.board.selectArticleFileList",brd_no);
 		return articleFileList;
+	}
+	
+	@Override
+	public void viewArticleCounter(int brd_no) throws DataAccessException{
+		sqlSession.update("mapper.board.viewArticleCounter",brd_no);
 	}
 	
 
