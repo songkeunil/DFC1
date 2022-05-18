@@ -34,11 +34,11 @@
 </select>
 <update id="modifyMemberInfo" parameterType="memberVO">
 	   update member set
-	   member_name = #{member_name},
+	 
 	   member_address = #{member_address},
 	   member_addrnum = #{member_addrnum},
-	   member_email = #{member_email}		
-		where 
-		member_id=#{member_id}
+	   member_email = #{member_email},	
+	   member_group = #{member_group}
+	   where member_id=#{member_id}
 	</update>	
 </mapper>

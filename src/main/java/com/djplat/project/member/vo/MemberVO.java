@@ -23,7 +23,13 @@ public class MemberVO {
 	private String member_addrnum;
 	private int rec_Num;
 	private String member_info;
-
+	private String member_auth;
+	public String getMember_auth() {
+		return member_auth;
+	}
+	public void setMember_auth(String member_auth) {
+		this.member_auth = member_auth;
+	}
 	public String getMember_info() {
 		return member_info;
 	}
