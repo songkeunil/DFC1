@@ -9,8 +9,8 @@
 <select id="memberList" resultType="memberVO" >
     <![CDATA[
     select * from
-     (select rownum as recNum, member_ID,MEmber_phoneno,member_last_log,member_name,member_email from member order by member_id desc)
-     where recNum between(#{section}-1)*100  + (#{pageNum}-1)*10+1 and (#{section}-1)*100+#{pageNum}*10
+     (select rownum as recNum, member_ID,MEmber_phoneno,member_last_log,member_name,member_email,member_group from member order by member_id desc)
+     where recNum between(#{section}-1)*100  + (#{pageNum}-1)*10+1 and (#{section}-1)*100+#{pageNum}*10 
       ]]>
 </select>
 <update id="deleteMember" parameterType="String">
@@ -26,21 +26,18 @@
 	]]>
 </select>
 
-
-<update id="modifyMemberInfo" parameterType="java.util.HashMap">
-	   update member
-			   <set>
-			      <if test=" member_pw!='' and member_pw!=null">
-			        member_pw=#{member_pw},
-			      </if>
-			      
-			       <if test=" member_birth!='' and member_birth!=null">
-			         member_birth=#{member_birth},
-			      </if>
-					<if test=" member_phoneno!='' and member_phoneno!=null">
-			        member_phoneno=#{member_phonenos},
-			      </if>	     
-			   </set>
+<select id="memberDetail" resultType="memberVO"   parameterType="String"  >
+	<![CDATA[
+		select * from member
+  	  where member_id=#{member_id}
+    ]]>
+</select>
+<update id="modifyMemberInfo" parameterType="memberVO">
+	   update member set
+	   member_name = #{member_name},
+	   member_address = #{member_address},
+	   member_addrnum = #{member_addrnum},
+	   member_email = #{member_email}		
 		where 
 		member_id=#{member_id}
 	</update>	

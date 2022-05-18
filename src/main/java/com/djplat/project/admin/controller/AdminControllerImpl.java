@@ -1,19 +1,26 @@
 package com.djplat.project.admin.controller;
 
 import java.io.PrintWriter;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
+import org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMethodException;
 
 import com.djplat.project.admin.service.AdminService;
 import com.djplat.project.member.vo.MemberVO;
@@ -62,37 +69,23 @@ public class AdminControllerImpl extends MultiActionController implements AdminC
 		ModelAndView mav = new ModelAndView("redirect:/admin/listMembers.do");
 		return mav;
 	}
-	@RequestMapping(value="/admin/modifyMemberInfo.do" ,method={RequestMethod.POST,RequestMethod.GET})
-	public void modifyMemberInfo(HttpServletRequest request, HttpServletResponse response)  throws Exception{
-		HashMap<String,String> memberMap=new HashMap<String,String>();
-		String val[]=null;
-		PrintWriter pw=response.getWriter();
+	
+	@RequestMapping(value="/admin/memberDetail.do" ,method={RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView memberDetail(HttpServletRequest request, HttpServletResponse response)  throws Exception{
+		String viewName=(String)request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
 		String member_id=request.getParameter("member_id");
-		String mod_type=request.getParameter("mod_type");
-		String value =request.getParameter("value");
+		MemberVO member_info=adminservice.memberDetail(member_id);
+		mav.addObject("member_info",member_info);
+		return mav;
+	}
+	@RequestMapping(value="/admin/modifyMemberInfo.do" ,method={RequestMethod.POST,RequestMethod.GET})
+	public String modifyMemberInfo(MemberVO vo)  throws Exception{
+		System.out.println(vo.getMember_name());
+		adminservice.modifyMemberInfo(vo);
 		
-		if(mod_type.equals("member_birth")){
-			val=value.split(",");
-			memberMap.put("member_birth",val[0]);
-			
-		}else if(mod_type.equals("member_phoneno")){
-			val=value.split(",");
-			memberMap.put("member_phoneno",val[0]);
-	
-	
-		}else if(mod_type.equals("email")){
-			val=value.split(",");
-			memberMap.put("email1",val[0]);
-			memberMap.put("email2",val[1]);
-			memberMap.put("emailsts_yn", val[2]);
-		}
-		
-		memberMap.put("member_id", member_id);
-		
-		adminservice.modifyMemberInfo(memberMap);
-		pw.print("mod_success");
-		pw.close();		
-		
+		return "redirect:/admin/memberDetail.do?member_id="+vo.getMember_id();
+
 	}
 
 	
@@ -132,5 +125,6 @@ public class AdminControllerImpl extends MultiActionController implements AdminC
 			fileName = fileName.substring(fileName.lastIndexOf("/"), fileName.length());
 		}
 		return fileName;
-	}	                                                          
+	}
+	                     
 }

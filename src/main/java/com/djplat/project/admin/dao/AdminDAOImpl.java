@@ -39,7 +39,13 @@ public class AdminDAOImpl implements AdminDAO {
 		return totalMembers;
 	}
 	@Override
-	public void modifyMemberInfo(HashMap<String, String> memberMap)throws DataAccessException{
-		sqlSession.update("mapper.admin.modifyMemberInfo",memberMap);
+	public void modifyMemberInfo(MemberVO vo)throws Exception{
+		sqlSession.update("mapper.admin.modifyMemberInfo",vo);
+		
+	}
+	
+	public MemberVO memberDetail(String member_id) throws DataAccessException{
+		MemberVO memberBean=(MemberVO)sqlSession.selectOne("mapper.admin.memberDetail",member_id);
+		return memberBean;
 	}
 }

@@ -22,8 +22,14 @@ public class MemberVO {
 	private String member_enabled;
 	private String member_addrnum;
 	private int rec_Num;
-	
+	private String member_info;
 
+	public String getMember_info() {
+		return member_info;
+	}
+	public void setMember_info(String member_info) {
+		this.member_info = member_info;
+	}
 	public int getRec_Num() {
 		return rec_Num;
 	}

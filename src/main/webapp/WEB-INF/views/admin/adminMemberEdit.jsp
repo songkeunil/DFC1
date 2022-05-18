@@ -109,6 +109,139 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 </head>
 <body>
+<form action="${path}/admin/modifyMemberInfo.do" method="post">
+        <!-- header -->
+        <div id="header">
+            <a href="${path }/admin/listMembers.do" title="회원목록">
+            <img src="${path}/resources/image/logo.png"></a>
+            <h3 class="main-name">회원정보수정</h3>
+        </div>
 
+
+
+        <!-- wrapper -->
+        <div id="wrapper">
+
+            <!-- content-->
+            <div id="content">
+
+                <!-- ID -->
+                <div>
+                    <h3 class="join_title">
+                        <label for="id">아이디</label>
+                    </h3>
+                    <span class="box int_id">
+                 <input type="text" id="mobile" name="member_id" class="pixint" maxlength="16" value="${member_info.member_id }"  readonly/>
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+
+                <!-- PW1 -->
+                <div>
+                    <h3 class="join_title"><label for="pswd1">이메일 인증 여부</label></h3>
+                    <span class="box int_pass">
+                        <input type="password" id="pswd1" name="member_pw" class="int" maxlength="20">
+                        <span id="alertTxt">사용불가</span>
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+
+                <!-- PW2 -->
+                <div>
+                    <h3 class="join_title"><label for="pswd2">회원그룹</label></h3>
+                    <span class="box int_pass_check">
+                        <select>
+                            <option>일반회원</option>
+                            <option>대청넷</option>
+                        </select>
+
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+
+                <!-- NAME -->
+                <div>
+                    <h3 class="join_title"><label for="name">이름</label></h3>
+                    <span class="box int_pass_check">
+         			<input type="text" id="mobile" name="member_name" class="pixint" maxlength="16" value="${member_info.member_name }"  />
+                    
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+
+                <!-- BIRTH -->
+                <div>
+                    <h3 class="join_title"><label for="name">생년월일</label></h3>
+                    <span class="box int_id">
+                 	<input type="text" id="mobile" name="member_birth" class="pixint" maxlength="16" value="${member_info.member_birth }" disabled />
+                    </span>
+                </div>
+
+                <!-- GENDER -->
+                <div>
+                    <h3 class="join_title"><label for="gender">성별</label></h3>
+                    <span class="box int_pass_check">
+                	 <input type="text" id="mobile" name="member_gender" class="pixint" maxlength="16" value="${member_info.member_gender }" disabled />
+                    </span>
+                </div>
+
+                <!-- MOBILE -->
+                <div>
+                    <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
+                    <span class="box int_pass_check">
+                   <input type="text" id="mobile" name="member_phoneno" class="pixint" maxlength="16" value="${member_info.member_phoneno }"  />
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+
+                <!-- addres -->
+                <div>
+                    <h3 class="join_title">주소</h3>
+                    <span class="box int_addr">
+                        <input type="text" id="sample4_postcode" name="member_addrnum" class="intaddr" value="${member_info.member_addrnum}">
+                        <button class="buttons" type="button" onclick="sample4_execDaumPostcode()"><i class="bi bi-house-door-fill"></i></button>
+                    </span>
+                    <span class="box int_addrs">
+                        <input type="text" id="sample4_roadAddress" name="member_address" class="int" value="${member_info.member_address }">
+                    </span>
+                </div>
+
+                <!-- EMAIL -->
+                <div>
+                    <h3 class="join_title"><label for="email">이메일<span class="optional"></span></label></h3>
+                    <span class="box int_email">
+                        <input type="text" id="email" name="member_email" class="int" maxlength="100" value="${member_info.member_email }">
+                    </span>
+                    <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>
+                </div>
+
+                <!-- E-mail agree -->
+                <br>
+                <div class="mail-agree">
+                    <div class="mail-agreeok">
+                        <label for="emailagree">
+                            <input type="radio" id="emailagree" name="member_eagree" class="agree_chk" value="1">[선택]이메일서비스신청 수신동의
+                        </label>
+                        <label for="emailagree">
+                            <input type="radio" id="emailagree" name="member_eagree" class="agree_chk" value="0">비동의
+                        </label>
+                    </div>
+                    <ul class="explan_txt">
+                        <li>고객님께서는 위의 개인정보 및 회원정보 수정 등을 통해 추가로 수집하는 개인정보에
+                            대해 동의하지 않거나 개인정보를 기재하지 않음으로써 거부하실 수 있습니다.
+                            다만 이때 회원 대상 서비스가 제한될 수 있습니다.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- JOIN BTN-->
+                <div class="btn_area">
+                    <button id="btnJoin">
+                        <span>수정하기</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
 </body>
 </html>

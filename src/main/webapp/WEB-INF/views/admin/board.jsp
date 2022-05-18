@@ -6,11 +6,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="${path}/resources/css/board.css" rel="stylesheet"/>
+<link href="${path}/resources/css/adminboard.css" rel="stylesheet"/>
 <link href="${path}/resources/css/font.css" rel="stylesheet"/>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원목록</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+<script type="text/javascript">
+
+
+</script>
 </head>
 <body>
 <div id='y-boardrap'>
@@ -27,9 +31,11 @@
                     <tr class='y-tr'>
                         <th id=y-th-1>아이디</th>
                         <th id=y-th-2>이름</th>
-                        <th id=y-th-3>최종접속시간</th>
-                        <th id=y-th-4>이메일</th>
-                        <th id=y-th-5>휴대전화번호</th>
+                        <th id=y-th-3>이메일</th>
+                        <th id=y-th-4>휴대전화번호</th>
+                        <th id=y-th-5>멤버그룹</th>
+                        <th id=y-th-6>최종접속시간</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -46,12 +52,14 @@
  <c:when test="${!empty listMembers}" >
   <c:forEach var="admin" items="${listMembers}" varStatus="articleNum">             
     
-     <tr class='y-tr'>
- 					    <td>${admin.member_id}</td>
+      <tr class='y-tr' onclick="location.href='${path}/admin/memberDetail.do?member_id=${admin.member_id}'" style="cursor:pointer">
+  				  		<td>${admin.member_id}</td>
                     	<td>${admin.member_name}</td>                
-                    	<td>${admin.member_last_log}</td>                
                     	<td>${admin.member_email}</td>                
-                    	<td>${admin.member_phoneno}</td> 
+                    	<td>${admin.member_phoneno}</td>
+ 						<td>${admin.member_group }</td>
+                        <td>${admin.member_last_log}</td>                
+               
 	</tr>
     </c:forEach>
      </c:when>
@@ -121,6 +129,6 @@
         </div>
 
     </div>
-
+</div>
 </body>
 </html>

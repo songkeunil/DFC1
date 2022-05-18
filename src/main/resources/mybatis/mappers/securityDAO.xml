@@ -31,7 +31,7 @@
 			(
 			#{MEMBER_ID}, #{MEMBER_PW},
 			#{MEMBER_NAME}, #{MEMBER_GENDER}, #{MEMBER_BIRTH}, #{MEMBER_PHONENO}, #{MEMBER_EMAIL}, #{MEMBER_ADDRESS},
-			'group', #{MEMBER_EAGREE}, sysdate,
+			'일반회원', #{MEMBER_EAGREE}, sysdate,
 			'ROLE_USER', '1'
 			)
 	</insert>

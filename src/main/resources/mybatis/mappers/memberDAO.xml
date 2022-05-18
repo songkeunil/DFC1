@@ -18,11 +18,10 @@
 			(
 			#{member_id}, #{member_pw},
 			#{member_name}, #{member_gender}, #{member_birth}, #{member_phoneno}, #{member_email}, #{member_address}, #{member_addrnum},
-			'group', #{member_eagree}, sysdate,
+			'일반회원', #{member_eagree}, sysdate,
 			'ROLE_USER', '1'
 			)
 	</insert>
-	
   	<!-- 아이디 중복확인 -->
   	<select id="duplicateID" parameterType="String" resultType="String">
   		SELECT DECODE(COUNT(*), 1, 'TRUE', 0, 'FALSE')
