@@ -93,7 +93,9 @@
 }
 .bi-hand-thumbs-up{
     margin-left: 0px;
-   
+}
+.bi-hand-thumbs-up-fill{
+	margin-left: 0px;
 }
 .y-detail-like:hover{
     cursor: pointer;

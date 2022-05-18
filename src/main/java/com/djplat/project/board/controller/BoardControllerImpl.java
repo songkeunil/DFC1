@@ -30,7 +30,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -116,6 +118,10 @@ public class BoardControllerImpl implements BoardController {
 		String id = "임시아이디";
 		articleMap.put("id",id);
 		
+		//시큐리티용 현재 접속자 ID 수령 코드 취합 및 실 사용시 교체 해주세요.
+//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        String member_id=(String)principal;
+		
 		//더미(답글 parentNO 사용안함)
 //		articleMap.put("parentNO", 0);
 //		String parentNO = (String)session.getAttribute("parentNO");
@@ -187,9 +193,23 @@ public class BoardControllerImpl implements BoardController {
 				  HttpServletRequest request, HttpServletResponse response) throws Exception{
 			String viewName = (String)request.getAttribute("viewName");
 			Map articleMap=boardService.viewArticle(brd_no);
+			
+//			시큐리티용 세션 id 수령 코드
+//			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//	        String member_id=(String)principal;
+	        String member_id = "lee";
+	        
+	        LikeVO likeVO = new LikeVO();
+	        likeVO.setBrd_no(brd_no);
+	        likeVO.setMember_id(member_id);
+
+	        int boardlike = boardService.getBoardLike(likeVO);
+	        System.out.println(boardlike);
+   
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName(viewName);
 			mav.addObject("articleMap", articleMap);
+			mav.addObject("heart", boardlike);
 			System.out.println(mav);
 			return mav;
 		}
@@ -506,29 +526,34 @@ public class BoardControllerImpl implements BoardController {
 			return mav;
 		}
 		
-		
+	
 		//좋아요
-		@ResponseBody
-		@RequestMapping(value = "/board/like.do", method = RequestMethod.GET,
-				produces = "text/plain;charset=UTF-8")
-		public String like(@RequestParam("brd_no") int brd_no,
-						   @RequestParam("member_id") String member_id,
-				 HttpServletRequest request,
-				 HttpServletResponse response) throws Exception {
-			
-			JSONObject obj = new JSONObject();
-			 
-		    ArrayList<String> msgs = new ArrayList<String>();
-		    HashMap <String, Object> hashMap = new HashMap<String, Object>();
-		    hashMap.put("brd_no", brd_no);
-		    hashMap.put("member_id", member_id);
-		    LikeVO likeVO = likeVO.read(hashMap);
-		    
-		    BoardVO boardVO = boardProc.read(boardno);
+		 @ResponseBody
+		    @RequestMapping(value = "/board/activeLike.do", method = RequestMethod.POST, produces = "application/json")
+		    public int activeLike(@RequestParam("heart") int heart,
+		    					  @RequestParam("brd_no") int brd_no,
+		    		HttpServletRequest request) throws Exception {
+//		        시큐리티용 현재 접속자 ID 수령 코드 취합 및 사용시 교체해 주세요.
+//		        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		        String member_id=(String)principal;
+		        String member_id = "lee";
 
-			return null;
-		}
-		
+		        LikeVO likeVO = new LikeVO();
+		        
+		        likeVO.setBrd_no(brd_no);
+		        likeVO.setMember_id(member_id);
 
+		        System.out.println(heart);
 
+		        
+		        if(heart == 0) {
+		        	boardService.insertBoardLike(likeVO);
+		        	heart=1;
+		        }else{
+		        	boardService.deleteBoardLike(likeVO);
+		            heart=0;
+		        }
+		        System.out.println(heart);
+		        return heart;
+		    }
 }

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 import com.djplat.project.board.service.BoardService;
 import com.djplat.project.board.vo.ArticleVO;
 import com.djplat.project.board.vo.FileVO;
+import com.djplat.project.board.vo.LikeVO;
 
 
 
@@ -142,8 +143,6 @@ public class BoardDAOImpl implements BoardDAO {
 		
 	}
 	
-	
-	
 	@Override
 	public void deleteArticle(int brd_no) throws DataAccessException {
 		sqlSession.delete("mapper.board.deleteArticle", brd_no);
@@ -162,4 +161,31 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 	
 	
+	@Override
+    public int getBoardLike(LikeVO likeVO) throws Exception {
+		 return sqlSession.selectOne("mapper.board.getBoardLike",likeVO);
+    }
+
+    @Override
+    public void insertBoardLike(LikeVO likeVO) throws Exception {
+    	int likeno = createNewLikeNO();
+    	likeVO.setLikeno(likeno);
+        sqlSession.insert("mapper.board.createBoardLike",likeVO);
+    }
+ 
+	private int createNewLikeNO() throws DataAccessException{
+		return sqlSession.selectOne("mapper.board.createNewLikeNO");
+	}
+    
+    
+    @Override
+    public void deleteBoardLike(LikeVO likeVO) throws Exception {
+    	sqlSession.delete("mapper.board.deleteBoardLike",likeVO);
+    }
+
+    @Override
+    public void updateBoardLike(LikeVO likeVO) throws Exception {
+    	sqlSession.update("mapper.board.updateBoardLike",likeVO);
+    }
+
 }

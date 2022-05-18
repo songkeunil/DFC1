@@ -9,6 +9,7 @@ import org.springframework.dao.DataAccessException;
 
 import com.djplat.project.board.vo.ArticleVO;
 import com.djplat.project.board.vo.FileVO;
+import com.djplat.project.board.vo.LikeVO;
 
 
 
@@ -27,6 +28,9 @@ public interface BoardDAO {
 	public void deleteArticle(int brd_no) throws DataAccessException;
 	public void deleteModArticleFile(FileVO fileVO) throws DataAccessException;
 	public List selectArticlesBySearchWord(String searchWord) throws DataAccessException;
-
+	public int getBoardLike(LikeVO likeVO) throws Exception;
+	public void insertBoardLike(LikeVO likeVO) throws Exception;
+	public void deleteBoardLike(LikeVO likeVO) throws Exception;
+	public void updateBoardLike(LikeVO likeVO) throws Exception;
 
 }

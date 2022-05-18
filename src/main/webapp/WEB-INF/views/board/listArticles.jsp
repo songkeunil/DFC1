@@ -86,7 +86,11 @@
             		<button type="submit" class='boardbtn searchbtn'><i class="bi bi-search"></i></button>
             	</form>
             	<button type='button' class='boardbtn'><a href="${contextPath }/board/articleForm.do">글 쓰기</a></button>
-            	<button type='button' onclick="location.href='#'" class='boardbtn'><i class="bi bi-justify"></i>목록</button>
+            	
+            	<button type='button' class='boardbtn'>
+            		<i class="bi bi-justify"></i>
+            		<a href="${contextPath }/board/listArticles.do">목록</a>
+            	</button>
             </div>
             
           <!--   ----

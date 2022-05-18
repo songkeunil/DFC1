@@ -4,25 +4,32 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.board">
-<resultMap id="articlesResult" type="ArticleVO">
-    <result property="brd_no" column="brd_no" />
-    <result property="title" column="title" />
-    <result property="support_context" column="support_context" />
-    <result property="cc" column="cc" />
-    <result property="w_date" column="w_date" />
-    <result property="hits" column="hits" />
-    <result property="ylike" column="ylike" />
-    <result property="member_id" column="member_id" />  
-  </resultMap> 
- 
-<resultMap id="artResult" type="FileVO">
-	<result property="articleFileNO" column="articleFileNO" />
-	<result property="brd_no" column="brd_no" />
-	<result property="articleFileName" column="articleFileName" />
-  </resultMap>
- 
+	<resultMap id="articlesResult" type="ArticleVO">
+		<result property="brd_no" column="brd_no" />
+		<result property="title" column="title" />
+		<result property="support_context" column="support_context" />
+		<result property="cc" column="cc" />
+		<result property="w_date" column="w_date" />
+		<result property="hits" column="hits" />
+		<result property="ylike" column="ylike" />
+		<result property="member_id" column="member_id" />
+	</resultMap>
+
+	<resultMap id="artResult" type="FileVO">
+		<result property="articleFileNO" column="articleFileNO" />
+		<result property="brd_no" column="brd_no" />
+		<result property="articleFileName" column="articleFileName" />
+	</resultMap>
+
+	<resultMap id="likeResult" type="likeVO">
+		<result property="likeno" column="likeno" />
+		<result property="brd_no" column="brd_no" />
+		<result property="member_id" column="member_id" />
+	</resultMap>
+	
 	<!-- 글 리스트 -->
-  <select id="selectAllArticlesList" parameterType= "java.util.Map" resultMap="articlesResult">
+	<select id="selectAllArticlesList" parameterType="java.util.Map"
+		resultMap="articlesResult">
   	<![CDATA[
 		SELECT a.* FROM
 		(SELECT ROW_NUMBER() over (ORDER BY brd_no DESC) as recNum, brd_no, title, support_context,
@@ -30,148 +37,182 @@
 		) a
 		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*10+1 and (#{section}-1)*100 + #{pageNum}*10
   	]]>
-  </select>
+	</select>
 
-  <!-- 페이지 넘버링 -->
-  <select id="selectTotArticles" resultType="int">
+	<!-- 페이지 넘버링 -->
+	<select id="selectTotArticles" resultType="int">
   	<![CDATA[
   		SELECT count(brd_no) FROM YOUNGSUPPORT_BOARD
   	]]>
-  </select>
- 
- <!-- 새글 작성 -->
- <select id="insertNewArticle" parameterType="java.util.Map">
+	</select>
+
+	<!-- 새글 작성 -->
+	<select id="insertNewArticle" parameterType="java.util.Map">
  	<![CDATA[
  		INSERT INTO YOUNGSUPPORT_BOARD(brd_no, title, support_context, cc, w_date, hits, ylike,member_id)
  		VALUES(#{brd_no},#{title},#{support_context},#{cc},sysdate,0,0,#{member_id})
  	]]>
- </select>
- 
- <!-- 파일 청부 -->
- <select id="insertNewArticleFile" parameterType="java.util.Map">
- 	<foreach item="item" collection="list" open="INSERT ALL" separator=" " close="SELECT * FROM DUAL">
- 		INTO YOUNGSUPPORT_FILE(articleFileNO, articleFileName, brd_no, regDate) 
- 		VALUES(#{item.articleFileNO}, #{item.articleFileName}, #{item.brd_no}, sysdate)
- 	</foreach>
- </select>
+	</select>
+
+	<!-- 파일 청부 -->
+	<select id="insertNewArticleFile" parameterType="java.util.Map">
+		<foreach item="item" collection="list" open="INSERT ALL"
+			separator=" " close="SELECT * FROM DUAL">
+			INTO YOUNGSUPPORT_FILE(articleFileNO,
+			articleFileName, brd_no, regDate)
+			VALUES(#{item.articleFileNO},
+			#{item.articleFileName},
+			#{item.brd_no}, sysdate)
+		</foreach>
+	</select>
 
 
-  <!-- 새글 번호 생성 -->
- <select id="selectNewArticleNO" resultType="int">
+	<!-- 새글 번호 생성 -->
+	<select id="selectNewArticleNO" resultType="int">
  	<![CDATA[
  		SELECT nvl(max(brd_no), 0) + 1 FROM YOUNGSUPPORT_BOARD
  	]]>
- </select>
- 
- <!-- 첨부 파일 번호 생성 -->
- <select id="selectNewArticleFileNO" resultType="int">
+	</select>
+
+	<!-- 첨부 파일 번호 생성 -->
+	<select id="selectNewArticleFileNO" resultType="int">
  	<![CDATA[
  		SELECT nvl(max(articleFileNO), 0) FROM YOUNGSUPPORT_FILE
  	]]>
- </select>
- 
- <!-- 글 상세창 표시 -->
- <select id="selectArticle" resultType="articleVO" parameterType="int">
+	</select>
+
+	<!-- 글 상세창 표시 -->
+	<select id="selectArticle" resultType="articleVO"
+		parameterType="int">
  	<![CDATA[
  		SELECT * FROM YOUNGSUPPORT_BOARD
  		WHERE brd_no = #{brd_no}
  	]]>
- </select>
- 
-   <!-- 상세창 내부 첨부파일 표시 -->
- <select id="selectArticleFileList" parameterType="int" resultMap="artResult">
+	</select>
+
+	<!-- 상세창 내부 첨부파일 표시 -->
+	<select id="selectArticleFileList" parameterType="int"
+		resultMap="artResult">
   	<![CDATA[
   		SELECT * FROM YOUNGSUPPORT_FILE
   		WHERE brd_no = #{brd_no}
   		ORDER BY articleFileNO
   	]]>
-  </select>
- 
- 
- <!-- 글 수정하기 -->
- <update id="updateArticle" parameterType="java.util.Map">
- 	UPDATE YOUNGSUPPORT_BOARD
- 	SET title=#{title}, support_context=#{support_context}
- 	WHERE brd_no=#{brd_no}
- </update>
- 
- <update id="updateArticleFile" parameterType="java.util.List">
- 	<foreach collection="list" item="item" separator=";" open="DECLARE BEGIN" close="; END;">
- 		<choose>
- 			<when test="item.articleFileName !=null ">
- 				UPDATE YOUNGSUPPORT_FILE
- 				SET articleFileName = #{item.articleFileName}
- 				WHERE
- 				brd_no = #{item.brd_no}
- 				and articleFileNO = #{item.articleFileNO}
- 			</when>
- 			<otherwise>
- 				<!-- 공백 수행 -->
- 			</otherwise>
- 		</choose>
- 	</foreach>
- </update>
- 
-  <insert id="insertModNewFile" parameterType="java.util.Map">
-		<foreach item="item" collection="list" open="INSERT ALL" separator=" " close="SELECT * FROM DUAL">
-			INTO YOUNGSUPPORT_FILE(articleFileNO, articleFileName, brd_no, regDate)
+	</select>
+
+
+	<!-- 글 수정하기 -->
+	<update id="updateArticle" parameterType="java.util.Map">
+		UPDATE
+		YOUNGSUPPORT_BOARD
+		SET title=#{title},
+		support_context=#{support_context}
+		WHERE brd_no=#{brd_no}
+	</update>
+
+	<update id="updateArticleFile" parameterType="java.util.List">
+		<foreach collection="list" item="item" separator=";"
+			open="DECLARE BEGIN" close="; END;">
+			<choose>
+				<when test="item.articleFileName !=null ">
+					UPDATE YOUNGSUPPORT_FILE
+					SET articleFileName =
+					#{item.articleFileName}
+					WHERE
+					brd_no = #{item.brd_no}
+					and
+					articleFileNO = #{item.articleFileNO}
+				</when>
+				<otherwise>
+					<!-- 공백 수행 -->
+				</otherwise>
+			</choose>
+		</foreach>
+	</update>
+
+	<insert id="insertModNewFile" parameterType="java.util.Map">
+		<foreach item="item" collection="list" open="INSERT ALL"
+			separator=" " close="SELECT * FROM DUAL">
+			INTO YOUNGSUPPORT_FILE(articleFileNO,
+			articleFileName, brd_no, regDate)
 			VALUES (#{item.articleFileNO},
-						#{item.articleFileName},
-						#{item.brd_no},
-						sysdate)
+			#{item.articleFileName},
+			#{item.brd_no},
+			sysdate)
 		</foreach>
 	</insert>
- 
- <!-- 글 삭제하기 -->
- <delete id="deleteArticle" parameterType="int">
+
+	<!-- 글 삭제하기 -->
+	<delete id="deleteArticle" parameterType="int">
  	<![CDATA[
  		DELETE FROM YOUNGSUPPORT_BOARD
  		WHERE brd_no = #{brd_no}
  	]]>
- </delete>
- 
-  	<delete id="deleteModArticleFile" parameterType="FileVO">
+	</delete>
+
+	<delete id="deleteModArticleFile" parameterType="FileVO">
 	    <![CDATA[
 	      delete from YOUNGSUPPORT_FILE
 	      where brd_no = #{brd_no}
 	      and articleFileNO = #{articleFileNO}
 	    ]]>
 	</delete>
- 
-  <!-- 게시판 검색 기능 -->
-  <select id="selectArticleBySearchWord" parameterType="java.util.Map" resultMap="articlesResult">
+
+	<!-- 게시판 검색 기능 -->
+	<select id="selectArticleBySearchWord"
+		parameterType="java.util.Map" resultMap="articlesResult">
   	<![CDATA[
   		SELECT Y.* FROM YOUNGSUPPORT_BOARD Y
   		WHERE Y.title LIKE '%'||#{searchWord}||'%'
   		ORDER BY Y.brd_no DESC
   	]]>
-  </select>
-  
-  <!-- 조회수 기능  -->
-  <update id="viewArticleCounter" parameterType="int">
+	</select>
+
+	<!-- 조회수 기능 -->
+	<update id="viewArticleCounter" parameterType="int">
   	<![CDATA[
 		UPDATE YOUNGSUPPORT_BOARD
 		SET HITS = HITS + 1
 		WHERE brd_no = #{brd_no}
 	]]>
-  </update>
-  
-  <!-- 좋아요 체크 기능 -->
-  <update id="enableLikeCheck" parameterType="HashMap">
-  	UPDATE YOUNGSUPPORT_LIKE
-  	SET like_check = like_check + 1
-  	WHERE member_id = #{member_id} AND brd_no = #{brd_no}
-  </update>
-  
-  <!-- 좋아요 체크 해제 기능 -->
-  <update id="disableLikeCheck" parameterType="HashMap">
-  	UPDATE YOUNGSUPPORT_LIKE
-  	SET like_check = 0
-  	WHERE member_id = #{member_id} AND brd_no = #{brd_no}
-  </update>
-  
-  <!-- 가입/탈퇴 회원 관련 좋아요 기능 -->
-  <!-- 좋아요 추가 -->
-  <insert id="c"></insert>
-  <!-- 좋아요 삭제 -->
- </mapper>
+	</update>
+
+	<!-- 게시글 좋아요 여부 확인 -->
+	<select id="getBoardLike" resultType="int">
+		SELECT COUNT(likeno) FROM
+		YOUNGSUPPORT_LIKE
+		WHERE brd_no = #{brd_no} AND member_id = #{member_id}
+	</select>
+
+	<!-- 좋아요 추가 -->
+	<insert id="createBoardLike">
+		INSERT INTO YOUNGSUPPORT_LIKE (likeno, brd_no,
+		member_id)
+		VALUES (#{likeno}, #{brd_no}, #{member_id})
+	</insert>
+	
+	<!-- 좋아요 추가 번호 생성 -->
+	<select id="createNewLikeNO" resultType="int">
+ 	<![CDATA[
+ 		SELECT nvl(max(likeNO), 0) + 1 FROM YOUNGSUPPORT_LIKE
+ 	]]>
+	</select>
+	
+
+	<!-- 좋아요 삭제 (글 삭제 시) -->
+	<delete id="deleteBoardLike" parameterType="int">
+	<![CDATA[
+		DELETE FROM YOUNGSUPPORT_LIKE
+		WHERE brd_no = #{brd_no}
+		AND member_id = #{member_id}
+	]]>
+	</delete>
+	<!-- 지정 게시글 테이블 좋아요 갱신 -->
+	<update id="updateBoardLike" parameterType="int">
+		UPDATE YOUNGSUPPORT_BOARD
+		SET ylike = (SELECT COUNT(*)
+		FROM YOUNGSUPPORT_LIKE WHERE brd_no = #{brd_no})
+		WHERE brd_no = #{brd_no}
+	</update>
+
+</mapper>
