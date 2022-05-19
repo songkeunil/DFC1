@@ -1,4 +1,4 @@
-package com.djplat.project.board.dao;
+package com.djplat.project.YS_board.dao;
 
 
 import java.time.LocalDateTime;
@@ -13,10 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
-import com.djplat.project.board.service.BoardService;
-import com.djplat.project.board.vo.ArticleVO;
-import com.djplat.project.board.vo.FileVO;
-import com.djplat.project.board.vo.LikeVO;
+import com.djplat.project.YS_board.service.BoardService;
+import com.djplat.project.YS_board.vo.ArticleVO;
+import com.djplat.project.YS_board.vo.FileVO;
+import com.djplat.project.YS_board.vo.LikeVO;
 
 
 
@@ -24,7 +24,7 @@ import com.djplat.project.board.vo.LikeVO;
 
 
 
-@Repository("boardDAO")
+@Repository("YSB_boardDAO")
 public class BoardDAOImpl implements BoardDAO {
 
 	@Autowired
@@ -32,32 +32,32 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	@Override
 	public List selectAllArticlesList(Map pagingMap) throws DataAccessException {
-		List<ArticleVO> articlesList = sqlSession.selectList("mapper.board.selectAllArticlesList",pagingMap);
+		List<ArticleVO> articlesList = sqlSession.selectList("mapper.YS_board.selectAllArticlesList",pagingMap);
 		return articlesList;
 	}
 
 	@Override
 	public int selectTotArticles() throws DataAccessException{
-		int totArticles = sqlSession.selectOne("mapper.board.selectTotArticles");
+		int totArticles = sqlSession.selectOne("mapper.YS_board.selectTotArticles");
 		return totArticles;
 	}
 	
 	
 	@Override
 	public ArticleVO selectArticle(int brd_no) throws DataAccessException {
-		return sqlSession.selectOne("mapper.board.selectArticle", brd_no);
+		return sqlSession.selectOne("mapper.YS_board.selectArticle", brd_no);
 	}
 	
 	@Override
 	public List selectArticleFileList(int brd_no) throws DataAccessException {
 		List<ArticleVO> articleFileList = null;
-		articleFileList = sqlSession.selectList("mapper.board.selectArticleFileList",brd_no);
+		articleFileList = sqlSession.selectList("mapper.YS_board.selectArticleFileList",brd_no);
 		return articleFileList;
 	}
 	
 	@Override
 	public void viewArticleCounter(int brd_no) throws DataAccessException{
-		sqlSession.update("mapper.board.viewArticleCounter",brd_no);
+		sqlSession.update("mapper.YS_board.viewArticleCounter",brd_no);
 	}
 	
 
@@ -69,7 +69,7 @@ public class BoardDAOImpl implements BoardDAO {
 		int brd_no = selectNewArticleNO();
 		articleMap.put("brd_no", brd_no);
 //		articleMap.put("w_date", formatedNow);
-		sqlSession.insert("mapper.board.insertNewArticle",articleMap);
+		sqlSession.insert("mapper.YS_board.insertNewArticle",articleMap);
 		return brd_no;
 	}
 	
@@ -85,23 +85,23 @@ public class BoardDAOImpl implements BoardDAO {
 				fileVO.setBrd_no(brd_no);
 			}
 			System.out.println("articleFileList" + articleFileList.toString());
-			sqlSession.insert("mapper.board.insertNewArticleFile",articleFileList);
+			sqlSession.insert("mapper.YS_board.insertNewArticleFile",articleFileList);
 		}
 		
 	}
 	
 	private int selectNewArticleNO() throws DataAccessException{
-		return sqlSession.selectOne("mapper.board.selectNewArticleNO");
+		return sqlSession.selectOne("mapper.YS_board.selectNewArticleNO");
 	}
 	
 	private int selectNewArticleFileNO() throws DataAccessException{
-		return sqlSession.selectOne("mapper.board.selectNewArticleFileNO");
+		return sqlSession.selectOne("mapper.YS_board.selectNewArticleFileNO");
 	}
 	
 	
 	@Override
 	public void updateArticle(Map articleMap) throws DataAccessException {
-		sqlSession.update("mapper.board.updateArticle", articleMap);
+		sqlSession.update("mapper.YS_board.updateArticle", articleMap);
 	}
 	
 	@Override
@@ -121,7 +121,7 @@ public class BoardDAOImpl implements BoardDAO {
 		}
 		
 		if(articleFileList != null && articleFileList.size() != 0) {
-			sqlSession.update("mapper.board.updateArticleFile", articleFileList);
+			sqlSession.update("mapper.YS_board.updateArticleFile", articleFileList);
 		}
 		
 	}
@@ -138,54 +138,66 @@ public class BoardDAOImpl implements BoardDAO {
 			fileVO.setArticleFileNO(articleFileNO);
 		}
 		
-//		sqlSession.delete("mapper.board.insertModNewFile", modAddFileList );
-		sqlSession.insert("mapper.board.insertModNewFile", modAddFileList );
+//		sqlSession.delete("mapper.YS_board.insertModNewFile", modAddFileList );
+		sqlSession.insert("mapper.YS_board.insertModNewFile", modAddFileList );
 		
 	}
 	
 	@Override
 	public void deleteArticle(int brd_no) throws DataAccessException {
-		sqlSession.delete("mapper.board.deleteArticle", brd_no);
+		sqlSession.delete("mapper.YS_board.deleteArticle", brd_no);
 	}
 	
 	@Override
 	public void deleteModArticleFile(FileVO fileVO) throws DataAccessException {
-		sqlSession.delete("mapper.board.deleteModArticleFile", fileVO );
+		sqlSession.delete("mapper.YS_board.deleteModArticleFile", fileVO );
 	}
 	
 
+//	@Override
+//	public List selectArticlesBySearchWord(String searchWord) throws DataAccessException{
+//		List<ArticleVO> articlesList=sqlSession.selectList("mapper.YS_board.selectArticleBySearchWord",searchWord);
+//		 return articlesList;
+//	}
+	
 	@Override
-	public List selectArticlesBySearchWord(String searchWord) throws DataAccessException{
-		List<ArticleVO> articlesList=sqlSession.selectList("mapper.board.selectArticleBySearchWord",searchWord);
+	public List selectArticlesBySearchWord(Map pagingMap) throws DataAccessException{
+		List<ArticleVO> articlesList=sqlSession.selectList("mapper.YS_board.selectArticleBySearchWord",pagingMap);
 		 return articlesList;
 	}
-	
+
+	@Override
+	public int selectSearchTotArticles(Map pagingMap) throws DataAccessException{
+		int searchTotArticles = sqlSession.selectOne("mapper.YS_board.selectSearchTotArticles", pagingMap);
+		return searchTotArticles;
+	}
+
 	
 	@Override
     public int getBoardLike(LikeVO likeVO) throws Exception {
-		 return sqlSession.selectOne("mapper.board.getBoardLike",likeVO);
+		 return sqlSession.selectOne("mapper.YS_board.getBoardLike",likeVO);
     }
 
     @Override
     public void insertBoardLike(LikeVO likeVO) throws Exception {
     	int likeno = createNewLikeNO();
     	likeVO.setLikeno(likeno);
-        sqlSession.insert("mapper.board.createBoardLike",likeVO);
+        sqlSession.insert("mapper.YS_board.createBoardLike",likeVO);
     }
  
 	private int createNewLikeNO() throws DataAccessException{
-		return sqlSession.selectOne("mapper.board.createNewLikeNO");
+		return sqlSession.selectOne("mapper.YS_board.createNewLikeNO");
 	}
     
     
     @Override
     public void deleteBoardLike(LikeVO likeVO) throws Exception {
-    	sqlSession.delete("mapper.board.deleteBoardLike",likeVO);
+    	sqlSession.delete("mapper.YS_board.deleteBoardLike",likeVO);
     }
 
     @Override
     public void updateBoardLike(LikeVO likeVO) throws Exception {
-    	sqlSession.update("mapper.board.updateBoardLike",likeVO);
+    	sqlSession.update("mapper.YS_board.updateBoardLike",likeVO);
     }
 
 }

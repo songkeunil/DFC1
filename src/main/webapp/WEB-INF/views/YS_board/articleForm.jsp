@@ -9,8 +9,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="${contextPath}/resources/css/articleForm.css" rel="stylesheet"/>
-<link href="${contextPath}/resources/css/font.css" rel="stylesheet"/>
+<link href="${contextPath}/resources/css/YS_board/articleForm.css" rel="stylesheet"/>
+<link href="${contextPath}/resources/css/common/font.css" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -19,9 +19,11 @@
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
 function backToList(obj){
-    obj.action="${contextPath}/board/listArticles.do";
+    obj.action="${contextPath}/YS_board/listArticles.do";
     obj.submit();
   }
+  
+  
 </script>
 </head>
 <body>
@@ -39,15 +41,18 @@ function backToList(obj){
                 <h3>청춘지원소식 글쓰기</h3>
         </div>
         
-        <form name="articleForm" method="post"  action="${contextPath}/board/addNewArticle.do"   enctype="multipart/form-data"  accept-charset="utf-8">
+        <form name="articleForm" method="post"  action="${contextPath}/YS_board/addNewArticle.do"   enctype="multipart/form-data"  accept-charset="utf-8">
         <div id='y-write'>
         
         
-            <div id='y-writetop'>
-                <div class='y-writetop-option'>
-                    <div class="y-writetop-option-name">옵션 </div>
-                    <div class="y-writetop-option-box"> <input type="checkbox"></div>비밀글
-                </div>
+				<div id='y-writetop'>
+					<div class='y-writetop-option'>
+						<div class="y-writetop-option-name">분류</div>
+						<div class="y-writetop-option-box">
+							<input type="radio" name="cc" value="청춘소식">청춘소식
+							<input type="radio" name="cc" value="자료실">자료실
+						</div>
+					</div>
                     
                     
                 <div class='y-writetop-title'>

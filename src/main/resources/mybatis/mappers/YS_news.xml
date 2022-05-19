@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.YS_news">
+	<resultMap id="articlesResult" type="YSN_articleVO">
+		<result property="brd_no" column="brd_no" />
+		<result property="title" column="title" />
+		<result property="support_context" column="support_context" />
+		<result property="cc" column="cc" />
+		<result property="w_date" column="w_date" />
+		<result property="hits" column="hits" />
+		<result property="ylike" column="ylike" />
+		<result property="member_id" column="member_id" />
+	</resultMap>
+
+	<!-- 글 리스트 -->
+	<select id="selectAllArticlesList" parameterType="java.util.Map"
+		resultMap="articlesResult">
+  	<![CDATA[
+		SELECT a.* FROM
+		(SELECT ROW_NUMBER() over (ORDER BY brd_no DESC) as recNum, brd_no, title, support_context,
+		cc, w_date, hits, ylike, member_id FROM YOUNGSUPPORT_BOARD WHERE cc = '청춘소식'
+		) a
+		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*12+1 
+		AND (#{section}-1)*100 + #{pageNum}*12
+  	]]>
+	</select>
+
+	<!-- 페이지 넘버링 -->
+	<select id="selectTotArticles" resultType="int">
+  	<![CDATA[
+  		SELECT count(brd_no) FROM YOUNGSUPPORT_BOARD
+  	]]>
+	</select>
+	
+</mapper>

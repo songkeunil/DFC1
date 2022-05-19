@@ -1,4 +1,4 @@
-package com.djplat.project.board.vo;
+package com.djplat.project.YS_board.vo;
 
 import java.sql.Date;
 
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@Component("articleVO")
+@Component("YSB_articleVO")
 public class ArticleVO {
 	private int recNum;
 	private int brd_no; //글 번호 

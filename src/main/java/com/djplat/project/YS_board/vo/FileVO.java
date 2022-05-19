@@ -1,4 +1,4 @@
-package com.djplat.project.board.vo;
+package com.djplat.project.YS_board.vo;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

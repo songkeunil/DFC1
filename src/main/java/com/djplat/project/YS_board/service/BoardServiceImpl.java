@@ -1,4 +1,4 @@
-package com.djplat.project.board.service;
+package com.djplat.project.YS_board.service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.djplat.project.board.dao.BoardDAO;
-import com.djplat.project.board.vo.ArticleVO;
-import com.djplat.project.board.vo.FileVO;
-import com.djplat.project.board.vo.LikeVO;
+import com.djplat.project.YS_board.dao.BoardDAO;
+import com.djplat.project.YS_board.vo.ArticleVO;
+import com.djplat.project.YS_board.vo.FileVO;
+import com.djplat.project.YS_board.vo.LikeVO;
 
-@Service("boardService")
+@Service("YSB_boardService")
 @Transactional(propagation = Propagation.REQUIRED)
 public class BoardServiceImpl implements BoardService {
 
@@ -82,10 +82,21 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.deleteModArticleFile(fileVO);
 	}
 
+//	@Override
+//	public List searchArticles(String searchWord) throws Exception {
+//		List<ArticleVO> articlesList = boardDAO.selectArticlesBySearchWord(searchWord);
+//		return articlesList;
+//	}
+	
 	@Override
-	public List searchArticles(String searchWord) throws Exception {
-		List<ArticleVO> articlesList = boardDAO.selectArticlesBySearchWord(searchWord);
-		return articlesList;
+	public Map searchArticles(Map pagingMap) throws Exception {
+		Map articlesMap = new HashMap();
+		List<ArticleVO> articlesList = boardDAO.selectArticlesBySearchWord(pagingMap);
+		int searchTotArticles = boardDAO.selectSearchTotArticles(pagingMap);
+		System.out.println(searchTotArticles);
+		articlesMap.put("articlesList", articlesList);
+		articlesMap.put("searchTotArticles", searchTotArticles);
+		return articlesMap;
 	}
 
 	@Override

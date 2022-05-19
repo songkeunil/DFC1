@@ -1,4 +1,4 @@
-package com.djplat.project.board.controller;
+package com.djplat.project.YS_board.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

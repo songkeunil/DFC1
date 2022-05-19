@@ -1,4 +1,4 @@
-package com.djplat.project.board.dao;
+package com.djplat.project.YS_board.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,9 +7,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 
-import com.djplat.project.board.vo.ArticleVO;
-import com.djplat.project.board.vo.FileVO;
-import com.djplat.project.board.vo.LikeVO;
+import com.djplat.project.YS_board.vo.ArticleVO;
+import com.djplat.project.YS_board.vo.FileVO;
+import com.djplat.project.YS_board.vo.LikeVO;
 
 
 
@@ -27,7 +27,9 @@ public interface BoardDAO {
 	public void updateArticleFile(Map articleMap) throws DataAccessException;
 	public void deleteArticle(int brd_no) throws DataAccessException;
 	public void deleteModArticleFile(FileVO fileVO) throws DataAccessException;
-	public List selectArticlesBySearchWord(String searchWord) throws DataAccessException;
+//	public List selectArticlesBySearchWord(String searchWord) throws DataAccessException;
+	public List selectArticlesBySearchWord(Map pagingMap) throws DataAccessException;
+	public int selectSearchTotArticles(Map pagingMap) throws DataAccessException;
 	public int getBoardLike(LikeVO likeVO) throws Exception;
 	public void insertBoardLike(LikeVO likeVO) throws Exception;
 	public void deleteBoardLike(LikeVO likeVO) throws Exception;

@@ -10,9 +10,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="${contextPath}/resources/css/viewArticle.css"
+<link href="${contextPath}/resources/css/YS_board/viewArticle.css"
 	rel="stylesheet" />
-<link href="${contextPath}/resources/css/font.css" rel="stylesheet" />
+<link href="${contextPath}/resources/css/common/font.css" rel="stylesheet" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -39,7 +39,7 @@
 
 <script type="text/javascript">
      function backToList(obj){
-	    obj.action="${contextPath}/board/listArticles.do";
+	    obj.action="${contextPath}/YS_board/listArticles.do";
 	    obj.submit();
      }
 	
@@ -76,7 +76,7 @@ $(document).ready(function () {
 		var sendData = {'brd_no' : '${article.brd_no}','heart' : that.prop('name')};
 		  
 			$.ajax({
-              url :'http://localhost:8090/project/board/activeLike.do',
+              url :'http://localhost:8090/project/YS_board/activeLike.do',
               type :'POST',
               data : sendData,
               success : function(data){
@@ -117,7 +117,7 @@ $(document).ready(function () {
 				수 있습니다.
 			</p>
 			<br> <a href='#'><i class="y-bi bi-house-door"></i>Home </a> > <a
-				href='#'> 청년의목소리 </a> > <a href='#'>자유게시판</a>
+				href='#'> 청춘지원 </a> > <a href='#'>청춘지원소식</a>
 		</div>
 		<div id='y-detail-rap'>
 			<div id='y-detail-title'>
@@ -141,7 +141,7 @@ $(document).ready(function () {
 			</div>
 
 			<form name="downloadForm" method="post"
-				action="${contextPath }/board/download.do?brd_no=${article.brd_no}">
+				action="${contextPath }/YS_board/download.do?brd_no=${article.brd_no}">
 				<c:if
 					test="${not empty articleFileList && articleFileList !='null'}">
 					<td>첨부파일</td>
@@ -234,19 +234,18 @@ $(document).ready(function () {
 					</button>
 				</div>
 				<button type="button">
-					<a href="${contextPath}/board/forModShowArticles.do?brd_no=${article.brd_no}">수정하기</a>
+					<a href="${contextPath}/YS_board/forModShowArticles.do?brd_no=${article.brd_no}">수정하기</a>
 				</button>
 				<input type="button"
-					onclick="fn_remove_article('${contextPath}/board/removeArticle.do', ${article.brd_no})"
+					onclick="fn_remove_article('${contextPath}/YS_board/removeArticle.do', ${article.brd_no})"
 					value="삭제하기">
 				<div class='y-detail-bottom-right'>
 					<button type='button' onclick="location.href='#'">
 						<i class="y-bi bi-pencil"></i>글쓰기
 					</button>
 					
-					<button type='button' class='boardbtn'>
-            			<i class="bi bi-justify"></i>
-            			<a href="${contextPath }/board/listArticles.do">목록</a>
+					<button type='button' class='boardbtn' onclick="location.href='${contextPath }/YS_board/listArticles.do'">
+            			<i class="bi bi-justify"></i>목록
             		</button>
 				</div>
 			</div>
