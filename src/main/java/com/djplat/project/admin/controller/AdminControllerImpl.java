@@ -28,26 +28,16 @@ import com.djplat.project.member.vo.MemberVO;
 @Controller("adminController")
 public class AdminControllerImpl extends MultiActionController implements AdminController {
 	@Autowired
-	AdminService adminservice;
-//	public void setAdminService(AdminService adminService) {
-//		this.adminservice = adminService;
-//	}
-	
-//	@Override
-//	@RequestMapping(value = "/admin/listMembers.do", method = {RequestMethod.GET, RequestMethod.POST})
-//	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception{
-//		String viewName = getViewName(request);
-//		List listMembers = adminservice.listMembers();
-//		ModelAndView mav =new ModelAndView(viewName);
-//		return mav;
-//	}
+	AdminService adminservice; //의존성 주입
 
+	//회원 목록 호출	
 	@Override
 	@RequestMapping(value = "/admin/listMembers.do", method = {RequestMethod.GET ,RequestMethod.POST})
 	public ModelAndView listMembers(@RequestParam HashMap<String,Integer> paging, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("html/text;charset=utf-8");
 		String viewName = (String) request.getAttribute("viewName");
+		//페이징
 		if(paging.isEmpty()) {
 			paging.put("section",1);
 			paging.put("pageNum",1);
@@ -57,19 +47,11 @@ public class AdminControllerImpl extends MultiActionController implements AdminC
 		ModelAndView mav = new ModelAndView(viewName);		
 		mav.addObject("listMembers", listMembers);
 		mav.addObject("paging", paging);
-		mav.addObject("totalMembers",totalMembers);
+		mav.addObject("totalMembers",totalMembers); //총 회원수에 따른 게시판 번호 생성용
 		return mav;
 	}
-	@Override
-	@RequestMapping(value = "/admin/deleteMembers.do", method = RequestMethod.GET)
-	public ModelAndView deleteMember(HttpServletRequest request,  HttpServletResponse response)throws Exception{
-		request.setCharacterEncoding("utf-8");
-		String id = request.getParameter("id");
-		adminservice.deleteMember(id);
-		ModelAndView mav = new ModelAndView("redirect:/admin/listMembers.do");
-		return mav;
-	}
-	
+
+	//회원정보 상세 조회(회원 정보 수정과 연동)
 	@RequestMapping(value="/admin/memberDetail.do" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView memberDetail(HttpServletRequest request, HttpServletResponse response)  throws Exception{
 		String viewName=(String)request.getAttribute("viewName");
@@ -79,23 +61,45 @@ public class AdminControllerImpl extends MultiActionController implements AdminC
 		mav.addObject("member_info",member_info);
 		return mav;
 	}
+	//회원정보 수정
 	@RequestMapping(value="/admin/modifyMemberInfo.do" ,method={RequestMethod.POST,RequestMethod.GET})
 	public String modifyMemberInfo(MemberVO vo)  throws Exception{
-		System.out.println(vo.getMember_name());
 		adminservice.modifyMemberInfo(vo);
 		
+
 		return "redirect:/admin/memberDetail.do?member_id="+vo.getMember_id();
 
 	}
 
+	//검색 페이징까지
+	@Override
+	@RequestMapping(value = "/admin/searchMembers.do", method = {RequestMethod.GET ,RequestMethod.POST})
+	public ModelAndView searchMembers(@RequestParam HashMap<String,Integer> paging, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("html/text;charset=utf-8");
+		String viewName = (String) request.getAttribute("viewName");
+		//페이징
+		if(paging.isEmpty()) {
+			paging.put("section",1);
+			paging.put("pageNum",1);
+		}
+		List<MemberVO> searchMembers = adminservice.searchMembers(paging);
+		int setotalMembers = adminservice.totalMembers();
+		ModelAndView mav = new ModelAndView(viewName);		
+		mav.addObject("listMembers", searchMembers);
+		mav.addObject("paging", paging);
+		mav.addObject("setotalMembers",setotalMembers); //총 회원수에 따른 게시판 번호 생성용
+		return mav;
+	}
 	
-	
+	//ModelAndView 선언
 	public ModelAndView form(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
 		return mav;
 	}
+	//겟뷰네임선언
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();
 		String uri = (String) request.getAttribute("javax.servlet.include.request_uri");

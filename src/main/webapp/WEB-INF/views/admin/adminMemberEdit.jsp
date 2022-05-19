@@ -154,9 +154,9 @@
 					<h3 class="join_title">
 						<label for="pswd1">이메일 인증 여부</label>
 					</h3>
-					 <span class="box int_pass_check"> <select name="member_auth">
-							<option value="${member_info.member_auth }"<c:if test="${member_info.member_auth == 1}">selected</c:if>>O</option>
-							<option value="${member_info.member_auth }"<c:if test="${member_info.member_auth == 0}">selected</c:if>>X</option>
+					 <span class="box int_pass_check"> <select name="yechan">
+							<option value="yechan1"<c:if test="${member_info.member_auth == 1}">selected</c:if>>O</option>
+							<option value="yechan2"<c:if test="${member_info.member_auth == 0}">selected</c:if>>X</option>
 					</select>
 
 					</span> 
@@ -168,12 +168,12 @@
 					<h3 class="join_title">
 						<label for="pswd2">회원그룹</label>
 					</h3>
-					<span class="box int_pass_check"> <select
-						name="member_group">
-							<option value="${member_info.member_group }"<c:if test="${member_info.member_group == '일반회원'}">selected</c:if>>일반회원</option>
-							<option value="${member_info.member_group }"<c:if test="${member_info.member_group == '대청넷'}">selected</c:if>>대청넷</option>
+					<span class="box int_pass_check"> 
+					<select name="mg">
+							<option value="member_group1"<c:if test="${member_info.member_group == '일반회원'}">selected</c:if>>일반회원</option>
+							<option value="member_group2"<c:if test="${member_info.member_group == '대청넷'}">selected</c:if>>대청넷</option>
 					</select>
-
+	
 					</span> <span class="error_next_box"></span>
 				</div>
 

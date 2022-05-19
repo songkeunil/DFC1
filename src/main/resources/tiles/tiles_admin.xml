@@ -8,15 +8,17 @@
       <put-attribute name="title" value="회원목록창" />
       <put-attribute name="body" value="/WEB-INF/views/admin/board.jsp" />
    </definition>
-<!--    <definition name="/admin/memberDetail" extends="baseLayout">
-       <put-attribute name="title" value="회원정보조회" />
-       <put-attribute name="body" value="/WEB-INF/views/admin/adminMemberEdit.jsp" />
-    </definition>  -->   
+ 
    	<definition name="/admin/memberDetail" template="/WEB-INF/views/admin/adminMemberEdit.jsp">
    </definition>
    <definition name="/admin/modifyMemberInfo" template="/WEB-INF/views/admin/adminMemberEdit.jsp">
-    
    </definition>
+   
+   <definition name="/admin/searchMembers" extends="baseLayout">
+      <put-attribute name="title" value="회원목록창" />
+      <put-attribute name="body" value="/WEB-INF/views/admin/board.jsp" />
+   </definition>
+   
 </tiles-definitions>
 
 

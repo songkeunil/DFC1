@@ -5,7 +5,7 @@
 
 <mapper namespace="mapper.admin">
 
-           
+<!-- 회원 조회 -->           
 <select id="memberList" resultType="memberVO" >
     <![CDATA[
     select * from
@@ -13,32 +13,67 @@
      where recNum between(#{section}-1)*100  + (#{pageNum}-1)*10+1 and (#{section}-1)*100+#{pageNum}*10 
       ]]>
 </select>
-<update id="deleteMember" parameterType="String">
+<!-- <update id="deleteMember" parameterType="String">
   		UPDATE MEMBER
   		SET MEMBER_ENABLED='0'
   		WHERE MEMBER_ID = #{member_id}
-  	</update>
+  	</update> -->
 
-
+<!-- 회원 수 조회 -->
 <select id="totalMembers" resultType="int">
 	<![CDATA[
 	select count(member_id) from MEMBER
 	]]>
 </select>
-
+<!-- 회원 검색수 조회 -->
+<select id="setotalMembers" resultType="int">
+	<![CDATA[
+	select count(member_id) from MEMBER
+	]]>
+</select>
+<!-- 회원 상세 정보 조회 -->
 <select id="memberDetail" resultType="memberVO"   parameterType="String"  >
 	<![CDATA[
 		select * from member
   	  where member_id=#{member_id}
     ]]>
 </select>
+<!-- 회원 정보 수정 -->
 <update id="modifyMemberInfo" parameterType="memberVO">
-	   update member set
+	   update member <set>
 	 
 	   member_address = #{member_address},
 	   member_addrnum = #{member_addrnum},
 	   member_email = #{member_email},	
-	   member_group = #{member_group}
-	   where member_id=#{member_id}
+	   <if test="mg == 'member_group1'">
+	   	 member_group = '일반회원',
+	   </if>
+	   <if test="mg == 'member_group2'">
+	   	 member_group = '대청넷',
+	   </if>
+	   
+	    <if test="yechan == 'yechan1'">
+	   	 member_auth = '1',
+	   </if>
+	   <if test="yechan == 'yechan2'">
+	   	 member_auth = '0',
+	   </if>
+	   
+	   </set>
+	   where member_id = #{member_id}
+	   
 	</update>	
+	
+<select id="searchMembers" resultType="memberVO">
+	select * from member
+	<where>
+		<if test="ch1 =='member_name'">
+			and member_name like '%'||#{ch2}||'%'
+		</if>
+		<if test="ch1 == 'member_address'">
+			and member_address like '%'||#{ch2}||'%'
+		</if>
+	</where>
+		order by member_id desc
+</select>	
 </mapper>

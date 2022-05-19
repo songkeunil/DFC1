@@ -66,16 +66,21 @@
     </c:choose>
 </table>
 
-                </tbody>
-            </table>
+       
+         
            
         </div>
    
         <div id='y-boardfooter'>
            <div id = 'y-boardbtnbox'>
-            <button type='button' onclick="location.href='#'" class='y-boardbtn'><i class="y-bi bi-pencil"></i>&nbsp글쓰기</button>
-            <button type='button' onclick="location.href='#'" class='y-boardbtn searchbtn'><i class="y-bi bi-search"></i></button>
-            </div>
+			<form name="searchMembers" action="${path}/admin/searchMembers.do">
+			<select name="ch1">
+				<option value="member_name">이름</option>
+				<option value="member_address">주소</option>
+			</select>
+			<input type="text" name="ch2" >
+			<input type="submit" value="검색">
+           </form> </div>
             <div id='y-pagebtn'>
           <%-- 
 <!--             <button type='button' onclick="location.href='#'"><i class="y-bi bi-chevron-double-left"></i></button>
@@ -122,6 +127,8 @@
         </c:when>
       </c:choose>
     </c:if> 
+<!-- 페이징 종료 -->
+
 
 
 

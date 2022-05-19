@@ -30,15 +30,17 @@ public class AdminServiceImpl implements AdminService{
 		List<MemberVO> listMembers = adminDAO.selectAllMemberList(paging);
 		return listMembers;
 	}	
- //멤버삭제
- @Override
- public int deleteMember(String id) throws DataAccessException{
-	 return adminDAO.deleteMember(id);
- }
+
  //회원 총 숫자(페이징관련)
  @Override
  public int totalMembers() throws DataAccessException{
 	 return adminDAO.totalMembers();
+	 
+ }
+ //검색결과 숫자(페이징관련)
+ @Override
+ public int setotalMembers() throws DataAccessException{
+	 return adminDAO.setotalMembers();
 	 
  }
  //회원정보 상세
@@ -52,5 +54,9 @@ public MemberVO memberDetail(String member_id) throws Exception{
 	 //받은 vo를 DAO로 보냄
 	 adminDAO.modifyMemberInfo(vo);
  }
-
+ @Override
+	public List<MemberVO> searchMembers(HashMap<String,Integer> paging) throws DataAccessException {
+		List<MemberVO> searchMembers = adminDAO.searchMembers(paging);
+		return searchMembers;
+	}
 }

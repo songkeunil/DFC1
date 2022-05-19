@@ -24,6 +24,66 @@ public class MemberVO {
 	private int rec_Num;
 	private String member_info;
 	private String member_auth;
+	private String ch1;
+	private String ch2;
+	private String member_group1;
+	private String member_group2;	
+	private String mg; 
+	private String yechan;
+	private String yechan1;
+	private String yechan2;
+	
+	
+	
+	
+	public String getYechan() {
+		return yechan;
+	}
+	public void setYechan(String yechan) {
+		this.yechan = yechan;
+	}
+	public String getYechan1() {
+		return yechan1;
+	}
+	public void setYechan1(String yechan1) {
+		this.yechan1 = yechan1;
+	}
+	public String getYechan2() {
+		return yechan2;
+	}
+	public void setYechan2(String yechan2) {
+		this.yechan2 = yechan2;
+	}
+	public String getMg() {
+		return mg;
+	}
+	public void setMg(String mg) {
+		this.mg = mg;
+	}
+	public String getMember_group1() {
+		return member_group1;
+	}
+	public void setMember_group1(String member_group1) {
+		this.member_group1 = member_group1;
+	}
+	public String getMember_group2() {
+		return member_group2;
+	}
+	public void setMember_group2(String member_group2) {
+		this.member_group2 = member_group2;
+	}
+	public String getCh1() {
+		return ch1;
+	}
+	public void setCh1(String ch1) {
+		this.ch1 = ch1;
+	}
+	public String getCh2() {
+		return ch2;
+	}
+	public void setCh2(String ch2) {
+		this.ch2 = ch2;
+	}
 	public String getMember_auth() {
 		return member_auth;
 	}

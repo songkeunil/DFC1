@@ -13,16 +13,15 @@ public interface AdminService {
 
 	public List<MemberVO> listMembers(HashMap<String,Integer> paging) throws DataAccessException;
 
-	public int deleteMember(String id) throws DataAccessException;
-
 	public int totalMembers() throws DataAccessException;
 
 	public void modifyMemberInfo(MemberVO vo)throws Exception;
 
 	public MemberVO memberDetail(String member_id) throws Exception;
 
+	public List<MemberVO> searchMembers(HashMap<String,Integer> paging) throws DataAccessException;
 
-
+	public int setotalMembers() throws DataAccessException;
 
 
 

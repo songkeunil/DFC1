@@ -16,36 +16,43 @@ import com.djplat.project.member.vo.MemberVO;
 public class AdminDAOImpl implements AdminDAO {
 @Autowired
  SqlSession sqlSession;	
-//	@Override
-//	public List<MemberVO> selectAllMemberList() throws DataAccessException {
-//		List<MemberVO> listMembers = new ArrayList<MemberVO>();
-//	
-//		listMembers = sqlSession.selectList("mapper.admin.memberList");
-//		return listMembers;
-//	}
+
+
+	//리스트
 	@Override
 	public List<MemberVO> selectAllMemberList(HashMap<String,Integer> paging) throws DataAccessException {
 		List<MemberVO> listMembers  = sqlSession.selectList("mapper.admin.memberList",paging);
 		return listMembers;
 	}
-	@Override
-	public int deleteMember(String id) throws DataAccessException{
-		int result = sqlSession.delete("mapper.admin.deleteMember",id);
-		return result;
-	}
+	//멤버숫자(페이징에사용)
 	@Override
 	public int totalMembers() throws DataAccessException{
 		int totalMembers = sqlSession.selectOne("mapper.admin.totalMembers");
 		return totalMembers;
 	}
+	//검색결과숫자(페이징에사용)
+		@Override
+		public int setotalMembers() throws DataAccessException{
+			int setotalMembers = sqlSession.selectOne("mapper.admin.setotalMembers");
+			return setotalMembers;
+		}
+	//수정
 	@Override
 	public void modifyMemberInfo(MemberVO vo)throws Exception{
 		sqlSession.update("mapper.admin.modifyMemberInfo",vo);
 		
 	}
-	
+	//상세조회
+	@Override
 	public MemberVO memberDetail(String member_id) throws DataAccessException{
 		MemberVO memberBean=(MemberVO)sqlSession.selectOne("mapper.admin.memberDetail",member_id);
 		return memberBean;
+	}
+	
+	//검색
+	@Override
+	public List<MemberVO> searchMembers(HashMap<String,Integer> paging) throws DataAccessException {
+		List<MemberVO> searchMembers  = sqlSession.selectList("mapper.admin.searchMembers",paging);
+		return searchMembers;
 	}
 }
