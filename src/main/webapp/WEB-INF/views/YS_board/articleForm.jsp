@@ -24,6 +24,21 @@ function backToList(obj){
   }
   
   
+  
+  $.ajax({
+	  type:"post",
+	  async:"false",
+	  url :'http://localhost:8090/project/YS_board/ThumbNailUploader.do',
+	  success : function(data){
+		  
+	  }
+  }.
+  	error: function(){
+  	  alert.("썸네일 업로드 문제발생.");
+  	  
+  	}
+  )
+  
 </script>
 </head>
 <body>
@@ -39,12 +54,9 @@ function backToList(obj){
         
         <div id='y-writetitle'>
                 <h3>청춘지원소식 글쓰기</h3>
-        </div>
-        
+        </div><br>
         <form name="articleForm" method="post"  action="${contextPath}/YS_board/addNewArticle.do"   enctype="multipart/form-data"  accept-charset="utf-8">
         <div id='y-write'>
-        
-        
 				<div id='y-writetop'>
 					<div class='y-writetop-option'>
 						<div class="y-writetop-option-name">분류</div>
@@ -54,7 +66,7 @@ function backToList(obj){
 						</div>
 					</div>
                     
-                    
+                   
                 <div class='y-writetop-title'>
                     <div class="y-writetop-title-ti">제목</div>
                     <div class='y-writetop-title-input'> <input name="title" type="text"></div>
@@ -66,6 +78,14 @@ function backToList(obj){
                 </div>
             </div>
             
+           <form name="thumbNailForm" method="post" action="${contextPath}/YS_board/ThumbNailUploader.do" enctype="multipart/form-data">
+        		<div id="thumbForm">
+        			<br>
+        			<span>미리보기 이미지</span> 
+        			<br><br>
+                	<input type='file' name="thumbNailFile" class='y-writebottom-file-insert-input'>
+        		</div>
+        	</form>
             
             <div id='y-writemiddle'>
                 <textarea name="support_context" id="ir1"></textarea>
