@@ -4,11 +4,6 @@
     margin: 0 auto;
 }
 
-#thumbForm{
-	width: 1000px;
-    height: 100px;
-    margin: 0 auto;
-}
 
 #y-boardtop {
     width: 1000px;
@@ -225,6 +220,31 @@
     height: 50px;
     margin: 0 auto;
 }
+
+#thumbForm{
+	width: 1000px;
+    height: 100px;
+    right:10%;
+    font-weight: bold;
+}
+
+#thumbFormActive{
+	width: 80%;
+	margin: 0 auto;
+}
+
+#thumbImageArea{
+	width: 20%;
+	hight: 100px;
+    margin: 0 auto;
+}
+
+.upload-Button{
+	width: 50px;
+    height: 20px;
+    margin: 0 auto;
+}
+
 .y-write-button button{
     width: 100px;
     height: 30px;

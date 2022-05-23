@@ -133,6 +133,16 @@ $(document).ready(function () {
 				</table>
 			</div>
 			<div id='y-detail-main'>${article.support_context}</div>
+			
+			<div id= detail-picture>
+			<c:forEach var="item" items="${articleFileList}" varStatus="status">
+			<!-- 	<c:if test="${item.articleFileName}"></c:if> -->
+					<img class="form-img"
+					src="${contextPath}/thumbnails.do?brd_no=${article.brd_no}
+					&fileName=${item.articleFileName}">
+				
+			</c:forEach>
+			</div>
 			<div id='y-detail-like-rap'>
 				<button class='y-detail-like'>
 					<!--  <i class="bi bi-hand-thumbs-up">${article.ylike}</i>  -->
@@ -151,7 +161,7 @@ $(document).ready(function () {
 						<c:if test="${item.articleFileName != 'dummy.txt'}">
 							<tr>
 								<td><input type="submit" name="articleFileName"
-									value="${item.articleFileName }" /></td>
+									value="${item.articleFileName }"/></td>
 								<br>
 								<br>
 							</tr>
@@ -224,6 +234,8 @@ $(document).ready(function () {
 				</button>
 			</div>
 
+
+
 			<div id='y-detail-bottom-rap'>
 				<div class='y-detail-bottom-left'>
 					<button type='button' onclick="location.href='#'">
@@ -233,6 +245,8 @@ $(document).ready(function () {
 						다음<i class="y-bi bi-chevron-right"></i>
 					</button>
 				</div>
+				
+				
 				<button type="button">
 					<a href="${contextPath}/YS_board/forModShowArticles.do?brd_no=${article.brd_no}">수정하기</a>
 				</button>

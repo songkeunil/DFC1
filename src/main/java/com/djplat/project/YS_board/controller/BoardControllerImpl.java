@@ -45,6 +45,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.DispatcherServletWebRequest;
 
+import com.djplat.project.YS_board.dao.BoardDAO;
 import com.djplat.project.YS_board.service.BoardService;
 import com.djplat.project.YS_board.vo.ArticleVO;
 import com.djplat.project.YS_board.vo.FileVO;
@@ -131,7 +132,9 @@ public class BoardControllerImpl implements BoardController {
 				FileVO fileVO = new FileVO();
 				fileVO.setArticleFileName(fileName);
 				articleFileList.add(fileVO);
+				System.out.println(fileName);
 			}
+			
 			articleMap.put("articleFileList", articleFileList);
 		}
 
@@ -141,7 +144,7 @@ public class BoardControllerImpl implements BoardController {
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 		try {
 			int brd_no = boardService.addNewArticle(articleMap);
-
+			
 			// 파일이름 리스트를 인식하면 지정 경로안 임시폴더에 저장, 글 번호로 된 파일을 생성, 후에 그 안에 파일 저장
 			if (articleFileList != null && articleFileList.size() != 0) {
 				for (FileVO fileVO : articleFileList) {
@@ -149,15 +152,8 @@ public class BoardControllerImpl implements BoardController {
 					File srcFile = new File(ARTICLE_FILE_REPO + "\\" + "temp" + "\\" + articleFileName);
 					File destDir = new File(ARTICLE_FILE_REPO + "\\" + brd_no);
 					FileUtils.moveFileToDirectory(srcFile, destDir, true);
-					
-					int lastIndex = articleFileName.lastIndexOf(".");
-					String imageLocFileName = articleFileName.substring(0, lastIndex);
-					File thumbnailFile = new File(ARTICLE_FILE_REPO + "\\" + "thumbnail" + "\\" + imageLocFileName + ".png");
-					File thumbDes = new File(ARTICLE_FILE_REPO + "\\" + "thumbnail" + "\\" + brd_no);
-					FileUtils.moveFileToDirectory(thumbnailFile, thumbDes, true);
 				}
 			}
-			
 			message = "<script>";
 			message += " alert('새글을 추가했습니다.');";
 			message += " location.href='" + multipartRequest.getContextPath() + "/YS_board/listArticles.do'; ";
@@ -171,12 +167,6 @@ public class BoardControllerImpl implements BoardController {
 					articleFileName = fileVO.getArticleFileName();
 					File srcFile = new File(ARTICLE_FILE_REPO + "\\" + "temp" + "\\" + articleFileName);
 					srcFile.delete();
-					
-					int lastIndex = articleFileName.lastIndexOf(".");
-					String imageLocFileName = articleFileName.substring(0, lastIndex);
-					File thumbnailFile = new File(ARTICLE_FILE_REPO + "\\" + "thumbnail" + "\\" + imageLocFileName + ".png");
-					thumbnailFile.delete();
-				}
 			}
 			message = " <script>";
 			message += " alert('오류가 발생했습니다. 다시 시도해 주세요');');";
@@ -184,6 +174,7 @@ public class BoardControllerImpl implements BoardController {
 			message += " </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			e.printStackTrace();
+			}
 		}
 		return resEnt;
 	}
@@ -387,7 +378,7 @@ public class BoardControllerImpl implements BoardController {
 			boardService.removeArticle(brd_no);
 			File destDir = new File(ARTICLE_FILE_REPO + "\\" + brd_no);
 			FileUtils.deleteDirectory(destDir);
-
+	
 			message = "<script>";
 			message += " alert('글을 삭제했습니다.');";
 			message += " location.href='" + request.getContextPath() + "/YS_board/listArticles.do';";
@@ -438,103 +429,112 @@ public class BoardControllerImpl implements BoardController {
 	}
 
 	//다중 업로드
+//	private List<String> upload(MultipartHttpServletRequest multipartRequest) throws Exception {
+//		multipartRequest.setCharacterEncoding("utf-8");
+//		List<String> fileList = new ArrayList<String>();
+//		Iterator<String> fileNames = multipartRequest.getFileNames();
+//
+//		while (fileNames.hasNext()) {
+//			String fileName = fileNames.next();
+//			MultipartFile mFile = multipartRequest.getFile(fileName);
+//			String originalFileName = mFile.getOriginalFilename();
+//			if (originalFileName != "" && originalFileName != null) {
+//				fileList.add(originalFileName);
+//				File file = new File(ARTICLE_FILE_REPO + "\\" + fileName);
+//				if (mFile.getSize() != 0) {
+//					if (!file.exists()) {
+//						file.getParentFile().mkdirs();
+//						mFile.transferTo(new File(ARTICLE_FILE_REPO + "\\" + "temp" + "\\" + originalFileName));
+//					}
+//				}
+//			}
+//		}
+//		return fileList;
+//	}
+	
+	
+	//다중 업로드
 	private List<String> upload(MultipartHttpServletRequest multipartRequest) throws Exception {
 		multipartRequest.setCharacterEncoding("utf-8");
+		
 		List<String> fileList = new ArrayList<String>();
 		Iterator<String> fileNames = multipartRequest.getFileNames();
-
 		while (fileNames.hasNext()) {
 			String fileName = fileNames.next();
 			MultipartFile mFile = multipartRequest.getFile(fileName);
 			String originalFileName = mFile.getOriginalFilename();
+			
 			if (originalFileName != "" && originalFileName != null) {
-				fileList.add(originalFileName);
-				File file = new File(ARTICLE_FILE_REPO + "\\" + fileName);
-				if (mFile.getSize() != 0) {
-					if (!file.exists()) {
-						file.getParentFile().mkdirs();
-						mFile.transferTo(new File(ARTICLE_FILE_REPO + "\\" + "temp" + "\\" + originalFileName));
+					File file= new File(ARTICLE_FILE_REPO + "\\" + fileName);
+					if (mFile.getSize() != 0) {
+						if (!file.exists()) {
+							file.getParentFile().mkdirs();
+							if(fileName.equals("articleFileName4")){
+								fileList.add("thumb.png");
+								mFile.transferTo(new File(ARTICLE_FILE_REPO + "\\" + "temp" + "\\" + "thumb.png"));
+							}else {
+								fileList.add(originalFileName);
+								mFile.transferTo(new File(ARTICLE_FILE_REPO + "\\" + "temp" + "\\" + originalFileName));
+							}
+						}
 					}
 				}
-			}
 		}
 		return fileList;
 	}
+
 	
-//	// 썸네일 파일 지정 및 저장
-//	protected void ThumnailDownloader(@RequestParam("imageFileName")String imageFileName,
-//			HttpServletResponse response)
-//			throws Exception {
-//			OutputStream out = response.getOutputStream();
-//			String filePath = CURR_IMAGE_REPO_PATH + "\\" + imageFileName;
-//			File image = new File(filePath);
-//
-//			int lastIndex = imageFileName.lastIndexOf(".");
-//			String fileName = imageFileName.substring(0, lastIndex);
-//			File thumbnail = new File(CURR_IMAGE_REPO_PATH + "\\" + "thumbnail" + "\\" + fileName + ".png");
-//
-//			if (image.exists()) {
-//				thumbnail.getParentFile().mkdirs();
-//				Thumbnails.of(image).size(230, 180).outputFormat("png").toFile(thumbnail);
-//			}
-//
-//			FileInputStream in = new FileInputStream(thumbnail);
-//			byte[] buffer = new byte[1024 * 8];
-//			while (true) {
-//				int count = in.read(buffer);
-//				if (count == -1)
-//					break;
-//				out.write(buffer, 0, count);
-//			}
-//			in.close();
-//			out.close();
+//	@RequestMapping(value = "/thumbnails.do", method = { RequestMethod.GET, RequestMethod.POST })
+//	protected void thumbnails(@RequestParam("fileName") String fileName,
+//                            	@RequestParam("brd_no") String brd_no,
+//                            	HttpServletRequest request,
+//                             HttpServletResponse response) throws Exception {
+//		OutputStream out = response.getOutputStream();
+//		String filePath=ARTICLE_FILE_REPO+"\\"+ brd_no +"\\"+ fileName;
+//		File image=new File(filePath);
+//		if (image.exists()) { 
+//			if(fileName.equals("thumb.png")) {
+//				Thumbnails.of(image).size(230,180).outputFormat("png").toOutputStream(out);
+//			}else if(!fileName.equals("thumb.png") && fileName.contains(".png")
+//					|| fileName.contains(".jpg")){
+//				Thumbnails.of(image).size(500,500).outputFormat("png").toOutputStream(out);
+//			}else {
+//			return;
+//			}	
 //		}
+//		byte[] buffer = new byte[1024 * 8];
+//		out.write(buffer);
+//		out.close();
+//	}
 	
-//			//파일 1차 경로 지정
-//			String filePath = ARTICLE_FILE_REPO + "\\" + originalFileName;
-//			//확장자 전까지 이름을 잘라 최종 경로용 파일 이름 영역 지정
-//			int lastIndex = originalFileName.lastIndexOf(".");
-//			//최종 경로용 파일 이름 생성
-//			String imageLocFileName = originalFileName.substring(0, lastIndex);
-//			File thumbnail = new File(ARTICLE_FILE_REPO + "\\" + "thumbnail" + "\\" + imageLocFileName + ".png");
-//			File image = new File(filePath);
-////			MultipartFile mFile = multipartRequest.getFile(fileName);
-//			mFile.transferTo(image);
-//			if (image.exists()) {
-//				thumbnail.getParentFile().mkdirs();
-//				Thumbnails.of(image).size(50, 50).outputFormat("png").toFile(thumbnail);
-//				image.delete();
-//			}
-		
-	//썸네일 업로드
-	@RequestMapping(value = "/YS_board/ThumbNailUploader.do", method = RequestMethod.POST)
-	@ResponseBody
-	private String ThumbNailUploader(MultipartHttpServletRequest multipartRequest) throws Exception{
-		String imageFileName= null;
-		Iterator<String> fileNames = multipartRequest.getFileNames();
-		
-		while(fileNames.hasNext()){
-			String fileName = fileNames.next();
-			MultipartFile mFile = multipartRequest.getFile(fileName);
-			System.out.println(mFile.toString());
-			imageFileName=mFile.getOriginalFilename();
-			File file = new File(ARTICLE_FILE_REPO +"\\"+"temp"+"\\" + fileName);
-			if(mFile.getSize()!=0){
-				if(!file.exists()){
-					file.getParentFile().mkdirs();
-					mFile.transferTo(new File(ARTICLE_FILE_REPO +"\\"+"thumbnail"+ "\\"+imageFileName));
+	@RequestMapping(value = "/thumbnails.do", method = { RequestMethod.GET, RequestMethod.POST })
+	protected void thumbnails(@RequestParam("fileName") String fileName,
+                            	@RequestParam("brd_no") String brd_no,
+                            	HttpServletRequest request,
+                             HttpServletResponse response) throws Exception {
+		OutputStream out = response.getOutputStream();
+		String filePath=ARTICLE_FILE_REPO+"\\"+ brd_no +"\\"+ fileName;
+		File image=new File(filePath);
+
+		if (image.exists()) { 
+			if(fileName.equals("thumb.png")) {
+				Thumbnails.of(image).size(230,180).outputFormat("png").toOutputStream(out);
+			}else if(!fileName.equals("thumb.png")){
+				if(fileName.contains(".png") || fileName.contains(".jpg")){
+					Thumbnails.of(image).size(900,500).outputFormat("png").toOutputStream(out);
+				}else {
+					//pass;
+					return;
 				}
 			}
-			
 		}
-		return imageFileName;
+		byte[] buffer = new byte[1024 * 8];
+		out.write(buffer);
+		out.close();
 	}
 	
-
-
-
 	
-
+	
 	// 다운로드
 	@RequestMapping(value = "/YS_board/download.do", method = RequestMethod.POST)
 	private void Filedownload(@RequestParam("brd_no") int brd_no,

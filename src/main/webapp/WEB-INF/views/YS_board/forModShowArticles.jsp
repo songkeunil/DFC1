@@ -103,9 +103,8 @@
 					</div>
 					<c:choose>
 						<c:when test="${not empty articleFile && articleFile!='null' }">
-							<tr>
-								<td>첨부파일</td>
-							</tr><br>
+							<td>첨부파일 </td>
+							<br>
 							<c:forEach var="item" items="${articleFile}" varStatus="status">
 								<tr id="${status.count}">
 									<td>

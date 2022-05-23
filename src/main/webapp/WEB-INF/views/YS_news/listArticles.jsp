@@ -51,8 +51,10 @@
 					<c:forEach var="article" items="${articlesList }" varStatus="articleNum">
 							<span class="thumbnail">
 								<div class='thumbnail-imgbox'>
-								<!--  <a href='#'><img class="form-img"
-									src="C:\YS\YS_board\article_file+${article.brd_no}"></a>-->
+								<a href='${contextPath}/YS_board/viewArticle.do?brd_no=${article.brd_no}'>
+									<img class="form-img"
+									src="${contextPath}/thumbnails.do?brd_no=${article.brd_no}&fileName=thumb.png">
+								</a>
 								</div>
 								<div class='thumbnail-namebox'>
 									<div hidden="${article.brd_no}"></div>
@@ -86,7 +88,7 @@
 	<div id='boardfooter'>
 
 		<div id='boardbtnbox'>
-			<button type='button' onclick="location.href='${contextPath}/YS_news/listArticles.do'" class='boardbtn'>
+			<button type='button' onclick="location.href='${contextPath}/YS_board/listArticles.do'" class='boardbtn'>
 				<i class="bi bi-justify"></i>목록
 			</button>
 			<button type='button' onclick="location.href='#'" class='boardbtn searchbtn'>

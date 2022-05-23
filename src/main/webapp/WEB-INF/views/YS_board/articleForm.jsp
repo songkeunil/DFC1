@@ -18,27 +18,11 @@
 
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
+$(document).ready(function(){ 
 function backToList(obj){
     obj.action="${contextPath}/YS_board/listArticles.do";
     obj.submit();
   }
-  
-  
-  
-  $.ajax({
-	  type:"post",
-	  async:"false",
-	  url :'http://localhost:8090/project/YS_board/ThumbNailUploader.do',
-	  success : function(data){
-		  
-	  }
-  }.
-  	error: function(){
-  	  alert.("썸네일 업로드 문제발생.");
-  	  
-  	}
-  )
-  
 </script>
 </head>
 <body>
@@ -77,20 +61,10 @@ function backToList(obj){
                     </div>
                 </div>
             </div>
-            
-           <form name="thumbNailForm" method="post" action="${contextPath}/YS_board/ThumbNailUploader.do" enctype="multipart/form-data">
-        		<div id="thumbForm">
-        			<br>
-        			<span>미리보기 이미지</span> 
-        			<br><br>
-                	<input type='file' name="thumbNailFile" class='y-writebottom-file-insert-input'>
-        		</div>
-        	</form>
-            
+       
             <div id='y-writemiddle'>
                 <textarea name="support_context" id="ir1"></textarea>
             </div>
-
 
 
             <div id='y-writebottom'>
@@ -108,7 +82,7 @@ function backToList(obj){
 		  		<div class="y-writebottom-file">
                     <div class="y-writebottom-file-name">첨부파일</div>
                     <div class='y-writebottom-file-insert'>
-                        <input type='file'  name="articleFileName1" multiple="multiple" class='y-writebottom-file-insert-input'>
+                        <input type='file'  name="articleFileName1" multiple="multiple" class='y-writebottom-file-insert-input' >
                     </div>
                 </div>
                 
@@ -126,9 +100,16 @@ function backToList(obj){
                     </div>
                 </div>	
                 
+                <div class="y-writebottom-file">
+                    <div class="y-writebottom-file-name">썸네일</div>
+                    <div class='y-writebottom-file-insert'>
+                        <input type='file' name="articleFileName4" multiple="multiple" class='y-writebottom-file-insert-input'>
+                    </div>
+                </div>	
+                
                 <div id ='y-write-buttonrap'>
                     <div class="y-write-button">
-                        <button type="submit"><i class="bi bi-check-lg"></i>작성완료</button>
+                        <button id="articleFormSubmit" type="submit"><i class="bi bi-check-lg"></i>작성완료</button>
                         <button type="submit" onclick="backToList(this.form)">취소</button>
                     </div>
                 </div>
