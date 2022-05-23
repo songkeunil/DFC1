@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.djplat.project.member.vo.MemberVO;
@@ -15,6 +17,8 @@ import com.djplat.project.mentalReview.vo.ReviewVO;
 public class ReviewServiceImpl implements ReviewService{
 	@Autowired
 	ReviewDAO reviewDAO;
+	@Autowired
+	private SqlSession sqlSession;
 
 	@Override
 	public Map listArticles(Map pagingMap) throws Exception {
@@ -25,7 +29,7 @@ public class ReviewServiceImpl implements ReviewService{
 		articlesMap.put("totArticles", totArticles);
 		return articlesMap;
 	}
-
+	//글쓰기
 	@Override
 	public int addNewArticle(Map articleMap) throws Exception {
 		int brd_no = reviewDAO.insertNewArticle(articleMap);
@@ -33,7 +37,8 @@ public class ReviewServiceImpl implements ReviewService{
 		reviewDAO.insertNewArticle(articleMap);
 		return brd_no;
 	}
-
+	
+	//글 보기
 	@Override
 	public Map viewArticle(int brd_no) throws Exception {
 		Map articleMap = new HashMap();

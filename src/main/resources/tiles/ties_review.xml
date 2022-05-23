@@ -10,12 +10,13 @@
    </definition>
  
  
-    <definition name="/mentalreview/viewArticle" extends="baseLayout">
-      <put-attribute name="title" value="후기글상세" />
-      <put-attribute name="body" value="/WEB-INF/views/mentalReview/boardView.jsp" />
+
+
+
+ <definition name="/mentalreview/mrWriteForm" extends="baseLayout">
+      <put-attribute name="title" value="후기 작성" />
+      <put-attribute name="body" value="/WEB-INF/views/mentalReview/mrWriteForm.jsp" />
    </definition>
- 
- 
  <!--  
    <definition name="/admin/modifyMemberInfo" template="/WEB-INF/views/admin/adminMemberEdit.jsp">
    </definition>

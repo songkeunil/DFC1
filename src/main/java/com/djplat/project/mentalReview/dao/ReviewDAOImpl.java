@@ -43,6 +43,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 	
 
+
 	@Override
 	public int insertNewArticle(Map articleMap) throws DataAccessException{
 //		LocalDateTime now = LocalDateTime.now();
@@ -54,13 +55,11 @@ public class ReviewDAOImpl implements ReviewDAO {
 		sqlSession.insert("mapper.mindreview.insertNewArticle",articleMap);
 		return brd_no;
 	}
-	
-
-	
 	private int selectNewArticleNO() throws DataAccessException{
 		return sqlSession.selectOne("mapper.mindreview.selectNewArticleNO");
 	}
-	
+
+
 	
 	
 	@Override

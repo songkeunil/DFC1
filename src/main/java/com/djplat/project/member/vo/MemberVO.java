@@ -35,10 +35,17 @@ public class MemberVO {
 	private String member_stop;
 	private String member_stop1;
 	private String member_stop2;
+	private String brd_no;
 	
 	
 	
 	
+	public String getBrd_no() {
+		return brd_no;
+	}
+	public void setBrd_no(String brd_no) {
+		this.brd_no = brd_no;
+	}
 	public String getMember_stop() {
 		return member_stop;
 	}

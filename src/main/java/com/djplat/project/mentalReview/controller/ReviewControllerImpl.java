@@ -1,8 +1,10 @@
 package com.djplat.project.mentalReview.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.djplat.project.member.vo.MemberVO;
 import com.djplat.project.mentalReview.service.ReviewService;
+import com.djplat.project.mentalReview.vo.FileVO;
 
 @Controller
 public class ReviewControllerImpl  implements ReviewController{
@@ -56,13 +60,16 @@ public class ReviewControllerImpl  implements ReviewController{
 
 			ModelAndView mav = new ModelAndView(viewName);
 			mav.addObject("articlesMap", articlesMap);
-			System.out.println("list" + mav.toString());
+//			System.out.println("list" + mav.toString());
 			return mav;
 	}
+	
+	//글쓰기
 	@Override
-	@RequestMapping(value = "/mentalreview/addArticle.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mentalreview/addArticle.do", method={RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
-	public ResponseEntity  addNewArticle(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception{
+	public ResponseEntity addNewArticle(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
+			throws Exception {
 		multipartRequest.setCharacterEncoding("utf-8");
 		String articleFileName = null;
 
@@ -86,23 +93,84 @@ public class ReviewControllerImpl  implements ReviewController{
 //        String member_id=(String)principal;
 
 		articleMap.put("member_id", member_id);
+		// 더미(답글 parentNO 사용안함)
+//		articleMap.put("parentNO", 0);
+//		String parentNO = (String)session.getAttribute("parentNO");
+//		articleMap.put("parentNO", (parentNO == null ? 0: parentNO));
 
+		// 파일 이름을 받아 서비스로 전달
+		List<String> fileList = upload(multipartRequest);
+		List<FileVO> articleFileList = new ArrayList<FileVO>();
+		if (fileList != null && fileList.size() != 0) {
+			for (String fileName : fileList) {
+				FileVO fileVO = new FileVO();
+				fileVO.setArticleFileName(fileName);
+				articleFileList.add(fileVO);
+			}
+			articleMap.put("articleFileList", articleFileList);
+		}
 
 		String message;
 		ResponseEntity resEnt = null;
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
-	
-		
-		
-			return resEnt;
+		try {
+			int brd_no = reviewService.addNewArticle(articleMap);
+
+			// 파일이름 리스트를 인식하면 지정 경로안 임시폴더에 저장, 글 번호로 된 파일을 생성, 후에 그 안에 파일 저장
+			if (articleFileList != null && articleFileList.size() != 0) {
+				for (FileVO fileVO : articleFileList) {
+					articleFileName = fileVO.getArticleFileName();
+					File srcFile = new File(ARTICLE_FILE_REPO + "\\" + "temp" + "\\" + articleFileName);
+					File destDir = new File(ARTICLE_FILE_REPO + "\\" + brd_no);
+					FileUtils.moveFileToDirectory(srcFile, destDir, true);
+					
+					int lastIndex = articleFileName.lastIndexOf(".");
+					String imageLocFileName = articleFileName.substring(0, lastIndex);
+					File thumbnailFile = new File(ARTICLE_FILE_REPO + "\\" + "thumbnail" + "\\" + imageLocFileName + ".png");
+					File thumbDes = new File(ARTICLE_FILE_REPO + "\\" + "thumbnail" + "\\" + brd_no);
+					FileUtils.moveFileToDirectory(thumbnailFile, thumbDes, true);
+				}
+			}
+			
+			message = "<script>";
+			message += " alert('새글을 추가했습니다.');";
+			message += " location.href='" + multipartRequest.getContextPath() + "/YS_board/listArticles.do'; ";
+			message += " </script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+
+		} catch (Exception e) {
+			// 파일이름 리스트를 인식하지 못 하면 임시 폴더에 업로드 된 파일을 저장 후, 삭제
+			if (articleFileList != null && articleFileList.size() != 0) {
+				for (FileVO fileVO : articleFileList) {
+					articleFileName = fileVO.getArticleFileName();
+					File srcFile = new File(ARTICLE_FILE_REPO + "\\" + "temp" + "\\" + articleFileName);
+					srcFile.delete();
+					
+					int lastIndex = articleFileName.lastIndexOf(".");
+					String imageLocFileName = articleFileName.substring(0, lastIndex);
+					File thumbnailFile = new File(ARTICLE_FILE_REPO + "\\" + "thumbnail" + "\\" + imageLocFileName + ".png");
+					thumbnailFile.delete();
+				}
+			}
+			message = " <script>";
+			message += " alert('오류가 발생했습니다. 다시 시도해 주세요');');";
+			message += " location.href='" + multipartRequest.getContextPath() + "/YS_board/articleForm.do'; ";
+			message += " </script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+			e.printStackTrace();
+		}
+		return resEnt;
 	}
-		
-		
-	
-		//게시글 보기
+
+private List<String> upload(MultipartHttpServletRequest multipartRequest) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	//게시글 보기
 	@Override
-	@RequestMapping(value = "/mentalreview/viewArticle.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mentalreview/viewArticle.do", method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView viewArticle(@RequestParam("brd_no") int brd_no,HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String viewName = (String) request.getAttribute("viewName");
 		Map articleMap = reviewService.viewArticle(brd_no);
@@ -144,7 +212,7 @@ public class ReviewControllerImpl  implements ReviewController{
 
 	// 글 삭제
 	@Override
-	@RequestMapping(value = "/mentalreview/removeArticle.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/mentalreview/removeArticle.do", method={RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public ResponseEntity removeArticle(@RequestParam("brd_no") int brd_no, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -189,7 +257,7 @@ public class ReviewControllerImpl  implements ReviewController{
 
 	// 검색 기능
 	// 페이징/listArticls 뷰 공유 아직 없음
-	@RequestMapping(value = "/mentalreview/searchArticles.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mentalreview/searchArticles.do", method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView searchArticles(@RequestParam("searchWord") String searchWord, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");

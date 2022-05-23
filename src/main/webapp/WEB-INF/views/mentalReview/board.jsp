@@ -3,6 +3,10 @@
     isELIgnored="false" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     
+     <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+     <sec:authorize access="isAuthenticated()"></sec:authorize>
+
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <c:set var="articlesList"  value="${articlesMap.articlesList}"  />
 <c:set var="section"  value="${articlesMap.section}"  />
@@ -12,7 +16,6 @@
 <%
   request.setCharacterEncoding("UTF-8");
 %>
-<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -84,9 +87,8 @@
             		<input name="searchWord" type="text">
             		<button type="submit" class='boardbtn searchbtn'><i class="bi bi-search"></i></button>
             	</form>
-            	<button type='button' class='boardbtn' onclick='location.href="${contextPath }/mentalreview/articleForm.do"'>글 쓰기</button>
-            	
-            
+            	<button type='button' class='boardbtn' onclick='location.href="${contextPath }/mentalreview/mrWriteForm.do"'>글 쓰기</button>
+            																				 
             </div>
             
           <!--   ----

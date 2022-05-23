@@ -36,8 +36,19 @@
  	]]>
 	</select>
 
-
-
+	<!-- 새글 작성 -->
+	<select id="insertNewArticle" parameterType="java.util.Map">
+ 	<![CDATA[
+ 		INSERT INTO MIND_REVIEW(brd_no, title, mr_context, w_date, hits, mr_like,member_id)
+ 		VALUES(#{brd_no},#{title},#{mr_context},sysdate,0,0,#{member_id})
+ 	]]>
+	</select>
+<!-- 새글 번호 생성 -->
+	<select id="selectNewArticleNO" resultType="int">
+ 	<![CDATA[
+ 		SELECT nvl(max(brd_no), 0) + 1 FROM MIND_REVIEW
+ 	]]>
+	</select>
 
 	<!-- 페이지 넘버링 -->
 	<select id="selectTotArticles" resultType="int">

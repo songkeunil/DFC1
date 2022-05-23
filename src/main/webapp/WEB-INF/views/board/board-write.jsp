@@ -37,8 +37,8 @@
 
 </body>
 </html>
-<!-- SmartEditor2 --> 
-<script type="text/javascript" src = "resources/js/notice-write.js">
+<!-- <!-- SmartEditor2 --> 
+<!-- <script type="text/javascript" src = "resources/js/notice-write.js">
 var oEditors = []; 
 nhn.husky.EZCreator.createInIFrame({ oAppRef : oEditors, elPlaceHolder : "smartEditor", //저는 textarea의 id와 똑같이 적어줬습니다. 
 	sSkinURI : "se2/SmartEditor2Skin.html", //경로를 꼭 맞춰주세요! 
@@ -69,5 +69,5 @@ nhn.husky.EZCreator.createInIFrame({ oAppRef : oEditors, elPlaceHolder : "smartE
 	}
 	)
 
-	</script>
+	</script> -->
 
