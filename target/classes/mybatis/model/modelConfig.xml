@@ -15,5 +15,7 @@
 		<typeAlias type="com.djplat.project.member.vo.MemberVO"  alias="memberVO" />
 		<typeAlias type="com.djplat.project.common.vo.UserVO"  alias="userVO" />
 		<typeAlias type="com.djplat.project.board.vo.ArticleVO"  alias="articleVO" />
+		<typeAlias type="com.djplat.project.mentalReview.vo.ReviewVO"  alias="ReviewVO" />
+		
 	</typeAliases>
 </configuration>

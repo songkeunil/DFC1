@@ -24,6 +24,12 @@ public interface AdminService {
 	public int setotalMembers() throws DataAccessException;
 
 
+	
+	
+	
+	
+
+
 
 
 

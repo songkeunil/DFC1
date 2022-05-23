@@ -1,35 +1,29 @@
 package com.djplat.project.admin.controller;
 
-import java.io.PrintWriter;
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.ServletRequestDataBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
-import org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMethodException;
 
 import com.djplat.project.admin.service.AdminService;
+import com.djplat.project.member.service.MemberService;
 import com.djplat.project.member.vo.MemberVO;
 
 @Controller("adminController")
 public class AdminControllerImpl extends MultiActionController implements AdminController {
 	@Autowired
 	AdminService adminservice; //의존성 주입
-
+	@Autowired
+	MemberService memberservice;
 	//회원 목록 호출	
 	@Override
 	@RequestMapping(value = "/admin/listMembers.do", method = {RequestMethod.GET ,RequestMethod.POST})
@@ -79,7 +73,7 @@ public class AdminControllerImpl extends MultiActionController implements AdminC
 		response.setContentType("html/text;charset=utf-8");
 		String viewName = (String) request.getAttribute("viewName");
 		//페이징
-		if(paging.isEmpty()) {
+		if(paging.get("section") == null) {
 			paging.put("section",1);
 			paging.put("pageNum",1);
 		}
@@ -88,9 +82,11 @@ public class AdminControllerImpl extends MultiActionController implements AdminC
 		ModelAndView mav = new ModelAndView(viewName);		
 		mav.addObject("listMembers", searchMembers);
 		mav.addObject("paging", paging);
-		mav.addObject("setotalMembers",setotalMembers); //총 회원수에 따른 게시판 번호 생성용
+		mav.addObject("setotalMembers",setotalMembers); //검색에 따른 게시판 번호 생성용
+		System.out.println(setotalMembers);
 		return mav;
 	}
+	
 	
 	//ModelAndView 선언
 	public ModelAndView form(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -130,5 +126,8 @@ public class AdminControllerImpl extends MultiActionController implements AdminC
 		}
 		return fileName;
 	}
+	
+	
+	
 	                     
 }

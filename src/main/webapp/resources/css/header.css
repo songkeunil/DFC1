@@ -11,7 +11,7 @@
         margin: 0;
         position: fixed;
         background: white;
-        
+         z-index: 99999;
     }
 
     #h-top {
@@ -102,7 +102,7 @@
         margin: 0 auto;
         margin-top: 150px;
         background: white;
-
+		z-index: 99999;
     }
 
     .h-nav {

@@ -32,6 +32,7 @@
 <body>
 
     <div class="S_bar_wrap">
+       <div class="sticky-box">
         <ul id="S_bar">
             <li class="S_bar_menu1">
                 <a href="#">사용자관리</a>
@@ -65,7 +66,9 @@
                 </ul>
             </li>
         </ul>
+        </div>
     </div>
+
 
 
 

@@ -32,10 +32,31 @@ public class MemberVO {
 	private String yechan;
 	private String yechan1;
 	private String yechan2;
+	private String member_stop;
+	private String member_stop1;
+	private String member_stop2;
 	
 	
 	
 	
+	public String getMember_stop() {
+		return member_stop;
+	}
+	public void setMember_stop(String member_stop) {
+		this.member_stop = member_stop;
+	}
+	public String getMember_stop1() {
+		return member_stop1;
+	}
+	public void setMember_stop1(String member_stop1) {
+		this.member_stop1 = member_stop1;
+	}
+	public String getMember_stop2() {
+		return member_stop2;
+	}
+	public void setMember_stop2(String member_stop2) {
+		this.member_stop2 = member_stop2;
+	}
 	public String getYechan() {
 		return yechan;
 	}

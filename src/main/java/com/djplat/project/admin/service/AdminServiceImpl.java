@@ -59,4 +59,5 @@ public MemberVO memberDetail(String member_id) throws Exception{
 		List<MemberVO> searchMembers = adminDAO.searchMembers(paging);
 		return searchMembers;
 	}
+ 
 }

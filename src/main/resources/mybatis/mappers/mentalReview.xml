@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.mindreview">
+	<resultMap id="articlesResult" type="ReviewVO">
+		<result property="brd_no" column="brd_no" />
+		<result property="title" column="title" />
+		<result property="mr_context" column="mr_context" />
+		<result property="cc" column="cc" />
+		<result property="w_date" column="w_date" />
+		<result property="hits" column="hits" />
+		<result property="mr_like" column="mr_like" />
+		<result property="member_id" column="member_id" />
+	</resultMap>
+
+	<!-- 글 리스트 -->
+	<select id="selectAllArticlesList" parameterType="java.util.Map"
+		resultMap="articlesResult">
+  	<![CDATA[
+		SELECT * FROM
+		(SELECT ROW_NUMBER() over (ORDER BY brd_no DESC) as recNum, brd_no, title, mr_context,
+		cc, w_date, hits, mr_like, member_id FROM MIND_REVIEW
+		)
+		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*12+1 
+		AND (#{section}-1)*100 + #{pageNum}*12
+  	]]>
+	</select>
+<!-- 상세조회 -->
+<select id="selectArticle" resultType="ReviewVO"
+		parameterType="int">
+ 	<![CDATA[
+ 		SELECT * FROM MIND_REVIEW
+ 		WHERE brd_no = #{brd_no}
+ 	]]>
+	</select>
+
+
+
+
+	<!-- 페이지 넘버링 -->
+	<select id="selectTotArticles" resultType="int">
+  	<![CDATA[
+  		SELECT count(brd_no) FROM MIND_REVIEW
+  	]]>
+	</select>
+	
+	<!-- 조회수 기능 -->
+	<update id="viewArticleCounter" parameterType="int">
+  	<![CDATA[
+		UPDATE MIND_REVIEW
+		SET HITS = HITS + 1
+		WHERE brd_no = #{brd_no}
+	]]>
+	</update>
+	
+	
+</mapper>

@@ -212,6 +212,12 @@ margin-bottom: 2px;}
     line-height: 1.5;
     border:1px #0d6efd;
 }
+#btnJoin2 {
+    
+width: 500px;
+height: 100px;
+background: red;
+}
 #btnJoin:hover{
     color: white;
     background-color:  #0d6efd;

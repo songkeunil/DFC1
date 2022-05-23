@@ -87,20 +87,20 @@
 
 <body>
 <!---------------- 사이드바  -------------------------->
-   <div id = "sidebar-container">       
+  <div id = "sidebar-container">       
       <div class="sidebar-head bg-navy"></div>
        <div class = "sidebar-content">
           <ul>              
-              <li class="smenu">메뉴1</li>
-              <li class="smenu">메뉴2</li>
-              <li class="smenu">메뉴3</li>
-              <li class="smenu">메뉴4</li>
-              <li class="smenu">메뉴5</li>
-              <li class="smenu">메뉴6</li>
+              <li class="smenu">청춘끼리</li>
+              <li class="smenu">청춘지원소식</li>
+              <li class="smenu">청년정책소개</li>
+              <li class="smenu">청년정책상담실</li>
+              <li class="smenu">찾아오시는길</li>
+ <!--              <li class="smenu">메뉴6</li>
               <li class="smenu">메뉴7</li>
-          </ul>
+  -->         </ul>
        </div>
-    </div>
+    </div> 
        <div id='h-hrap'>
        
         <div id='h-toprap'>
@@ -150,23 +150,23 @@
                 <li class="h-nav-item">
                     <a class="h-nav-link" href="#" style="color: black">청춘공간</a>
                     <ul class='h-sub'>
-                        <li><a href='#'>menu1</a></li>
-                        <li><a href='#'>menu2</a></li>
-                        <li><a href='#'>menu3</a></li>
-                        <li><a href='#'>menu4</a></li>
+                        <li><a href='#'>청춘나들목</a></li>
+                        <li><a href='#'>청춘너나들이</a></li>
+                        <li><a href='#'>청춘두두두</a></li>
+                        <li><a href='#'>청춘터전</a></li>
                     </ul>
                 </li>
                 <li class="h-nav-item">
                     <a class="h-nav-link" href="#" style="color: black">청년마음건강</a>
                     <ul class='h-sub'>
-                        <li><a href='#'>menu1</a></li>
-                        <li><a href='#'>menu2</a></li>
-                        <li><a href='#'>menu3</a></li>
-                        <li><a href='#'>menu4</a></li>
+                        <li><a href='#'>마음건강 소개</a></li>
+                        <li><a href='#'>마음건강 상담신청</a></li>
+                        <li><a href='${path}/mentalreview/listArticles.do'>이용후기</a></li>
+                     
                     </ul>
                 </li>
                 <li class="h-nav-item">
-                    <a class="h-nav-link" href="#" style="color: black">청년정장대여</a>
+                    <a class="h-nav-link" href="#" style="color: black">청춘끼리정장대여</a>
                     <ul class='h-sub'>
                         <li><a href='#'>menu1</a></li>
                         <li><a href='#'>menu2</a></li>
@@ -177,19 +177,20 @@
                 <li class="h-nav-item">
                     <a class="h-nav-link" href="#" style="color: black">대청넷</a>
                     <ul class='h-sub'>
-                        <li><a href='#'>menu1</a></li>
-                        <li><a href='#'>menu2</a></li>
-                        <li><a href='#'>menu3</a></li>
-                        <li><a href='#'>menu4</a></li>
+                        <li><a href='#'>대청넷 소개</a></li>
+                        <li><a href='#'>대청넷 활동</a></li>
+                        <li><a href='#'>청년소통</a></li>
+                        <li><a href='#'>대청넷활동문의</a></li>
+                        <li><a href='#'>대청넷 자료실</a></li>
+                        
                     </ul>
                 </li>
                 <li class="h-nav-item">
                     <a class="h-nav-link" href="#" style="color: black">청년정책</a>
                     <ul class='h-sub'>
-                        <li><a href='#'>menu1</a></li>
-                        <li><a href='#'>menu2</a></li>
-                        <li><a href='#'>menu3</a></li>
-                        <li><a href='#'>menu4</a></li>
+                        <li><a href='#'>청년정책 소개</a></li>
+                        <li><a href='#'>청년정책 상담실</a></li>
+                 
                     </ul>
                 </li>
                 <li class="h-nav-item">

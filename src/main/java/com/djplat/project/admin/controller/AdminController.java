@@ -11,9 +11,17 @@ import com.djplat.project.member.vo.MemberVO;
 
 public interface AdminController {
 
-	public ModelAndView listMembers(HashMap<String,Integer> paging,HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public String modifyMemberInfo(MemberVO vo)  throws Exception;
-	public ModelAndView memberDetail(HttpServletRequest request, HttpServletResponse response)  throws Exception;
-	public ModelAndView searchMembers(HashMap<String,Integer> paging,HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView listMembers(HashMap<String, Integer> paging, HttpServletRequest request,
+			HttpServletResponse response) throws Exception;
 
+	public String modifyMemberInfo(MemberVO vo) throws Exception;
+
+	public ModelAndView memberDetail(HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+	public ModelAndView searchMembers(HashMap<String, Integer> paging, HttpServletRequest request,
+			HttpServletResponse response) throws Exception;
+
+	
+
+	
 }

@@ -31,89 +31,97 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
-        //생년월일
-        $(function() {
-            $('.datepicker').datepicker({
-                showOn: "button",
-                dateFormat: "yy-mm-dd",
-                showOtherMonths: true,
-                showMonthAfterYear: true,
-                changeYear: true,
-                changeMonth: true,
-                showOn: "both",
-                buttonImage: "${path}/resources/image/calendar-check.svg",
-                buttonImageOnly: true,
-                buttonText: "선택", //버튼 호버 텍스트              
-                yearSuffix: "년", //달력의 년도 부분 뒤 텍스트
-                monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], //달력의 월 부분 텍스트
-                monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], //달력의 월 부분 Tooltip
-                dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], //달력의 요일 텍스트
-                dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'], //달력의 요일 Tooltip
-                /*minDate: "-50Y", //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-                maxDate: "+5y", //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)*/
-                yearRange: "-100:+10",
-            });
-            /* $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)*/
-        })
+	//생년월일
+	$(function() {
+		$('.datepicker').datepicker(
+				{
+					showOn : "button",
+					dateFormat : "yy-mm-dd",
+					showOtherMonths : true,
+					showMonthAfterYear : true,
+					changeYear : true,
+					changeMonth : true,
+					showOn : "both",
+					buttonImage : "${path}/resources/image/calendar-check.svg",
+					buttonImageOnly : true,
+					buttonText : "선택", //버튼 호버 텍스트              
+					yearSuffix : "년", //달력의 년도 부분 뒤 텍스트
+					monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월',
+							'7월', '8월', '9월', '10월', '11월', '12월' ], //달력의 월 부분 텍스트
+					monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월',
+							'8월', '9월', '10월', '11월', '12월' ], //달력의 월 부분 Tooltip
+					dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ], //달력의 요일 텍스트
+					dayNames : [ '일요일', '월요일', '화요일', '수요일', '목요일', '금요일',
+							'토요일' ], //달력의 요일 Tooltip
+					/*minDate: "-50Y", //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+					maxDate: "+5y", //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)*/
+					yearRange : "-100:+10",
+				});
+		/* $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)*/
+	})
 
-        //주소
-        function sample4_execDaumPostcode() {
-            new daum.Postcode({
-                oncomplete: function(data) {
-                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	//주소
+	function sample4_execDaumPostcode() {
+		new daum.Postcode(
+				{
+					oncomplete : function(data) {
+						// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-                    // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                    var roadAddr = data.roadAddress; // 도로명 주소 변수
-                    var extraRoadAddr = ''; // 참고 항목 변수
+						// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+						// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+						var roadAddr = data.roadAddress; // 도로명 주소 변수
+						var extraRoadAddr = ''; // 참고 항목 변수
 
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
-                        extraRoadAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if (data.buildingName !== '' && data.apartment === 'Y') {
-                        extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if (extraRoadAddr !== '') {
-                        extraRoadAddr = ' (' + extraRoadAddr + ')';
-                    }
+						// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+						// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+						if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+							extraRoadAddr += data.bname;
+						}
+						// 건물명이 있고, 공동주택일 경우 추가한다.
+						if (data.buildingName !== '' && data.apartment === 'Y') {
+							extraRoadAddr += (extraRoadAddr !== '' ? ', '
+									+ data.buildingName : data.buildingName);
+						}
+						// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+						if (extraRoadAddr !== '') {
+							extraRoadAddr = ' (' + extraRoadAddr + ')';
+						}
 
-                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                    document.getElementById('sample4_postcode').value = data.zonecode;
-                    document.getElementById("sample4_roadAddress").value = roadAddr;
-                    /*  document.getElementById("sample4_jibunAddress").value = data.jibunAddress; */
+						// 우편번호와 주소 정보를 해당 필드에 넣는다.
+						document.getElementById('sample4_postcode').value = data.zonecode;
+						document.getElementById("sample4_roadAddress").value = roadAddr;
+						/*  document.getElementById("sample4_jibunAddress").value = data.jibunAddress; */
 
-                    // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-                    /* if(roadAddr !== ''){
-                        document.getElementById("sample4_extraAddress").value = extraRoadAddr;
-                    } else {
-                        document.getElementById("sample4_extraAddress").value = '';
-                    } */
+						// 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+						/* if(roadAddr !== ''){
+						    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+						} else {
+						    document.getElementById("sample4_extraAddress").value = '';
+						} */
 
-                    var guideTextBox = document.getElementById("guide");
-                    // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-                    if (data.autoRoadAddress) {
-                        var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
-                        guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
-                        guideTextBox.style.display = 'block';
+						var guideTextBox = document.getElementById("guide");
+						// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+						if (data.autoRoadAddress) {
+							var expRoadAddr = data.autoRoadAddress
+									+ extraRoadAddr;
+							guideTextBox.innerHTML = '(예상 도로명 주소 : '
+									+ expRoadAddr + ')';
+							guideTextBox.style.display = 'block';
 
-                    }
-                    /* else if(data.autoJibunAddress) {
-	                var expJibunAddr = data.autoJibunAddress;
-	                guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
-	                guideTextBox.style.display = 'block';
-	            } */
-                    else {
-                        guideTextBox.innerHTML = '';
-                        guideTextBox.style.display = 'none';
-                    }
-                }
-            }).open();
-        }
-    </script>
+						}
+						/* else if(data.autoJibunAddress) {
+						var expJibunAddr = data.autoJibunAddress;
+						guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+						guideTextBox.style.display = 'block';
+						} */
+						else {
+							guideTextBox.innerHTML = '';
+							guideTextBox.style.display = 'none';
+						}
+					}
+				}).open();
+	}
+</script>
 
 
 <meta charset="UTF-8">
@@ -154,13 +162,14 @@
 					<h3 class="join_title">
 						<label for="pswd1">이메일 인증 여부</label>
 					</h3>
-					 <span class="box int_pass_check"> <select name="yechan">
-							<option value="yechan1"<c:if test="${member_info.member_auth == 1}">selected</c:if>>O</option>
-							<option value="yechan2"<c:if test="${member_info.member_auth == 0}">selected</c:if>>X</option>
+					<span class="box int_pass_check"> <select name="yechan">
+							<option value="yechan1"
+								<c:if test="${member_info.member_auth == 1}">selected</c:if>>O</option>
+							<option value="yechan2"
+								<c:if test="${member_info.member_auth == 0}">selected</c:if>>X</option>
 					</select>
 
-					</span> 
-					 <span class="error_next_box"></span>
+					</span> <span class="error_next_box"></span>
 				</div>
 
 				<!-- PW2 -->
@@ -168,12 +177,13 @@
 					<h3 class="join_title">
 						<label for="pswd2">회원그룹</label>
 					</h3>
-					<span class="box int_pass_check"> 
-					<select name="mg">
-							<option value="member_group1"<c:if test="${member_info.member_group == '일반회원'}">selected</c:if>>일반회원</option>
-							<option value="member_group2"<c:if test="${member_info.member_group == '대청넷'}">selected</c:if>>대청넷</option>
+					<span class="box int_pass_check"> <select name="mg">
+							<option value="member_group1"
+								<c:if test="${member_info.member_group == '일반회원'}">selected</c:if>>일반회원</option>
+							<option value="member_group2"
+								<c:if test="${member_info.member_group == '대청넷'}">selected</c:if>>대청넷</option>
 					</select>
-	
+
 					</span> <span class="error_next_box"></span>
 				</div>
 
@@ -251,19 +261,19 @@
 
 				<!-- E-mail agree -->
 				<br>
+				
 				<div class="mail-agree">
-					<div class="mail-agreeok">
-						<label for="emailagree"> <input type="radio"
-							id="emailagree" name="member_eagree" class="agree_chk" value="1">[선택]이메일서비스신청
-							수신동의
-						</label> <label for="emailagree"> <input type="radio"
-							id="emailagree" name="member_eagree" class="agree_chk" value="0">비동의
-						</label>
-					</div>
-					<ul class="explan_txt">
-						<li>고객님께서는 위의 개인정보 및 회원정보 수정 등을 통해 추가로 수집하는 개인정보에 대해 동의하지 않거나
-							개인정보를 기재하지 않음으로써 거부하실 수 있습니다. 다만 이때 회원 대상 서비스가 제한될 수 있습니다.</li>
-					</ul>
+				<h3 class="join_title">
+						<label for="email">정지여부<span class="optional"></span></label>
+					</h3>
+					<span class="box int_email"> 
+					<select name="member_stop">
+							<option value="member_stop1"
+								<c:if test="${member_info.member_enabled == 1}">selected</c:if>>사용중</option>
+							<option value="member_stop2"
+								<c:if test="${member_info.member_enabled == 0}">selected</c:if>>정지</option>
+					</select>
+					</span>
 				</div>
 
 				<!-- JOIN BTN-->
@@ -271,6 +281,7 @@
 					<button id="btnJoin">
 						<span>수정하기</span>
 					</button>
+
 				</div>
 			</div>
 		</div>
