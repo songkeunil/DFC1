@@ -83,14 +83,14 @@ public class ReviewControllerImpl  implements ReviewController{
 
 		// 로그인 시 세션에 저장된 회원 정보에서 글쓴이 아이디를 얻어와서 Map에 저장합니다.
 		// 로그인 취합 시 사용
-		HttpSession session = multipartRequest.getSession();
-		MemberVO memberVO = (MemberVO) session.getAttribute("member");
-		String member_id = memberVO.getMember_id();
+//		HttpSession session = multipartRequest.getSession();
+//		MemberVO memberVO = (MemberVO) session.getAttribute("member");
+//		String member_id = memberVO.getMember_id();
 //		String member_id = "lee";
 
 		// 시큐리티용 현재 접속자 ID 수령 코드 취합 및 실 사용시 교체 해주세요.
-//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        String member_id=(String)principal;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String member_id=(String)principal;
 
 		articleMap.put("member_id", member_id);
 		// 더미(답글 parentNO 사용안함)
@@ -135,7 +135,7 @@ public class ReviewControllerImpl  implements ReviewController{
 			
 			message = "<script>";
 			message += " alert('새글을 추가했습니다.');";
-			message += " location.href='" + multipartRequest.getContextPath() + "/YS_board/listArticles.do'; ";
+			message += " location.href='" + multipartRequest.getContextPath() + "/mentalreview/listArticles.do'; ";
 			message += " </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 
@@ -188,28 +188,30 @@ private List<String> upload(MultipartHttpServletRequest multipartRequest) {
 		return mav;
 	}
 	
-	//글 수정 상세장
-//		@RequestMapping(value = "/mentalreview/forModShowArticles.do", method = RequestMethod.GET)
-//		public ModelAndView forModShowArticles(@RequestParam("brd_no") int brd_no, HttpServletRequest request,HttpServletResponse response) throws Exception {
-//			String viewName = (String) request.getAttribute("viewName");
-//			Map articleMap = reviewService.viewArticle(brd_no);
-//			ModelAndView mav = new ModelAndView();
-//			mav.setViewName(viewName);
-//			mav.addObject("articleMap", articleMap);
-//			System.out.println(mav);
-//			return mav;
-//	}
-//	// 글 수정
-//		@Override
-//		@RequestMapping(value="/mentalreview/modCounselBoard.do" ,method={RequestMethod.POST,RequestMethod.GET})
-//		public String modCounselBoard(MemberVO vo)  throws Exception{
-//			reviewService.modCounselBoard(vo);
-//			
-//
-//			return "redirect:/mentalreview/modCounselBoard?member_id="+vo.getMember_id();
-//
-//		}
 
+	// 글 수정
+		@Override
+		@RequestMapping(value="/mentalreview/modReviewView.do" ,method={RequestMethod.POST,RequestMethod.GET})
+		public String modReviewView(MemberVO vo)  throws Exception{
+			reviewService.modReviewView(vo);
+			
+
+			return "redirect:/mentalreview/modReviewView?member_id="+vo.getMember_id();
+		}
+
+		//글 수정 상세장
+		@RequestMapping(value = "/mentalreview/modReview.do",  method = {RequestMethod.GET ,RequestMethod.POST})
+		public ModelAndView modReview(@RequestParam("brd_no") int brd_no, HttpServletRequest request,HttpServletResponse response) throws Exception {
+			String viewName = (String) request.getAttribute("viewName");
+			Map articleMap = reviewService.viewArticle(brd_no);
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName(viewName);
+			mav.addObject("articleMap", articleMap);
+//			System.out.println(mav);
+			return mav;
+	}		
+		
+		
 	// 글 삭제
 	@Override
 	@RequestMapping(value = "/mentalreview/removeArticle.do", method={RequestMethod.POST,RequestMethod.GET})

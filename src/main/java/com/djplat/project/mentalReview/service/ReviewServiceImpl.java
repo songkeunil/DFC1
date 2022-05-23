@@ -20,6 +20,8 @@ public class ReviewServiceImpl implements ReviewService{
 	@Autowired
 	private SqlSession sqlSession;
 
+	
+	//글목록
 	@Override
 	public Map listArticles(Map pagingMap) throws Exception {
 		Map articlesMap = new HashMap();
@@ -34,7 +36,7 @@ public class ReviewServiceImpl implements ReviewService{
 	public int addNewArticle(Map articleMap) throws Exception {
 		int brd_no = reviewDAO.insertNewArticle(articleMap);
 		articleMap.put("brd_no", brd_no);
-		reviewDAO.insertNewArticle(articleMap);
+//		reviewDAO.insertNewArticle(articleMap);
 		return brd_no;
 	}
 	
@@ -47,12 +49,12 @@ public class ReviewServiceImpl implements ReviewService{
 		articleMap.put("article", reviewVO);
 		return articleMap;
 	}
-
+	//글수정
 	@Override
-	public void modCounselBoard(MemberVO vo) throws Exception {
-		reviewDAO.modCounselBoard(vo);
+	public void modReviewView(MemberVO vo) throws Exception {
+		reviewDAO.modReviewView(vo);
 	}
-
+	//글지우기
 	@Override
 	public void removeArticle(int brd_no) throws Exception {
 		reviewDAO.deleteArticle(brd_no);

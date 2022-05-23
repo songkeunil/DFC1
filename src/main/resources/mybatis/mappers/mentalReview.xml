@@ -65,6 +65,20 @@
 		WHERE brd_no = #{brd_no}
 	]]>
 	</update>
-	
+	<!-- 글 삭제하기 -->
+	<delete id="deleteArticle" parameterType="int">
+ 	<![CDATA[
+ 		DELETE FROM MIND_REVIEW
+ 		WHERE brd_no = #{brd_no}
+ 	]]>
+	</delete>
+	<!-- 글 수정하기 -->
+	<update id="updateArticle" parameterType="java.util.Map">
+		UPDATE
+		MIND_REVIEW
+		SET title=#{title},
+		mr_context=#{mr_context}
+		WHERE brd_no=#{brd_no}
+	</update>
 	
 </mapper>

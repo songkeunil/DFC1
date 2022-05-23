@@ -28,6 +28,6 @@ public interface ReviewDAO {
 
 	public int selectSearchTotArticles(Map pagingMap) throws DataAccessException;
 
-	public void modCounselBoard(MemberVO vo) throws DataAccessException;
+	public void modReviewView(MemberVO vo) throws DataAccessException;
 
 }

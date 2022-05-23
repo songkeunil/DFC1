@@ -22,7 +22,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <link href="${contextPath}/resources/css/mrlistArticles.css" rel="stylesheet"/>
-<link href="${contextPath}/resources/css/common/font.css" rel="stylesheet"/>
+<link href="${contextPath}/resources/css/font.css" rel="stylesheet"/>
 </head>
 <body>
  <div id='boardrap'>
@@ -32,10 +32,7 @@
             <a href='#'><i class="bi bi-house-door"></i>Home </a> > <a href='#'> 청년마음건강 </a> > <a href='#'>이용후기</a>
         </div>
         <div id='board'>
-            <button type='button' class = 'boardtopbutton a1' onclick='location.href=href="${contextPath}/mentalreview/listArticles.do"'>전체</button>
-            <button type='button' class = 'boardtopbutton' onclick='location.href="${contextPath}/YS_news/listArticles.do"'>청춘소식</button>
-            <button type='button' class = 'boardtopbutton' onclick='location.href=href="${contextPath}/YS_repository/listArticles.do"'>자료실</button>
-            <table>
+             <table>
                 <thead>
                     <tr>
                         <th id=th-1>번호</th>

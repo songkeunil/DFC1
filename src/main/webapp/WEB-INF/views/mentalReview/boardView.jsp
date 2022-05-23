@@ -75,7 +75,7 @@ $(document).ready(function () {
 		var sendData = {'brd_no' : '${article.brd_no}','heart' : that.prop('name')};
 		  
 			$.ajax({
-              url :'http://localhost:8090/project/YS_board/activeLike.do',
+              url :'http://localhost:8090/project/mentalreview/activeLike.do',
               type :'POST',
               data : sendData,
               success : function(data){
@@ -137,7 +137,7 @@ $(document).ready(function () {
 
 
 
-
+</div>
 
 
 			<div id=y-detail-comment>
@@ -185,7 +185,7 @@ $(document).ready(function () {
 								<div class="y-detail-comment-middle-info-time-reply">14:50</div>
 							</div>
 
-							<div class="y-detail-comment-middle-info-main-ㄷreply">2021년
+							<div class="y-detail-comment-middle-info-main-reply">2021년
 								대전시 해외취업지원사업 전문분야 국내외 항공사 및 외국기업 취업역량강화 교육 참여자 모집중입니다.</div>
 						</div>
 					</div>
@@ -208,17 +208,18 @@ $(document).ready(function () {
 					</button>
 				</div>
 				<button type="button">
-					<a href="${contextPath}/YS_board/forModShowArticles.do?brd_no=${article.brd_no}">수정하기</a>
+					<a href="${contextPath}/mentalreview/modReview.do?brd_no=${article.brd_no}">수정하기</a>
 				</button>
+			<form action="">
 				<input type="button"
-					onclick="fn_remove_article('${contextPath}/YS_board/removeArticle.do', ${article.brd_no})"
-					value="삭제하기">
-				<div class='y-detail-bottom-right'>
-					<button type='button' onclick="location.href='#'">
+					onclick="fn_remove_article('${contextPath}/mentalreview/removeArticle.do?brd_no=${article.brd_no}', ${article.brd_no})"
+					value="삭제하기">	</form>
+							<div class='y-detail-bottom-right'>
+					<button type='button' onclick='location.href="${contextPath }/mentalreview/mrWriteForm.do"'>
 						<i class="y-bi bi-pencil"></i>글쓰기
 					</button>
 					
-					<button type='button' class='boardbtn' onclick="location.href='${contextPath }/YS_board/listArticles.do'">
+					<button type='button' class='boardbtn' onclick="location.href='${contextPath }/mentalreview/listArticles.do'">
             			<i class="bi bi-justify"></i>목록
             		</button>
 				</div>

@@ -11,9 +11,6 @@
     font-weight: normal;
     font-style: normal;
 }
-
-loginForm body {
-    height: 100%;
 @font-face {
     font-family: 'Eoe_Zno_B';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/Eoe_Zno_B.woff') format('woff');
@@ -33,9 +30,6 @@ body {
 
 .form-all {
     width: 100%;
-    max-width: 330px;
-    padding: 15px;
-    margin: auto;
     max-width:500px;
     padding: 15px;
     margin: auto;
@@ -44,12 +38,6 @@ body {
 }
 
 .form-img {
-    width: 100%;
-    margin: auto;
-}
-
-.form-title {
-    text-align: center;
 margin: auto;
     
 }
@@ -60,9 +48,6 @@ margin: auto;
 }
 
 .form-login {
-    text-align: center;
-    list-style: none;
-
 	text-align: center;
     list-style: none;
     margin:auto;
@@ -71,19 +56,6 @@ margin: auto;
 .form-id{
 padding-bottom: 5px;
 }
-.form-find{
-	text-align :center;
-	
-}
-.form-find li{
-	display:inline-block;
-	
-}
-.form-find a{
-	
-	border:1px; 
-solid:red;}
-
 .form-pw{
 padding-bottom: 10px;
 }
@@ -126,5 +98,3 @@ li{
 .form-copyright {
     text-align: center;
 }
-
-

@@ -14,15 +14,15 @@ import com.djplat.project.member.vo.MemberVO;
 
 public interface ReviewController {
 	public ModelAndView listArticles(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	
+
 	public ResponseEntity addNewArticle(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
 			throws Exception;
 
+	public String modReviewView(MemberVO vo) throws Exception;
 
-	public ModelAndView viewArticle(@RequestParam("brd_no") int brd_no,
-			  HttpServletRequest request, HttpServletResponse response) throws Exception;
-//	public String modCounselBoard(MemberVO vo)  throws Exception;
-	 public ResponseEntity removeArticle(@RequestParam("brd_no") int brd_no,
-				  HttpServletRequest request, 
-				  HttpServletResponse response) throws Exception;
+	public ModelAndView viewArticle(@RequestParam("brd_no") int brd_no, HttpServletRequest request,
+			HttpServletResponse response) throws Exception;
+
+	public ResponseEntity removeArticle(@RequestParam("brd_no") int brd_no, HttpServletRequest request,
+			HttpServletResponse response) throws Exception;
 }

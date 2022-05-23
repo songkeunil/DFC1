@@ -12,7 +12,110 @@
 <link href="${path}/resources/css/loginForm.css" rel="stylesheet"/> 	
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
 rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+ <style>
+ @font-face {
+    font-family: 'Eoe_Zno_L';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/Eoe_Zno_L.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Eoe_Zno_EB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/Eoe_Zno_EB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Eoe_Zno_B';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/Eoe_Zno_B.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	
+    height: 110%;
+    font-family: 'Eoe_Zno_L';
+    display: flex;
+    align-items: center;
+    padding-top: 160px;
+    list-style: none;
+}
+
+.form-all {
+    width: 100%;
+    max-width:500px;
+    padding: 15px;
+    margin: auto;
+    text-align: center;
+
+}
+
+.form-img {
+margin: auto;
+    
+}
+
+.form-title {
+    font-family: 'Eoe_Zno_EB';
+    font-size: 40px;
+}
+
+.form-login {
+	text-align: center;
+    list-style: none;
+    margin:auto;
+}
+
+.form-id{
+padding-bottom: 5px;
+}
+.form-pw{
+padding-bottom: 10px;
+}
+
+.form-button{
+	font-family: 'Eoe_Zno_B';
+	font-size: 15px;
+	padding-bottom: 10px;
+}
+
+
+.form-find .test {
+	font-family: 'Eoe_Zno_B';
+	list-style: none;
+	text-align: center;
+	margin-right: 30px;
+	
+}
+li{
+	display:inline-block;
+}
+
+.form-find a:link {
+  color : Black;
+  text-decoration: none;
+}
+.form-find a:visited {
+  color : #0099FF;
+}
+.form-find a:hover {
+  color : red;
+  text-decoration:underline;
+}
+
+
+/* .test li{float:left; margin-right:5px;} */
+.test li::after{padding-left:5px; content:"|";}
+.test li:last-child::after{content:"";}
+
+.form-copyright {
+    text-align: center;
+}
  
+ 
+ </style>
 <meta charset="UTF-8">
 <title>로그인 화면</title>
 </head>

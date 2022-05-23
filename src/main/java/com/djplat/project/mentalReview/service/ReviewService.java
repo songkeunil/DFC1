@@ -12,7 +12,7 @@ public interface ReviewService {
 
 	public Map viewArticle(int brd_no) throws Exception;
 
-	public void modCounselBoard(MemberVO vo) throws Exception;
+	public void modReviewView(MemberVO vo) throws Exception;
 
 	public void removeArticle(int brd_no) throws Exception;
 	

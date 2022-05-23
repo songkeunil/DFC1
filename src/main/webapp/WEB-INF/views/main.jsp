@@ -49,6 +49,7 @@
 	padding-top: 50px;
 	padding-left: 50px;
 	padding-right: 50px;
+	position: relative;
 }
 
 .y-main-top-slide {
@@ -284,7 +285,7 @@
 .prev, .next {
   cursor: pointer;
   position: absolute;
-  top: 50%;	
+   top: 45%;	
   width: auto;
   padding: 16px;
   margin-top: -22px;
@@ -293,8 +294,8 @@
   font-size: 18px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
-  margin-top : 130px;
-}
+/*   margin-top : 30px;
+ */}
 
 /*다음 버튼*/
 .next {
