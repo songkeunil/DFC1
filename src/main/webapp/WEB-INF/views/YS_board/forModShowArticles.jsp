@@ -14,7 +14,7 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>글 수정하기</title>
 
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -103,15 +103,16 @@
 					</div>
 					<c:choose>
 						<c:when test="${not empty articleFile && articleFile!='null' }">
-							<td>첨부파일 </td>
 							<br>
 							<c:forEach var="item" items="${articleFile}" varStatus="status">
 								<tr id="${status.count}">
+								<c:if test="${status.count eq 1}"><td>썸네일</td></c:if>
+								<c:if test="${status.count ne 1}"><td>첨부파일 </td></c:if>
 									<td>
 										<input type="hidden" name="articleFileNO" value="${item.articleFileNO}" /> 
 										<input type="hidden" name="oldFileName" value="${item.articleFileName}" />
 										${item.articleFileName}
-										<input type="file" value="articleFileName${status.count}" name = "OriginalFileName${status.count}">
+										<input type="file" value="articleFileName${status.count}" name="OriginalFileName${status.count}">
 									</td>
 								</tr>
 								<br>
@@ -124,7 +125,6 @@
 									<!--   수정시 새로 추가된 이미지 수  -->
 								</c:if>
 							</c:forEach>
-							
 						</c:when>
 						<c:otherwise>
 							<c:set var="fil_index" value="${0}" />

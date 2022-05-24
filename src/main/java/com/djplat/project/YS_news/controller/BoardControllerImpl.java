@@ -32,7 +32,7 @@ public class BoardControllerImpl implements BoardController{
 	@Autowired
 	private ArticleVO articleVO;
 	
-	//글 목록 창
+	//바둑판글 목록 창
 		@Override
 		@RequestMapping(value= "/YS_news/listArticles.do", method = {RequestMethod.GET, RequestMethod.POST})
 		public ModelAndView listArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {

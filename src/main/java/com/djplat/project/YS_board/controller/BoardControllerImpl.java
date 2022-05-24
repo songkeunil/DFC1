@@ -86,7 +86,6 @@ public class BoardControllerImpl implements BoardController {
 
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("articlesMap", articlesMap);
-		System.out.println("list" + mav.toString());
 		return mav;
 	}
 
@@ -132,7 +131,6 @@ public class BoardControllerImpl implements BoardController {
 				FileVO fileVO = new FileVO();
 				fileVO.setArticleFileName(fileName);
 				articleFileList.add(fileVO);
-				System.out.println(fileName);
 			}
 			
 			articleMap.put("articleFileList", articleFileList);
@@ -213,7 +211,6 @@ public class BoardControllerImpl implements BoardController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
 		mav.addObject("articleMap", articleMap);
-		System.out.println(mav);
 		return mav;
 	}
 
@@ -229,7 +226,7 @@ public class BoardControllerImpl implements BoardController {
 
 		while (enu.hasMoreElements()) {
 			String name = (String) enu.nextElement();
-
+			
 			if (name.equals("articleFileNO")) {
 				String[] values = multipartRequest.getParameterValues(name);
 				articleMap.put(name, values);
@@ -247,7 +244,6 @@ public class BoardControllerImpl implements BoardController {
 		int pre_file_num = Integer.parseInt((String) articleMap.get("pre_file_num"));
 		List<FileVO> articleFileList = new ArrayList<FileVO>();
 		List<FileVO> modAddFileList = new ArrayList<FileVO>();
-		System.out.println(articleMap.toString());
 
 		if (fileList != null && fileList.size() != 0) {
 			String[] articleFileNO = (String[]) articleMap.get("articleFileNO");
@@ -280,15 +276,14 @@ public class BoardControllerImpl implements BoardController {
 					if (i < pre_file_num) {
 //						if (fileName != null) {
 						if (fileName != dummy) {
+							String[] oldName = (String[]) articleMap.get("oldFileName");
+							String oldFileName = oldName[i];
+							File oldFile = new File(ARTICLE_FILE_REPO + "\\" + brd_no + "\\" + oldFileName);
+							oldFile.delete();
+							
 							File srcFile = new File(ARTICLE_FILE_REPO + "\\" + "temp" + "\\" + fileName);
 							File destDir = new File(ARTICLE_FILE_REPO + "\\" + brd_no);
 							FileUtils.moveFileToDirectory(srcFile, destDir, true);
-
-							String[] oldName = (String[]) articleMap.get("oldFileName");
-							String oldFileName = oldName[i];
-
-							File oldFile = new File(ARTICLE_FILE_REPO + "\\" + brd_no + "\\" + oldFileName);
-							oldFile.delete();
 						}
 						// 임시 수정
 						else if (fileName == dummy) {
@@ -345,14 +340,21 @@ public class BoardControllerImpl implements BoardController {
 			String fileName = fileNames.next();
 			MultipartFile mFile = multipartRequest.getFile(fileName);
 			String originalFileName = mFile.getOriginalFilename();
+			
 			if (originalFileName != "" && originalFileName != null) {
 				fileList.add(originalFileName);
 				File file = new File(ARTICLE_FILE_REPO + "\\" + fileName);
 				if (mFile.getSize() != 0) {
 					if (!file.exists()) {
 						file.getParentFile().mkdirs();
+						if(fileName.equals("OriginalFileName1")){
+							System.out.println(fileName.toString());
+							fileList.set(0, "thumb.png");
+							mFile.transferTo(new File(ARTICLE_FILE_REPO + "\\" + "temp" + "\\" + "thumb.png"));
+						}else{
 						mFile.transferTo(new File(ARTICLE_FILE_REPO + "\\" + "temp" + "\\" + originalFileName));
 					}
+				}
 				}
 			} else {
 //				fileList.add(null);
@@ -361,6 +363,25 @@ public class BoardControllerImpl implements BoardController {
 		}
 		return fileList;
 	}
+//	
+//
+//					File file= new File(ARTICLE_FILE_REPO + "\\" + fileName);
+//					if (mFile.getSize() != 0) {
+//						if (!file.exists()) {
+//							file.getParentFile().mkdirs();
+//							if(fileName.equals("articleFileName4")){
+//								fileList.add("thumb.png");
+//								mFile.transferTo(new File(ARTICLE_FILE_REPO + "\\" + "temp" + "\\" + "thumb.png"));
+//							}else {
+//								fileList.add(originalFileName);
+//								mFile.transferTo(new File(ARTICLE_FILE_REPO + "\\" + "temp" + "\\" + originalFileName));
+//							}
+//						}
+//					}
+//				}
+//		}
+//		return fileList;
+//	}
 
 	// 글 삭제
 	@Override
@@ -469,7 +490,7 @@ public class BoardControllerImpl implements BoardController {
 					if (mFile.getSize() != 0) {
 						if (!file.exists()) {
 							file.getParentFile().mkdirs();
-							if(fileName.equals("articleFileName4")){
+							if(fileName.equals("articleFileName1")){
 								fileList.add("thumb.png");
 								mFile.transferTo(new File(ARTICLE_FILE_REPO + "\\" + "temp" + "\\" + "thumb.png"));
 							}else {
@@ -519,21 +540,19 @@ public class BoardControllerImpl implements BoardController {
 		if (image.exists()) { 
 			if(fileName.equals("thumb.png")) {
 				Thumbnails.of(image).size(230,180).outputFormat("png").toOutputStream(out);
+				byte[] buffer = new byte[1024 * 8];
+				out.write(buffer);
+				out.close();
 			}else if(!fileName.equals("thumb.png")){
 				if(fileName.contains(".png") || fileName.contains(".jpg")){
-					Thumbnails.of(image).size(900,500).outputFormat("png").toOutputStream(out);
-				}else {
-					//pass;
-					return;
+					Thumbnails.of(image).size(900,900).outputFormat("png").toOutputStream(out);
+					byte[] buffer = new byte[1024 * 8];
+					out.write(buffer);
+					out.close();
 				}
 			}
 		}
-		byte[] buffer = new byte[1024 * 8];
-		out.write(buffer);
-		out.close();
 	}
-	
-	
 	
 	// 다운로드
 	@RequestMapping(value = "/YS_board/download.do", method = RequestMethod.POST)
@@ -545,7 +564,6 @@ public class BoardControllerImpl implements BoardController {
 		String file_repo = ARTICLE_FILE_REPO + "\\" + brd_no;
 		OutputStream out = response.getOutputStream();
 		String downFile = file_repo + "\\" + articleFileName;
-		System.out.println(downFile);
 		File f = new File(downFile);
 		String filename = new String(articleFileName.getBytes("euc-kr"), "ISO-8859-1");
 		response.setHeader("Cache-Control", "no-cache");
@@ -616,8 +634,6 @@ public class BoardControllerImpl implements BoardController {
 		likeVO.setBrd_no(brd_no);
 		likeVO.setMember_id(member_id);
 
-		System.out.println(heart);
-
 		if (heart == 0) {
 			boardService.insertBoardLike(likeVO);
 			heart = 1;
@@ -625,7 +641,14 @@ public class BoardControllerImpl implements BoardController {
 			boardService.deleteBoardLike(likeVO);
 			heart = 0;
 		}
-		System.out.println(heart);
 		return heart;
 	}
+	
+
+		@RequestMapping(value = "/YS_board/howtocome.do", method = {RequestMethod.GET, RequestMethod.POST})
+		public ModelAndView howtocome(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			String viewName = (String) request.getAttribute("viewName");
+			ModelAndView mav = new ModelAndView();
+			return mav;
+			}
 }

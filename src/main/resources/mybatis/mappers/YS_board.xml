@@ -32,7 +32,7 @@
 		resultMap="articlesResult">
   	<![CDATA[
 		SELECT a.* FROM
-		(SELECT ROW_NUMBER() over (ORDER BY brd_no DESC) as recNum, brd_no, title, support_context,
+		(SELECT ROW_NUMBER() over (ORDER BY brd_no DESC) as recNum, ROW_NUMBER() over (ORDER BY brd_no) as recNum2, brd_no, title, support_context,
 		cc, w_date, hits, ylike, member_id FROM YOUNGSUPPORT_BOARD 
 		) a
 		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*10+1 and (#{section}-1)*100 + #{pageNum}*10
@@ -45,11 +45,11 @@
   		SELECT count(brd_no) FROM YOUNGSUPPORT_BOARD
   	]]>
 	</select>
-
+		
 	<!-- 새글 작성 -->
 	<select id="insertNewArticle" parameterType="java.util.Map">
  	<![CDATA[
- 		INSERT INTO YOUNGSUPPORT_BOARD(brd_no, title, support_context, cc, w_date, hits, ylike,member_id)
+		INSERT INTO YOUNGSUPPORT_BOARD(brd_no, title, support_context, cc, w_date, hits, ylike,member_id)
  		VALUES(#{brd_no},#{title},#{support_context},#{cc},sysdate,0,0,#{member_id})
  	]]>
 	</select>

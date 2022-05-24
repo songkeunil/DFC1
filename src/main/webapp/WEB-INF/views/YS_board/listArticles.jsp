@@ -16,7 +16,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시판 리스트</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <link href="${contextPath}/resources/css/YS_board/listArticles.css" rel="stylesheet"/>
 <link href="${contextPath}/resources/css/common/font.css" rel="stylesheet"/>
@@ -60,8 +60,7 @@
                       <c:when test="${not empty articlesList }" >
                           <c:forEach  var="article" items="${articlesList }" varStatus="articleNum" >
                             <tr align="center">
-                               <!--   <td>${articleNum.count}</td>-->
-                               <td>${article.brd_no }</td>
+                               <td>${article.recNum2 }</td>
                                 <td class = 'text-color'><a href = '#'>${article.cc }</a></td>
                                 <td class='text-left'>
                                     <a href='${contextPath}/YS_board/viewArticle.do?brd_no=${article.brd_no}'>${article.title}</a>

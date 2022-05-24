@@ -20,7 +20,8 @@
 		resultMap="articlesResult">
   	<![CDATA[
 		SELECT a.* FROM
-		(SELECT ROW_NUMBER() over (ORDER BY brd_no DESC) as recNum, brd_no, title, support_context,
+		(SELECT ROW_NUMBER() over (ORDER BY brd_no DESC) as recNum,ROW_NUMBER() over (ORDER BY brd_no) as recNum2,
+		 brd_no, title, support_context,
 		cc, w_date, hits, ylike, member_id FROM YOUNGSUPPORT_BOARD WHERE cc = '청춘소식'
 		) a
 		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*12+1 

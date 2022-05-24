@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Component("YSB_articleVO")
 public class ArticleVO {
 	private int recNum;
+	private int recNum2;
 	private int brd_no; //글 번호 
 	private String title; //글 제목 
 	private String support_context; //글 내용
@@ -19,13 +20,13 @@ public class ArticleVO {
 	private String member_id; //회원아이디
 	
 	
-	
 	@Override
 	public String toString() {
-		return "ArticleVO [recNum=" + recNum + ", brd_no=" + brd_no + ", title=" + title + ", support_context="
-				+ support_context + ", cc=" + cc + ", w_date=" + w_date + ", hits=" + hits + ", ylike=" + ylike
-				+ ", member_id=" + member_id + "]";
+		return "ArticleVO [recNum=" + recNum + ", recNum2=" + recNum2 + ", brd_no=" + brd_no + ", title=" + title
+				+ ", support_context=" + support_context + ", cc=" + cc + ", w_date=" + w_date + ", hits=" + hits
+				+ ", ylike=" + ylike + ", member_id=" + member_id + "]";
 	}
+	
 	
 	public int getRecNum() {
 		return recNum;
@@ -33,6 +34,15 @@ public class ArticleVO {
 	public void setRecNum(int recNum) {
 		this.recNum = recNum;
 	}
+	
+	public int getRecNum2() {
+		return recNum2;
+	}
+
+	public void setRecNum2(int recNum2) {
+		this.recNum2 = recNum2;
+	}
+
 	public int getBrd_no() {
 		return brd_no;
 	}

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="article" value="${articleMap.article}" />
 <c:set var="articleFileList" value="${articleMap.articleFileList}" />
@@ -14,7 +14,7 @@
 	rel="stylesheet" />
 <link href="${contextPath}/resources/css/common/font.css" rel="stylesheet" />
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>${article.brd_no}번 글 상세창</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <c:choose>
@@ -87,13 +87,11 @@ $(document).ready(function () {
                   else{
                 	  $("#heart").prop("class", "bi-hand-thumbs-up");
                   }
-
-
               }
           });
 	})
-}
-);
+});
+
 
 
 
@@ -126,22 +124,23 @@ $(document).ready(function () {
 						<th class='y-detail-title-th1'>${article.title}</th>
 						<th class='y-detail-title-th2'><i class="bi bi-eye-fill"></i>
 							${article.hits}</th>
-						<th class='y-detail-title-th3'>11:33</th>
+						<th class='y-detail-title-th3'></th>
 						<th class='y-detail-title-th4'>${article.w_date}</th>
-
 					</tr>
 				</table>
 			</div>
 			<div id='y-detail-main'>${article.support_context}</div>
 			
 			<div id= detail-picture>
-			<c:forEach var="item" items="${articleFileList}" varStatus="status">
-			<!-- 	<c:if test="${item.articleFileName}"></c:if> -->
-					<img class="form-img"
-					src="${contextPath}/thumbnails.do?brd_no=${article.brd_no}
-					&fileName=${item.articleFileName}">
-				
-			</c:forEach>
+				<c:forEach var="item" items="${articleFileList}" varStatus="status">
+					<c:if test="${item.articleFileName ne 'thumb.png'}">
+						<c:if test="${item.articleFileName.contains('jpg') or item.articleFileName.contains('png')}">
+						<img class="form-img"
+						src="${contextPath}/thumbnails.do?brd_no=${article.brd_no}
+						&fileName=${item.articleFileName}" style="width: 900px; height: 900px;">
+						</c:if>
+					</c:if>
+				</c:forEach>
 			</div>
 			<div id='y-detail-like-rap'>
 				<button class='y-detail-like'>
@@ -152,14 +151,12 @@ $(document).ready(function () {
 
 			<form name="downloadForm" method="post"
 				action="${contextPath }/YS_board/download.do?brd_no=${article.brd_no}">
-				<c:if
-					test="${not empty articleFileList && articleFileList !='null'}">
-					<td>첨부파일</td>
-					<br>
-					<br>
+				<c:if test="${not empty articleFileList && articleFileList !='null'}">
 					<c:forEach var="item" items="${articleFileList}" varStatus="status">
 						<c:if test="${item.articleFileName != 'dummy.txt'}">
 							<tr>
+							<c:if test="${status.count eq 1}"><td>썸네일</td></c:if>
+							<c:if test="${status.count ne 1}"><td>첨부파일</td></c:if>
 								<td><input type="submit" name="articleFileName"
 									value="${item.articleFileName }"/></td>
 								<br>

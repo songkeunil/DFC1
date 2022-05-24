@@ -13,7 +13,7 @@
 <link href="${contextPath}/resources/css/common/font.css" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>글쓰기</title>
 
 
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -80,14 +80,14 @@ function backToList(obj){
 
             
 		  		<div class="y-writebottom-file">
-                    <div class="y-writebottom-file-name">첨부파일</div>
+                    <div class="y-writebottom-file-name">썸네일</div>
                     <div class='y-writebottom-file-insert'>
                         <input type='file'  name="articleFileName1" multiple="multiple" class='y-writebottom-file-insert-input' >
                     </div>
                 </div>
                 
                 <div class="y-writebottom-file">
-                    <div class="y-writebottom-file-name"></div>
+                    <div class="y-writebottom-file-name">첨부파일</div>
                     <div class='y-writebottom-file-insert'>
                         <input type='file' name="articleFileName2" multiple="multiple" class='y-writebottom-file-insert-input'>
                     </div>
@@ -101,7 +101,7 @@ function backToList(obj){
                 </div>	
                 
                 <div class="y-writebottom-file">
-                    <div class="y-writebottom-file-name">썸네일</div>
+                    <div class="y-writebottom-file-name"></div>
                     <div class='y-writebottom-file-insert'>
                         <input type='file' name="articleFileName4" multiple="multiple" class='y-writebottom-file-insert-input'>
                     </div>

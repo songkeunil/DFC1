@@ -17,7 +17,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>검색</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <link href="${contextPath}/resources/css/YS_board/listArticles.css" rel="stylesheet"/>
 <link href="${contextPath}/resources/css/common/font.css" rel="stylesheet"/>
