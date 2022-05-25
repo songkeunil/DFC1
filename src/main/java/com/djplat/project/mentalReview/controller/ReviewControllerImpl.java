@@ -9,7 +9,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.djplat.project.member.vo.MemberVO;
 import com.djplat.project.mentalReview.service.ReviewService;
 import com.djplat.project.mentalReview.vo.FileVO;
+import com.djplat.project.mentalReview.vo.ReviewVO;
 
 @Controller
 public class ReviewControllerImpl  implements ReviewController{
@@ -37,6 +37,8 @@ public class ReviewControllerImpl  implements ReviewController{
 	private ReviewService reviewService;
 	@Autowired
 	private MemberVO memberVO;
+	@Autowired
+	private ReviewVO reviewVO;
 	
 	//게시글 목록 보기
 	@Override
@@ -192,13 +194,16 @@ private List<String> upload(MultipartHttpServletRequest multipartRequest) {
 	// 글 수정
 		@Override
 		@RequestMapping(value="/mentalreview/modReviewView.do" ,method={RequestMethod.POST,RequestMethod.GET})
-		public String modReviewView(MemberVO vo)  throws Exception{
+		public String modReviewView(ReviewVO vo)  throws Exception{
 			reviewService.modReviewView(vo);
-			
-
-			return "redirect:/mentalreview/modReviewView?member_id="+vo.getMember_id();
+	
+			return "redirect:/mentalreview/viewArticle.do?brd_no="+vo.getBrd_no();
 		}
 
+		
+		
+		
+		
 		//글 수정 상세장
 		@RequestMapping(value = "/mentalreview/modReview.do",  method = {RequestMethod.GET ,RequestMethod.POST})
 		public ModelAndView modReview(@RequestParam("brd_no") int brd_no, HttpServletRequest request,HttpServletResponse response) throws Exception {

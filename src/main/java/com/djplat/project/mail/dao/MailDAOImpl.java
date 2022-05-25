@@ -52,12 +52,18 @@ public class MailDAOImpl implements MailDAO{
 		return sqlsession.selectOne("mapper.mail.findPwCheck",memberVO);
 	}
 	@Override	      
-	public int findPw(String memberEmail, String memberId,String memberPw) throws Exception{
+	public int findPw(String memberPw,String memberEmail, String memberId) throws Exception{
+
 		Map<String,Object> map = new HashMap<String, Object>();
+		System.out.println("==================");
+		System.out.println(memberPw);
+		System.out.println(memberEmail);
+		System.out.println(memberId);
+		map.put("memberPw", memberPw);
 		map.put("memberEmail", memberEmail);
 		map.put("memberId", memberId);
-		map.put("memberPw", memberPw);
+	
 		return sqlsession.update("mapper.mail.findPw",map);
-		
+
 	}
 }

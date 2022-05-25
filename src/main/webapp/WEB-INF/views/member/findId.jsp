@@ -5,6 +5,48 @@
 <!DOCTYPE html >
 <html>
 <head>
+<link href="${path}/resources/css/font.css" rel="stylesheet"/>
+
+<style>
+*{
+list-style:none;
+}
+    .my-5{
+    width: 1000px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.jumbotron{
+    width: 400px;
+    height: auto;
+    border: 2px solid #b4b4b4;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    
+}
+.jumbotron li{
+   
+  
+    margin-right: 40px;
+    
+}
+.btn-primary{
+    width: 100px;
+    height: 30px;
+    background: white;
+    border: 2px solid #18A8F1;
+    font-weight: bold;
+}
+.btn-primary:hover{
+    background: #18A8F1;
+    color: white;
+    cursor: pointer;
+}
+    </style>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <c:if test='${not empty message }'>
 	<script>

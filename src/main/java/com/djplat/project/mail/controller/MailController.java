@@ -49,6 +49,7 @@ public class MailController{
 		}else {
 			mailservice.findPw(memberVO.getMember_email(),memberVO.getMember_id());
 			model.addAttribute("member",memberVO.getMember_email());
+			
 			return"/member/findPw";
 		}
 	}

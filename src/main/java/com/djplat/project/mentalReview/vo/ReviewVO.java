@@ -15,8 +15,18 @@ public class ReviewVO {
 	private Date w_date; //작성일  
 	private int hits; //조회수
 	private int mr_like; //좋아요
+	private int two;
 	
-	
+	public int getTwo() {
+		return two;
+	}
+
+
+	public void setTwo(int two) {
+		this.two = two;
+	}
+
+
 	public int getMr_like() {
 		return mr_like;
 	}

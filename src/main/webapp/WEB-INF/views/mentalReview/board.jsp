@@ -29,7 +29,7 @@
         <div id='boardtop'>
             <h2>이용후기<br></h2><br>
             <br>
-            <a href='#'><i class="bi bi-house-door"></i>Home </a> > <a href='#'> 청년마음건강 </a> > <a href='#'>이용후기</a>
+            <a href='#'><i class="bi bi-house-door"></i>Home </a> > <a href='#'> 청년마음건강 </a> > <a href='${contextPath }/mentalreview/listArticles.do'>이용후기</a>
         </div>
         <div id='board'>
              <table>
@@ -60,7 +60,7 @@
                           <c:forEach  var="article" items="${articlesList }" varStatus="articleNum" >
                             <tr align="center">
                                <!--   <td>${articleNum.count}</td>-->
-                               <td>${article.brd_no }</td>
+                               <td>${article.two }</td>
                                 <td class = 'text-color'><a href = '#'>${article.member_id }</a></td>
                                 <td class='text-left'>
                                     <a href='${contextPath}/mentalreview/viewArticle.do?brd_no=${article.brd_no}'>${article.title}</a>

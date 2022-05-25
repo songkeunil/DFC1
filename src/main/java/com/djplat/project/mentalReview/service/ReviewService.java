@@ -3,6 +3,7 @@ package com.djplat.project.mentalReview.service;
 import java.util.Map;
 
 import com.djplat.project.member.vo.MemberVO;
+import com.djplat.project.mentalReview.vo.ReviewVO;
 
 public interface ReviewService {
 
@@ -12,7 +13,7 @@ public interface ReviewService {
 
 	public Map viewArticle(int brd_no) throws Exception;
 
-	public void modReviewView(MemberVO vo) throws Exception;
+	public void modReviewView(ReviewVO vo) throws Exception;
 
 	public void removeArticle(int brd_no) throws Exception;
 	

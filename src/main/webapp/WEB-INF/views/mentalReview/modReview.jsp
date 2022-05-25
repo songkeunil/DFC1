@@ -22,14 +22,12 @@
 		obj.action = "${contextPath}/mentalreview/listArticles.do";
 		obj.submit();
 	}
-	
-	
 </script>
 </head>
 <body>
 	<div id='y-boardrap'>
 		<div id='y-boardtop'>
-				<h2 class='y-h2'>
+			<h2 class='y-h2'>
 				상담 이용후기<br>
 			</h2>
 			<br>
@@ -50,7 +48,7 @@
 		</div>
 
 		<form name="articleForm" method="post"
-			action="${contextPath}/mentalreview/modReview.do"
+			action="${contextPath}/mentalreview/modReviewView.do"
 			enctype="multipart/form-data" accept-charset="utf-8">
 			<div id='y-write'>
 
@@ -59,8 +57,8 @@
 					<div class='y-writetop-option'>
 						<div class="y-writetop-option-name">분류</div>
 						<div class="y-writetop-option-box">
-							<input type="radio" name="cc" value="청춘소식">청춘소식
-							<input type="radio" name="cc" value="자료실">자료실
+							<input type="radio" name="cc" value="청춘소식">청춘소식 <input
+								type="radio" name="cc" value="자료실">자료실
 						</div>
 					</div>
 
@@ -71,7 +69,7 @@
 							<input name="brd_no" type="hidden" value="${article.brd_no }">
 							<input name="title" type="text" value="${article.title }">
 						</div>
-			
+
 					</div>
 				</div>
 
@@ -80,19 +78,19 @@
 					<textarea name="mr_context" id="ir1">${article.mr_context}</textarea>
 				</div>
 
-<div id='y-write-buttonrap'>
-						<div class="y-write-button">
-							<button type="submit">
-								<i class="bi bi-check-lg"></i>작성완료
-							</button>
-							
-							
-							
-							<button type="submit" onclick="backToList(this.form)">취소</button>
-						</div>
-					</div>
+				<div id='y-write-buttonrap'>
+					<div class="y-write-button">
+						<button>
+							<span>수정완료</span>
+						</button>
 
-			
+
+
+						<button type="submit" onclick="backToList(this.form)">취소</button>
+					</div>
+				</div>
+
+
 			</div>
 		</form>
 	</div>

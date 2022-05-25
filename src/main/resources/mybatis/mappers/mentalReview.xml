@@ -20,7 +20,7 @@
 		resultMap="articlesResult">
   	<![CDATA[
 		SELECT * FROM
-		(SELECT ROW_NUMBER() over (ORDER BY brd_no DESC) as recNum, brd_no, title, mr_context,
+		(SELECT ROW_NUMBER() over (ORDER BY brd_no DESC) as recNum, ROW_NUMBER() over (ORDER BY brd_no) as two, brd_no, title, mr_context,
 		cc, w_date, hits, mr_like, member_id FROM MIND_REVIEW
 		)
 		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*12+1 
@@ -73,7 +73,7 @@
  	]]>
 	</delete>
 	<!-- 글 수정하기 -->
-	<update id="updateArticle" parameterType="java.util.Map">
+	<update id="modReviewBoard" parameterType="java.util.Map">
 		UPDATE
 		MIND_REVIEW
 		SET title=#{title},

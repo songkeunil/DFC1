@@ -35,7 +35,6 @@
 	visibility: hidden;
 }
 </style>
-
 <script type="text/javascript">
      function backToList(obj){
 	    obj.action="${contextPath}/mentalreview/listArticles.do";
@@ -56,43 +55,7 @@
 	     form.submit();
 	 }
 	
-$(document).ready(function () {
-	 var heartval = ${heart};
-	 
-	  if(heartval > 0) {
-          console.log(heartval);
-          $("#heart").prop("class", "bi-hand-thumbs-up-fill");
-          $(".y-detail-like").prop('name',heartval)
-      }
-      else{
-          console.log(heartval);
-          $("#heart").prop("class", "bi-hand-thumbs-up");
-          $(".y-detail-like").prop('name',heartval)
-      }
-	
-	$(".y-detail-like").on("click", function () {
-		var that = $(".y-detail-like");
-		var sendData = {'brd_no' : '${article.brd_no}','heart' : that.prop('name')};
-		  
-			$.ajax({
-              url :'http://localhost:8090/project/mentalreview/activeLike.do',
-              type :'POST',
-              data : sendData,
-              success : function(data){
-                  that.prop('name',data);
-                  if(data==1) {
-                	   $("#heart").prop("class", "bi-hand-thumbs-up-fill");
-                  }
-                  else{
-                	  $("#heart").prop("class", "bi-hand-thumbs-up");
-                  }
-              }
-          });
-	})
-}
-);
  </script>
-
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 </head>
@@ -111,7 +74,7 @@ $(document).ready(function () {
 				수 있습니다.
 			</p>
 			<br> <a href='#'><i class="y-bi bi-house-door"></i>Home </a> > <a
-				href='#'> 청년마음건강 </a> > <a href='#'>이용후기</a>
+				href='#'> 청년마음건강 </a> > <a href='${contextPath }/mentalreview/listArticles.do'>이용후기</a>
 		</div>
 		<div id='y-detail-rap'>
 			<div id='y-detail-title'>
@@ -210,10 +173,13 @@ $(document).ready(function () {
 				<button type="button">
 					<a href="${contextPath}/mentalreview/modReview.do?brd_no=${article.brd_no}">수정하기</a>
 				</button>
-			<form action="">
 				<input type="button"
-					onclick="fn_remove_article('${contextPath}/mentalreview/removeArticle.do?brd_no=${article.brd_no}', ${article.brd_no})"
-					value="삭제하기">	</form>
+					onclick="fn_remove_article('${contextPath}/mentalreview/removeArticle.do?brd_no=${article.brd_no}',
+					 ${article.brd_no})"
+					value="삭제하기">	
+					
+					
+					
 							<div class='y-detail-bottom-right'>
 					<button type='button' onclick='location.href="${contextPath }/mentalreview/mrWriteForm.do"'>
 						<i class="y-bi bi-pencil"></i>글쓰기

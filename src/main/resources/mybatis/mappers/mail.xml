@@ -19,7 +19,7 @@
 <select id="findIdCheck" resultType="int" >
 		select count(*) from MEMBER where MEMBER_Email = #{memberEmail}
 </select>
-	<update id="findPw">
+	<update id="findPw" parameterType="map">
 	update MEMBER set MEMBER_PW = #{memberPw} where MEMBER_EMAIL = #{member_email} and MEMBER_ID = #{member_id}
 	</update>
 	

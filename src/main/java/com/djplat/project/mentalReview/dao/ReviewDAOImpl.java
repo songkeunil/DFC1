@@ -95,7 +95,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 
 	@Override
-	public void modReviewView(MemberVO vo) throws DataAccessException{
+	public void modReviewView(ReviewVO vo) throws DataAccessException{
 		sqlSession.update("mapper.mindreview.modReviewBoard",vo);
 	}
 

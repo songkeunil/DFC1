@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.djplat.project.member.vo.MemberVO;
+import com.djplat.project.mentalReview.vo.ReviewVO;
 
 public interface ReviewController {
 	public ModelAndView listArticles(HttpServletRequest request, HttpServletResponse response) throws Exception;
@@ -18,7 +19,7 @@ public interface ReviewController {
 	public ResponseEntity addNewArticle(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
 			throws Exception;
 
-	public String modReviewView(MemberVO vo) throws Exception;
+	public String modReviewView(ReviewVO vo) throws Exception;
 
 	public ModelAndView viewArticle(@RequestParam("brd_no") int brd_no, HttpServletRequest request,
 			HttpServletResponse response) throws Exception;

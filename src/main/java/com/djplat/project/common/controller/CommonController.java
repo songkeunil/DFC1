@@ -8,6 +8,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 
 /**
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class CommonController {
 	
-	
+
 	
 	@RequestMapping("/main.html")
 	public String main(Model model) {
@@ -49,6 +50,11 @@ public class CommonController {
 //	public String loginLinkPage(Model model) {
 //		return "loginLinkPage";
 //	}
-
-
+	@RequestMapping("/access_denied")
+	public ModelAndView accessDenied() throws Exception {
+		ModelAndView mav = new ModelAndView("/goIndex");
+		mav.addObject("msg", "접근 권한이 없습니다.");
+		mav.addObject("url","/");
+		return mav;
+	}
 }

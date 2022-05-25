@@ -32,7 +32,6 @@ public class LoginAuthenticationProvider implements AuthenticationProvider{
 		String userId = authentication.getName();
 		String userPw = (String) authentication.getCredentials();
 		UserVO userVO = (UserVO) loginService.loadUserByUsername(userId);
-		
 		//LoginFailHandler로 오류를 던짐
 		if (userVO == null || !userId.equals(userVO.getUsername())
 				|| !bPasswordEncoder.matches(userPw, userVO.getPassword())) {

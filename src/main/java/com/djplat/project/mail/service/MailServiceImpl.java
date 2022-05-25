@@ -61,8 +61,9 @@ public class MailServiceImpl implements MailService {
 	}
 	@Override
 	public void findPw(String memberEmail,String memberId) throws Exception{
-		String memberKey = new TempKey().getKey(6, false);
-		String memberPw = BCrypt.hashpw(memberKey, BCrypt.gensalt());
+		String memberKey = new TempKey().getKey(6, false); //난수생성
+		String memberPw = BCrypt.hashpw(memberKey, BCrypt.gensalt()); //암호화
+
 		mailDAO.findPw(memberPw, memberEmail, memberId);
 		MailUtils sendMail = new MailUtils(mailSender);
 		sendMail.setSubject("[청춘끼리 임시 비밀번호 입니다]"); //메일 제목
@@ -77,5 +78,6 @@ public class MailServiceImpl implements MailService {
 		sendMail.setFrom("chunkkiri@gmail.com", "청춘끼리");
 		sendMail.setTo(memberEmail);
 		sendMail.send();
+
 	}
 }

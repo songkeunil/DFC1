@@ -12,7 +12,8 @@
 	<context:component-scan base-package="com.djplat.project" />
 
 	<s:http auto-config="true" use-expressions="true">
-		
+	<s:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"  />		
+	<s:intercept-url pattern="/**" access="permitAll" />
 		<s:form-login
 			username-parameter="user_id"
 			password-parameter="user_pw"
@@ -28,12 +29,11 @@
 			invalidate-session="true"
 			delete-cookies="true"
 		/>
-	<!-- 	<s:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
-		<s:intercept-url pattern="/user/**" access="hasRole('ROLE_USER')"/>
-		<s:intercept-url pattern="/**" access="permitAll"/> -->
-		
+
 		<s:access-denied-handler ref="accessFailHandler"/>
+		
 	</s:http>
+
 		
 	<s:authentication-manager>
 		<s:authentication-provider ref="loginAuthenticationProvider"/>

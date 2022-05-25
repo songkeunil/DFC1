@@ -51,7 +51,7 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 	//글수정
 	@Override
-	public void modReviewView(MemberVO vo) throws Exception {
+	public void modReviewView(ReviewVO vo) throws Exception {
 		reviewDAO.modReviewView(vo);
 	}
 	//글지우기
