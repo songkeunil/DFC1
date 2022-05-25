@@ -38,8 +38,8 @@
             monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], //달력의 월 부분 Tooltip
             dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], //달력의 요일 텍스트
             dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'], //달력의 요일 Tooltip
-            /*minDate: "-50Y", //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-            maxDate: "+5y", //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)*/
+            /*minDate: "-50Y", //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)*/
+            maxDate: 0, //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)
             yearRange: "-100:+10",
         });
        	/* $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)*/
@@ -346,7 +346,7 @@
 		} */
 		
 		if(!result){
-		    alter("check")
+		    alert("check")
 		    return false;
 		}
 		
@@ -441,7 +441,7 @@
           	<div>
                 <h3 class="join_title"><label for="name">생년월일</label></h3>
                 <span class="box date_name">
-                    <input type="text" id="birth" class="datepicker" name="member_birth" maxlength="20">
+                    <input type="text" id="birth" class="datepicker" name="member_birth" maxlength="20" readonly>
                 </span>
             </div>
 

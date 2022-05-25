@@ -1,0 +1,185 @@
+#suit_boardrap {
+	width: 1400px;
+	height: 1200px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+/* 정장대여신청 */
+#suit_boardtop {
+	margin: 0 auto;
+	width: 1200px;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #A4A4A4;
+}
+
+#suit_boardtop h2 {
+	float: left;
+	width: auto;
+	font-size: 35px;
+	font-weight: 700;
+	/* border-bottom: 3px solid #18A8F1; */
+}
+
+#suit_boardtop a {
+	text-decoration: none;
+}
+
+#suit_home {
+	color: black;
+}
+
+.suitList_submenu {
+	float: right;
+}
+
+.suitList_submenu a {
+	color: #848484;
+}
+
+/* 확인사항 */
+#suit_notice {
+	margin: 0 auto;
+	width: 1200px;
+	height: 200px;
+	border: 1px solid #D8D8D8;
+	text-align: left;
+	padding: 10px;
+}
+
+#suit_notice p>span {
+	color: #a20619;
+}
+
+/* 본문 */
+#suit_board {
+	width: 1200px;
+	margin: 0 auto;
+	margin-top: 60px;
+}
+
+#suit_board table {
+	width: 1200px;
+	text-align: center;
+}
+
+#suit_board th {
+	border-bottom: 1px solid #A4A4A4;
+	border-top: 1px solid #A4A4A4;
+	width: 100px;
+	height: 50px;
+	background: #F2F2F2;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#suit_board tr:hover {
+	background: #F2F2F2;
+}
+
+#suit_board td {
+	border-bottom: 1px solid #A4A4A4;
+	height: 40px;
+}
+
+#suit_board button {
+	padding: 2px 5px; background : white;
+	border: 1px solid #A4A4A4;
+	border-radius: 2px;
+	font-weight: bold;
+	cursor: pointer;
+	background: white;
+}
+
+/* 하단 */
+#suit_boardfooter {
+	width: 1200px;
+	height: 100px;
+	margin: 0 auto;
+	margin-top: 50px;
+}
+
+/* 검색창 */
+#suit_boardbtnbox {
+	width: 1200px;
+	height: 40px;
+	float: right;
+	margin-bottom: 30px;
+}
+
+.suit_search {
+	float: left;
+}
+
+.suit_search select {
+	width: 100px;
+	height: 30px;
+}
+
+.suit_search input {
+	width: 150px;
+	height: 26px;
+}
+
+#suit_searchBtn {
+	margin-top: 1px;
+	width: 55px;
+	height: 30px;
+	border: none;
+	background: #F2F2F2;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.register {
+	float: right;
+	width: 55px;
+	height: 40px;
+	background: white;
+	border: 1px solid #A4A4A4;
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 15px;
+	cursor: pointer;
+	background: #663300;
+	color: white;
+}
+
+.searchbtn i {
+	/* margin-left: 15px; */
+	line-height: 39px;
+}
+
+.suit_content a {
+	font-weight: bold;
+	color: blue;
+}
+
+/* paging button */
+#suit_pagebtn {
+	/*    background: red;*/
+	width: 1200px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 20px;
+	margin: 0 auto;
+}
+
+#suit_pagebtn li {
+	display: inline-block;
+}
+
+#suit_pagebtn button {
+	width: 30px;
+	height: 35px;
+	background: white;
+	border: 1px solid #A4A4A4;
+	border-radius: 5px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+#suit_pagebtn button:hover {
+	background: #F2F2F2;
+}
