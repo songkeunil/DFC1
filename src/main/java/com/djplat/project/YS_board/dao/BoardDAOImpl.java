@@ -35,7 +35,17 @@ public class BoardDAOImpl implements BoardDAO {
 		List<ArticleVO> articlesList = sqlSession.selectList("mapper.YS_board.selectAllArticlesList",pagingMap);
 		return articlesList;
 	}
-
+	@Override
+	public List selectAllNewsArticlesList(Map pagingMap) throws DataAccessException {
+		List<ArticleVO> articlesList = sqlSession.selectList("mapper.YS_board.selectAllNewsArticlesList",pagingMap);
+		return articlesList;
+	}
+	@Override
+	public List selectAllRepoArticlesList(Map pagingMap) throws DataAccessException {
+		List<ArticleVO> articlesList = sqlSession.selectList("mapper.YS_board.selectAllRepoArticlesList",pagingMap);
+		return articlesList;
+	}
+	
 	@Override
 	public int selectTotArticles() throws DataAccessException{
 		int totArticles = sqlSession.selectOne("mapper.YS_board.selectTotArticles");
@@ -76,6 +86,7 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public void insertNewArticleFile(Map articleMap) throws DataAccessException{
+		
 		List<FileVO> articleFileList = (ArrayList)articleMap.get("articleFileList");
 		int brd_no = (Integer)articleMap.get("brd_no");
 		int articleFileNO = selectNewArticleFileNO();
@@ -121,6 +132,8 @@ public class BoardDAOImpl implements BoardDAO {
 		}
 		
 		if(articleFileList != null && articleFileList.size() != 0) {
+			System.out.println(articleFileList.toString());
+			System.out.println("sql 진입");
 			sqlSession.update("mapper.YS_board.updateArticleFile", articleFileList);
 		}
 		
@@ -135,8 +148,9 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		for(FileVO fileVO : modAddFileList){
 			fileVO.setBrd_no(brd_no);
-			fileVO.setArticleFileNO(articleFileNO);
+			fileVO.setArticleFileNO(++articleFileNO);
 		}
+		System.out.println("mod파일" + modAddFileList.toString());
 		
 //		sqlSession.delete("mapper.YS_board.insertModNewFile", modAddFileList );
 		sqlSession.insert("mapper.YS_board.insertModNewFile", modAddFileList );
@@ -200,4 +214,8 @@ public class BoardDAOImpl implements BoardDAO {
     	sqlSession.update("mapper.YS_board.updateBoardLike",likeVO);
     }
 
+    @Override
+    public void cleanDummyFile() throws Exception {
+    	sqlSession.delete("mapper.YS_board.cleanDummyFile");
+    }
 }

@@ -38,6 +38,32 @@
 		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*10+1 and (#{section}-1)*100 + #{pageNum}*10
   	]]>
 	</select>
+	
+	<!-- 바둑판글 리스트 -->
+	<select id="selectAllNewsArticlesList" parameterType="java.util.Map"
+		resultMap="articlesResult">
+  	<![CDATA[
+		SELECT a.* FROM
+		(SELECT ROW_NUMBER() over (ORDER BY brd_no DESC) as recNum,ROW_NUMBER() over (ORDER BY brd_no) as recNum2,
+		 brd_no, title, support_context,
+		cc, w_date, hits, ylike, member_id FROM YOUNGSUPPORT_BOARD WHERE cc = '청춘소식'
+		) a
+		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*12+1 
+		AND (#{section}-1)*100 + #{pageNum}*12
+  	]]>
+	</select>
+	
+	<!-- 자료실 글 리스트 -->
+	<select id="selectAllRepoArticlesList" parameterType="java.util.Map"
+		resultMap="articlesResult">
+  	<![CDATA[
+		SELECT a.* FROM
+		(SELECT ROW_NUMBER() over (ORDER BY brd_no DESC) as recNum, ROW_NUMBER() over (ORDER BY brd_no) as recNum2, brd_no, title, support_context,
+		cc, w_date, hits, ylike, member_id FROM YOUNGSUPPORT_BOARD WHERE cc = '자료실'
+		) a
+		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*10+1 and (#{section}-1)*100 + #{pageNum}*10
+  	]]>
+	</select>
 
 	<!-- 페이지 넘버링 -->
 	<select id="selectTotArticles" resultType="int">
@@ -130,7 +156,7 @@
 		</foreach>
 	</update>
 
-	<insert id="insertModNewFile" parameterType="java.util.Map">
+	<insert id="insertModNewFile" parameterType="java.util.List">
 		<foreach item="item" collection="list" open="INSERT ALL"
 			separator=" " close="SELECT * FROM DUAL">
 			INTO YOUNGSUPPORT_FILE(articleFileNO,
@@ -225,5 +251,12 @@
 		FROM YOUNGSUPPORT_LIKE WHERE brd_no = #{brd_no})
 		WHERE brd_no = #{brd_no}
 	</update>
+	
+	<delete id="cleanDummyFile" parameterType="int">
+	<![CDATA[
+		DELETE FROM YOUNGSUPPORT_FILE
+		WHERE articlefilename = 'dummy.txt'
+	]]>
+	</delete>
 
 </mapper>

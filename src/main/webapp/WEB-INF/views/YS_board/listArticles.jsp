@@ -31,8 +31,8 @@
         </div>
         <div id='board'>
             <button type='button' class = 'boardtopbutton a1' onclick='location.href=href="${contextPath}/YS_board/listArticles.do"'>전체</button>
-            <button type='button' class = 'boardtopbutton' onclick='location.href="${contextPath}/YS_news/listArticles.do"'>청춘소식</button>
-            <button type='button' class = 'boardtopbutton' onclick='location.href=href="${contextPath}/YS_repository/listArticles.do"'>자료실</button>
+            <button type='button' class = 'boardtopbutton' onclick='location.href="${contextPath}/YS_board/NewsListArticles.do"'>청춘소식</button>
+            <button type='button' class = 'boardtopbutton' onclick='location.href=href="${contextPath}/YS_board/RepoListArticles.do"'>자료실</button>
             <table>
                 <thead>
                     <tr>
@@ -59,7 +59,20 @@
                       
                       <c:when test="${not empty articlesList }" >
                           <c:forEach  var="article" items="${articlesList }" varStatus="articleNum" >
-                            <tr align="center">
+     						<c:if test="${article.cc eq '공지사항'and section eq 1 and pageNum eq 1}">
+                            	<tr align="center">
+                            		<td></td>
+                                	<td class = 'text-color'><a href = '#'>${article.cc }</a></td>
+                               	 	<td class='text-left'>
+                                    	<a href='${contextPath}/YS_board/viewArticle.do?brd_no=${article.brd_no}'>${article.title}</a>
+                                	</td>
+                                	<td>${article.w_date}</td>
+                                	<td>${article.hits}</td>
+                               		<td>${article.ylike}</td>
+                               	</tr>
+                            </c:if>
+                            <c:if test="${article.cc ne '공지사항' }"> 
+                             <tr align="center">
                                <td>${article.recNum2 }</td>
                                 <td class = 'text-color'><a href = '#'>${article.cc }</a></td>
                                 <td class='text-left'>
@@ -68,6 +81,10 @@
                                 <td>${article.w_date}</td>
                                 <td>${article.hits}</td>
                                 <td>${article.ylike}</td>
+                            </tr>
+                           </c:if>
+
+                           
                           </c:forEach>
                       </c:when>
                     </c:choose>
@@ -78,17 +95,20 @@
             
         </div>
         <div id='boardfooter'>
-
             <div id = 'boardbtnbox'>
-            	<form name="articleSearch" action="${contextPath}/YS_board/searchArticles.do">
-            		<input name="searchWord" type="text">
+            	<br>
+            	<form name="articleSearch" action="${contextPath}/YS_board/searchArticles.do" style="width: 48%; height: 35px; float: left;">
+            		<input id="searchWordForm" name="searchWord" type="text" style="width: ">
             		<button type="submit" class='boardbtn searchbtn'><i class="bi bi-search"></i></button>
             	</form>
-            	<button type='button' class='boardbtn' onclick='location.href="${contextPath }/YS_board/articleForm.do"'>글 쓰기</button>
-            	
+            	<div id="footerControllBtns" style="width: 48%; height: 35px; float: right;">
+            	<button type='button' class='boardbtn' onclick='location.href="${contextPath }/YS_board/articleForm.do"'>
+            		글 쓰기
+            	</button>
             	<button type='button' class='boardbtn' onclick='location.href="${contextPath }/YS_board/listArticles.do"'>
             		<i class="bi bi-justify"></i>목록
             	</button>
+            	</div>
             </div>
             
           <!--   ----

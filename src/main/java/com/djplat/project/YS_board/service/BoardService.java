@@ -14,7 +14,10 @@ import com.djplat.project.YS_board.vo.LikeVO;
 public interface BoardService {
 
 	public Map listArticles(Map pagingMap) throws Exception;
+	public Map NewslistArticles(Map pagingMap) throws Exception;
+	public Map RepolistArticles(Map pagingMap) throws Exception;
 	public int addNewArticle(Map articleMap) throws Exception;
+//	public void addNewFileOnMod(Map articleMap) throws Exception;
 	public Map viewArticle(int brd_no) throws Exception;
 	public void modArticle(Map articleMap) throws Exception;
 	public void removeArticle(int brd_no) throws Exception;
@@ -25,4 +28,6 @@ public interface BoardService {
 	public int getBoardLike(LikeVO likeVO) throws Exception;
 	public void insertBoardLike(LikeVO likeVO) throws Exception;
 	public void deleteBoardLike(LikeVO likeVO) throws Exception;
+//	public void deleteBoardLike() throws Exception;
+	public void cleanDummyFile() throws Exception;
 }

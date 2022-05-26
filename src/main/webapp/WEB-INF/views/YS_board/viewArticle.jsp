@@ -108,14 +108,13 @@ $(document).ready(function () {
 			</h2>
 			<br>
 			<p class='y-p'>
-				자유게시판은 자유롭게 의견을 게시 할 수 있는 열린공간입니다. 상업성 광고, 저속한 표현,특정인에 대한 비방, 정치적
-				목적이나 성향, 동일인이라고 인정되는 자가 동일 <br>또는 유사 내용을 반복한 게시글 등은 관리자에 의해
+				청춘지원소식 게시판은 자유롭게 의견을 게시 할 수 있는 열린공간입니다. 상업성 광고, 저속한 표현,특정인에 대한 비방, 정치적
+				목적이나 성향, 동일인이라고 인정되는 자가 동일 또는 유사 내용을 반복한 게시글 등은 관리자에 의해
 				통보없이 삭제될 수 있습니다. <br>또한, 홈페이지를 통하여 불법유해 정보를 게시하거나 배포하면 정보통신망
 				이용촉진 및 정보보호 등에 관한 법률 제74조에 의거<br> 1년이하의 징역 또는 1천만원 이하의 벌금에 처해질
 				수 있습니다.
 			</p>
-			<br> <a href='#'><i class="y-bi bi-house-door"></i>Home </a> > <a
-				href='#'> 청춘지원 </a> > <a href='#'>청춘지원소식</a>
+			<br> <a><i class="y-bi bi-house-door"></i>Home</a> > <a> 청춘지원 </a> > <a>청춘지원소식</a>
 		</div>
 		<div id='y-detail-rap'>
 			<div id='y-detail-title'>
@@ -153,7 +152,6 @@ $(document).ready(function () {
 				action="${contextPath }/YS_board/download.do?brd_no=${article.brd_no}">
 				<c:if test="${not empty articleFileList && articleFileList !='null'}">
 					<c:forEach var="item" items="${articleFileList}" varStatus="status">
-						<c:if test="${item.articleFileName != 'dummy.txt'}">
 							<tr>
 							<c:if test="${status.count eq 1}"><td>썸네일</td></c:if>
 							<c:if test="${status.count ne 1}"><td>첨부파일</td></c:if>
@@ -162,7 +160,6 @@ $(document).ready(function () {
 								<br>
 								<br>
 							</tr>
-						</c:if>
 					</c:forEach>
 				</c:if>
 			</form>
@@ -235,22 +232,23 @@ $(document).ready(function () {
 
 			<div id='y-detail-bottom-rap'>
 				<div class='y-detail-bottom-left'>
-					<button type='button' onclick="location.href='#'">
+					<button type='button' onclick="location.href='http://localhost:8090/project/YS_board/viewArticle.do?brd_no=${article.brd_no-1}'">
 						<i class="y-bi bi-chevron-left"></i> 이전
 					</button>
-					<button type='button' onclick="location.href='#'">
+					<button type='button' onclick="location.href='http://localhost:8090/project/YS_board/viewArticle.do?brd_no=${article.brd_no+1}'">
 						다음<i class="y-bi bi-chevron-right"></i>
 					</button>
+					
+					<button type="button"
+						onclick="location.href='${contextPath}/YS_board/forModShowArticles.do?brd_no=${article.brd_no}'" style="float: right;">
+						수정하기</button>
 				</div>
 				
-				
-				<button type="button">
-					<a href="${contextPath}/YS_board/forModShowArticles.do?brd_no=${article.brd_no}">수정하기</a>
-				</button>
-				<input type="button"
-					onclick="fn_remove_article('${contextPath}/YS_board/removeArticle.do', ${article.brd_no})"
-					value="삭제하기">
 				<div class='y-detail-bottom-right'>
+					<button type="button"
+						onclick="fn_remove_article('${contextPath}/YS_board/removeArticle.do', ${article.brd_no})" style="float: left;">
+						삭제하기</button>	
+				
 					<button type='button' onclick="location.href='#'">
 						<i class="y-bi bi-pencil"></i>글쓰기
 					</button>

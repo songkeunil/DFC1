@@ -7,8 +7,7 @@
 <c:set var="articlesList"  value="${articlesMap.articlesList}"  />
 <c:set var="section"  value="${articlesMap.section}"  />
 <c:set var="pageNum"  value="${articlesMap.pageNum}"  />
-<c:set var="totArticles"  value="${articlesMap.searchTotArticles}"/>
-<c:set var="searchWord"  value="${articlesMap.searchWord}"/>
+<c:set var="totArticles"  value="${articlesMap.totArticles}"/>
 
 <%
   request.setCharacterEncoding("UTF-8");
@@ -17,7 +16,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>검색</title>
+<title>게시판 리스트</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <link href="${contextPath}/resources/css/YS_board/listArticles.css" rel="stylesheet"/>
 <link href="${contextPath}/resources/css/common/font.css" rel="stylesheet"/>
@@ -31,7 +30,7 @@
             <a href='#'><i class="bi bi-house-door"></i>Home </a> > <a href='#'> 청춘지원 </a> > <a href='#'>청춘지원소식</a>
         </div>
         <div id='board'>
-                       <button type='button' class = 'boardtopbutton a1' onclick='location.href=href="${contextPath}/YS_board/listArticles.do"'>전체</button>
+            <button type='button' class = 'boardtopbutton a1' onclick='location.href=href="${contextPath}/YS_board/listArticles.do"'>전체</button>
             <button type='button' class = 'boardtopbutton' onclick='location.href="${contextPath}/YS_board/NewsListArticles.do"'>청춘소식</button>
             <button type='button' class = 'boardtopbutton' onclick='location.href=href="${contextPath}/YS_board/RepoListArticles.do"'>자료실</button>
             <table>
@@ -49,7 +48,7 @@
                    <c:choose>
                       <c:when test="${empty articlesList}" >
                         <tr  height="10">
-                          <td colspan="4">
+                          <td width="1000" colspan="4">
                             <p align="center">
                                 <b><span style="font-size:9pt;">등록된 글이 없습니다.</span></b>
                             </p>
@@ -61,8 +60,7 @@
                       <c:when test="${not empty articlesList }" >
                           <c:forEach  var="article" items="${articlesList }" varStatus="articleNum" >
                             <tr align="center">
-                               <!--   <td>${articleNum.count}</td>-->
-                               <td>${article.brd_no }</td>
+                               <td>${article.recNum2 }</td>
                                 <td class = 'text-color'><a href = '#'>${article.cc }</a></td>
                                 <td class='text-left'>
                                     <a href='${contextPath}/YS_board/viewArticle.do?brd_no=${article.brd_no}'>${article.title}</a>
@@ -86,11 +84,23 @@
             		<input name="searchWord" type="text">
             		<button type="submit" class='boardbtn searchbtn'><i class="bi bi-search"></i></button>
             	</form>
-            	<button type='button' class='boardbtn'><a href="${contextPath }/YS_board/articleForm.do">글 쓰기</a></button>
-            	<button type='button' onclick="location.href='#'" class='boardbtn'><i class="bi bi-justify"></i>목록</button>
+            	<button type='button' class='boardbtn' onclick='location.href="${contextPath }/YS_board/articleForm.do"'>글 쓰기</button>
+            	
+            	<button type='button' class='boardbtn' onclick='location.href="${contextPath }/YS_board/listArticles.do"'>
+            		<i class="bi bi-justify"></i>목록
+            	</button>
             </div>
+            
+          <!--   ----
+        <form name="frmSearch" action="${contextPath}/goods/searchGoods.do" >
+			<input name="searchWord" class="main_input" type="text"  onKeyUp="keywordSearch()"> 
+			<input type="submit" name="search" class="btn1"  value="검 색" >
+		</form>
+            ---- -->
+            
+            
 
-         <div class="pagebtn">
+        <div class="pagebtn">
         
         	<button type='button' onclick="location.href='#'"><i class="bi bi-chevron-double-left"></i></button>
 			<button type='button' onclick="location.href='#'"><i class="bi bi-chevron-left"></i></button>
@@ -100,15 +110,15 @@
 				<c:when test="${totArticles >100 }">
 					<c:forEach var="page" begin="1" end="10" step="1">
 						<c:if test="${section >1 && page==1 }">
-							<button type="button" onclick='location.href="${contextPath }/YS_board/searchArticles.do?section=${section-1}&pageNum=${(section-1)*10 +1 }&searchWord=${searchWord}"'>
+							<button type="button" onclick='location.href="${contextPath }/YS_board/listArticles.do?section=${section-1}&pageNum=${(section-1)*10 +1 }"'>
 								&nbsp;pre
 							</button>
 						</c:if>
-							<button type="button" onclick='location.href=href="${contextPath }/YS_board/searchArticles.do?section=${section}&pageNum=${page}&searchWord=${searchWord}"'>
+							<button type="button" onclick='location.href=href="${contextPath }/YS_board/listArticles.do?section=${section}&pageNum=${page}"'>
 								${(section-1)*10 +page }
 							</button>
 						<c:if test="${page ==10 }">
-							<button type="button" onclick='location.href=href="${contextPath }/YS_board/searchArticles.do?section=${section+1}&pageNum=${section*10+1}&searchWord=${searchWord}"'>
+							<button type="button" onclick='location.href=href="${contextPath }/YS_board/listArticles.do?section=${section+1}&pageNum=${section*10+1}"'>
 								&nbsp; next
 							</button>
 						</c:if>
@@ -127,13 +137,13 @@
 					<c:forEach var="page" begin="1" end="${totArticles/10 +1}" step="1">
 						<c:choose>
 							<c:when test="${page==pageNum }">
-								<button type="button" onclick='location.href="${contextPath }/YS_board/searchArticles.do?section=${section}&pageNum=${page}&searchWord=${searchWord}"'>
+								<button type="button" onclick='location.href="${contextPath }/YS_board/listArticles.do?section=${section}&pageNum=${page}"'>
 									${page }
 								</button>
 							</c:when>
 						<c:otherwise>
-							<button type="button" onclick='location.href="${contextPath }/YS_board/searchArticles.do?section=${section}&pageNum=${page}&searchWord=${searchWord}"'>
-								${page }
+							<button type="button" onclick='location.href="${contextPath }/YS_board/listArticles.do?section=${section}&pageNum=${page}"'>
+									${page }
 							</button>
 						</c:otherwise>
 						</c:choose>

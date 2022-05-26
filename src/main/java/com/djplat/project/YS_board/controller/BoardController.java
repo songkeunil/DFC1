@@ -21,6 +21,7 @@ public interface BoardController {
 	 public ResponseEntity removeArticle(@RequestParam("brd_no") int brd_no,
 				  HttpServletRequest request, 
 				  HttpServletResponse response) throws Exception;
-	
+	 public ModelAndView NewsListArticles(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	 public ModelAndView RepoListArticles(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 }

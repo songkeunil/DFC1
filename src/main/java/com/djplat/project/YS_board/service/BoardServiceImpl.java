@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.djplat.project.YS_board.dao.BoardDAO;
 import com.djplat.project.YS_board.vo.ArticleVO;
@@ -30,6 +31,24 @@ public class BoardServiceImpl implements BoardService {
 		articlesMap.put("totArticles", totArticles);
 		return articlesMap;
 	}
+	
+	public Map NewslistArticles(Map pagingMap) throws Exception {
+		Map articlesMap = new HashMap();
+		List<ArticleVO> articlesList = boardDAO.selectAllNewsArticlesList(pagingMap);
+		int totArticles = boardDAO.selectTotArticles();
+		articlesMap.put("articlesList", articlesList);
+		articlesMap.put("totArticles", totArticles);
+		return articlesMap;
+	}
+	
+	public Map RepolistArticles(Map pagingMap) throws Exception {
+		Map articlesMap = new HashMap();
+		List<ArticleVO> articlesList = boardDAO.selectAllRepoArticlesList(pagingMap);
+		int totArticles = boardDAO.selectTotArticles();
+		articlesMap.put("articlesList", articlesList);
+		articlesMap.put("totArticles", totArticles);
+		return articlesMap;
+	}
 
 	@Override
 	public int addNewArticle(Map articleMap) throws Exception {
@@ -38,6 +57,12 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.insertNewArticleFile(articleMap);
 		return brd_no;
 	}
+	
+//	@Override
+//	public void addNewFileOnMod(Map articleMap) throws Exception{
+//		boardDAO.insertNewArticleFile(articleMap);
+//	}
+	
 
 	@Override
 	public Map viewArticle(int brd_no) throws Exception {
@@ -121,5 +146,10 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.deleteBoardLike(likeVO);
 		boardDAO.updateBoardLike(likeVO);
 		System.out.println(boardDAO.toString());
+	}
+	
+	@Override
+	public void cleanDummyFile() throws Exception{
+		boardDAO.cleanDummyFile();
 	}
 }

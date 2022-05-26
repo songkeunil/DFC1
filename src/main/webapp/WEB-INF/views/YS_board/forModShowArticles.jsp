@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="article" value="${articleMap.article}"></c:set>
 <c:set var="articleFile" value="${articleMap.articleFileList}"></c:set>
@@ -24,7 +25,55 @@
 		obj.submit();
 	}
 	
+	 var fileCount = ${fn:length(articleFile)};
+	 var cnt = ${fn:length(articleFile)}+1;
+	 function fn_addFile(){
+		 $("#d_file").append("<tr>"+"<td>"+"<input type='file' class='addMore' name='articleFileName"+cnt+
+				 "' multiple='multiple' class='y-writebottom-file-insert-input'/>" +
+				 "</td>"+"</tr>");
+		 cnt++;
+		 fileCount++;
+		 $("#added_file_num").val(fileCount);
+	 }
+	 	
 	
+ 	$("#addMoreBtn").on("click", function () {
+		uploadFile();
+	}); 
+	
+ function uploadFile() {
+		var formData = new FormData(); 
+		var fileInput = $('.addMore');
+		// fileInput 개수를 구한다.
+		for (var i = 0; i < fileInput.length; i++) {
+			if (fileInput[i].files.length > 0) {
+				for (var j = 0; j < fileInput[i].files.length; j++) {
+					console.log(" fileInput[i].addMore[j] :::"+ fileInput[i].files[j]);
+					
+					// formData에 'file'이라는 키값으로 fileInput 값을 append 시킨다.  
+					formData.append('file', $('.addMore')[i].files[j]);
+					formData.append('brd_no',${article.brd_no});
+				}
+			}
+		}
+	
+	   $.ajax({
+	        url : 'http://localhost:8090/project/YS_board/addNewFileOnMod.do',
+	        type : 'POST',
+	        data : formData,
+	        contentType : false,
+	        processData : false,
+	        async : false,
+	        enctype : 'multipart/form-data',
+	        success: function(data) {
+	            if (result.SUCCESS == true) {
+	             alert("성공");
+	            } else {
+	             alert("실패");
+	             }
+	          }
+	    });
+	}
 </script>
 </head>
 <body>
@@ -133,10 +182,14 @@
 							<input type="hidden" id="added_file_num" name="added_file_num"
 								value="${0}" />
 							<!--   수정시 새로 추가된 이미지 수  -->
-						</c:otherwise>
+						</c:otherwise>				  
 					</c:choose>
-
-
+					
+					  <input type="button" id="makeAddButton" value="파일 추가" onClick="fn_addFile()"/>
+					<!--   <button id="addMoreBtn">업로드</button> -->
+					  <div id="d_file"></div>
+					  
+					  
 					<div id='y-write-buttonrap'>
 						<div class="y-write-button">
 							<button type="submit">
