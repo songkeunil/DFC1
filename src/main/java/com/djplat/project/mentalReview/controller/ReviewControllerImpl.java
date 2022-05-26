@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -181,12 +182,12 @@ private List<String> upload(MultipartHttpServletRequest multipartRequest) {
 //			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //	        String member_id=(String)principal;
 		String member_id = memberVO.getMember_id();
-
-		
-
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
 		mav.addObject("articleMap", articleMap);
+		
+		List<ReviewVO> viewReply = reviewService.viewReply(reviewVO.getBrd_no());
+		mav.addObject("viewReply",viewReply);
 		return mav;
 	}
 	
@@ -200,8 +201,11 @@ private List<String> upload(MultipartHttpServletRequest multipartRequest) {
 			return "redirect:/mentalreview/viewArticle.do?brd_no="+vo.getBrd_no();
 		}
 
-		
-		
+		//마음건강 소개
+		@RequestMapping("/mentalreview/introduceMental.html")
+		   public String introduceMental(Model model) {
+		      return "introduceMental";
+		   }
 		
 		
 		//글 수정 상세장
@@ -215,7 +219,6 @@ private List<String> upload(MultipartHttpServletRequest multipartRequest) {
 //			System.out.println(mav);
 			return mav;
 	}		
-		
 		
 	// 글 삭제
 	@Override
@@ -289,6 +292,11 @@ private List<String> upload(MultipartHttpServletRequest multipartRequest) {
 		mav.addObject("articlesMap", articlesMap);
 		return mav;
 	}
+//	//댓글 작성
+//	@RequestMapping(value="/mentalreview/addReply.do", method={RequestMethod.POST,RequestMethod.GET})
+//	public String addReply(ReviewVO vo) throws Exception{
+//		reviewService.addReply(vo);
+//		return "redirect:/mentalreview/viewArticle.do?brd_no=" +vo.getBrd_no();
+//	}
 
-	
 }

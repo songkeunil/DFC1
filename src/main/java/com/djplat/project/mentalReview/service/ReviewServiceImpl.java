@@ -60,6 +60,7 @@ public class ReviewServiceImpl implements ReviewService{
 		reviewDAO.deleteArticle(brd_no);
 	}
 	
+	//글검색
 	@Override
 	public Map searchArticles(Map pagingMap) throws Exception {
 		Map articlesMap = new HashMap();
@@ -70,4 +71,9 @@ public class ReviewServiceImpl implements ReviewService{
 		articlesMap.put("searchTotArticles", searchTotArticles);
 		return articlesMap;
 	}
+	//댓글보기
+	public List<ReviewVO> viewReply(int brd_no) throws Exception{
+		return reviewDAO.viewReply(brd_no);
+	}
+	
 }

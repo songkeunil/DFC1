@@ -81,4 +81,21 @@
 		WHERE brd_no=#{brd_no}
 	</update>
 	
+	
+	
+	<!-- 댓글 조회-->
+	<select id="viewReply" resultType="ReviewVO"
+		parameterType="int">
+ 	<![CDATA[
+ 		SELECT * FROM MIND_REVIEW
+ 		WHERE brd_no = #{brd_no}
+ 	]]>
+	</select>
+	<!-- 댓글 작성 -->
+	<select id="insertReply" parameterType="java.util.Map">
+ 	<![CDATA[
+ 		INSERT INTO MR_REPLY(reply_no, brd_no, member_id,reply_time reply_lvl, reply_text)
+ 		VALUES(#{reply_no},#{brd_no},#{member_id},sysdate,0,#{reply_text})
+ 	]]>
+	</select>
 </mapper>

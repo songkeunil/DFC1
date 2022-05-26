@@ -159,7 +159,7 @@
                 <li class="h-nav-item">
                     <a class="h-nav-link" href="#" style="color: black">청년마음건강</a>
                     <ul class='h-sub'>
-                        <li><a href='#'>마음건강 소개</a></li>
+                        <li><a href='${path}/mentalreview/introduceMental.html '>마음건강 소개</a></li>
                         <li><a href='#'>마음건강 상담신청</a></li>
                         <li><a href='${path}/mentalreview/listArticles.do'>이용후기</a></li>
                      

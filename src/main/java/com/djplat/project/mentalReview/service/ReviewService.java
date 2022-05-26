@@ -1,8 +1,8 @@
 package com.djplat.project.mentalReview.service;
 
+import java.util.List;
 import java.util.Map;
 
-import com.djplat.project.member.vo.MemberVO;
 import com.djplat.project.mentalReview.vo.ReviewVO;
 
 public interface ReviewService {
@@ -18,4 +18,6 @@ public interface ReviewService {
 	public void removeArticle(int brd_no) throws Exception;
 	
 	public Map searchArticles(Map pagingMap) throws Exception;
+	
+	public List<ReviewVO> viewReply(int brd_no) throws Exception;
 }

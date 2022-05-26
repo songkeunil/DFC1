@@ -16,7 +16,54 @@ public class ReviewVO {
 	private int hits; //조회수
 	private int mr_like; //좋아요
 	private int two;
+	private int reply_no;
+	private String reply_text;
+	private int reply_lvl;
+	private String reply_time;
 	
+	
+	
+	
+	public int getReply_no() {
+		return reply_no;
+	}
+
+
+	public void setReply_no(int reply_no) {
+		this.reply_no = reply_no;
+	}
+
+
+	public String getReply_text() {
+		return reply_text;
+	}
+
+
+	public void setReply_text(String reply_text) {
+		this.reply_text = reply_text;
+	}
+
+
+	public int getReply_lvl() {
+		return reply_lvl;
+	}
+
+
+	public void setReply_lvl(int reply_lvl) {
+		this.reply_lvl = reply_lvl;
+	}
+
+
+	public String getReply_time() {
+		return reply_time;
+	}
+
+
+	public void setReply_time(String reply_time) {
+		this.reply_time = reply_time;
+	}
+
+
 	public int getTwo() {
 		return two;
 	}
@@ -54,10 +101,10 @@ public class ReviewVO {
 	public String toString() {
 		return "ReviewVO [recNum=" + recNum + ", brd_no=" + brd_no + ", title=" + title + ", mr_context="
 				+ mr_context + ", cc=" + cc + ", w_date=" + w_date + ", hits=" + hits + ", mr_like=" + mr_like
-				+ ", member_id=" + member_id + "]";
+				+ ", member_id=" + member_id + ", reply_no="+ reply_no +", reply_text=" + reply_text + ",reply_lvl=" + reply_lvl+"reply_time="+reply_time+ 
+				"]";
 	}
-	
-	
+
 	public int getRecNum() {
 		return recNum;
 	}

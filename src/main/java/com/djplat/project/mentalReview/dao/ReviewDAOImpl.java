@@ -99,5 +99,9 @@ public class ReviewDAOImpl implements ReviewDAO {
 		sqlSession.update("mapper.mindreview.modReviewBoard",vo);
 	}
 
+	@Override
+	public List<ReviewVO> viewReply(int brd_no) throws Exception{
+		return sqlSession.selectList("mapper.mindreview.viewReply",brd_no);
+	}
 }
 

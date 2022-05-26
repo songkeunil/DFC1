@@ -29,5 +29,6 @@ public interface ReviewDAO {
 	public int selectSearchTotArticles(Map pagingMap) throws DataAccessException;
 
 	public void modReviewView(ReviewVO vo) throws DataAccessException;
-
+	
+	public List<ReviewVO> viewReply(int brd_no) throws Exception;
 }
