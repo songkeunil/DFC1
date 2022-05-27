@@ -47,8 +47,8 @@
                 <tbody>
                    <c:choose>
                       <c:when test="${empty articlesList}" >
-                        <tr  height="10">
-                          <td width="1000" colspan="4">
+                        <tr width="1000px" height="10" align="center">
+                          <td colspan="4">
                             <p align="center">
                                 <b><span style="font-size:9pt;">등록된 글이 없습니다.</span></b>
                             </p>
@@ -59,7 +59,7 @@
                       
                       <c:when test="${not empty articlesList }" >
                           <c:forEach  var="article" items="${articlesList }" varStatus="articleNum" >
-                            <tr align="center">
+                            <tr width="1000px" height="10" align="center">
                                <td>${article.recNum2 }</td>
                                 <td class = 'text-color'><a href = '#'>${article.cc }</a></td>
                                 <td class='text-left'>

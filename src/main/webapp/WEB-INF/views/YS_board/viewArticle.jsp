@@ -151,6 +151,7 @@ $(document).ready(function () {
 			<form name="downloadForm" method="post"
 				action="${contextPath }/YS_board/download.do?brd_no=${article.brd_no}">
 				<c:if test="${not empty articleFileList && articleFileList !='null'}">
+					내용의 이미지는 JPG와 PNG만을 사용할 수 있습니다.<br><br>
 					<c:forEach var="item" items="${articleFileList}" varStatus="status">
 							<tr>
 							<c:if test="${status.count eq 1}"><td>썸네일</td></c:if>
@@ -169,12 +170,12 @@ $(document).ready(function () {
 
 
 
-
+  
 			<div id=y-detail-comment>
 				<div class='y-detail-comment-top'>
 					<h3>Comment</h3>
 				</div>
-
+			
 				<div class='y-detail-comment-middle'>
 					<div class="y-detail-comment-middle-profile">
 						<i class="bi bi-person-fill"></i>
@@ -194,32 +195,7 @@ $(document).ready(function () {
 						</div>
 					</div>
 				</div>
-
-
-				<!--		답글		-->
-
-
-				<div class="y-detail-comment-middle-reply-rap">
-					<div class="reply-arrow">
-						<i class="bi bi-arrow-return-right"></i>
-					</div>
-					<div class='y-detail-comment-middle-reply'>
-						<div class="y-detail-comment-middle-profile">
-							<i class="bi bi-person-fill"></i>
-						</div>
-						<div>
-							<div class="y-detail-comment-middle-info">
-								<div class="y-detail-comment-middle-info-name-reply">관리자</div>
-
-								<div class="y-detail-comment-middle-info-date-reply">2022-05-09</div>
-								<div class="y-detail-comment-middle-info-time-reply">14:50</div>
-							</div>
-
-							<div class="y-detail-comment-middle-info-main-ㄷreply">2021년
-								대전시 해외취업지원사업 전문분야 국내외 항공사 및 외국기업 취업역량강화 교육 참여자 모집중입니다.</div>
-						</div>
-					</div>
-				</div>
+				
 			</div>
 			<div class="y-detail-comment-write-rap">
 				<textarea class="y-detail-comment-write"></textarea>
