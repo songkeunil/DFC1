@@ -9,6 +9,7 @@ public class AttachVO {
 
 	private String fileNO;
 	private String fileName;
+	private String stored_fileName;
 	private Date regDate;
 	private String req_no;
 	
@@ -36,6 +37,12 @@ public class AttachVO {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
+	}
+	public String getStored_fileName() {
+		return stored_fileName;
+	}
+	public void setStored_fileName(String stored_fileName) {
+		this.stored_fileName = stored_fileName;
 	}
 	public Date getRegDate() {
 		return regDate;

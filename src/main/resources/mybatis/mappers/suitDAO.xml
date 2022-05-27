@@ -66,7 +66,7 @@
 	
 	<!-- req_no에 대한 파일정보 가져오기 -->
 	<select id="selectFileInfo" parameterType="String" resultType="attachVO">
-		SELECT FILENO, FILENAME
+		SELECT FILENO, FILENAME, STORED_FILENAME
 	      FROM SUIT_ATTACH
 	     WHERE REQ_NO = #{req_no}
 	</select>
@@ -133,7 +133,7 @@
 	</insert>
 	
 	<!-- 첨부파일 등록하기/ 첨부파일 수정2 -->
-	<insert id="insertFile" parameterType="java.util.Map">
+<!-- 	<insert id="insertFile" parameterType="java.util.Map">
 		INSERT INTO SUIT_ATTACH
 				(
 				FILENO, 
@@ -148,6 +148,24 @@
 			FROM DUAL	
 		</foreach>
 		) A
+	</insert> -->
+	
+	<!-- 첨부파일 등록하기 -->
+	<insert id="insertFile" parameterType="java.util.Map">
+		INSERT INTO SUIT_ATTACH
+			(
+			FILENO,
+			FILENAME,
+			STORED_FILENAME,
+			REQ_NO
+			)
+		VALUES
+			(
+			TO_CHAR(SYSDATE,'DD')||LPAD(SEQ_FILE_NO.NEXTVAL,4,0),
+			#{fileName},
+			#{stored_fileName},
+			#{req_no}
+			)
 	</insert>
 	
 	<!-- 대여일 수정 -->
@@ -174,11 +192,19 @@
 		 WHERE REQ_NO = #{req_no}
 	</update>
 	
-	<!-- 첨부파일 수정 1 -->
+	<!-- 첨부파일 수정 1 
 	<delete id="deleteFileAll" parameterType="String">
 		DELETE
 		  FROM SUIT_ATTACH
 		 WHERE REQ_NO = #{req_no}
+	</delete> -->
+	
+	<!-- 첨부파일 수정 1 -->
+	<delete id="deleteFile" parameterType="attachVO">
+		DELETE
+		  FROM SUIT_ATTACH
+		 WHERE REQ_NO = #{req_no}
+		   AND FILENAME = #{fileName}		   
 	</delete>
 	
 	<!-- 신청 삭제 -->

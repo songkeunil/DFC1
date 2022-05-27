@@ -46,7 +46,6 @@ public class SuitController {
 		List<SuitVO> allList = new ArrayList<SuitVO>();
 		allList = suitService.selectListAll("suit.selectListAll", scri);
 		model.addAttribute("allList", allList);
-//		System.out.println("perPageNum : "+scri.getPerPageNum());
 		
 		//board paging
 		PageMaker pageMaker = new PageMaker();
@@ -83,17 +82,10 @@ public class SuitController {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String member_id=(String)principal;
 		suitVO.setMember_id(member_id);
-//		System.out.println("member_id : " + member_id);
 		
 		ModelAndView mav = new ModelAndView();
 		
 		String req_no = multipartRequest.getParameter("req_no");
-//		System.out.println(req_no);
-
-		//code
-		List<CodeVO> codeList = new ArrayList();
-		codeList = suitService.selectCode("suit.selectCode");
-		mav.addObject("codeList", codeList);
 		
 		//insert Form
 		if (req_no == null) {
@@ -107,59 +99,23 @@ public class SuitController {
 		if(req_no != null) {
 			suitService.updateSuit("updateSuit", suitVO);
 			suitService.updateIC("updateIC", suitVO);
-			suitService.deleteFileAll("deleteFileAll", req_no);
+			
+			List deleteList = new ArrayList();
+			for(int i=1; i<5; i++) {
+				String deleteFileName = multipartRequest.getParameter("deleteFile"+i);
+				if(deleteFileName != null) {
+					deleteList.add(deleteFileName);
+				}
+			}
+			suitService.deleteFile("suit.deleteFile", req_no, deleteList);
 		}
 		
 		//insert file
-		Map fileMap = new HashMap();
+		suitService.insertFile("suit.insertFile", req_no, multipartRequest);
 
-		Enumeration enu = multipartRequest.getParameterNames();
-		while (enu.hasMoreElements()) {
-			String name = (String) enu.nextElement();
-			String value = multipartRequest.getParameter(name);
-			fileMap.put(name, value);
-		}
+		List<AttachVO> fileList = suitService.selectFileInfo("suit.selectFileInfo", req_no);
 		
-		//filename list
-		List<String> fileList = upload(multipartRequest);
-		
-		List<AttachVO> rentFileList = new ArrayList<AttachVO>();
-
-		if(!fileList.isEmpty()) {
-			if (fileList != null && !"".equals(fileList)) {
-				for (String fileName : fileList) {
-					AttachVO attachVO = new AttachVO();
-					attachVO.setFileName(fileName);
-					rentFileList.add(attachVO);
-				}
-			}
-		}
-		
-		if (rentFileList != null && rentFileList.size() != 0) {
-			for (AttachVO attachVO : rentFileList) {
-				String fileName = attachVO.getFileName();
-				File srcFile = new File(ARTICLE_IMAGE_REPO + "\\" + "temp" + "\\" + fileName);
-				File destDir = new File(ARTICLE_IMAGE_REPO + "\\" + req_no);
-				FileUtils.copyFileToDirectory(srcFile, destDir, true);
-				srcFile.delete();
-			}
-		}
-		
-		//original fileList
-		List<String> originList = new ArrayList<String>();
-		for(int i =1; i < fileMap.size(); i++) {
-			if((String)fileMap.get("origin_file"+i) != null) {
-				AttachVO attachVO = new AttachVO();
-				attachVO.setFileName((String)fileMap.get("origin_file"+i));
-				rentFileList.add(attachVO);
-				}
-		}
-		
-		fileMap.put("rentFileList", rentFileList);
-		fileMap.put("req_no", req_no);
-		suitService.insertFile("suit.insertFile", fileMap);
-		
-		mav.addObject("fileMap", fileMap);
+		mav.addObject("fileList", fileList);
 		mav.setViewName("suitForm2");
 		return mav;
 			
@@ -177,28 +133,4 @@ public class SuitController {
 		return "redirect:/listSuitAll.do";
 	}
 	
-		
-	
-	//filename List 가져오기
-	private List<String> upload(MultipartHttpServletRequest multipartRequest) throws Exception {
-		List<String> fileList = new ArrayList<String>();
-		Iterator<String> fileNames = multipartRequest.getFileNames();
-		
-		while (fileNames.hasNext()) {
-			String fileName = fileNames.next();
-			MultipartFile mFile = multipartRequest.getFile(fileName);
-			String originalFileName = mFile.getOriginalFilename();
-			if(originalFileName.isEmpty() == false) {
-				fileList.add(originalFileName); // 첨부한 이미지 파일의 이름들을 차례대로 저장.
-				File file = new File(ARTICLE_IMAGE_REPO + "\\" + "temp" + "\\" + fileName);
-				if (mFile.getSize() != 0) {
-					if (!file.exists()) {
-						file.getParentFile().mkdirs();
-						mFile.transferTo(new File(ARTICLE_IMAGE_REPO + "\\" + "temp" + "\\" + originalFileName));
-					}
-				}
-			}
-		}
-		return fileList;
-	}
 }

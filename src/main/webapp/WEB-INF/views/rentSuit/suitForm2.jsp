@@ -139,8 +139,8 @@
            	<div class="y-rentForm-select-file">
                 
                 <div class='y-rentForm-file-insert'>
-					<c:forEach var="item" items="${fileMap.rentFileList }">
-           				<a href="${contextPath }/download.do?req_no=${item.req_no}&fileName=${item.fileName}" id="file">${item.fileName}</a><br>
+					<c:forEach var="item" items="${fileList }">
+           				<a href="${contextPath }/download.do?req_no=${suitVO.req_no}&fileName=${item.fileName}&stored_fileName=${item.stored_fileName}" id="file">${item.fileName}</a><br>
            			</c:forEach>                
            		</div>
                 

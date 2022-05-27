@@ -18,12 +18,12 @@ public class FileDownloadController {
 	private static final String ARTICLE_IMAGE_REPO = "c:\\board\\article_image";
 
 	@RequestMapping("/download.do")
-	public void download(@RequestParam("fileName") String fileName,
+	public void download(@RequestParam("fileName") String fileName,@RequestParam("stored_fileName") String stored_fileName,
 			@RequestParam("req_no") String req_no, HttpServletRequest request,HttpServletResponse response) throws Exception {
 		
 		try {
 			OutputStream out = response.getOutputStream();
-			String downFile = ARTICLE_IMAGE_REPO + "\\" + req_no + "\\" + fileName;
+			String downFile = ARTICLE_IMAGE_REPO + "\\" + req_no + "\\" + stored_fileName;
 			File file = new File(downFile);
 	
 			String header = request.getHeader("User-Agent");

@@ -59,9 +59,13 @@
 		 	}
 		});
 		
+		var cnt = 1;
 		$("a[name=file-delete]").on("click", function(e){
+			 var fileName = $(this).siblings('input[id=suit_fileName]').val(); 
+			 $('#deleteFile').append('<input type="hidden" name="deleteFile'+cnt+'" value="'+fileName+'">'); 
 			e.preventDefault();
 			deleteFile($(this));
+			cnt++;
 		})
 		
 	});//end
@@ -567,10 +571,11 @@
            		<c:if test="${suitVO.req_no != null}">
            			<c:forEach var="item" items="${fileList }" varStatus="status">
            				<li id="mod_attachFile">
-           					<input type="hidden" name="origin_file${status.count }" value="${item.fileName }">
-	           				<span>${item.fileName }</span>&nbsp
+           					<input type="hidden" id="suit_fileName" name="origin_file${status.count}" value="${item.fileName }">
+	           				<span><c:out value="${item.fileName }"/></span>&nbsp
 	           				<a href="#this" id="file" name="file-delete">삭제</a>
            				</li>
+           				<div id="deleteFile"></div>
            			</c:forEach>
            		</c:if>
            		

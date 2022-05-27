@@ -56,17 +56,21 @@ public class SuitDAO extends AbstractDAO{
 		insert(queryId, suitVO);
 	}
 	
-	public void insertFile(String queryId, Map fileMap) throws SQLException{
-		
-		String req_no = (String) fileMap.get("req_no");
-		
-		List<AttachVO> fileList = (ArrayList) fileMap.get("rentFileList");
-		for(AttachVO attachVO : fileList ) {
-			
-			attachVO.setReq_no(req_no);
-			System.out.println(attachVO.getReq_no());
-		}
-		insert(queryId, fileList);
+//	public void insertFile(String queryId, Map fileMap) throws SQLException{
+//		
+//		String req_no = (String) fileMap.get("req_no");
+//		
+//		List<AttachVO> fileList = (ArrayList) fileMap.get("rentFileList");
+//		for(AttachVO attachVO : fileList ) {
+//			
+//			attachVO.setReq_no(req_no);
+//			System.out.println(attachVO.getReq_no());
+//		}
+//		insert(queryId, fileList);
+//	}
+	
+	public void insertFile(String queryId, Map<String, Object> map) {
+		insert(queryId, map);
 	}
 	
 	public void updateSuit(String queryId, SuitVO suitVO) throws SQLException{
@@ -79,6 +83,10 @@ public class SuitDAO extends AbstractDAO{
 	
 	public void deleteFileAll(String queryId, String req_no) throws SQLException{
 		delete(queryId, req_no);
+	}
+	
+	public void deleteFile(String queryId, AttachVO attachVO)throws SQLException{
+		delete(queryId, attachVO);
 	}
 	
 	public void deleteAll(String queryId, String req_no) throws SQLException{
