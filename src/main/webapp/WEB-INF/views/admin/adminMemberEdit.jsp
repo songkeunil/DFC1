@@ -261,13 +261,12 @@
 
 				<!-- E-mail agree -->
 				<br>
-				
+
 				<div class="mail-agree">
-				<h3 class="join_title">
+					<h3 class="join_title">
 						<label for="email">정지여부<span class="optional"></span></label>
 					</h3>
-					<span class="box int_email"> 
-					<select name="member_stop">
+					<span class="box int_email"> <select name="member_stop">
 							<option value="member_stop1"
 								<c:if test="${member_info.member_enabled == 1}">selected</c:if>>사용중</option>
 							<option value="member_stop2"
@@ -282,9 +281,17 @@
 						<span>수정하기</span>
 					</button>
 
+
 				</div>
 			</div>
 		</div>
+ 		<div class="counselMental">
+		<button type="button" onclick="location.href='${path}/admin/requestCounsel.do?member_id=${member_info.member_id}'">상담신청</button>
+	</div> 
+
 	</form>
+	
+	
+
 </body>
 </html>

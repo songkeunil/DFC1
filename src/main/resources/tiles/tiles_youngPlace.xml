@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	
+	  <definition name="nadeulmok" extends="baseLayout">
+         <put-attribute name="title" value="청춘나들목 소개" />
+         <put-attribute name="body" value="/WEB-INF/views/youngPlace/nadeulmok.jsp" />
+      </definition>  
+      
+      <definition name="nadeulmokFeat" extends="baseLayout">
+         <put-attribute name="title" value="청춘나들목 특징" />
+         <put-attribute name="body" value="/WEB-INF/views/youngPlace/nadeulmokFeat.jsp" />
+      </definition>  
+      
+       <definition name="nadeulmokMap" extends="baseLayout">
+         <put-attribute name="title" value="청춘나들목  찾아오시는길" />
+         <put-attribute name="body" value="/WEB-INF/views/youngPlace/nadeulmokMap.jsp" />
+      </definition>  
+      
+       <definition name="nadeulmokBoard" extends="baseLayout">
+         <put-attribute name="title" value="청춘나들목 소식" />
+         <put-attribute name="body" value="/WEB-INF/views/youngPlace/nadeulmokBoard.jsp" />
+      </definition>  
+         
+         
+         
+         
+         
+         
+       <definition name="neonadeuli" extends="baseLayout">
+         <put-attribute name="title" value="청춘너나들이 소개" />
+         <put-attribute name="body" value="/WEB-INF/views/youngPlace/neonadeuli.jsp" />
+      </definition> 
+      
+      <definition name="neonadeuliFeat" extends="baseLayout">
+         <put-attribute name="title" value="청춘너나들이 특징" />
+         <put-attribute name="body" value="/WEB-INF/views/youngPlace/neonadeuliFeat.jsp" />
+      </definition> 
+      
+      <definition name="neonadeuliMap" extends="baseLayout">
+         <put-attribute name="title" value="청춘너나들이 찾아오시는길" />
+         <put-attribute name="body" value="/WEB-INF/views/youngPlace/neonadeuliMap.jsp" />
+      </definition>
+      
+      
+      
+      
+      
+      
+      
+       <definition name="dododo" extends="baseLayout">
+         <put-attribute name="title" value="청춘두두두소개" />
+         <put-attribute name="body" value="/WEB-INF/views/youngPlace/dododo.jsp" />
+      </definition>
+      
+      <definition name="dododoFeat" extends="baseLayout">
+         <put-attribute name="title" value="청춘두두두특징" />
+         <put-attribute name="body" value="/WEB-INF/views/youngPlace/dododoFeat.jsp" />
+      </definition>
+      
+      <definition name="dododoMap" extends="baseLayout">
+         <put-attribute name="title" value="청춘두두두소개" />
+         <put-attribute name="body" value="/WEB-INF/views/youngPlace/dododoMap.jsp" />
+      </definition>
+      
+      <definition name="teojeon" extends="baseLayout">
+         <put-attribute name="title" value="청춘터전소개" />
+         <put-attribute name="body" value="/WEB-INF/views/youngPlace/teojeon.jsp" />
+      </definition>
+
+  
+</tiles-definitions>
+
+

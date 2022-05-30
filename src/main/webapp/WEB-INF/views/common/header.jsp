@@ -10,6 +10,7 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
        $(function(){
@@ -150,16 +151,16 @@
                 <li class="h-nav-item">
                     <a class="h-nav-link" href="#" style="color: black">청춘공간</a>
                     <ul class='h-sub'>
-                        <li><a href='#'>청춘나들목</a></li>
-                        <li><a href='#'>청춘너나들이</a></li>
-                        <li><a href='#'>청춘두두두</a></li>
-                        <li><a href='#'>청춘터전</a></li>
+                        <li><a href='${path}/nadeulmok.html'>청춘나들목</a></li>
+                        <li><a href='${path}/neonadeuli.html'>청춘너나들이</a></li>
+                        <li><a href='${path}/dododo.html'>청춘두두두</a></li>
+                        <li><a href='${path}/teojeon.html'>청춘터전</a></li>
                     </ul>
                 </li>
                 <li class="h-nav-item">
                     <a class="h-nav-link" href="#" style="color: black">청년마음건강</a>
                     <ul class='h-sub'>
-                        <li><a href='${path}/mentalreview/introduceMental.html '>마음건강 소개</a></li>
+                        <li><a href='${path}/mentalreview/introduceMental.html'>마음건강 소개</a></li>
                         <li><a href='#'>마음건강 상담신청</a></li>
                         <li><a href='${path}/mentalreview/listArticles.do'>이용후기</a></li>
                      

@@ -19,6 +19,14 @@
       <put-attribute name="body" value="/WEB-INF/views/admin/board2.jsp" />
    </definition>
    
+   
+   
+   <definition name="/admin/requestCounsel" template="/WEB-INF/views/admin/requestCounsel.jsp">
+   </definition>
+    <definition name="/admin/counselRegistration" template="/WEB-INF/views/admin/requestCounsel.jsp">
+   </definition>
+   
+   
 </tiles-definitions>
 
 

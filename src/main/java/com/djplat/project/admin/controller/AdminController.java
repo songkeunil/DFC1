@@ -21,7 +21,6 @@ public interface AdminController {
 	public ModelAndView searchMembers(HashMap<String, Integer> paging, HttpServletRequest request,
 			HttpServletResponse response) throws Exception;
 
-	
+	public ModelAndView requestCounsel(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
-	
 }

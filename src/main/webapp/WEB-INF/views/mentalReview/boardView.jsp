@@ -102,37 +102,37 @@
 
 </div>
 
+<form method="post" action="${path}/mentalreview/addReply">
 
 			<div id=y-detail-comment>
 				<div class='y-detail-comment-top'>
 					<h3>Comment</h3>
 				</div>
-
+				<c:forEach items="${viewReply}" var="viewReply">
 				<div class='y-detail-comment-middle'>
 					<div class="y-detail-comment-middle-profile">
 						<i class="bi bi-person-fill"></i>
 					</div>
 					<div>
 						<div class="y-detail-comment-middle-info">
-							<div class="y-detail-comment-middle-info-name">관리자</div>
+							<div class="y-detail-comment-middle-info-name">${article.member_id }</div>
 
-							<div class="y-detail-comment-middle-info-date">2022-05-09</div>
+							<div class="y-detail-comment-middle-info-date">${article.w_date }</div>
 							<div class="y-detail-comment-middle-info-time">14:50</div>
 						</div>
 
-						<div class="y-detail-comment-middle-info-main">2021년 대전시
-							해외취업지원사업 전문분야 국내외 항공사 및 외국기업 취업역량강화 교육 참여자 모집중입니다.</div>
+						<div class="y-detail-comment-middle-info-main">${replyView.reply_text}</div>
 						<div class="reply">
 							<a href="#">답글</a>
 						</div>
 					</div>
 				</div>
-
+				</c:forEach>
 
 				<!--		답글		-->
 
 
-				<div class="y-detail-comment-middle-reply-rap">
+			<!-- 	<div class="y-detail-comment-middle-reply-rap">
 					<div class="reply-arrow">
 						<i class="bi bi-arrow-return-right"></i>
 					</div>
@@ -152,7 +152,7 @@
 								대전시 해외취업지원사업 전문분야 국내외 항공사 및 외국기업 취업역량강화 교육 참여자 모집중입니다.</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			<div class="y-detail-comment-write-rap">
 				<textarea class="y-detail-comment-write"></textarea>
@@ -160,7 +160,7 @@
 					<i class="bi bi-chat"></i> 등록
 				</button>
 			</div>
-
+</form>
 			<div id='y-detail-bottom-rap'>
 				<div class='y-detail-bottom-left'>
 					<button type='button' onclick="location.href='#'">
@@ -174,7 +174,7 @@
 					<a href="${contextPath}/mentalreview/modReview.do?brd_no=${article.brd_no}">수정하기</a>
 				</button>
 				<input type="button"
-					onclick="fn_remove_article('${contextPath}/mentalreview/removeArticle.do?brd_no=${article.brd_no}',
+			onclick="fn_remove_article('${contextPath}/mentalreview/removeArticle.do?brd_no=${article.brd_no}',
 					 ${article.brd_no})"
 					value="삭제하기">	
 					

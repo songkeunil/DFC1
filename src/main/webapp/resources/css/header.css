@@ -1,6 +1,6 @@
 #h-hrap {
         width: 100%;
-        height: 250px;
+        height: 200px;
     }
 
 
@@ -70,13 +70,14 @@
 
     #h-login {
         width: 220px;
-        width: 320px;
+     
         height: 50px;
 /*          background: green;*/
         float: right;
         padding-top: 85px;
         margin-right: 100px;
 /*         font-weight: bold; */
+		
         
     }
 
@@ -141,7 +142,8 @@
         background:white;
         border-left: 1px solid gray;
         border-left: 1px solid gray; 
-        background:white;
+     
+
         
     }
     .h-sub li a{

@@ -30,6 +30,7 @@
 .y-main-top-rap {
 	width: 100%;
 	height: 500px;
+	
 }
 
 .y-main-top-rap-image {
@@ -46,10 +47,11 @@
 	/*    background: green;*/
 	margin: 0 auto;
 	line-height: 50px;
-	padding-top: 50px;
+	/* padding-top: 50px; */
 	padding-left: 50px;
 	padding-right: 50px;
 	position: relative;
+	
 }
 
 .y-main-top-slide {
@@ -60,6 +62,7 @@
 	float: left;
 	border-radius: 10px;
 	cursor: pointer;
+	margin-top:50px;
 }
 
 .y-main-top-menu-rap {
@@ -67,6 +70,7 @@
 	height: 400px;
 	/*    background: blue;*/
 	float: right;
+	margin-top: 50px;
 }
 
 .y-main-top-menu {
@@ -78,6 +82,7 @@
 	border-radius: 10px;
 	text-align: center;
 	line-height: 162px;
+	
 }
 
 .y-main-middle-rap {
@@ -86,6 +91,7 @@
 	/*    background: red;*/
 	margin: 0 auto;
 	margin-top: 50px;
+	
 }
 
 .y-main-middle-title {

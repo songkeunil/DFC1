@@ -179,14 +179,15 @@ private List<String> upload(MultipartHttpServletRequest multipartRequest) {
 		Map articleMap = reviewService.viewArticle(brd_no);
 
 //			시큐리티용 세션 id 수령 코드
-//			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//	        String member_id=(String)principal;
-		String member_id = memberVO.getMember_id();
+			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	        String member_id=(String)principal;
+//		String member_id = memberVO.getMember_id();
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
 		mav.addObject("articleMap", articleMap);
 		
 		List<ReviewVO> viewReply = reviewService.viewReply(reviewVO.getBrd_no());
+		mav.setViewName(viewName);
 		mav.addObject("viewReply",viewReply);
 		return mav;
 	}

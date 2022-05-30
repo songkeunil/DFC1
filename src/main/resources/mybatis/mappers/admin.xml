@@ -52,7 +52,8 @@
 	 
 	   member_address = #{member_address},
 	   member_addrnum = #{member_addrnum},
-	   member_email = #{member_email},	
+	   member_email = #{member_email},
+	   member_name = #{member_name},	
 	   <if test="mg == 'member_group1'">
 	   	 member_group = '일반회원',
 	   </if>
@@ -78,7 +79,7 @@
 	   where member_id = #{member_id}
 	   
 	</update>	
-	
+	<!-- 검색 -->
   <select id="searchMembers" resultType="memberVO">
 	select * from
      (select rownum as recNum, member_ID,member_address,MEmber_phoneno,member_last_log,member_name,member_email,member_group,member_auth from member 
@@ -93,6 +94,22 @@
 	</where>
 		order by member_id desc) where recNum between(#{section}-1)*100  + (#{pageNum}-1)*10+1 and (#{section}-1)*100+#{pageNum}*10
 </select> 
+
+
+	<!--상담신청 -->
+	<select id="counselRegistration" parameterType="java.util.Map">
+ 	<![CDATA[
+ 		INSERT INTO MIND_REQUEST(brd_no, member_id, title, o_time, r_time, r_date, r_true, mre_cc)
+ 		VALUES(#{brd_no}, #{member_id}, #{title}, #{o_time}, #{r_time}, sysdate, #{r_true}, #{mre_cc})
+ 	]]>
+	</select>
+	
+	<!-- 새글 번호 생성 -->
+	<select id="counselRegNO" resultType="int">
+ 	<![CDATA[
+ 		SELECT nvl(max(brd_no), 0) + 1 FROM MIND_REQUEST
+ 	]]>
+	</select>
  <!-- <select id="searchMembers" resultType="memberVO">
 	select * from member
 	<where>

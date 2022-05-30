@@ -87,7 +87,7 @@
 	<select id="viewReply" resultType="ReviewVO"
 		parameterType="int">
  	<![CDATA[
- 		SELECT * FROM MIND_REVIEW
+ 		SELECT * FROM MR_REPLY
  		WHERE brd_no = #{brd_no}
  	]]>
 	</select>
