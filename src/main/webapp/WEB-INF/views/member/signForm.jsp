@@ -38,8 +38,8 @@
             monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], //달력의 월 부분 Tooltip
             dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], //달력의 요일 텍스트
             dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'], //달력의 요일 Tooltip
-            /*minDate: "-50Y", //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-            maxDate: "+5y", //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)*/
+            /*minDate: "-50Y", //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)*/
+            maxDate: 0, //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)
             yearRange: "-100:+10",
         });
        	/* $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)*/
@@ -294,33 +294,72 @@
 		var addr = $("#sample4_jibunAddress").val();
 		var email = $("#email").val();
 		
+		let result = true;
+		
 		if(idc == false || id === ""){
 		    alert('아이디를 확인 해 주세요')
-		    return pass;
-		}else if(overChk == false){
+		    result = false;
+		}
+			
+		if(overChk == false){
 		    alert('아이디 중복 검사를 해주세요')
-		}else if(pwc == false|| pw2 === "" || pwc2 == false){
+		    result = false;
+		}
+		
+		if(pwc == false|| pw2 === "" || pwc2 == false){
 		    alert('비밀번호를 확인 해 주세요')
-		}else if(namec == false || name === ""){
+		    result = false;
+		}
+		
+		if(namec == false || name === ""){
 			alert('이름을 입력해주세요')
-		}else if( birth === ""){
+			result = false;
+		}
+		
+		if( birth === ""){
 		 	alert('생일을 입력해주세요')
-		}else if( gender === ""){
+		 	result = false;
+		}
+		
+		if( gender === ""){
 		 	alert('성별을 입력해주세요')
-		}else if(phonec == false || phone === ""){
+		 	result = false;
+		}
+		
+		if(phonec == false || phone === ""){
 		    alert('전화번호를 입력해주세요.')
-		}else if(addr == ""){
+		    result = false;
+		}
+		
+		if(addr == ""){
 		 	alert('주소를 선택해주세요')
-		}else if(emailc == false || email === ""){
+		 	result = false;
+		}
+		
+		if(emailc == false || email === ""){
 			alert('이메일을 입력해주세요')
-		}/* else if(emoverChk == false){
+			result = false;
+		}
+		
+		/* if(emoverChk == false){
 			alert('이메일을 중복 검사를 해주세요')
+<<<<<<< HEAD
 		} */else{
 		    $('form').submit();
 		    alert('회원가입이 완료 되었습니다. 이메일 인증 후에 로그인 가능합니다. 확인버튼을 누르면 로그인 페이지로 이동합니다.');
 
 		}
 		
+=======
+		} */
+		
+		if(!result){
+		    alert("check")
+		    return false;
+		}
+		
+		$('form').submit();
+>>>>>>> 7f3bfd5b6b7baf5bd5485976e2e15cd760642659
 	};		
 
 		    
@@ -411,7 +450,7 @@
           	<div>
                 <h3 class="join_title"><label for="name">생년월일</label></h3>
                 <span class="box date_name">
-                    <input type="text" id="birth" class="datepicker" name="member_birth" maxlength="20">
+                    <input type="text" id="birth" class="datepicker" name="member_birth" maxlength="20" readonly>
                 </span>
             </div>
 

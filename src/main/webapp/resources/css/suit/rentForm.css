@@ -1,0 +1,777 @@
+#y-rentForm-rap {
+	width: 1400px;
+	height: auto;
+	margin: 0 auto;
+	/*                background: red;*/
+}
+
+#y-boardtop {
+	/*        background:red;*/
+	width: 1200px;
+	height: 50px;
+	margin: 0 auto;
+	line-height: 50px;
+	border-bottom: 1px solid #A4A4A4;
+}
+
+#y-boardtop a {
+	text-decoration: none;
+	color: #848484;
+}
+
+#y-boardtop h2 {
+	float: left;
+	width: auto;
+	font-size: 35px;
+	font-weight: 700;
+	/* border-bottom: 3px solid #18A8F1; */
+}
+
+.suit_submenu {
+	float: right;
+}
+
+#y-rentForm {
+	width: 1200px;
+	height: auto;
+	/*    background: red;*/
+	margin: 0 auto;
+}
+
+.y-rentForm-Terms {
+	width: 1200px;
+	height: 300px;
+	/*    background: blue;*/
+	margin-top: 50px;
+}
+
+.y-rentForm-Terms-title {
+	width: 1200px;
+	height: 50px;
+	/*    background: orange;*/
+	border: 1px solid #D8D8D8;
+	background: #E6E6E6;
+	line-height: 50px;
+	padding-left: 40px;
+	box-sizing: border-box;
+}
+
+.y-rentForm-Terms-detail {
+	width: 1200px;
+	height: 200px;
+	/*    background: yellow;*/
+	font-size: 15px;
+	overflow-y: scroll;
+	border-right: 1px solid #D8D8D8;
+	border-left: 1px solid #D8D8D8;
+	padding-top: 10px;
+	padding-left: 10px;
+	box-sizing: border-box;
+	line-height: 20px;
+}
+
+.y-rentForm-Terms-detail span {
+	color: red;
+	font-weight: bold;
+}
+
+.y-rentForm-Terms-agree {
+	width: 1200px;
+	height: 50px;
+	/*    background: green;*/
+	border: 1px solid #D8D8D8;
+	line-height: 50px;
+	padding-left: 40px;
+	box-sizing: border-box;
+}
+
+.y-rentForm-Terms-agree input {
+	width: 15px;
+	height: 15px;
+}
+
+.y-rentForm-Terms-agree-box {
+	float: left;
+	margin-top: 2px;
+}
+
+.y-rentForm-titletext {
+	/*    background: red;*/
+	margin-top: 100px;
+}
+
+.y-rentForm-titletext h2 {
+	height: 30px;
+	border-bottom: 3px solid #18A8F1;
+}
+
+/* 방문일자 */
+.y-rentForm-borrow-date {
+	width: 1200px;
+	height: 150px;
+	/*    background: red;*/
+	border: 1px solid #D8D8D8;
+	margin-top: 50px;
+}
+
+.y-rentForm-title-date {
+	width: 280px;
+	height: 150px;
+	/*    background: blue;*/
+	float: left;
+	border-right: 1px solid #D8D8D8;
+	background: #E6E6E6;
+	text-align: center;
+	line-height: 145px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.y-rentForm-select-date {
+	width: 835px;
+	height: 150px;
+	/*    background: green;*/
+	float: left;
+	padding-left: 10px;
+	line-height: 28px;
+}
+
+.y-rentForm-select-date p {
+	color: #0174DF
+}
+
+.y-rentForm-select-date input {
+	width: 280px;
+	height: 25px;
+	text-align: center;
+}
+
+.y-rentForm-select-date input:focus {
+	outline: none;
+	box-shadow: 0px 0px 3px 0px #18A8F1;
+}
+
+/* 방문시간 */
+.y-rentForm-borrow-time {
+	width: 1200px;
+	height: 150px;
+	/*    background: red;*/
+	border: 1px solid #D8D8D8;
+}
+
+.y-rentForm-title-time {
+	width: 280px;
+	height: 150px;
+	/*    background: blue;*/
+	float: left;
+	border-right: 1px solid #D8D8D8;
+	background: #E6E6E6;
+	text-align: center;
+	line-height: 145px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.y-rentForm-select-time {
+	width: 835px;
+	height: 150px;
+	/*    background: green;*/
+	float: left;
+	padding-left: 10px;
+	line-height: 28px;
+}
+
+.y-rentForm-select-time p {
+	color: #0174DF
+}
+
+.y-rentForm-select-time span {
+	color: red;
+}
+
+.y-rentForm-select-time select {
+	width: 100px;
+	height: 25px;
+	text-align: center;
+}
+
+.y-rentForm-select-time select:focus {
+	outline: none;
+	box-shadow: 0px 0px 3px 0px #18A8F1;
+}
+
+.y-rentForm-borrow-redate {
+	width: 1200px;
+	height: 100px;
+	/*    background: red;*/
+	border: 1px solid #D8D8D8;
+}
+
+.y-rentForm-title-redate {
+	width: 280px;
+	height: 100px;
+	/*    background: blue;*/
+	float: left;
+	border-right: 1px solid #D8D8D8;
+	background: #E6E6E6;
+	text-align: center;
+	line-height: 95px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.y-rentForm-select-redate {
+	width: 835px;
+	height: 100px;
+	/*    background: green;*/
+	float: left;
+	padding-left: 10px;
+	line-height: 32px;
+}
+
+.y-rentForm-select-redate p {
+	color: #0174DF
+}
+
+.y-rentForm-select-redate input {
+	width: 280px;
+	height: 25px;
+	text-align: center;
+}
+
+.y-rentForm-select-redate input:focus {
+	outline: none;
+	box-shadow: 0px 0px 3px 0px #18A8F1;
+}
+
+.y-rentForm-borrow-retime {
+	width: 1200px;
+	height: 150px;
+	/*    background: red;*/
+	border: 1px solid #D8D8D8;
+}
+
+.y-rentForm-title-retime {
+	width: 280px;
+	height: 150px;
+	/*    background: blue;*/
+	float: left;
+	border-right: 1px solid #D8D8D8;
+	background: #E6E6E6;
+	text-align: center;
+	line-height: 150px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.y-rentForm-select-retime {
+	width: 835px;
+	height: 150px;
+	/*    background: green;*/
+	float: left;
+	padding-left: 10px;
+	line-height: 28px;
+}
+
+.y-rentForm-select-retime p {
+	color: #0174DF
+}
+
+.y-rentForm-select-retime select {
+	width: 100px;
+	height: 25px;
+	text-align: center;
+}
+
+.y-rentForm-select-retime select:focus {
+	outline: none;
+	box-shadow: 0px 0px 3px 0px #18A8F1;
+}
+
+.y-rentForm-borrow-term {
+	width: 1200px;
+	height: 70px;
+	/*    background: red;*/
+	border: 1px solid #D8D8D8;
+}
+
+.y-rentForm-title-term {
+	width: 280px;
+	height: 70px;
+	/*    background: blue;*/
+	float: left;
+	border-right: 1px solid #D8D8D8;
+	background: #E6E6E6;
+	text-align: center;
+	line-height: 70px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.y-rentForm-select-term {
+	width: 835px;
+	height: 70px;
+	/*    background: green;*/
+	float: left;
+	padding-left: 10px;
+	line-height: 70px;
+}
+
+.y-rentForm-select-term-inputbox {
+	float: left;
+	width: 20px;
+	line-height: 85px;
+}
+
+.y-rentForm-select-term-textbox {
+	float: left;
+	width: 119px;
+}
+
+.y-rentForm-select-term input {
+	width: 15px;
+	height: 25px;
+	text-align: center;
+}
+
+.y-rentForm-borrow-company {
+	width: 1200px;
+	height: 70px;
+	/*    background: red;*/
+	border: 1px solid #D8D8D8;
+}
+
+.y-rentForm-title-company {
+	width: 280px;
+	height: 70px;
+	/*    background: blue;*/
+	float: left;
+	border-right: 1px solid #D8D8D8;
+	background: #E6E6E6;
+	text-align: center;
+	line-height: 70px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.y-rentForm-select-company {
+	width: 835px;
+	height: 70px;
+	/*    background: green;*/
+	float: left;
+	padding-left: 10px;
+	line-height: 70px;
+}
+
+.y-rentForm-select-company-inputbox {
+	float: left;
+	width: 20px;
+	height: 40px;
+	/* line-height: 65px; */
+}
+
+.y-rentForm-select-company input {
+	width: 15px;
+	height: 70px;
+	text-align: center;
+}
+
+.y-rentForm-select-company-textbox {
+	float: left;
+	width: 120px;
+	height: 70px;
+}
+
+/* .y-rentForm-select-company-inputbox2{
+    float: left;
+    width: 20px;
+    height: 40px;
+    line-height: 65px;
+}
+
+.y-rentForm-select-company-textbox2{
+    float: left;
+    width: 100px;
+     height: 40px;
+    margin-left: 20px;
+} */
+.y-rentForm-borrow-hopecard {
+	width: 1200px;
+	height: 70px;
+	/*    background: red;*/
+	border: 1px solid #D8D8D8;
+}
+
+.y-rentForm-title-hopecard {
+	width: 280px;
+	height: 70px;
+	/*    background: blue;*/
+	float: left;
+	border-right: 1px solid #D8D8D8;
+	background: #E6E6E6;
+	text-align: center;
+	line-height: 70px;
+	font-size: 18px;
+	font-weight: bold;
+	/* padding-top: 5px; */
+}
+
+.y-rentForm-select-hopecard {
+	width: 835px;
+	height: 70px;
+	/*    background: green;*/
+	float: left;
+	padding-left: 10px;
+	line-height: 70px;
+}
+
+.y-rentForm-select-hopecard-inputbox {
+	float: left;
+	width: 20px;
+	line-height: 85px;
+}
+
+.y-rentForm-select-hopecard-textbox {
+	float: left;
+	width: 119px;
+}
+
+.y-rentForm-select-hopecard input {
+	width: 15px;
+	height: 25px;
+	text-align: center;
+}
+
+/* 회사명 */
+.y-rentForm-borrow-ic_name {
+	width: 1200px;
+	height: 50px;
+	/*    background: red;*/
+	border: 1px solid #D8D8D8;
+	margin-top: 50px;
+}
+
+.y-rentForm-title-ic_name {
+	width: 280px;
+	height: 50px;
+	/*    background: blue;*/
+	float: left;
+	border-right: 1px solid #D8D8D8;
+	background: #E6E6E6;
+	text-align: center;
+	line-height: 50px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.y-rentForm-select-ic_name {
+	width: 835px;
+	height: 50px;
+	/*    background: green;*/
+	float: left;
+	padding-left: 10px;
+	line-height: 50px;
+	padding-top: 2px;
+	box-sizing: border-box;
+}
+
+.y-rentForm-select-ic_name input {
+	width: 300px;
+	height: 40px;
+	border: 1px solid #bcbcbc;
+	font-size: 15px;
+	padding-left: 10px;
+}
+
+.y-rentForm-select-ic_name input:focus {
+	outline: none;
+	box-shadow: 0px 0px 3px 0px #18A8F1;
+}
+
+.y-rentForm-borrow-ic_date {
+	width: 1200px;
+	height: 50px;
+	/*    background: red;*/
+	border: 1px solid #D8D8D8;
+}
+
+.y-rentForm-title-ic_date {
+	width: 280px;
+	height: 50px;
+	/*    background: blue;*/
+	float: left;
+	border-right: 1px solid #D8D8D8;
+	background: #E6E6E6;
+	text-align: center;
+	line-height: 50px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.y-rentForm-select-ic_date {
+	width: 835px;
+	height: 50px;
+	/*    background: green;*/
+	float: left;
+	padding-left: 10px;
+	line-height: 50px;
+	padding-top: 2px;
+	box-sizing: border-box;
+}
+
+.y-rentForm-select-ic_date input {
+	width: 300px;
+	height: 40px;
+	border: 1px solid #bcbcbc;
+	font-size: 15px;
+	margin-right: 10px;
+	padding-left: 10px;
+}
+
+.y-rentForm-select-ic_date input:focus {
+	outline: none;
+	box-shadow: 0px 0px 3px 0px #18A8F1;
+}
+
+.y-rentForm-borrow-ic_location {
+	width: 1200px;
+	height: 50px;
+	/*    background: red;*/
+	border: 1px solid #D8D8D8;
+}
+
+.y-rentForm-title-ic_location {
+	width: 280px;
+	height: 50px;
+	/*    background: blue;*/
+	float: left;
+	border-right: 1px solid #D8D8D8;
+	background: #E6E6E6;
+	text-align: center;
+	line-height: 50px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.y-rentForm-select-ic_location {
+	width: 835px;
+	height: 50px;
+	/*    background: green;*/
+	float: left;
+	padding-left: 10px;
+	line-height: 50px;
+	padding-top: 2px;
+	box-sizing: border-box;
+}
+
+.y-rentForm-select-ic_location input {
+	width: 380px;
+	height: 40px;
+	border: 1px solid #bcbcbc;
+	font-size: 15px;
+	padding-left: 10px;
+}
+
+.y-rentForm-select-ic_location input:focus {
+	outline: none;
+	box-shadow: 0px 0px 3px 0px #18A8F1;
+}
+
+.y-rentForm-borrow-ic_pn {
+	width: 1200px;
+	height: 50px;
+	/*    background: red;*/
+	border: 1px solid #D8D8D8;
+}
+
+.y-rentForm-title-ic_pn {
+	width: 280px;
+	height: 50px;
+	/*    background: blue;*/
+	float: left;
+	border-right: 1px solid #D8D8D8;
+	background: #E6E6E6;
+	text-align: center;
+	line-height: 50px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.y-rentForm-select-ic_pn {
+	width: 835px;
+	height: 50px;
+	/*    background: green;*/
+	float: left;
+	padding-left: 10px;
+	line-height: 50px;
+	padding-top: 2px;
+	box-sizing: border-box;
+}
+
+.y-rentForm-select-ic_pn input {
+	width: 380px;
+	height: 40px;
+	border: 1px solid #bcbcbc;
+	font-size: 15px;
+	padding-left: 10px;
+}
+
+.y-rentForm-select-ic_pn input:focus {
+	outline: none;
+	/* box-shadow: 0px 0px 3px 0px #18A8F1; */
+}
+
+.y-rentForm-borrow-file {
+	width: 1200px;
+	height: 150px;
+	/*    background: red;*/
+	border: 1px solid #D8D8D8;
+	margin-top: 50px;
+}
+
+.y-rentForm-title-file {
+	width: 280px;
+	height: 150px;
+	/*    background: blue;*/
+	float: left;
+	border-right: 1px solid #D8D8D8;
+	background: #E6E6E6;
+	text-align: center;
+	line-height: 150px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.y-rentForm-select-file {
+	width: 835px;
+	height: 150px;
+	/*    background: green;*/
+	float: left;
+	padding-left: 10px;
+	line-height: 28px;
+}
+
+.y-rentForm-select-file p {
+	color: #0174DF
+}
+
+.y-rentForm-select-file span {
+	color: red;
+	font-weight: bold;
+}
+
+.y-rentForm-select-file input {
+	width: 280px;
+	height: 25px;
+	text-align: center;
+}
+
+.y-rentForm-select-file input:focus {
+	outline: none;
+	box-shadow: 0px 0px 3px 0px #18A8F1;
+}
+
+.y-rentForm-borrow-file1 {
+	width: 1200px;
+	height: auto;
+	border: 1px solid #D8D8D8;
+}
+
+.y-rentForm-title-file1 {
+	width: 280px;
+	height: auto;
+	/*    background: blue;*/
+	/* float: left; */
+	border-right: 1px solid #D8D8D8;
+	/* background: #E6E6E6; */
+	/* text-align: center;*/
+	vertical-align: middle;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.y-rentForm-select-file1 {
+	width: 835px;
+	height: auto;
+	/*    background: green;*/
+	float: left;
+	padding-left: 10px;
+	line-height: 28px;
+}
+
+.y-rentForm-select-file1 a {
+	color: red;
+	font-weight: bold;
+}
+
+.__add {
+	width: 845px;
+	/*    background: skyblue;*/
+	float: left;
+	margin-top: 5px;
+}
+
+.__add input {
+	width: 300px;
+	height: 22px;
+	/*    background: red;*/
+	border: 1px solid #A4A4A4;
+	font-size: 12px;
+}
+
+#btn_add {
+	padding: 2px 4px;
+	margin-bottom: 10px;
+	background: white;
+	border: 1px solid #A4A4A4;
+	cursor: pointer;
+}
+
+.y-rentForm-file-insert {
+	width: 845px;
+	height: 30px;
+	/*    background: skyblue;*/
+	float: left;
+	margin-top: 5px;
+}
+
+.y-rentForm-file-insert input {
+	width: 300px;
+	height: 22px;
+	/*    background: red;*/
+	border: 1px solid #A4A4A4;
+	font-size: 12px;
+}
+
+.y-rentForm-file-insert label {
+	color: red;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+
+/* 신청버튼 */
+.y-rentForm-submit-btn {
+	width: 1200px;
+	height: 50px;
+	/*    background: red;*/
+	display: flex;
+	justify-content: center;
+	column-gap: 20px;
+	align-items: center;
+	margin-top: 30px;
+}
+
+.y-rentForm-submit-btn button {
+	width: 280px;
+	height: 30px;
+	background: white;
+	border: 2px solid #18A8F1;
+	font-weight: bold;
+}
+
+.y-rentForm-submit-btn button:hover {
+	cursor: pointer;
+	background: #18A8F1;
+	color: white;
+}

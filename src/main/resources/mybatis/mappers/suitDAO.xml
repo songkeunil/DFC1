@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="suit">
+
+	<!-- search -->
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 'm'.toString()">
+				AND MEMBER_NAME LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'r'.toString()">
+				AND TO_CHAR(V_DATE,'YYYYMMDD') LIKE '%' || #{keyword} || '%'
+			</if>
+		</if>
+	</sql>
+	
+	<!-- 총 게시물 개수 구하기 -->
+	<select id="selectTotalNO" parameterType="searchCriteria" resultType="int">
+		SELECT COUNT(*)
+		  FROM SUIT_RENT S, INTERVIEW_COMPANY I, MEMBER M
+		 WHERE S.REQ_NO = I.REQ_NO
+		   AND S.MEMBER_ID = M.MEMBER_ID
+		       <include refid="search"></include>
+	</select>
+	
+	<!-- LIST ALL + paging -->
+	<select id="selectListAll" parameterType="SearchCriteria" resultType="suitVO">
+		SELECT ROWNUM "third",
+			   REQ_NO, MEMBER_ID, REPLACE(MEMBER_NAME,SUBSTR(MEMBER_NAME,2,1),'*') AS MEMBER_NAME, 
+			   REG_DATE, V_DATE, V_TIME, RE_DATE, RE_TIME, RENT_DATE, RENT_CNAME, HOPE_CARD, 
+			   CASE WHEN RENT_ENABLED = 'Y' THEN '승인'
+			   		ELSE '승인대기'
+			   END AS RENT_ENABLED,
+			   IC_CODE, IC_NAME, IC_DATE, IC_PN, IC_LOCATION
+		  FROM (
+		  		SELECT ROWNUM "second" , T.*
+		  		  FROM (
+		  		  		SELECT ROWNUM "first",
+				  			   S.REQ_NO, M.MEMBER_ID, MEMBER_NAME, 
+							   REG_DATE, V_DATE, V_TIME, RE_DATE, RE_TIME, RENT_DATE, RENT_CNAME, HOPE_CARD, 
+							   RENT_ENABLED,
+							   IC_CODE, I.IC_NAME, IC_DATE, IC_PN, IC_LOCATION
+						  FROM SUIT_RENT S, INTERVIEW_COMPANY I, MEMBER M
+						 WHERE S.REQ_NO = I.REQ_NO
+						   AND S.MEMBER_ID = M.MEMBER_ID
+						       <include refid="search"></include>
+					  	 ORDER BY S.REQ_NO DESC
+				  	   	) T
+		  	     ) T
+		 WHERE "second" BETWEEN #{rowStart} AND #{rowEnd}
+	</select>
+	
+	<!-- req_no에 대한 상세정보 가져오기 -->
+	<select id="selectInfo" parameterType="String" resultType="suitVO">
+		SELECT S.REQ_NO, M.MEMBER_ID, MEMBER_NAME, 
+			   REG_DATE, V_DATE, V_TIME, RE_DATE, RE_TIME, RENT_DATE, RENT_CNAME, HOPE_CARD, RENT_ENABLED, 
+			   IC_CODE, I.IC_NAME, IC_DATE, IC_PN, IC_LOCATION
+		  FROM SUIT_RENT S, INTERVIEW_COMPANY I, MEMBER M
+		 WHERE S.REQ_NO = I.REQ_NO
+		   AND S.MEMBER_ID = M.MEMBER_ID
+		   AND S.REQ_NO = #{req_no}
+	</select>
+	
+	<!-- req_no에 대한 파일정보 가져오기 -->
+	<select id="selectFileInfo" parameterType="String" resultType="attachVO">
+		SELECT FILENO, FILENAME, STORED_FILENAME
+	      FROM SUIT_ATTACH
+	     WHERE REQ_NO = #{req_no}
+	</select>
+	
+	<!-- select option 값 가져오기 -->
+	<select id="selectCode" resultType="codeVO">
+		SELECT TIMECODE
+		  FROM SUIT_TIMECODE
+	</select>
+	
+	<!-- 신청번호 가져오기 -->
+	<select id="selectNO" parameterType="String" resultType="String">
+		SELECT REQ_NO
+		  FROM SUIT_RENT
+		 WHERE REQ_NO = (
+					 	 SELECT MAX(REQ_NO)
+						 FROM SUIT_RENT
+						 WHERE MEMBER_ID = #{member_id}
+					    )
+		   AND MEMBER_ID = #{member_id}
+		   AND RENT_ENABLED = 'Y'
+	</select>
+	
+	<!-- 대여일 입력 -->  
+	<insert id="insertSuit" parameterType="suitVO">
+		INSERT INTO SUIT_RENT
+			(
+			REQ_NO, 
+			MEMBER_ID,
+			V_DATE, V_TIME,
+			RE_DATE, RE_TIME,
+			RENT_DATE,
+			RENT_CNAME,
+			HOPE_CARD,
+			IC_NAME
+			)
+		VALUES
+			(
+			TO_CHAR(SYSDATE,'YYMMDD')||LPAD(SEQ_REQ_NO.NEXTVAL,3,0),
+			#{member_id},
+			#{v_date}, #{v_time},
+			#{re_date}, #{re_time},
+			#{rent_date},
+			#{rent_cname},
+			#{hope_card},
+			#{ic_name}
+			)
+	</insert>
+	
+	<!-- 면접회사 정보 입력 -->
+	<insert id="insertIC" parameterType="suitVO">
+		INSERT INTO INTERVIEW_COMPANY
+			(
+			IC_CODE,
+			IC_NAME, IC_DATE, IC_PN, IC_LOCATION,
+			REQ_NO
+			)
+		VALUES
+			(
+			TO_CHAR(SYSDATE,'MMDD')||LPAD(SEQ_IC_CODE.NEXTVAL,3,0),
+			#{ic_name}, #{ic_date}, #{ic_pn}, #{ic_location},
+			#{req_no}
+			)
+	</insert>
+	
+	<!-- 첨부파일 등록하기/ 첨부파일 수정2 -->
+<!-- 	<insert id="insertFile" parameterType="java.util.Map">
+		INSERT INTO SUIT_ATTACH
+				(
+				FILENO, 
+				FILENAME, 
+				REQ_NO
+				)
+			SELECT TO_CHAR(SYSDATE,'DD')||LPAD(SEQ_FILE_NO.NEXTVAL,4,0), A.*
+			FROM (
+		<foreach collection="list" item="item" separator="UNION ALL" >
+			SELECT	#{item.fileName} AS FILENAME, 
+				#{item.req_no} AS REQ_NO 
+			FROM DUAL	
+		</foreach>
+		) A
+	</insert> -->
+	
+	<!-- 첨부파일 등록하기 -->
+	<insert id="insertFile" parameterType="java.util.Map">
+		INSERT INTO SUIT_ATTACH
+			(
+			FILENO,
+			FILENAME,
+			STORED_FILENAME,
+			REQ_NO
+			)
+		VALUES
+			(
+			TO_CHAR(SYSDATE,'DD')||LPAD(SEQ_FILE_NO.NEXTVAL,4,0),
+			#{fileName},
+			#{stored_fileName},
+			#{req_no}
+			)
+	</insert>
+	
+	<!-- 대여일 수정 -->
+	<update id="updateSuit" parameterType="suitVO">
+		UPDATE SUIT_RENT
+		   SET V_DATE = #{v_date}, 
+		       V_TIME = #{v_time},
+		  	   RE_DATE = #{re_date}, 
+		  	   RE_TIME = #{re_time},
+			   RENT_DATE = #{rent_date},
+			   RENT_CNAME = #{rent_cname},
+			   HOPE_CARD = #{hope_card},
+			   IC_NAME = #{ic_name}
+		 WHERE REQ_NO = #{req_no}
+ 	</update>
+	
+	<!-- 면접회사 수정 -->
+	<update id="updateIC" parameterType="suitVO">
+		UPDATE INTERVIEW_COMPANY
+		   SET IC_NAME = #{ic_name}, 
+		       IC_DATE = #{ic_date}, 
+		       IC_PN = #{ic_pn}, 
+		       IC_LOCATION = #{ic_location}
+		 WHERE REQ_NO = #{req_no}
+	</update>
+	
+	<!-- 첨부파일 수정 1 
+	<delete id="deleteFileAll" parameterType="String">
+		DELETE
+		  FROM SUIT_ATTACH
+		 WHERE REQ_NO = #{req_no}
+	</delete> -->
+	
+	<!-- 첨부파일 수정 1 -->
+	<delete id="deleteFile" parameterType="attachVO">
+		DELETE
+		  FROM SUIT_ATTACH
+		 WHERE REQ_NO = #{req_no}
+		   AND FILENAME = #{fileName}		   
+	</delete>
+	
+	<!-- 신청 삭제 -->
+	<delete id="deleteAll" parameterType="String">
+		DELETE
+		  FROM SUIT_RENT
+		 WHERE REQ_NO = #{req_no}
+	</delete>
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

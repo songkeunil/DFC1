@@ -1,0 +1,249 @@
+#y-rentForm-rap {
+    width: 1400px;
+    height: auto;
+    margin: 0 auto;
+/*                background: red;*/
+}
+
+#y-boardtop {
+/*        background:red;*/
+    width: 1200px;
+    height:50px;
+    margin: 0 auto;
+    line-height:50px;
+    border-bottom: 1px solid #A4A4A4;
+}
+
+#y-boardtop a{
+    text-decoration: none;
+    color: #848484;
+}
+#y-boardtop h2{
+   float: left;
+   width:auto;
+   font-size:35px;
+   font-weight: 700;
+   /*  border-bottom: 1px solid #18A8F1; */
+}
+.suit_submenu{
+	float: right;
+}
+
+
+
+#y-rentForm{
+    width: 1200px;
+    height: auto;
+/*    background: red;*/
+    margin: 0 auto;
+}
+
+.y-rentForm-titletext{
+/*    background: red;*/
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+.y-rentForm-titletext h2{
+
+    height: 30px;
+    border-bottom: 3px solid #18A8F1;
+}
+
+
+/* 대여일, 면접회사 정보 */
+.y-rentForm-borrow{
+    width: 1200px;
+    height: 70px;
+/*    background: red;*/
+    border: 1px solid #D8D8D8;
+}
+.y-rentForm-title{
+    width: 280px;
+    height: 70px;
+/*    background: blue;*/
+    float: left;
+    border-right: 1px solid #D8D8D8;
+     background: #E6E6E6;
+    text-align: center;
+    line-height: 70px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.y-rentForm-select{
+    width: 835px;
+    height: 70px;
+/*    background: green;*/
+    float: left;
+    padding-left: 10px;
+    line-height: 70px;
+   
+}
+.y-rentForm-select p{
+    
+}
+.y-rentForm-select input{
+    width: 150px;
+    height: 25px;
+    text-align: center;
+}
+.y-rentForm-select input:focus{
+    outline: none;
+     box-shadow: 0px 0px 3px 0px #18A8F1;
+}
+
+
+/* 방문시간 */
+.y-rentForm-borrow-time{
+    width: 1200px;
+    height: 70px;
+/*    background: red;*/
+    border: 1px solid #D8D8D8;
+   
+}
+.y-rentForm-title-time{
+    width: 280px;
+    height: 70px;
+/*    background: blue;*/
+    float: left;
+    border-right: 1px solid #D8D8D8;
+     background: #E6E6E6;
+    text-align: center;
+    line-height: 70px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.y-rentForm-select-time{
+    width: 835px;
+    height: 70px;
+/*    background: green;*/
+    float: left;
+    padding-left: 10px;
+    line-height: 70px;
+   
+}
+.y-rentForm-select-time p{
+   /*  color: #0174DF */
+}
+.y-rentForm-select-time span{
+    color: red;
+}
+.y-rentForm-select-time select{
+    width: 100px;
+    height: 25px;
+    text-align: center;
+}
+.y-rentForm-select-time select:focus{
+    outline: none;
+     box-shadow: 0px 0px 3px 0px #18A8F1;
+}
+
+
+
+.y-rentForm-borrow-file{
+    width: 1200px;
+    height: 150px;
+/*    background: red;*/
+    border: 1px solid #D8D8D8;
+    margin-top: 50px;
+}
+.y-rentForm-title-file{
+    width: 280px;
+    height: 150px;
+/*    background: blue;*/
+    float: left;
+    border-right: 1px solid #D8D8D8;
+     background: #E6E6E6;
+    text-align: center;
+    line-height: 150px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.y-rentForm-select-file{
+    width: 835px;
+    height: 150px;
+/*    background: green;*/
+    float: left;
+    padding-left: 10px;
+    line-height: 28px;
+   
+}
+.y-rentForm-select-file p{
+    color: #0174DF
+}
+.y-rentForm-select-file span{
+    color: red;
+    font-weight: bold;
+}
+.y-rentForm-select-file input{
+    width: 150px;
+    height: 25px;
+    text-align: center;
+}
+.y-rentForm-select-file input:focus{
+    outline: none;
+     box-shadow: 0px 0px 3px 0px #18A8F1;
+}
+
+
+.y-rentForm-file-insert{
+    width: 845px;
+    height: 30px;
+/*    background: skyblue;*/
+    float: left;  
+    margin-top: 5px;
+}
+
+.y-rentForm-file-insert input{
+    width: 300px;
+    height: 22px;
+/*    background: red;*/
+      border: 1px solid #A4A4A4;
+    font-size: 12px;
+}
+
+.y-rentForm-file-insert label{
+	color : red;
+    font-size: 15px;
+    font-weight: bold;
+
+
+}
+
+
+.y-rentForm-submit-btn{
+    width: 1200px;
+    height: 50px;
+/*    background: red;*/
+    display: flex;
+    justify-content: center;
+    column-gap: 20px; 
+    align-items: center;
+    
+}
+.y-rentForm-submit-btn input{
+    width: 150px;
+    height: 30px;
+    background: white;
+    border: 2px solid #18A8F1;
+    font-weight: bold;
+        
+}
+.y-rentForm-submit-btn input:hover{
+     cursor: pointer;
+    background: #18A8F1;
+    color: white;
+}
+
+.y-rentForm-submit-btn button{
+    width: 150px;
+    height: 30px;
+    background: white;
+    border: 2px solid #18A8F1;
+    font-weight: bold;
+        
+}
+.y-rentForm-submit-btn button:hover{
+     cursor: pointer;
+    background: #18A8F1;
+    color: white;
+}

@@ -21,6 +21,7 @@ public interface MemberDAO {
 	public String duplicateID(String member_id);
 	
 	//회원탈퇴
+<<<<<<< HEAD
 	public String deleteID(String member_id);
 
 
@@ -34,4 +35,7 @@ public interface MemberDAO {
 
 	
 
+=======
+	public void deleteID(String member_id);
+>>>>>>> 7f3bfd5b6b7baf5bd5485976e2e15cd760642659
 }
