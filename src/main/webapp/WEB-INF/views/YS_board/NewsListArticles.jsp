@@ -114,7 +114,7 @@
 					</button>
 				</div>
 			</div>
-			<div id='pagebtn'>
+			<div id='pagebtn' style="width:400px; height: 40px;">
 				<button type='button' onclick="location.href='#'">
 					<i class="bi bi-chevron-double-left"></i>
 				</button>

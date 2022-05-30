@@ -39,6 +39,7 @@ import com.djplat.project.YS_board.service.BoardService;
 import com.djplat.project.YS_board.vo.ArticleVO;
 import com.djplat.project.YS_board.vo.FileVO;
 import com.djplat.project.YS_board.vo.LikeVO;
+import com.djplat.project.YS_board.vo.ReplyVO;
 import com.djplat.project.member.vo.MemberVO;
 
 import net.coobird.thumbnailator.Thumbnails;
@@ -604,7 +605,194 @@ public class BoardControllerImpl implements BoardController {
 		mav.addObject("articlesMap", articlesMap);
 		return mav;
 	}
+	
+	@RequestMapping(value = "/YS_board/replyListArticles.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public Map replyListArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	
+		int brd_no = Integer.parseInt(request.getParameter("brd_no"));
+		String _section=request.getParameter("section");
+		String _pageNum=request.getParameter("pageNum");
+		int section = Integer.parseInt(((_section==null)? "1":_section));
+		int pageNum = Integer.parseInt(((_pageNum==null)? "1":_pageNum));
+		Map pagingMap=new HashMap();
+		pagingMap.put("brd_no", brd_no);
+		pagingMap.put("section", section);
+		pagingMap.put("pageNum", pageNum);
+		Map replyMap = boardService.replyListArticles(pagingMap);
 
+		replyMap.put("section", section);
+		replyMap.put("pageNum", pageNum);
+		System.out.println(replyMap.toString());
+		return replyMap;
+	}
+	
+	@RequestMapping(value ={"/YS_board/addNewReply.do","/YS_board/addReplyOnReply.do"} , method = {RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+	public ResponseEntity addNewReply(
+			@RequestParam("brd_no") int brd_no,
+			@RequestParam("reply") String reply,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		request.setCharacterEncoding("utf-8");
+		Map replyMap = new HashMap();
+		Enumeration enu = request.getParameterNames();
+		while (enu.hasMoreElements()) {
+			String name = (String) enu.nextElement();
+			String value = request.getParameter(name);
+			replyMap.put(name, value);
+		}
+		replyMap.put("reply_text", reply);
+		
+		// 로그인 시 세션에 저장된 회원 정보에서 글쓴이 아이디를 얻어와서 Map에 저장합니다.
+		// 로그인 취합 시 사용
+		HttpSession session = request.getSession();
+		MemberVO memberVO = (MemberVO) session.getAttribute("member");
+//		String id = memberVO.getMember_id();
+		String member_id = "lee";
+
+		// 시큐리티용 현재 접속자 ID 수령 코드 취합 및 실 사용시 교체 해주세요.
+//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        String member_id=(String)principal;
+
+		replyMap.put("member_id", member_id);
+		String WhereFrom = request.getRequestURI().toString();
+		if(WhereFrom.equals("/project/YS_board/addNewReply.do")){
+			System.out.println("진입");
+			replyMap.put("reply_lvl", 0);
+		}else if(WhereFrom.equals("/project/YS_board/addReplyOnReply.do")){
+			String reply_lvl = (String)session.getAttribute("reply_lvl");
+			replyMap.put("reply_lvl", (reply_lvl == null ? 0: reply_lvl));
+		}
+		
+		
+		System.out.println(replyMap.toString());
+		int articleNO = Integer.parseInt(request.getParameter("brd_no"));
+		String message;
+		ResponseEntity resEnt = null;
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		try {
+			int reply_no = boardService.addNewReply(replyMap);
+
+			message = "<script>";
+			message += " alert('새 댓글을 추가했습니다.');";
+			message += " location.href='" + request.getContextPath() + "/YS_board/viewArticle.do?brd_no="+ articleNO + "';";
+			message += " </script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+
+		} catch (Exception e) {
+
+			message = " <script>";
+			message += " alert('오류가 발생했습니다. 다시 시도해 주세요');');";
+			message += " location.href='" + request.getContextPath() + "/YS_board/viewArticle.do?brd_no="+ articleNO + "';";
+			message += " </script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+			e.printStackTrace();
+		}
+		return resEnt;
+	}
+	
+	
+	
+	
+	@RequestMapping(value = "/YS_board/removeReplyArticle.do", method = {RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public ResponseEntity removeReplyArticle(@RequestParam("reply_no") int reply_no,
+			HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		response.setContentType("text/html; charset=UTF-8");
+		String brd_no = request.getParameter("brd_no");
+		int articleNO = Integer.parseInt(brd_no);
+		String message;
+		ResponseEntity resEnt = null;
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		try {
+			boardService.removeReplyArticle(reply_no);
+			
+			message = "<script>";
+			message += " alert('해당 댓글을 삭제했습니다.');";
+			message += " location.href='" + request.getContextPath() + "/YS_board/viewArticle.do?brd_no="+ articleNO + "';";
+			message += " </script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+
+		} catch (Exception e) {
+			message = "<script>";
+			message += " alert('작업중 오류가 발생했습니다.다시 시도해 주세요.');";
+			message +=  " location.href='" + request.getContextPath() + "/YS_board/viewArticle.do?brd_no="+ articleNO + "';";
+			message += " </script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+			e.printStackTrace();
+		}
+		return resEnt;
+	}
+	
+	@RequestMapping(value = "/YS_board/openModReplyForm.do", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView openModReplyForm(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView();
+		HashMap replyInfo = new HashMap();
+		Enumeration enu = request.getParameterNames();
+		while (enu.hasMoreElements()) {
+			String name = (String) enu.nextElement();
+			String value = request.getParameter(name);
+			replyInfo.put(name, value);
+			}
+		mav.setViewName(viewName);
+		mav.addObject("replyInfo", replyInfo);
+		return mav;
+	}
+	
+
+	
+//	@RequestMapping(value = "/YS_board/replyAddArticles.do", method = { RequestMethod.GET, RequestMethod.POST })
+//	public ModelAndView replyAddArticles(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception {
+//
+//		
+//		Map replyMap = new HashMap();
+//		Enumeration enu = multipartRequest.getParameterNames();
+//		while (enu.hasMoreElements()) {
+//			String name = (String) enu.nextElement();
+//			String value = multipartRequest.getParameter(name);
+//			replyMap.put(name, value);
+//		}
+//		
+//		// 로그인 취합 시 사용
+//				HttpSession session = multipartRequest.getSession();
+//				MemberVO memberVO = (MemberVO) session.getAttribute("member");
+////				String id = memberVO.getMember_id();
+//				String id = "lee";
+//				replyMap.put("member_id", id);
+//				// 시큐리티용 현재 접속자 ID 수령 코드 취합 및 실 사용시 교체 해주세요.
+////				Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+////		        String member_id=(String)principal;
+//				
+//		
+//				
+////		____________________________________________________
+//		String _section=request.getParameter("section");
+//		String _pageNum=request.getParameter("pageNum");
+//		int section = Integer.parseInt(((_section==null)? "1":_section) );
+//		int pageNum = Integer.parseInt(((_pageNum==null)? "1":_pageNum));
+//		Map pagingMap=new HashMap();
+//		pagingMap.put("section", section);
+//		pagingMap.put("pageNum", pageNum);
+//		Map articlesMap = boardService.replyArticles(pagingMap);
+//
+//		articlesMap.put("section", section);
+//		articlesMap.put("pageNum", pageNum);
+//		
+//		String viewName = (String) request.getAttribute("viewName");
+//		
+//		ModelAndView mav = new ModelAndView(viewName);
+//		mav.addObject("articlesMap", articlesMap);
+//		return mav;
+//
+//	}
+	
+	
 //	@RequestMapping(value = "/YS_board/addNewFileOnMod.do", method = RequestMethod.POST)
 //	@ResponseBody
 //	public Map<String, Object> addNewFileOnMod(@RequestParam("brd_no") int brd_no,

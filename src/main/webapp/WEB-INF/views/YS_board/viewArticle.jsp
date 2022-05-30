@@ -7,6 +7,11 @@
 <c:set var="article" value="${articleMap.article}" />
 <c:set var="articleFileList" value="${articleMap.articleFileList}" />
 <c:set var="heart" value="${heart}" />
+
+<c:set var="replyList"  value="${replyMap.replyList}"  />
+<c:set var="section"  value="${replyMap.section}"  />
+<c:set var="pageNum"  value="${replyMap.pageNum}"  />
+<c:set var="totReplies"  value="${replyMap.totReplies}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,7 +63,14 @@
 	 }
 	
 $(document).ready(function () {
-	 var heartval = ${heart};
+	var brd_no = '${article.brd_no}';
+	$(function(){
+    	$("#y-detail-comment").load('http://localhost:8090/project/YS_board/replyListArticles.do',{brd_no});
+	});
+
+	
+	
+	var heartval = ${heart};
 	 
 	  if(heartval > 0) {
           console.log(heartval);
@@ -89,12 +101,9 @@ $(document).ready(function () {
                   }
               }
           });
-	})
+	});
+	
 });
-
-
-
-
  </script>
 
 <link rel="stylesheet"
@@ -172,40 +181,53 @@ $(document).ready(function () {
 
   
 			<div id=y-detail-comment>
-				<div class='y-detail-comment-top'>
+<%-- 				<div class='y-detail-comment-top'>
 					<h3>Comment</h3>
 				</div>
-			
-				<div class='y-detail-comment-middle'>
-					<div class="y-detail-comment-middle-profile">
-						<i class="bi bi-person-fill"></i>
-					</div>
-					<div>
-						<div class="y-detail-comment-middle-info">
-							<div class="y-detail-comment-middle-info-name">관리자</div>
-
-							<div class="y-detail-comment-middle-info-date">2022-05-09</div>
-							<div class="y-detail-comment-middle-info-time">14:50</div>
+				 <c:choose>
+                      <c:when test="${empty replyList}" >
+                       <div class='y-detail-comment-middle'>
+						<tr width="1000px" height="10" align="center">
+                          <td colspan="4">
+                            <p align="center">
+								<b><span style="font-size:9pt;">등록된 댓글이 없습니다.</span></b>
+							</p>
+						  </td>
+						 </tr>
 						</div>
+                      </c:when>
+                      
+                       <c:when test="${not empty replyList }" >
+                       		<c:forEach  var="reply" items="${replyList }" varStatus="replyNum" >
+                       			<div class='y-detail-comment-middle'>
+									<div class="y-detail-comment-middle-profile">
+										<i class="bi bi-person-fill"></i>
+									</div>
+									<div>
+										<div class="y-detail-comment-middle-info">
+											<div class="y-detail-comment-middle-info-name">${reply.member_id}</div>
+											<div class="y-detail-comment-middle-info-date">${reply.reply_time}</div>
+										</div>
 
-						<div class="y-detail-comment-middle-info-main">2021년 대전시
-							해외취업지원사업 전문분야 국내외 항공사 및 외국기업 취업역량강화 교육 참여자 모집중입니다.</div>
-						<div class="reply">
-							<a href="#">답글</a>
-						</div>
-					</div>
-				</div>
-				
+										<div class="y-detail-comment-middle-info-main">${reply.reply_text}</div>
+										<div class="reply">
+											<a href="#">답글</a>
+										</div>
+									</div>
+								</div>
+                       		</c:forEach>
+                       </c:when>
+                 </c:choose> --%>
 			</div>
+			<form name="replyForm" method="post"
+				action="${contextPath }/YS_board/addNewReply.do?brd_no=${article.brd_no}">
 			<div class="y-detail-comment-write-rap">
-				<textarea class="y-detail-comment-write"></textarea>
-				<button type='button' onclick="location.href='#'">
+				<input type="text" name="reply" class="y-detail-comment-write">
+				<button type="submit">
 					<i class="bi bi-chat"></i> 등록
 				</button>
 			</div>
-
-
-
+			</form>
 			<div id='y-detail-bottom-rap'>
 				<div class='y-detail-bottom-left'>
 					<button type='button' onclick="location.href='http://localhost:8090/project/YS_board/viewArticle.do?brd_no=${article.brd_no-1}'">
@@ -222,13 +244,9 @@ $(document).ready(function () {
 				
 				<div class='y-detail-bottom-right'>
 					<button type="button"
-						onclick="fn_remove_article('${contextPath}/YS_board/removeArticle.do', ${article.brd_no})" style="float: left;">
+					onclick="fn_remove_article('${contextPath}/YS_board/removeArticle.do', ${article.brd_no})" style="float: left;">
 						삭제하기</button>	
-				
-					<button type='button' onclick="location.href='#'">
-						<i class="y-bi bi-pencil"></i>글쓰기
-					</button>
-					
+								
 					<button type='button' class='boardbtn' onclick="location.href='${contextPath }/YS_board/listArticles.do'">
             			<i class="bi bi-justify"></i>목록
             		</button>

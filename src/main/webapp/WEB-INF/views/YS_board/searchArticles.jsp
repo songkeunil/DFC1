@@ -48,10 +48,10 @@
                 <tbody>
                    <c:choose>
                       <c:when test="${empty articlesList}" >
-                        <tr  height="10">
-                          <td colspan="4">
+                       <tr style="width:1000px;  height:10px; align:center;">
+                          <td colspan="4" style="width:1000px;">
                             <p align="center">
-                                <b><span style="font-size:9pt;">등록된 글이 없습니다.</span></b>
+                                <b><span style="font-size:9pt; widows: 997px;">등록된 글이 없습니다.</span></b>
                             </p>
                           </td>  
                         </tr>

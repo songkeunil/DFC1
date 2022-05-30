@@ -27,6 +27,15 @@
 		<result property="member_id" column="member_id" />
 	</resultMap>
 	
+	<resultMap id="replyResult" type="YSB_replyVO">
+		<result property="reply_no" column="reply_no" />
+		<result property="reply_lvl" column="reply_lvl" />
+		<result property="reply_text" column="reply_text" />
+		<result property="reply_time" column="reply_time" />
+		<result property="member_id" column="member_id" />
+		<result property="brd_no" column="brd_no" />
+	</resultMap>
+	
 	<!-- 글 리스트 -->
 	<select id="selectAllArticlesList" parameterType="java.util.Map"
 		resultMap="articlesResult">
@@ -71,12 +80,64 @@
   		SELECT count(brd_no) FROM YOUNGSUPPORT_BOARD
   	]]>
 	</select>
-		
+	
+	<!-- 댓글 리스트 -->
+	<select id="selectAllReplyArticlesList" parameterType="java.util.Map"
+	resultMap="replyResult">
+  	<![CDATA[
+		SELECT a.* FROM
+		(SELECT ROW_NUMBER() over (ORDER BY reply_no DESC) as recNum, ROW_NUMBER() over (ORDER BY reply_no) as recNum2, reply_no, reply_lvl, reply_text,
+		reply_time, member_id, brd_no FROM YOUNGSUPPORT_REPLY WHERE brd_no = #{brd_no}
+		) a
+		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*10+1 and (#{section}-1)*100 + #{pageNum}*10
+  	]]>
+	</select>
+
+	<!-- 댓글 페이지 넘버링 -->
+	<select id="selectReplyTotArticles" parameterType="java.util.Map" 
+		resultType="int">
+  	<![CDATA[
+  		SELECT count(brd_no) FROM YOUNGSUPPORT_REPLY
+  		WHERE brd_no = #{brd_no}
+  	]]>
+	</select>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteReplyArticle" parameterType="int">
+ 	<![CDATA[
+ 		DELETE FROM YOUNGSUPPORT_REPLY
+ 		WHERE reply_no = #{reply_no}
+ 	]]>
+	</delete>
+	
+	
 	<!-- 새글 작성 -->
-	<select id="insertNewArticle" parameterType="java.util.Map">
+	<insert id="insertNewArticle" parameterType="java.util.Map">
  	<![CDATA[
 		INSERT INTO YOUNGSUPPORT_BOARD(brd_no, title, support_context, cc, w_date, hits, ylike,member_id)
  		VALUES(#{brd_no},#{title},#{support_context},#{cc},sysdate,0,0,#{member_id})
+ 	]]>
+	</insert>
+
+	<!-- 새글 번호 생성 -->
+	<select id="selectNewArticleNO" resultType="int">
+ 	<![CDATA[
+ 		SELECT nvl(max(brd_no), 0) + 1 FROM YOUNGSUPPORT_BOARD
+ 	]]>
+	</select>
+	
+	<!-- 새 댓글 작성 -->
+	<insert id="insertNewReply" parameterType="java.util.Map">
+ 	<![CDATA[
+		INSERT INTO YOUNGSUPPORT_REPLY(reply_no, reply_lvl, reply_text, reply_time, member_id, brd_no)
+ 		VALUES(#{reply_no},#{reply_lvl},#{reply_text},sysdate,#{member_id},#{brd_no})
+ 	]]>
+	</insert>
+	
+	<!-- 새 댓글 번호 생성 -->
+	<select id="selectNewReplyNO" resultType="int">
+ 	<![CDATA[
+ 		SELECT nvl(max(reply_no), 0) + 1 FROM YOUNGSUPPORT_REPLY
  	]]>
 	</select>
 
@@ -92,13 +153,6 @@
 		</foreach>
 	</select>
 
-
-	<!-- 새글 번호 생성 -->
-	<select id="selectNewArticleNO" resultType="int">
- 	<![CDATA[
- 		SELECT nvl(max(brd_no), 0) + 1 FROM YOUNGSUPPORT_BOARD
- 	]]>
-	</select>
 
 	<!-- 첨부 파일 번호 생성 -->
 	<select id="selectNewArticleFileNO" resultType="int">

@@ -37,5 +37,8 @@ public interface BoardDAO {
 	public void deleteBoardLike(LikeVO likeVO) throws Exception;
 	public void updateBoardLike(LikeVO likeVO) throws Exception;
 	public void cleanDummyFile() throws Exception;
-
+	public List selectAllReplyArticlesList(Map pagingMap) throws DataAccessException;
+	public int selectReplyTotArticles(Map pagingMap) throws DataAccessException;
+	public int insertNewReply(Map replyMap) throws Exception;
+	public void deleteReplyArticle(int reply_no) throws Exception;
 }

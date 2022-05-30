@@ -30,4 +30,7 @@ public interface BoardService {
 	public void deleteBoardLike(LikeVO likeVO) throws Exception;
 //	public void deleteBoardLike() throws Exception;
 	public void cleanDummyFile() throws Exception;
+	public Map replyListArticles(Map pagingMap) throws Exception;
+	public int addNewReply(Map replyMap) throws Exception;
+	public void removeReplyArticle(int reply_no) throws Exception;
 }

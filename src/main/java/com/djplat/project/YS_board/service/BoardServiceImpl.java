@@ -152,4 +152,26 @@ public class BoardServiceImpl implements BoardService {
 	public void cleanDummyFile() throws Exception{
 		boardDAO.cleanDummyFile();
 	}
+	
+	@Override
+	public Map replyListArticles(Map pagingMap) throws Exception{
+		Map replyMap = new HashMap();
+		List<ArticleVO> replyList = boardDAO.selectAllReplyArticlesList(pagingMap);
+		int totReplies = boardDAO.selectReplyTotArticles(pagingMap);
+		replyMap.put("replyList", replyList);
+		replyMap.put("totReplies", totReplies);
+        return replyMap;
+	}
+	
+	@Override
+	public int addNewReply(Map replyMap) throws Exception {
+		int reply_no = boardDAO.insertNewReply(replyMap);
+		replyMap.put("brd_no", reply_no);
+		return reply_no;
+	}
+	
+	@Override
+	public void removeReplyArticle(int reply_no) throws Exception {
+		boardDAO.deleteReplyArticle(reply_no);
+	}
 }

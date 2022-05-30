@@ -218,4 +218,34 @@ public class BoardDAOImpl implements BoardDAO {
     public void cleanDummyFile() throws Exception {
     	sqlSession.delete("mapper.YS_board.cleanDummyFile");
     }
+    
+    @Override
+	public List selectAllReplyArticlesList(Map pagingMap) throws DataAccessException {
+		List<ArticleVO> replyList = sqlSession.selectList("mapper.YS_board.selectAllReplyArticlesList",pagingMap);
+		return replyList;
+	}
+    
+    @Override
+	public int selectReplyTotArticles(Map pagingMap) throws DataAccessException{
+		int totReplies = sqlSession.selectOne("mapper.YS_board.selectReplyTotArticles");
+		return totReplies;
+	}
+    
+    
+    @Override
+	public int insertNewReply(Map replyMap) throws Exception{
+		int reply_no = selectNewReplyNO();
+		replyMap.put("reply_no", reply_no);
+		sqlSession.insert("mapper.YS_board.insertNewReply",replyMap);
+		return reply_no;
+	}
+    
+	private int selectNewReplyNO() throws DataAccessException{
+		return sqlSession.selectOne("mapper.YS_board.selectNewReplyNO");
+	}
+	
+	@Override
+	public void deleteReplyArticle(int reply_no) throws Exception {
+		sqlSession.delete("mapper.YS_board.deleteReplyArticle", reply_no);
+	}
 }

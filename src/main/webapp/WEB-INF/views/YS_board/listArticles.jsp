@@ -21,7 +21,6 @@
 <link href="${contextPath}/resources/css/YS_board/listArticles.css" rel="stylesheet"/>
 <link href="${contextPath}/resources/css/common/font.css" rel="stylesheet"/>
 </head>
-</script>
 <body>
  <div id='boardrap'>
         <div id='boardtop'>
@@ -47,8 +46,8 @@
                 <tbody>
                    <c:choose>
                       <c:when test="${empty articlesList}" >
-                       <tr width="1000px" height="10" align="center">
-                          <td colspan="4">
+                       <tr style="width:1000px;  height:10px; align:center;">
+                          <td colspan="4" style="width:1000px;">
                             <p align="center">
                                 <b><span style="font-size:9pt;">등록된 글이 없습니다.</span></b>
                             </p>
@@ -59,19 +58,6 @@
                       
                       <c:when test="${not empty articlesList }" >
                           <c:forEach  var="article" items="${articlesList }" varStatus="articleNum" >
-     						<c:if test="${article.cc eq '공지사항'and section eq 1 and pageNum eq 1}">
-                            	<<tr width="1000px" height="10" align="center">
-                            		<td></td>
-                                	<td class = 'text-color'><a href = '#'>${article.cc }</a></td>
-                               	 	<td class='text-left'>
-                                    	<a href='${contextPath}/YS_board/viewArticle.do?brd_no=${article.brd_no}'>${article.title}</a>
-                                	</td>
-                                	<td>${article.w_date}</td>
-                                	<td>${article.hits}</td>
-                               		<td>${article.ylike}</td>
-                               	</tr>
-                            </c:if>
-                            <c:if test="${article.cc ne '공지사항' }"> 
                              <tr align="center">
                                <td>${article.recNum2 }</td>
                                 <td class = 'text-color'><a href = '#'>${article.cc }</a></td>
@@ -82,11 +68,10 @@
                                 <td>${article.hits}</td>
                                 <td>${article.ylike}</td>
                             </tr>
-                           </c:if>
-
-                           
                           </c:forEach>
                       </c:when>
+                      
+                      
                     </c:choose>
                 </tbody>
             </table>
