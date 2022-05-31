@@ -110,15 +110,15 @@
 				<c:when test="${totArticles >100 }">
 					<c:forEach var="page" begin="1" end="10" step="1">
 						<c:if test="${section >1 && page==1 }">
-							<button type="button" onclick='location.href="${contextPath }/YS_board/listArticles.do?section=${section-1}&pageNum=${(section-1)*10 +1 }"'>
+							<button type="button" onclick='location.href="${contextPath }/YS_board/RepoListArticles.do?section=${section-1}&pageNum=${(section-1)*10 +1 }"'>
 								&nbsp;pre
 							</button>
 						</c:if>
-							<button type="button" onclick='location.href=href="${contextPath }/YS_board/listArticles.do?section=${section}&pageNum=${page}"'>
+							<button type="button" onclick='location.href=href="${contextPath }/YS_board/RepoListArticles.do?section=${section}&pageNum=${page}"'>
 								${(section-1)*10 +page }
 							</button>
 						<c:if test="${page ==10 }">
-							<button type="button" onclick='location.href=href="${contextPath }/YS_board/listArticles.do?section=${section+1}&pageNum=${section*10+1}"'>
+							<button type="button" onclick='location.href=href="${contextPath }/YS_board/RepoListArticles.do?section=${section+1}&pageNum=${section*10+1}"'>
 								&nbsp; next
 							</button>
 						</c:if>
@@ -137,12 +137,12 @@
 					<c:forEach var="page" begin="1" end="${totArticles/10 +1}" step="1">
 						<c:choose>
 							<c:when test="${page==pageNum }">
-								<button type="button" onclick='location.href="${contextPath }/YS_board/listArticles.do?section=${section}&pageNum=${page}"'>
+								<button type="button" onclick='location.href="${contextPath }/YS_board/RepoListArticles.do?section=${section}&pageNum=${page}"'>
 									${page }
 								</button>
 							</c:when>
 						<c:otherwise>
-							<button type="button" onclick='location.href="${contextPath }/YS_board/listArticles.do?section=${section}&pageNum=${page}"'>
+							<button type="button" onclick='location.href="${contextPath }/YS_board/RepoListArticles.do?section=${section}&pageNum=${page}"'>
 									${page }
 							</button>
 						</c:otherwise>

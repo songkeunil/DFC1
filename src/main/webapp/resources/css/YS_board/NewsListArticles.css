@@ -66,8 +66,7 @@ h2 {
 
 #thumbnail-rap {
     width: 1000px;
-    height: 750px;
-    /*    background: red;*/
+/*     height: 750px; */
 }
 
 .thumbnail {
@@ -75,12 +74,13 @@ h2 {
     height: 230px;
     /*    background: gray;*/
     margin: 10px;
+    margin-bottom: 20px;
     float: left;
 }
 
 .thumbnail-imgbox {
     width: 230px;
-    height: 180px;
+    height: 230px;
     max-width: 230px;
     overflow: hidden;
 }
@@ -136,11 +136,6 @@ h2 {
     font-size: 16px;
 }
 
-
-
-
-
-
 /*하단 페이지&글쓰기 버튼 시작*/
 #boardfooter {
     width: 1000px;
@@ -153,9 +148,7 @@ h2 {
 #boardbtnbox {
     width: 1000px;
     height: 35px;
-    /*    float: right;*/
     margin-top: -50px;
-    /*    background: skyblue;*/
 }
 
 .boardbtn {
@@ -174,13 +167,11 @@ h2 {
 
 .boardbtn:hover {
     background: #F2F2F2;
-
 }
 
 .searchbtn {
     float: left;
     font-size: 20px;
-    margin-left:
 }
 
 .searchbtn i {
@@ -188,15 +179,12 @@ h2 {
     line-height: 33px;
 }
 
-
 #pagebtn {
-    /*    background: red;*/
-    width: 400px;
+    width: 1000px;
     text-align: center;
     text-decoration: none;
     font-size: 20px;
     margin: 0 auto;
-
 }
 
 #pagebtn a {
@@ -216,7 +204,12 @@ h2 {
 
 #pagebtn button:hover {
     background: #F2F2F2;
-
 }
 
 /*하단 페이지&글쓰기 버튼 끝*/
+
+#footerControllBtns{
+	width: 48%;
+	height: 40px;
+	float: right;
+}

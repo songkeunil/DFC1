@@ -56,7 +56,7 @@
 										<a
 											href='${contextPath}/YS_board/viewArticle.do?brd_no=${article.brd_no}'>
 											<img class="form-img"
-											src="${contextPath}/thumbnails.do?brd_no=${article.brd_no}&fileName=thumb.png">
+											src="${contextPath}/thumbnails.do?brd_no=${article.brd_no}&fileName=thumb.png" style="width: 230px; height: 230px;">
 										</a>
 									</div>
 									<div class='thumbnail-namebox'>
@@ -97,14 +97,12 @@
 				<form name="articleSearch"
 					action="${contextPath}/YS_board/searchArticles.do"
 					style="width: 48%; height: 35px; float: left;">
-					<input id="searchWordForm" name="searchWord" type="text"
-						style="width:">
+					<input id="searchWordForm" name="searchWord" type="text">
 					<button type="submit" class='boardbtn searchbtn'>
 						<i class="bi bi-search"></i>
 					</button>
 				</form>
-				<div id="footerControllBtns"
-					style="width: 48%; height: 35px; float: right;">
+				<div id="footerControllBtns">
 					<button type='button' class='boardbtn'
 						onclick='location.href="${contextPath }/YS_board/articleForm.do"'>
 						글 쓰기</button>
@@ -114,7 +112,8 @@
 					</button>
 				</div>
 			</div>
-			<div id='pagebtn' style="width:400px; height: 40px;">
+			<div id='pagebtn'>
+			<br><br>
 				<button type='button' onclick="location.href='#'">
 					<i class="bi bi-chevron-double-left"></i>
 				</button>
@@ -129,15 +128,15 @@
 					(1-1) * 12 + 1 => 1
 						<c:if test="${section >1 && page==1 }">
 									<button type="button"
-										onclick='location.href="${contextPath }/YS_news/listArticles.do?section=${section-1}&pageNum=${(section-1)*10 +1 }"'>
+										onclick='location.href="${contextPath }/YS_board/NewsListArticles.do?section=${section-1}&pageNum=${(section-1)*10 +1 }"'>
 										&nbsp; pre</button>
 								</c:if>
 								<button type="button"
-									onclick='location.href=href="${contextPath }/YS_news/listArticles.do?section=${section}&pageNum=${page}"'>
+									onclick='location.href=href="${contextPath }/YS_board/NewsListArticles.do?section=${section}&pageNum=${page}"'>
 									${(section-1)*10 +page }</button>
 								<c:if test="${page ==10 }">
 									<button type="button"
-										onclick='location.href=href="${contextPath }/YS_news/listArticles.do?section=${section+1}&pageNum=${section*10+1}"'>
+										onclick='location.href=href="${contextPath }/YS_board/NewsListArticles.do?section=${section+1}&pageNum=${section*10+1}"'>
 										&nbsp; next</button>
 								</c:if>
 							</c:forEach>
@@ -156,12 +155,12 @@
 								<c:choose>
 									<c:when test="${page==pageNum }">
 										<button type="button"
-											onclick='location.href="${contextPath }/YS_news/listArticles.do?section=${section}&pageNum=${page}"'>
+											onclick='location.href="${contextPath }/YS_board/NewsListArticles.do?section=${section}&pageNum=${page}"'>
 											${page }</button>
 									</c:when>
 									<c:otherwise>
 										<button type="button"
-											onclick='location.href="${contextPath }/YS_news/listArticles.do?section=${section}&pageNum=${page}"'>
+											onclick='location.href="${contextPath }/YS_board/NewsListArticles.do?section=${section}&pageNum=${page}"'>
 											${page }</button>
 									</c:otherwise>
 								</c:choose>
