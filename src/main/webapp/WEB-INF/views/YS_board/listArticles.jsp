@@ -59,7 +59,12 @@
                       <c:when test="${not empty articlesList }" >
                           <c:forEach  var="article" items="${articlesList }" varStatus="articleNum" >
                              <tr align="center">
-                               <td>${article.recNum2 }</td>
+                             <c:if test="${article.cc eq '공지사항'}">
+                             	<td></td>
+                             </c:if>
+                             <c:if test="${article.cc ne '공지사항'}">
+                             	<td>${article.recNum2}</td>
+                             </c:if>
                                 <td class = 'text-color'><a href = '#'>${article.cc }</a></td>
                                 <td class='text-left'>
                                     <a href='${contextPath}/YS_board/viewArticle.do?brd_no=${article.brd_no}'>${article.title}</a>

@@ -121,7 +121,6 @@ public class BoardControllerImpl implements BoardController {
 				fileVO.setArticleFileName(fileName);
 				articleFileList.add(fileVO);
 			}
-
 			articleMap.put("articleFileList", articleFileList);
 		}
 
@@ -135,9 +134,13 @@ public class BoardControllerImpl implements BoardController {
 			if (articleFileList != null && articleFileList.size() != 0) {
 				for (FileVO fileVO : articleFileList) {
 					articleFileName = fileVO.getArticleFileName();
+					if(articleFileName.equals("dummy.txt")) {
+						boardService.cleanDummyFile();
+					}else{
 					File srcFile = new File(ARTICLE_FILE_REPO + "\\" + "temp" + "\\" + articleFileName);
 					File destDir = new File(ARTICLE_FILE_REPO + "\\" + brd_no);
 					FileUtils.moveFileToDirectory(srcFile, destDir, true);
+					}
 				}
 			}
 			message = "<script>";
