@@ -40,17 +40,42 @@
 	<select id="selectAllArticlesList" parameterType="java.util.Map"
 		resultMap="articlesResult">
   	<![CDATA[
-		SELECT a.* FROM(
-		SELECT ROW_NUMBER() over (ORDER BY recNum2 desc) as recNum,recNum2,lineNumber, brd_no, title, support_context,
-		cc, w_date, hits, ylike, member_id FROM(
-		SELECT ROW_NUMBER() over (ORDER BY lineNumber desc) as recNum2,lineNumber, brd_no, title, support_context,
-		cc, w_date, hits, ylike, member_id FROM(
-		SELECT ROWNUM as lineNumber, brd_no, title, support_context,
-		cc, w_date, hits, ylike, member_id FROM(
-		SELECT * FROM youngsupport_board WHERE CC = '공지사항'
-		UNION ALL
-		SELECT * FROM  youngsupport_board
-		WHERE CC NOT IN '공지사항'))))a
+		SELECT a.* 
+		  FROM (
+				SELECT ROW_NUMBER() over (ORDER BY recNum2 desc) as recNum,
+					   recNum2,
+					   lineNumber, 
+					   brd_no, 
+					   title, 
+					   support_context,
+					   cc, 
+					   w_date, 
+					   hits, 
+					   ylike, 
+					   member_id 
+				  FROM (
+						 SELECT ROW_NUMBER() over (ORDER BY lineNumber desc) as recNum2,
+								lineNumber, brd_no, 
+								title, support_context,
+								cc, w_date, 
+								hits, ylike, 
+								member_id 
+						   FROM (
+								SELECT ROWNUM as lineNumber, 
+									   brd_no, title, support_context,
+									   cc, w_date, hits, ylike, member_id 
+								  FROM (
+										SELECT * 
+										  FROM youngsupport_board 
+										 WHERE CC = '공지사항'
+										 UNION ALL
+										SELECT * 
+										  FROM ( 
+												pSELECT * 
+												  FROM youngsuport_board
+												 WHERE CC NOT IN '공지사항'
+												 ORDER BY brd_no DESC)
+												))))a
 		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*10+1 and (#{section}-1)*100 + #{pageNum}*10
   	]]>
 	</select>

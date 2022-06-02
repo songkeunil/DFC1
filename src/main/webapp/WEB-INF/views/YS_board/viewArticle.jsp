@@ -166,7 +166,7 @@ $(document).ready(function () {
 							<c:if test="${status.count eq 1}"><td>썸네일</td></c:if>
 							<c:if test="${status.count ne 1}"><td>첨부파일</td></c:if>
 								<td><input type="submit" name="articleFileName"
-									value="${item.articleFileName }"/></td>
+									value="${item.articleFileName }"  style="border: none; outline: none; box-shadow: none;"/></td>
 								<br>
 								<br>
 							</tr>
