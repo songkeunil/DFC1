@@ -43,29 +43,24 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST)
-<<<<<<< HEAD
 	public String signUp(@ModelAttribute("memberVO") MemberVO memberVO, HttpServletRequest request,RedirectAttributes rttr, Model model) throws Exception {
 		// 사용자가 입력한 정보를 파라미터로 넘김
 		mailService.register(memberVO);
+		boolean isInserted = signUpService.insertUserInfo(memberVO);
+
 		model.addAttribute("member", memberVO);
 		
 		//회원가입과 동시에 이메일 발송
 		rttr.addAttribute("memberEmail", memberVO.getMember_email()); 
 		rttr.addAttribute("memberId", memberVO.getMember_id());
-		System.out.println(memberVO.getMember_pw());
-=======
-	public String signUp(@ModelAttribute("memberVO") MemberVO memberVO, HttpServletRequest request) {
-		//사용자가 입력한 정보를 파라미터로 넘김
-//		System.out.println(memberVO.getMember_pw());
->>>>>>> 57d6fff63f85f08c50f0371793de24025f6ddae9
-		boolean isInserted = signUpService.insertUserInfo(memberVO);
-		
+//		System.out.println(memberVO.getMember_pw())
 		if (isInserted)
 			return "login";
 		else
 			return "signForm";
 		
 	}
+	
 	
 	@ResponseBody
 	@RequestMapping(value = "/duplicateID.do", method = RequestMethod.POST)
@@ -75,13 +70,12 @@ public class MemberController {
 		return memberService.duplicateID(member_id);
 	}
 	
-	@RequestMapping(value="/deleteID.do")
-<<<<<<< HEAD
-	public String deleteID(@RequestParam("member_id") String member_id, HttpServletRequest request) {
-		memberService.deleteID(member_id);
-		
-		return "main";
-=======
+//	@RequestMapping(value="/deleteID.do")
+//	public String deleteID(@RequestParam("member_id") String member_id, HttpServletRequest request) {
+//		memberService.deleteID(member_id);
+//		return "main";
+				
+				
 	public String deleteID(HttpServletRequest request, RedirectAttributes redirectAttr) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String member_id=(String)principal;
@@ -97,7 +91,6 @@ public class MemberController {
 			return "redirect:/modMemberInfo.html";
 		}
 		
->>>>>>> 57d6fff63f85f08c50f0371793de24025f6ddae9
 	}
 	@RequestMapping(value="registerEmail", method=RequestMethod.GET)
 	public String emailConfirm(String memberEmail,Model model)throws Exception{

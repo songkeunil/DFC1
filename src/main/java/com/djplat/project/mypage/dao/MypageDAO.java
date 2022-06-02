@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import org.springframework.stereotype.Repository;
 
 import com.djplat.project.member.vo.MemberVO;
+import com.djplat.project.suit_board.dao.AbstractDAO;
 
 @Repository("mypageDAO")
 public class MypageDAO extends AbstractDAO{
