@@ -30,9 +30,11 @@ public class MemberService {
 	}
 	
 	//회원탈퇴
-	public void deleteID(String member_id) {
+	public String deleteID(String member_id) {
 		MemberDAO dao = sqlSession.getMapper(MemberDAO.class);
 		dao.deleteID(member_id);
+		String result = dao.selectEnabled(member_id);
+		return result;
 	}
 	
 

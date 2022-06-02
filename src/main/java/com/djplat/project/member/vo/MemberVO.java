@@ -21,6 +21,7 @@ public class MemberVO {
 	private Date member_last_log;
 	private String member_enabled;
 	private String member_addrnum;
+<<<<<<< HEAD
 	private int rec_Num;
 	private String member_info;
 	private String member_auth;
@@ -120,6 +121,11 @@ public class MemberVO {
 	public void setRec_Num(int rec_Num) {
 		this.rec_Num = rec_Num;
 	}
+=======
+	private String member_regDate;
+	
+	
+>>>>>>> 57d6fff63f85f08c50f0371793de24025f6ddae9
 	public String getMember_id() {
 		return member_id;
 	}
@@ -203,6 +209,12 @@ public class MemberVO {
 	}
 	public void setMember_addrnum(String member_addrnum) {
 		this.member_addrnum = member_addrnum;
+	}
+	public String getMember_regDate() {
+		return member_regDate;
+	}
+	public void setMember_regDate(String member_regDate) {
+		this.member_regDate = member_regDate;
 	}
 	
 }

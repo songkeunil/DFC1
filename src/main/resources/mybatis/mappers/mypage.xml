@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mypage">
+
+	<!-- 기본정보 불러오기 -->
+	<select id="selectMemberInfo" parameterType="String" resultType="memberVO">
+		SELECT *
+		  FROM MEMBER
+		 WHERE MEMBER_ID = #{member_id}
+	</select>
+	
+	<!-- 비밀번호 가져오기 -->
+	<select id="selectPwd" parameterType="String" resultType="String">
+		SELECT MEMBER_PW
+		  FROM MEMBER
+		 WHERE MEMBER_ID = #{member_id}
+	</select>
+	
+	<!-- 회원정보수정 -->
+	<update id="updateMemberInfo" parameterType="memberVO">
+		UPDATE MEMBER
+		   SET MEMBER_PW = #{member_pw},
+		   	   MEMBER_PHONENO = #{member_phoneno},
+		   	   MEMBER_ADDRNUM = #{member_addrnum},
+		   	   MEMBER_ADDRESS = #{member_address},
+		   	   MEMBER_EMAIL = #{member_email},
+		   	   MEMBER_EAGREE = #{member_eagree}
+		 WHERE MEMBER_ID = #{member_id} 
+	</update>
+	
+</mapper>
