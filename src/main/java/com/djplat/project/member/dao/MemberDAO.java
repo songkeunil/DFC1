@@ -17,4 +17,6 @@ public interface MemberDAO {
 	
 	//회원탈퇴
 	public void deleteID(String member_id);
+	
+	public String selectEnabled(String member_id);
 }

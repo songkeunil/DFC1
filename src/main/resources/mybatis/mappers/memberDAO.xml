@@ -7,6 +7,7 @@
 
 	<!-- 회원가입 -->
 	<insert id="userSignUp" parameterType="memberVO">
+	<![CDATA[
 		INSERT INTO MEMBER
 			(
 			MEMBER_ID, MEMBER_PW,
@@ -21,6 +22,7 @@
 			'group', #{member_eagree}, sysdate,
 			'ROLE_USER', '1'
 			)
+	]]>
 	</insert>
 	
   	<!-- 아이디 중복확인 -->
@@ -32,10 +34,17 @@
   
 	<!-- 회원탈퇴 -->  
   	<update id="deleteID" parameterType="String">
+  	<![CDATA[
   		UPDATE MEMBER
   		SET MEMBER_ENABLED='0'
   		WHERE MEMBER_ID = #{member_id}
+  	]]>
   	</update>
+  	<select id="selectEnabled" parameterType="String" resultType="String">
+  		SELECT MEMBER_ENABLED
+  		  FROM MEMBER
+  		 WHERE MEMBER_ID = #{member_id}
+  	</select>
   
   
 </mapper>

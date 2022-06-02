@@ -1,0 +1,105 @@
+/* 전체 크기 */
+#mp_cf_wrap {
+	width: 1200px;
+	height: 500px;
+	margin: 0 auto;
+}
+
+/* 마이페이지 TOP */
+#mp_cf_wrap_top {
+	width: 1000px;
+	height: 50px;
+	margin: 0 auto;
+	line-height: 50px;
+	border-bottom: 1px solid #A4A4A4;
+}
+
+#mp_cf_wrap_top a {
+	text-decoration: none;
+	color: #848484;
+}
+
+#mp_cf_wrap_top h2 {
+	float: left;
+	width: auto;
+	font-size: 35px;
+	font-weight: 700;
+}
+
+.mp_submenu {
+	float: right;
+}
+
+/* confirm area */
+#password_confirm {
+	clear: both;
+	width: 800px;
+	height: 300px;
+	margin: 0 auto;
+	border: 1px solid #ddd;
+	margin-top: 30px;
+	/* padding: 15px; */
+}
+
+#mp_cf_head {
+	padding: 15px 15px;
+	border-bottom: 1px solid #ddd;
+	background: #f5f5f5;
+	font-size: 20px;
+}
+
+#mp_cf_notice {
+	padding: 15px 15px;
+	line-height: 30px;
+}
+
+#mp_cf_notice span {
+	font-weight: bold;
+}
+
+#confirm_id {
+	color: #428bca;
+}
+
+#mp_cf_notice input {
+	width: 99%;
+	height: 35px;
+	font-size: 18px;
+	margin-top: 5px;
+}
+
+#confirm_a {
+	margin-top: 15px;
+	width: 150px;
+	height: 40px;
+	border: 1px solid #18A8F1;
+	text-align: center;
+}
+
+#confirm_a a {
+	color: black;
+	font-weight: bold;
+	line-height: 40px;
+}
+
+#mp_confirm_b {
+	width: 150px;
+	height: 40px;
+	font-size: 18px;
+	font-weight: bold;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+/* 버튼 부분 */
+#mp_cf_btn {
+	text-align: center;
+	margin-top: 30px;
+}
+
+#mp_cf_btn a {
+	padding: 10px;
+	background: black;
+	color: white;
+}

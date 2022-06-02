@@ -1,0 +1,134 @@
+/* 전체 크기 */
+#mp_wrap {
+	width: 1200px;
+	height: 1000px;
+	margin: 0 auto;
+}
+
+/* 마이페이지 TOP */
+#mp_wrap_top {
+	width: 1000px;
+	height: 50px;
+	margin: 0 auto;
+	line-height: 50px;
+	border-bottom: 1px solid #A4A4A4;
+}
+
+#mp_wrap_top a {
+	text-decoration: none;
+	color: #848484;
+}
+
+#mp_wrap_top h2 {
+	float: left;
+	width: auto;
+	font-size: 35px;
+	font-weight: 700;
+}
+
+.mp_submenu {
+	float: right;
+}
+
+/* 둘다 */
+.my_both {
+	width: 1000px;
+	height: 300px;
+	margin: 0 auto;
+}
+
+/* My Profile */
+#myProfile {
+	width: 340px;
+	height: 250px;
+	margin: 0 auto;
+	border: 1px solid #ddd;
+	margin-top: 30px;
+	float: left;
+}
+
+#mp_profile_head {
+	padding: 10px 10px;
+	border-bottom: 1px solid #ddd;
+	background: #f5f5f5;
+}
+
+/* My Info */
+#myInfo {
+	width: 640px;
+	height: 250px;
+	margin: 0 auto;
+	margin-top: 30px;
+	float: right;
+}
+
+#mp_info_head {
+	padding: 10px 10px;
+	border: 1px solid #ddd;
+	background: #f5f5f5;
+}
+
+#mp_info_body{
+	margin-left: 10px;
+}
+
+#mp_info_body li{
+	height:40px;
+	line-height:40px;
+	border-bottom: 1px solid #ddd;
+}
+#mp_info_body span{
+	float: right;
+	margin-right: 10px;
+}
+
+ /* 버튼 부분 */
+#mp_button {
+	width: 1000px;
+	height: 50px;
+	margin: 0 auto;
+	/* background:pink; */
+	/* text-align: center; */
+	padding: 20px;
+}
+#mp_button a{
+	padding: 10px;
+	background: white;
+	border: 1px solid #ddd;
+	margin-top: 10px;
+	color: black;
+}
+.mp_button_a a{
+	float:left;
+	margin-right: 10px;
+}
+.mp_button_b a{
+	float:right;
+	margin-left: 10px;
+}
+
+/* 신청버튼 */
+.y-rentForm-submit-btn {
+	width: 1200px;
+	height: 50px;
+	/*    background: red;*/
+	display: flex;
+	justify-content: center;
+	column-gap: 20px;
+	align-items: center;
+	margin-top: 30px;
+}
+
+.y-rentForm-submit-btn button {
+	width: 280px;
+	height: 30px;
+	background: white;
+	border: 2px solid #18A8F1;
+	font-weight: bold;
+}
+
+.y-rentForm-submit-btn button:hover {
+	cursor: pointer;
+	background: #18A8F1;
+	color: white;
+}
