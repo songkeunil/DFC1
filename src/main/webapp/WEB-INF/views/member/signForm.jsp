@@ -19,7 +19,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
-
     $(function() {
     	//생년월일
     	$('.datepicker').datepicker({
@@ -219,7 +218,6 @@
 		
 		
     })//DOC end.
-
 	//주소
    function sample4_execDaumPostcode() {
 	    new daum.Postcode({
@@ -280,7 +278,6 @@
 	var namec = false;
 	var phonec = false;
 	var emailc = false;
-
     //등록
 	function regist(){
 		
@@ -343,14 +340,6 @@
 		
 		/* if(emoverChk == false){
 			alert('이메일을 중복 검사를 해주세요')
-<<<<<<< HEAD
-		} */else{
-		    $('form').submit();
-		    alert('회원가입이 완료 되었습니다. 이메일 인증 후에 로그인 가능합니다. 확인버튼을 누르면 로그인 페이지로 이동합니다.');
-
-		}
-		
-=======
 		} */
 		
 		if(!result){
@@ -359,9 +348,7 @@
 		}
 		
 		$('form').submit();
->>>>>>> 7f3bfd5b6b7baf5bd5485976e2e15cd760642659
 	};		
-
 		    
     
 </script>
@@ -537,5 +524,4 @@
 </form>
 
 </body>
-
 </html>
