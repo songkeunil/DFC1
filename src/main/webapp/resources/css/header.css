@@ -1,0 +1,210 @@
+#h-hrap {
+        width: 100%;
+        height: 250px;
+    }
+
+
+    #h-toprap {
+        width: 100%;
+        height: 150px;
+/*                background: gray;*/
+        margin: 0;
+        position: fixed;
+        background: white;
+        
+    }
+
+    #h-top {
+        width: 1400px;
+        height: 150px;
+/*                background: red;*/
+        margin: 0 auto;
+        
+        
+    }
+
+    #h-logo {
+        width: 220px;
+        height: 150px;
+        float: left;
+/*                background: yellow;*/
+        margin-left: 100px;
+    }
+
+    #h-search {
+        width: 500px;
+        height: 50px;
+        float: left;
+        margin-top: 60px;
+        margin-left: 130px;
+/*        background: blue;*/
+    }
+
+    #h-search input {
+        width: 410px;
+        height: 45px;
+        border-radius: 20px 0px 0px 20px;
+        float: left;
+        border: 2px solid #18A8F1;
+        padding-left: 20px;
+        font-size: 15px;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    #h-searchbtn {
+        width: 50px;
+        height: 49px;
+        border-radius: 0px 20px 20px 0px;
+        border: 2px solid #18A8F1;
+        background: white;
+        padding-right: 3px;
+        padding-top: 2px;
+    }
+    #h-searchbtn:hover{
+        cursor:pointer;
+        color: #18A8F1;
+    }
+
+    #h-login {
+        width: 220px;
+        height: 50px;
+/*          background: green;*/
+        float: right;
+        padding-top: 85px;
+        margin-right: 100px;
+        
+    }
+
+    .h-log {
+        color: #6E6E6E;
+        font-weight: bold;
+    }
+
+    .h-log:hover {
+        color: #18A8F1;
+        font-weight: bold;
+
+    }
+/*    GNB 시작   */
+
+    #h-nav {
+        width: 100%;
+        height: 50px;
+        /*        background: yellow;*/
+        border-top: 1px solid gray;
+        border-bottom: 1px solid gray;
+        position: fixed;
+        margin: 0 auto;
+        margin-top: 150px;
+        background: white;
+
+    }
+
+    .h-nav {
+        width: 1400px;
+        height: 50px;
+        margin: 0 auto;
+        /*        background: green;*/
+        text-align: center;
+        font-weight: bold;     
+
+    }
+
+    .h-nav-item {
+        width: 200px;
+        height: 50px;
+        float: left;
+        margin: 0 auto;
+        /*        background: magenta;*/
+        line-height: 50px;
+        /*        border: 1px solid red;*/
+    }
+
+    .h-nav-link {
+/*        background: red;*/
+        display: inline-block;
+        width: 170px;
+        position: relative;
+        
+   
+    }
+    
+    .h-sub li {
+        border-bottom: 1px solid gray;
+        border-right: 1px solid gray;
+        border-left: 1px solid gray;
+        
+    }
+    .h-sub li a{
+        display: inline-block;
+        width: 170px;
+        color: black;
+        position: relative;
+        
+    }
+/*   드롭다운 효과 시작 */
+    .h-nav-link:hover + .h-sub {
+    height: 210px;
+}
+.h-sub {
+    height: 0;
+    transition: height 0.3s linear;
+    overflow: hidden;
+/*    border-bottom: 1px solid gray;*/
+}
+.h-sub:hover {
+    height: 210px;
+    
+}
+/*   드롭다운 효과 끝 */
+/*    밑줄 효과 시작 */
+    .bi-search{
+        font-size: 20px;
+    }
+    .h-sub li a:before {
+    content: '';
+    position: absolute; /*부모 요소에는 position: relative를 주어야 한다.*/
+    background-color: #18A8F1;
+    height: 2px; /*밑줄 굵기*/
+
+    width: 0; /*초기에 보이지 않도록*/
+    bottom: 0; /*a태그 아래에 위치시키기*/
+    transition: 1s; /*애니메이션 동작 실행 시간 정의*/
+
+    /*가상 요소를 가운데로 이동시키기*/
+    left: 50%;
+    transform: translateX(-50%) ;
+}
+
+/*태그가 호버링 되면 가상 요소의 크기를 100%로 키우기*/
+.h-sub li a:hover:before {
+    width: 100%;
+}
+
+
+.h-nav-link:before {
+    content: '';
+    position: absolute; /*부모 요소에는 position: relative를 주어야 한다.*/
+    background-color: #18A8F1;
+    height: 2px; /*밑줄 굵기*/
+
+    width: 0; /*초기에 보이지 않도록*/
+    bottom: 0; /*a태그 아래에 위치시키기*/
+    transition: 1s; /*애니메이션 동작 실행 시간 정의*/
+
+    /*가상 요소를 가운데로 이동시키기*/
+    left: 50%;
+    transform: translateX(-50%) ;
+}
+
+/*태그가 호버링 되면 가상 요소의 크기를 100%로 키우기*/
+.h-nav-link:hover:before {
+    width: 100%;
+}
+/*    밑줄효과 끝 */
+
+
+   

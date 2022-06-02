@@ -8,10 +8,16 @@
 	</settings>
 		
 	<typeAliases>
+<<<<<<< HEAD
 		<typeAlias type="com.djplat.project.member.vo.MemberVO" alias="memberVO"/>
 		<typeAlias type="com.djplat.project.YS_board.vo.ArticleVO" alias="YSB_articleVO"/>
 		<typeAlias type="com.djplat.project.YS_board.vo.FileVO" alias="YSB_fileVO"/>
 		<typeAlias type="com.djplat.project.YS_board.vo.LikeVO" alias="YSB_likeVO"/>
 		<typeAlias type="com.djplat.project.YS_board.vo.ReplyVO" alias="YSB_replyVO"/>
+=======
+		<typeAlias type="com.djplat.project.member.vo.MemberVO"  alias="memberVO" />
+		<typeAlias type="com.djplat.project.common.vo.UserVO"  alias="userVO" />
+		<typeAlias type="com.djplat.project.board.vo.ArticleVO"  alias="articleVO" />
+>>>>>>> 67cc6d70066f7c6ead6ea5a5e4fa6a327c09e09d
 	</typeAliases>
 </configuration>
