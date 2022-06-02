@@ -169,10 +169,9 @@
                 <li class="h-nav-item">
                     <a class="h-nav-link" href="#" style="color: black">청춘끼리정장대여</a>
                     <ul class='h-sub'>
-                        <li><a href='#'>menu1</a></li>
-                        <li><a href='#'>menu2</a></li>
-                        <li><a href='#'>menu3</a></li>
-                        <li><a href='#'>menu4</a></li>
+                        <li><a href='${contextPath}/djplat/listSuitAll.do'>정장대여 확인</a></li>
+                        <li><a href='${contextPath}/djplat/suitForm.html'>정장대여 신청</a></li>
+                     
                     </ul>
                 </li>
                 <li class="h-nav-item">

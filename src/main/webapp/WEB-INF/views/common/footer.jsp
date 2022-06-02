@@ -14,7 +14,7 @@
 	padding: 0;
 }
 
-p {
+p11 {
 	font-size: 20px;
 	text-align: center;
 }

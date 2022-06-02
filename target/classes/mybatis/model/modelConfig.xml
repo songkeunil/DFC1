@@ -17,5 +17,12 @@
 		<typeAlias type="com.djplat.project.board.vo.ArticleVO"  alias="articleVO" />
 		<typeAlias type="com.djplat.project.mentalReview.vo.ReviewVO"  alias="ReviewVO" />
 		
+		<typeAlias type="com.djplat.project.suit_board.vo.SuitVO"  alias="suitVO" />
+		<typeAlias type="com.djplat.project.suit_board.vo.AttachVO"  alias="attachVO" />
+		<typeAlias type="com.djplat.project.suit_board.vo.CodeVO"  alias="codeVO" />
+		<typeAlias type="com.djplat.project.suit_board.vo.Criteria"  alias="criteria" />
+		<typeAlias type="com.djplat.project.suit_board.vo.SearchCriteria"  alias="searchCriteria" />
+		<typeAlias type="com.djplat.project.suit_board.vo.PageMaker"  alias="pageMaker" />
 	</typeAliases>
+	
 </configuration>

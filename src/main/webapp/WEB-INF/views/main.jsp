@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+`<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -335,14 +335,15 @@
 							<img src='${contextPath}/resources/image/banner3.png'>
 						</div>
 						<div class="mySlideDiv fade">
-							<img src='${contextPath}/resources/image/banner4.png'>
+						
+							<a href="https://www.dcco.kr/web/contents/view.do?mId=47"><img src='${contextPath}/resources/image/banner4.png'></a>
 						</div>
 						<a class="prev" onclick="prevSlide()">&#10094;</a> 
 						<a class="next" onclick="nextSlide()">&#10095;</a>
 					</div>
 					<div class="y-main-top-menu-rap">
 						<div class="y-main-top-menu">
-							<a href="#"> <img
+							<a href="${contextPath}/suitForm.html"> <img
 								src='${contextPath}/resources/image/jeongjang.png'></a>
 						</div>
 						<div class="y-main-top-menu">
@@ -350,7 +351,7 @@
 								src='${contextPath}/resources/image/jugeo.png'></a>
 						</div>
 						<div class="y-main-top-menu">
-							<a href="#"> <img
+							<a href="${contextPath}/mentalreview/introduceMental.html"> <img
 								src='${contextPath}/resources/image/maeum.png'></a>
 						</div>
 						<div class="y-main-top-menu">
@@ -358,20 +359,20 @@
 								src='${contextPath}/resources/image/sangdam.png'></a>
 						</div>
 						<div class="y-main-top-menu">
-							<a href="#"> <img
+							<a href="${contextPath}/neonadeuli.html"> <img
 								src='${contextPath}/resources/image/neona.png'></a>
 						</div>
 						<div class="y-main-top-menu">
-							<a href="#"> <img
+							<a href="${contextPath}/nadeulmok.html"> <img
 								src='${contextPath}/resources/image/nadeul.png'></a>
 						</div>
 						<div class="y-main-top-menu">
-							<a href="#"> <img
+							<a href="${contextPath}/dododo.html"> <img
 								src='${contextPath}/resources/image/dododo.png'></a>
 						</div>
 						<div class="y-main-top-menu">
 
-							<a href="#"> <img
+							<a href="${contextPath}/teojeon.html"> <img
 								src='${contextPath}/resources/image/teojeon.png'></a>
 						</div>
 					</div>
