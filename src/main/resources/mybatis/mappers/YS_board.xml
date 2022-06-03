@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.YS_board">
+	<resultMap id="articlesResult" type="YSB_articleVO">
+		<result property="brd_no" column="brd_no" />
+		<result property="title" column="title" />
+		<result property="support_context" column="support_context" />
+		<result property="cc" column="cc" />
+		<result property="w_date" column="w_date" />
+		<result property="hits" column="hits" />
+		<result property="ylike" column="ylike" />
+		<result property="member_id" column="member_id" />
+	</resultMap>
+
+	<resultMap id="artResult" type="YSB_fileVO">
+		<result property="articleFileNO" column="articleFileNO" />
+		<result property="brd_no" column="brd_no" />
+		<result property="articleFileName" column="articleFileName" />
+	</resultMap>
+
+	<resultMap id="likeResult" type="YSB_likeVO">
+		<result property="likeno" column="likeno" />
+		<result property="brd_no" column="brd_no" />
+		<result property="member_id" column="member_id" />
+	</resultMap>
+	
+	<resultMap id="replyResult" type="YSB_replyVO">
+		<result property="reply_no" column="reply_no" />
+		<result property="reply_lvl" column="reply_lvl" />
+		<result property="reply_text" column="reply_text" />
+		<result property="reply_time" column="reply_time" />
+		<result property="member_id" column="member_id" />
+		<result property="brd_no" column="brd_no" />
+	</resultMap>
+	
+	<!-- 글 리스트 -->
+	<select id="selectAllArticlesList" parameterType="java.util.Map"
+		resultMap="articlesResult">
+  	<![CDATA[
+		SELECT a.* 
+		  FROM (
+				SELECT ROW_NUMBER() over (ORDER BY recNum2 desc) as recNum,recNum2,lineNumber, 
+						brd_no, title, support_context,cc, w_date, hits, ylike, member_id 
+				  FROM (
+						 SELECT ROW_NUMBER() over (ORDER BY lineNumber desc) as recNum2,lineNumber, brd_no, title,
+						  		support_context,cc, w_date, hits, ylike, member_id 
+						   FROM (
+								 SELECT ROWNUM as lineNumber, brd_no, title, support_context,
+									   	cc, w_date, hits, ylike, member_id 
+								  FROM (
+										SELECT * 
+										  FROM youngsupport_board 
+										 WHERE CC = '공지사항'
+										 UNION ALL
+										SELECT * 
+										  FROM ( 
+												SELECT * 
+												  FROM youngsupport_board
+												 WHERE CC NOT IN '공지사항'
+												 ORDER BY brd_no DESC)
+												))))a
+		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*10+1 and (#{section}-1)*100 + #{pageNum}*10
+  	]]>
+	</select>
+	
+	
+	<!-- 바둑판글 리스트 -->
+	<select id="selectAllNewsArticlesList" parameterType="java.util.Map"
+		resultMap="articlesResult">
+  	<![CDATA[
+		SELECT a.* FROM
+		(SELECT ROW_NUMBER() over (ORDER BY brd_no DESC) as recNum,ROW_NUMBER() over (ORDER BY brd_no) as recNum2,
+		 brd_no, title, support_context,
+		cc, w_date, hits, ylike, member_id FROM YOUNGSUPPORT_BOARD WHERE cc = '청춘소식'
+		) a
+		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*12+1 
+		AND (#{section}-1)*100 + #{pageNum}*12
+  	]]>
+	</select>
+	
+	<!-- 자료실 글 리스트 -->
+	<select id="selectAllRepoArticlesList" parameterType="java.util.Map"
+		resultMap="articlesResult">
+  	<![CDATA[
+		SELECT a.* FROM
+		(SELECT ROW_NUMBER() over (ORDER BY brd_no DESC) as recNum, ROW_NUMBER() over (ORDER BY brd_no) as recNum2, brd_no, title, support_context,
+		cc, w_date, hits, ylike, member_id FROM YOUNGSUPPORT_BOARD WHERE cc = '자료실'
+		) a
+		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*10+1 and (#{section}-1)*100 + #{pageNum}*10
+  	]]>
+	</select>
+
+	<!-- 전체 페이지 넘버링 -->
+	<select id="selectListTotArticles" resultType="int">
+  	<![CDATA[
+  		SELECT count(brd_no) FROM YOUNGSUPPORT_BOARD
+  	]]>
+	</select>
+	
+	<!-- 바둑판 페이지 넘버링 -->
+	<select id="selectNewsTotArticles" resultType="int">
+  	<![CDATA[
+  		SELECT count(brd_no) FROM YOUNGSUPPORT_BOARD
+  		WHERE CC = '청춘소식'
+  	]]>
+	</select>
+	
+	<!--자료실 페이지 넘버링 -->
+	<select id="selectRepoTotArticles" resultType="int">
+  	<![CDATA[
+  		SELECT count(brd_no) FROM YOUNGSUPPORT_BOARD
+  		WHERE CC = '자료실'
+  	]]>
+	</select>
+	
+	<!-- 댓글 리스트 -->
+<!-- 	<select id="selectAllReplyArticlesList" parameterType="java.util.Map"
+	resultMap="replyResult">
+  	<![CDATA[
+		SELECT a.* FROM
+		(SELECT ROW_NUMBER() over (ORDER BY reply_no DESC) as recNum, ROW_NUMBER() over (ORDER BY reply_no) as recNum2, reply_no, reply_lvl, reply_text,
+		reply_time, member_id, brd_no FROM YOUNGSUPPORT_REPLY WHERE brd_no = #{brd_no}
+		) a
+		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*10+1 and (#{section}-1)*100 + #{pageNum}*10
+  	]]>
+	</select> -->
+	<select id="selectAllReplyArticlesList" parameterType="java.util.Map"
+	resultMap="replyResult">
+  	<![CDATA[
+		SELECT ROW_NUMBER() over (ORDER BY reply_no DESC) as recNum, ROW_NUMBER() over (ORDER BY reply_no) as recNum2, reply_no, reply_lvl, reply_text,
+		reply_time, member_id, brd_no FROM YOUNGSUPPORT_REPLY WHERE brd_no = #{brd_no}
+  	]]>
+	</select>
+
+	<!-- 댓글 페이지 넘버링 -->
+	<select id="selectReplyTotArticles" parameterType="java.util.Map" 
+		resultType="int">
+  	<![CDATA[
+  		SELECT count(brd_no) FROM YOUNGSUPPORT_REPLY
+  		WHERE brd_no = #{brd_no}
+  	]]>
+	</select>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteReplyArticle" parameterType="int">
+ 	<![CDATA[
+ 		DELETE FROM YOUNGSUPPORT_REPLY
+ 		WHERE reply_no = #{reply_no}
+ 	]]>
+	</delete>
+	
+	
+	<!-- 새글 작성 -->
+	<insert id="insertNewArticle" parameterType="java.util.Map">
+ 	<![CDATA[
+		INSERT INTO YOUNGSUPPORT_BOARD(brd_no, title, support_context, cc, w_date, hits, ylike,member_id)
+ 		VALUES(#{brd_no},#{title},#{support_context},#{cc},sysdate,0,0,#{member_id})
+ 	]]>
+	</insert>
+
+	<!-- 새글 번호 생성 -->
+	<select id="selectNewArticleNO" resultType="int">
+ 	<![CDATA[
+ 		SELECT nvl(max(brd_no), 0) + 1 FROM YOUNGSUPPORT_BOARD
+ 	]]>
+	</select>
+	
+	<!-- 새 댓글 작성 -->
+	<insert id="insertNewReply" parameterType="java.util.Map">
+ 	<![CDATA[
+		INSERT INTO YOUNGSUPPORT_REPLY(reply_no, reply_lvl, reply_text, reply_time, member_id, brd_no)
+ 		VALUES(#{reply_no},#{reply_lvl},#{reply_text},sysdate,#{member_id},#{brd_no})
+ 	]]>
+	</insert>
+	
+	<!-- 새 댓글 번호 생성 -->
+	<select id="selectNewReplyNO" resultType="int">
+ 	<![CDATA[
+ 		SELECT nvl(max(reply_no), 0) + 1 FROM YOUNGSUPPORT_REPLY
+ 	]]>
+	</select>
+
+	<!-- 파일 청부 -->
+	<select id="insertNewArticleFile" parameterType="java.util.Map">
+		<foreach item="item" collection="list" open="INSERT ALL"
+			separator=" " close="SELECT * FROM DUAL">
+			INTO YOUNGSUPPORT_FILE(articleFileNO,
+			articleFileName, brd_no, regDate)
+			VALUES(#{item.articleFileNO},
+			#{item.articleFileName},
+			#{item.brd_no}, sysdate)
+		</foreach>
+	</select>
+
+
+	<!-- 첨부 파일 번호 생성 -->
+	<select id="selectNewArticleFileNO" resultType="int">
+ 	<![CDATA[
+ 		SELECT nvl(max(articleFileNO), 0) FROM YOUNGSUPPORT_FILE
+ 	]]>
+	</select>
+
+	<!-- 글 상세창 표시 -->
+	<select id="selectArticle" resultType="YSB_articleVO"
+		parameterType="int">
+ 	<![CDATA[
+ 		SELECT * FROM YOUNGSUPPORT_BOARD
+ 		WHERE brd_no = #{brd_no}
+ 	]]>
+	</select>
+
+	<!-- 상세창 내부 첨부파일 표시 -->
+	<select id="selectArticleFileList" parameterType="int"
+		resultMap="artResult">
+  	<![CDATA[
+  		SELECT * FROM YOUNGSUPPORT_FILE
+  		WHERE brd_no = #{brd_no}
+  		ORDER BY articleFileNO
+  	]]>
+	</select>
+
+
+	<!-- 글 수정하기 -->
+	<update id="updateArticle" parameterType="java.util.Map">
+		UPDATE
+		YOUNGSUPPORT_BOARD
+		SET title=#{title},
+		support_context=#{support_context}
+		WHERE brd_no=#{brd_no}
+	</update>
+
+	<update id="updateArticleFile" parameterType="java.util.List">
+		<foreach collection="list" item="item" separator=";"
+			open="DECLARE BEGIN" close="; END;">
+			<choose>
+				<when test="item.articleFileName !=null ">
+					UPDATE YOUNGSUPPORT_FILE
+					SET articleFileName =
+					#{item.articleFileName}
+					WHERE
+					brd_no = #{item.brd_no}
+					and
+					articleFileNO = #{item.articleFileNO}
+				</when>
+				<otherwise>
+					<!-- 공백 수행 -->
+				</otherwise>
+			</choose>
+		</foreach>
+	</update>
+
+	<insert id="insertModNewFile" parameterType="java.util.List">
+		<foreach item="item" collection="list" open="INSERT ALL"
+			separator=" " close="SELECT * FROM DUAL">
+			INTO YOUNGSUPPORT_FILE(articleFileNO,
+			articleFileName, brd_no, regDate)
+			VALUES (#{item.articleFileNO},
+			#{item.articleFileName},
+			#{item.brd_no},
+			sysdate)
+		</foreach>
+	</insert>
+
+	<!-- 글 삭제하기 -->
+	<delete id="deleteArticle" parameterType="int">
+ 	<![CDATA[
+ 		DELETE FROM YOUNGSUPPORT_BOARD
+ 		WHERE brd_no = #{brd_no}
+ 	]]>
+	</delete>
+
+	<delete id="deleteModArticleFile" parameterType="YSB_fileVO">
+	    <![CDATA[
+	      delete from YOUNGSUPPORT_FILE
+	      where brd_no = #{brd_no}
+	      and articleFileNO = #{articleFileNO}
+	    ]]>
+	</delete>
+
+	<!-- 게시판 검색 기능 -->
+	<select id="selectArticleBySearchWord"
+		parameterType="java.util.Map" resultMap="articlesResult">
+  	<![CDATA[
+		SELECT a.* FROM
+		(SELECT ROW_NUMBER() over (ORDER BY brd_no DESC) as recNum, brd_no, title, support_context,
+		cc, w_date, hits, ylike, member_id FROM YOUNGSUPPORT_BOARD Y 
+		WHERE Y.title LIKE '%'||#{searchWord}||'%'
+		) a
+		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*10+1 and (#{section}-1)*100 + #{pageNum}*10
+  	]]>
+	</select>
+
+	<!-- 게시판 검색 결과 넘버링 생성 -->
+	<select id="selectSearchTotArticles" resultType="int">
+  	<![CDATA[
+  		SELECT count(brd_no) FROM YOUNGSUPPORT_BOARD Y
+		WHERE Y.title LIKE '%'||#{searchWord}||'%'
+  	]]>
+	</select>
+
+	<!-- 조회수 기능 -->
+	<update id="viewArticleCounter" parameterType="int">
+  	<![CDATA[
+		UPDATE YOUNGSUPPORT_BOARD
+		SET HITS = HITS + 1
+		WHERE brd_no = #{brd_no}
+	]]>
+	</update>
+
+	<!-- 게시글 좋아요 여부 확인 -->
+	<select id="getBoardLike" resultType="int">
+		SELECT COUNT(likeno) FROM
+		YOUNGSUPPORT_LIKE
+		WHERE brd_no = #{brd_no} AND member_id = #{member_id}
+	</select>
+
+	<!-- 좋아요 추가 -->
+	<insert id="createBoardLike">
+		INSERT INTO YOUNGSUPPORT_LIKE (likeno, brd_no,
+		member_id)
+		VALUES (#{likeno}, #{brd_no}, #{member_id})
+	</insert>
+	
+	<!-- 좋아요 추가 번호 생성 -->
+	<select id="createNewLikeNO" resultType="int">
+ 	<![CDATA[
+ 		SELECT nvl(max(likeNO), 0) + 1 FROM YOUNGSUPPORT_LIKE
+ 	]]>
+	</select>
+	
+
+	<!-- 좋아요 삭제 (글 삭제 시) -->
+	<delete id="deleteBoardLike" parameterType="int">
+	<![CDATA[
+		DELETE FROM YOUNGSUPPORT_LIKE
+		WHERE brd_no = #{brd_no}
+		AND member_id = #{member_id}
+	]]>
+	</delete>
+	<!-- 지정 게시글 테이블 좋아요 갱신 -->
+	<update id="updateBoardLike" parameterType="int">
+		UPDATE YOUNGSUPPORT_BOARD
+		SET ylike = (SELECT COUNT(*)
+		FROM YOUNGSUPPORT_LIKE WHERE brd_no = #{brd_no})
+		WHERE brd_no = #{brd_no}
+	</update>
+	
+	<delete id="cleanDummyFile" parameterType="int">
+	<![CDATA[
+		DELETE FROM YOUNGSUPPORT_FILE
+		WHERE articlefilename = 'dummy.txt'
+	]]>
+	</delete>
+
+</mapper>

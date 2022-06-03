@@ -98,4 +98,19 @@
  		VALUES(#{reply_no},#{brd_no},#{member_id},sysdate,0,#{reply_text})
  	]]>
 	</select>
+	<!-- 마음건강 상담신청 리스트 불러오기 -->
+   <select id="requestListDAO" resultType="java.util.HashMap">
+     select BRD_NO, MEMBER_ID, TITLE, O_TIME, R_TIME,R_DATE,R_TRUE,MRE_CC 
+     from MIND_REQUEST
+   </select>
+   
+   <!-- 마음건강 상담신청 신청내역 삭제 -->
+   <delete id="deleteCounsel" parameterType="int">
+ 	<![CDATA[
+ 		DELETE FROM MIND_REQUEST
+ 		WHERE BRD_NO = #{brd_no}
+ 	]]>
+	</delete>
+	
+	
 </mapper>

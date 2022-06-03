@@ -1,11 +1,11 @@
 package com.djplat.project.mentalReview.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.dao.DataAccessException;
 
-import com.djplat.project.member.vo.MemberVO;
 import com.djplat.project.mentalReview.vo.ReviewVO;
 
 public interface ReviewDAO {
@@ -29,6 +29,9 @@ public interface ReviewDAO {
 	public int selectSearchTotArticles(Map pagingMap) throws DataAccessException;
 
 	public void modReviewView(ReviewVO vo) throws DataAccessException;
-	
-	public List<ReviewVO> viewReply(int brd_no) throws Exception;
+
+	public List<HashMap<String, String>> requestListDAO() throws DataAccessException;
+
+	public void deleteCounsel(int brd_no) throws DataAccessException;
+
 }

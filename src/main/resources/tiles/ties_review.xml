@@ -11,7 +11,7 @@
  
  
  <definition name="/mentalreview/viewArticle" extends="baseLayout">
-      <put-attribute name="title" value="후기 보기" />
+      <put-attribute name="title" value="후기 작성" />
       <put-attribute name="body" value="/WEB-INF/views/mentalReview/boardView.jsp" />
    </definition>
 
@@ -24,14 +24,30 @@
       <put-attribute name="body" value="/WEB-INF/views/mentalReview/modReview.jsp" />
    </definition>
    <definition name="/mentalreview/modReviewView" extends="baseLayout">
-      <put-attribute name="title" value="후기 수정뷰" />
+      <put-attribute name="title" value="후기 수정" />
       <put-attribute name="body" value="/WEB-INF/views/mentalReview/boardView.jsp" />
    </definition> 
+   
+   
+   
    
    <definition name="introduceMental" extends="baseLayout">
       <put-attribute name="title" value="마음건강 소개" />
       <put-attribute name="body" value="/WEB-INF/views/mentalReview/introduceMental.jsp" />
    </definition> 
+   
+     <definition name="/mentalreview/counselMental" extends="baseLayout">
+      <put-attribute name="title" value="마음건강 상담신청" />
+      <put-attribute name="body" value="/WEB-INF/views/mentalReview/counselMental.jsp" />
+   </definition> 
+  
+   <definition name="/mentalreview/deleteMental" extends="baseLayout">
+      <put-attribute name="title" value="마음건강 상담신청" />
+      <put-attribute name="body" value="/WEB-INF/views/mentalReview/counselMental.jsp" />
+   </definition> 
+   
+   
+   
 </tiles-definitions>
 
 

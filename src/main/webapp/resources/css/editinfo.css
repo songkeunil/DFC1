@@ -244,29 +244,31 @@ background: red;
 	 font-weigth: bold;
 }
 .counselMental{
-	width:200px;
-	height:50px;
+	width:450px;
+	height:70px;
 	margin: 0 auto;
-	margin-top: 30px;
+	margin-top: 20px;
+	padding-right:10px;
 	
 
 	
 }
 .counselMental button{
-	width: 200px;
-	height: 50px;
+	width: 460px;
+	height: 75px;
 	font-size:20px;
 	font-weight:bold;
 	background: white;
-	border: 3px solid #0d6efd;
-	color:#0d6efd;
+	border: 1px solid #FA5858;
+	color:#FA5858;
+	font-weight:bold;
 	
 
 }
 
 .counselMental button:hover{
 	
-	background: #0d6efd;
+	background: #FA5858;
 	color:white;
 	cursor: pointer;
 	

@@ -1,4 +1,4 @@
-package com.djplat.project.board.controller;
+package com.djplat.project.YS_board.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +20,7 @@ public interface BoardController {
 	 public ResponseEntity removeArticle(@RequestParam("brd_no") int brd_no,
 				  HttpServletRequest request, 
 				  HttpServletResponse response) throws Exception;
-	
+	 public ModelAndView NewsListArticles(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	 public ModelAndView RepoListArticles(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 }

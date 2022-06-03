@@ -51,6 +51,7 @@
     font-weight: bold;
 }
 
+
 h2 {
     width: 136px;
     height: 30px;
@@ -59,6 +60,7 @@ h2 {
 
 
 #board td {
+	width: 1000px;
     border-bottom: 1px solid #A4A4A4;
     height: 40px;
 }
@@ -120,6 +122,10 @@ tr:hover {
     width: 90px;
 }
 
+#th-6 {
+    width: 90px;
+}
+
 table {
     text-align: center;
 }
@@ -149,8 +155,14 @@ table {
     float: right;
     font-size: 15px;
     cursor: pointer;
-
 }
+
+.boardbtn a{
+	color: black;
+    text-decoration: none;
+}
+
+
 .boardbtn:hover{
     background:#F2F2F2; 
     
@@ -170,21 +182,20 @@ table {
 }
 
 
-#pagebtn {
-    width: 300px;
+.pagebtn {
+    width: 1000px;
     text-align: center;
     text-decoration: none;
     font-size: 20px;
     margin: 0 auto;
-
 }
 
-#pagebtn a {
+.pagebtn a {
     text-decoration: none;
     color: black;
 }
 
-#pagebtn button {
+.pagebtn button {
     width: 30px;
     height: 35px;
     background: white;
@@ -192,8 +203,9 @@ table {
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
+    margin: 0 auto;
 }
-#pagebtn button:hover{
+.pagebtn button:hover{
     background:#F2F2F2; 
-    
 }
+

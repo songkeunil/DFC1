@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
-
+	
 <configuration>
   <settings>
-
-        <setting name="jdbcTypeForNull" value="NULL"/>
-
-    </settings>
-
-
+     <setting name="jdbcTypeForNull" value="NULL"/>
+  </settings>
 
 	<typeAliases>
 		<typeAlias type="com.djplat.project.member.vo.MemberVO"  alias="memberVO" />
 		<typeAlias type="com.djplat.project.common.vo.UserVO"  alias="userVO" />
-		<typeAlias type="com.djplat.project.board.vo.ArticleVO"  alias="articleVO" />
 		<typeAlias type="com.djplat.project.mentalReview.vo.ReviewVO"  alias="ReviewVO" />
 		
 		<typeAlias type="com.djplat.project.suit_board.vo.SuitVO"  alias="suitVO" />
@@ -23,6 +18,10 @@
 		<typeAlias type="com.djplat.project.suit_board.vo.Criteria"  alias="criteria" />
 		<typeAlias type="com.djplat.project.suit_board.vo.SearchCriteria"  alias="searchCriteria" />
 		<typeAlias type="com.djplat.project.suit_board.vo.PageMaker"  alias="pageMaker" />
+
+		<typeAlias type="com.djplat.project.YS_board.vo.ArticleVO" alias="YSB_articleVO"/>
+		<typeAlias type="com.djplat.project.YS_board.vo.FileVO" alias="YSB_fileVO"/>
+		<typeAlias type="com.djplat.project.YS_board.vo.LikeVO" alias="YSB_likeVO"/>
+		<typeAlias type="com.djplat.project.YS_board.vo.ReplyVO" alias="YSB_replyVO"/>
 	</typeAliases>
-	
 </configuration>

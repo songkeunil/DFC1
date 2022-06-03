@@ -50,8 +50,8 @@ public class AdminDAOImpl implements AdminDAO {
 	public int counselRegistration(Map articleMap) throws Exception {
 		int brd_no = counselRegNO();
 		articleMap.put("brd_no", brd_no);
-		System.out.println(brd_no);
-		System.out.println(articleMap);
+//		System.out.println(brd_no);
+//		System.out.println(articleMap);
 		sqlSession.insert("mapper.admin.counselRegistration", articleMap);
 		return brd_no;
 
@@ -59,7 +59,7 @@ public class AdminDAOImpl implements AdminDAO {
 
 	// brd_no생성
 	private int counselRegNO() throws DataAccessException {
-		System.out.println("1212");
+//		System.out.println("1212");
 		return sqlSession.selectOne("mapper.admin.counselRegNO");
 	}
 

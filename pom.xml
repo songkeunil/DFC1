@@ -158,6 +158,29 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
      
      
 		<!-- myBatis 설정관련 라이브러리 -->
+
+		<!-- <dependency>
+			<groupId>jdbc.oracle</groupId>
+			<artifactId>OracleDriver</artifactId>
+			<version>12.1.0.2.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc6.jar</systemPath>
+		</dependency> -->
+
+	<!-- 검색을 위한 json 라이브러리 -->
+     <dependency>
+     	<groupId>net.sf.json-lib</groupId>
+     	<artifactId>json-lib</artifactId>
+     	<version>2.4</version>
+     	<classifier>jdk15</classifier>
+     </dependency>
+      
+      <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <version>5.1.29</version>
+      </dependency>
+         <!-- myBatis 설정관련 라이브러리 -->
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
@@ -293,6 +316,17 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 		    <artifactId>spring-security-taglibs</artifactId>
 		     <version>${spring.security.version}</version>
 		  </dependency>
+		  <dependency>
+		  	<groupId>com.fasterxml.jackson.core</groupId>
+		  	<artifactId>jackson-databind</artifactId>
+		  	<version>2.8.5</version>
+		  </dependency>
+	
+	<dependency>
+		<groupId>net.coobird</groupId>
+		<artifactId>thumbnailator</artifactId>
+		<version>0.4.8</version>
+	</dependency>
 	
 	</dependencies>
 	

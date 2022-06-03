@@ -1,5 +1,6 @@
 package com.djplat.project.mentalReview.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,8 +17,10 @@ public interface ReviewService {
 	public void modReviewView(ReviewVO vo) throws Exception;
 
 	public void removeArticle(int brd_no) throws Exception;
-	
+
 	public Map searchArticles(Map pagingMap) throws Exception;
-	
-	public List<ReviewVO> viewReply(int brd_no) throws Exception;
+
+	public List<HashMap<String, String>> requestList();
+
+	public void removeCounsel(int brd_no) throws Exception;
 }

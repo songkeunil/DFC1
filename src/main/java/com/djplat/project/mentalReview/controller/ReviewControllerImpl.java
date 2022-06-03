@@ -186,10 +186,10 @@ private List<String> upload(MultipartHttpServletRequest multipartRequest) {
 		mav.setViewName(viewName);
 		mav.addObject("articleMap", articleMap);
 		
-		List<ReviewVO> viewReply = reviewService.viewReply(reviewVO.getBrd_no());
-		mav.setViewName(viewName);
-		mav.addObject("viewReply",viewReply);
-		return mav;
+		/*
+		 * List<ReviewVO> viewReply = reviewService.viewReply(reviewVO.getBrd_no());
+		 * mav.setViewName(viewName); mav.addObject("viewReply",viewReply);
+		 */	return mav;
 	}
 	
 
@@ -292,6 +292,55 @@ private List<String> upload(MultipartHttpServletRequest multipartRequest) {
 		mav.setViewName(viewName);
 		mav.addObject("articlesMap", articlesMap);
 		return mav;
+	}
+	// 마음건강 상담페이지 상담신청내역 불러오기
+	@RequestMapping(value = "/mentalreview/counselMental.do", method = { RequestMethod.POST, RequestMethod.GET })
+	public ModelAndView counselMentalList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		String viewName = (String) request.getAttribute("viewName");
+
+		List<HashMap<String, String>> counselMentalList = reviewService.requestList();
+		mav.addObject("counselMentalList", counselMentalList);
+
+		mav.setViewName(viewName);
+		return mav;
+
+	}
+
+//	 마음건강 상담페이지 상담신청내역 삭제
+	@Override
+	@RequestMapping(value = "/mentalreview/deleteMental.do", method = { RequestMethod.POST, RequestMethod.GET })
+	@ResponseBody
+	public ResponseEntity removeCounsel(@RequestParam("brd_no") int brd_no, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+		response.setContentType("text/html; charset=UTF-8");
+		String message;
+		ResponseEntity resEnt = null;
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+
+		try {
+			System.out.println(brd_no);
+			reviewService.removeCounsel(brd_no);
+			File destDir = new File(ARTICLE_FILE_REPO + "\\" + brd_no);
+			FileUtils.deleteDirectory(destDir);
+
+			message = "<script>";
+			message += " alert('글을 삭제했습니다.');";
+			message += " location.href='" + request.getContextPath() + "/mentalreview/counselMental.do';";
+			message += " </script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+
+		} catch (Exception e) {
+			message = "<script>";
+			message += " alert('작업중 오류가 발생했습니다.다시 시도해 주세요.');";
+			message += " location.href='" + request.getContextPath() + "/mentalreview/counselMental.do';";
+			message += " </script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+			e.printStackTrace();
+		}
+		return resEnt;
 	}
 //	//댓글 작성
 //	@RequestMapping(value="/mentalreview/addReply.do", method={RequestMethod.POST,RequestMethod.GET})

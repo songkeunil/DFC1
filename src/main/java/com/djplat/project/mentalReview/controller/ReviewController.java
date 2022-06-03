@@ -26,4 +26,7 @@ public interface ReviewController {
 
 	public ResponseEntity removeArticle(@RequestParam("brd_no") int brd_no, HttpServletRequest request,
 			HttpServletResponse response) throws Exception;
+	// 상담신청글삭제
+public ResponseEntity removeCounsel(@RequestParam("brd_no") int brd_no, HttpServletRequest request,
+		HttpServletResponse response) throws Exception;
 }

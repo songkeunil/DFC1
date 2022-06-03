@@ -11,7 +11,7 @@
         margin: 0;
         position: fixed;
         background: white;
-         z-index: 99999;
+         z-index: 99995;
     }
 
     #h-top {
@@ -19,8 +19,7 @@
         height: 150px;
 /*                background: red;*/
         margin: 0 auto;
-        
-        
+     
     }
 
     #h-logo {
@@ -69,7 +68,7 @@
     }
 
     #h-login {
-        width: 220px;
+        width: 280px;
      
         height: 50px;
 /*          background: green;*/
@@ -103,7 +102,7 @@
         margin: 0 auto;
         margin-top: 150px;
         background: white;
-		z-index: 99999;
+		z-index: 99995;
     }
 
     .h-nav {

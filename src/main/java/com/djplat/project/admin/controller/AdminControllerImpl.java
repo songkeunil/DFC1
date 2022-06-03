@@ -117,7 +117,7 @@ public class AdminControllerImpl extends MultiActionController implements AdminC
 		String member_id = multipartRequest.getParameter("member_id");
 		articleMap.put("member_id", member_id);
 		/* System.out.println(member_id); */
-		adminservice.counselRegistration(articleMap);
+//		adminservice.counselRegistration(articleMap);
 
 		String message;
 		ResponseEntity resEnt = null;
