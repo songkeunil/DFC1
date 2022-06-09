@@ -1,0 +1,326 @@
+#y-boardrap {
+    width: 1400px;
+    height: 1300px;
+    margin: 0 auto;
+}
+
+#y-boardtop {
+    width: 1000px;
+    height: 145px;
+    margin: 0 auto;
+    border-bottom: 1px solid #A4A4A4;
+    margin-bottom: 50px;
+}
+.y-h2 {
+    width: 111px;
+    height: 30px;
+    border-bottom: 3px solid #18A8F1;
+}
+.y-p {
+    color: #848484;
+    font-size: 14px;
+}
+#y-boardtop a {
+    text-decoration: none;
+    color: #848484;
+}
+#y-detail-rap{
+   
+    width: 1000px;
+    height: auto;
+/*    background: gray;*/
+    margin: 0 auto;
+    
+}
+
+#y-detail-title{
+    width: 1000px;
+    height: 50px;
+/*    background: red;*/
+/*    line-height: 45px;*/
+/*    padding-left: 20px;*/
+    background: #F2F2F2;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+
+}
+#y-detail-title table{
+    width: 1000px;
+    height: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.y-detail-title-th1{
+    width: 640px;
+    text-align: left;
+}
+.y-detail-title-th2{
+    width: 100px;
+    
+}
+.y-detail-title-th3{
+    width: 80px;
+}
+.y-detail-title-th4{
+    width: 120px;
+}
+
+
+#y-detail-main{
+    width: 960px;
+    min-height: 300px;
+    height: auto;
+/*    background: red;*/
+    padding: 20px;
+    line-height: 30px;
+/*    border-bottom: 1px solid #A4A4A4;*/
+}
+#y-detail-like-rap{
+    width: 1000px;
+    height: 80px;
+/*    background: red;*/
+    
+}
+.y-detail-like{
+    width: 60px;
+    height: 60px;
+    background: #F2F2F2;
+    border-radius: 50px;
+    margin-top: 10px;
+    font-size: 22px;  
+    border: 1px solid white;
+    margin-left: 460px
+}
+.bi-hand-thumbs-up{
+    margin-left: 0px;
+   
+}
+.y-detail-like:hover{
+    cursor: pointer;
+    border: 1px solid #18A8F1;
+    
+}
+.y-detail-like:active{
+    color: #18A8F1;
+    
+}
+#y-detail-comment{
+    width: 1000px;
+    height: auto;
+/*    background: red;*/
+}
+.y-detail-comment-top{
+    width: 1000px;
+    height: 25px;
+/*    border-bottom: 1px solid #A4A4A4;*/
+}
+.y-detail-comment-middle{
+    width: 1000px;
+    height: auto;
+    min-height: 50px;
+/*    background: red;*/
+    border-top: 1px solid #A4A4A4;
+    margin-top: 20px;
+}
+.y-detail-comment-middle-profile{
+    width: 50px;
+    height: 50px;
+/*    background: red;*/
+    float: left;
+}
+.bi-person-fill{
+    font-size: 50px;
+}
+.y-detail-comment-middle-info{
+/*    background: red;*/
+    height: 20px;
+
+    width: auto;
+    line-height: 20px;
+}
+
+.y-detail-comment-middle-info-name{
+/*    background: red;*/
+    width: 750px;
+    float: left;
+    font-weight: bold;
+    border-bottom: 1px solid #E6E6E6;
+}
+.y-detail-comment-middle-info-time{
+/*    background: blue;*/
+    width: 100px;
+    float: right;
+    text-align: center;
+    border-bottom: 1px solid #E6E6E6;
+    font-size: 13px;
+}
+.y-detail-comment-middle-info-date{
+/*    background: green;*/
+    width: 100px;
+    float: right;
+    text-align: center;
+    border-bottom: 1px solid #E6E6E6;
+    font-size: 13px;
+}
+.y-detail-comment-middle-info-main{
+/*    background: red;*/
+    height: auto;
+    width: 780px;
+    padding: 5px;
+    margin-left: 46px;
+    line-height: 20px;
+}
+.y-detail-comment-write-rap{
+    width: 800px;
+    height: 210px;
+/*    background: red;*/
+    margin: 0 auto;
+    border: 1px solid #A4A4A4;
+    margin-top: 50px;
+}
+.y-detail-comment-write{
+    width: 760px;
+    height: 140px;
+    border: 1px solid #A4A4A4;
+    margin-left: 9px;
+    margin-top: 8px;  
+    padding: 10px;
+}
+.y-detail-comment-write:focus{
+    outline: none;
+}
+.y-detail-comment-write-rap button{
+    width: 100px;
+    height: 30px;
+    background: white;
+    border: 1px solid #A4A4A4;
+    margin-left: 350px;
+    margin-top: 3px;
+    font-size: 15px;
+    
+}
+.y-detail-comment-write-rap button:hover{
+    font-weight: bold;
+    cursor: pointer;
+     border: 1px solid #18A8F1;
+    
+}
+
+
+
+.reply-arrow{
+    width: 80px;
+    height: 50px;
+/*    background: red;*/
+    float: left;
+}
+.bi-arrow-return-right{
+    font-size: 45px;
+    margin-left: 20px;
+}
+.y-detail-comment-middle-reply{
+     width: 920px;
+    height: auto;
+    min-height: 50px;
+/*    background: red;*/
+    border-top: 1px solid #A4A4A4;
+    margin-top: 20px;
+    margin-left: 80px;
+    
+}
+
+.y-detail-comment-middle-info-name-reply{
+/*    background: red;*/
+    width: 670px;
+    float: left;
+    font-weight: bold;
+    border-bottom: 1px solid #E6E6E6;
+}
+.y-detail-comment-middle-info-time-reply{
+/*    background: blue;*/
+    width: 100px;
+    float: right;
+    text-align: center;
+    border-bottom: 1px solid #E6E6E6;
+    font-size: 13px;
+}
+.y-detail-comment-middle-info-date-reply{
+/*    background: green;*/
+    width: 100px;
+    float: right;
+    text-align: center;
+    border-bottom: 1px solid #E6E6E6;
+    font-size: 13px;
+}
+.y-detail-comment-middle-info-main-reply{
+/*    background: red;*/
+    height: auto;
+    width: 700px;
+    padding: 5px;
+    margin-left: 46px;
+    line-height: 20px;
+}
+
+.reply{
+    float: left;
+    margin-left: 50px;
+    
+}
+.reply a{
+    text-decoration: none;
+    color: gray;
+    font-size: 13px;
+}
+
+#y-detail-bottom-rap{
+    width: 800px;
+    height: 50px;
+    margin: 0 auto;
+}
+.y-detail-bottom-left{
+    width: 350px;
+    height: 50px;
+    margin: 0 auto;
+    float: left;
+}
+
+.y-detail-bottom-left button{
+       width: 100px;
+    height: 30px;
+    background: white;
+    border: 1px solid #A4A4A4;
+    
+    margin-top: 3px;
+    font-size: 15px;
+}
+.y-detail-bottom-left button:hover{
+    font-weight: bold;
+    cursor: pointer;
+     border: 1px solid #18A8F1;
+    
+}
+.y-detail-bottom-right{
+    width: 350px;
+    height: 50px;
+    margin: 0 auto;
+    float: right;
+}
+.y-detail-bottom-right button{
+       width: 100px;
+    height: 30px;
+    background: white;
+    border: 1px solid #A4A4A4;
+    margin-top: 3px;
+    font-size: 15px;
+    float: right;
+}
+.y-detail-bottom-right button:hover{
+    font-weight: bold;
+    cursor: pointer;
+     border: 1px solid #18A8F1;
+    
+}
+
+
+
+

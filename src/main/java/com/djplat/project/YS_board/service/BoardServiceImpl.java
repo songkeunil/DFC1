@@ -118,7 +118,6 @@ public class BoardServiceImpl implements BoardService {
 		Map articlesMap = new HashMap();
 		List<ArticleVO> articlesList = boardDAO.selectArticlesBySearchWord(pagingMap);
 		int searchTotArticles = boardDAO.selectSearchTotArticles(pagingMap);
-		System.out.println(searchTotArticles);
 		articlesMap.put("articlesList", articlesList);
 		articlesMap.put("searchTotArticles", searchTotArticles);
 		return articlesMap;
@@ -131,14 +130,16 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int getBoardLike(LikeVO likeVO) throws Exception {
-		return boardDAO.getBoardLike(likeVO);
+		int heart = boardDAO.getBoardLike(likeVO);
+		System.out.println(likeVO.toString());
+		System.out.println(heart);
+		return heart;
 	}
 	
 	@Override
 	public void insertBoardLike(LikeVO likeVO) throws Exception {
 		boardDAO.insertBoardLike(likeVO);
 		boardDAO.updateBoardLike(likeVO);
-		System.out.println(boardDAO.toString());
 	}
 
 	@Override

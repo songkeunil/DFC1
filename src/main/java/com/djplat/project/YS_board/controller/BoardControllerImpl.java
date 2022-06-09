@@ -175,9 +175,9 @@ public class BoardControllerImpl implements BoardController {
 		Map articleMap = boardService.viewArticle(brd_no);
 
 //			시큐리티용 세션 id 수령 코드
-//			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//	        String member_id=(String)principal;
-		String member_id = "lee";
+			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	        String member_id=(String)principal;
+//		String member_id = "lee";
 
 		LikeVO likeVO = new LikeVO();
 		likeVO.setBrd_no(brd_no);
@@ -209,7 +209,6 @@ public class BoardControllerImpl implements BoardController {
 	@ResponseBody
 	public ResponseEntity modArticle(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
 			throws Exception {
-		System.out.println("modArticle 진입");
 		String dummy = "dummy.txt";
 		multipartRequest.setCharacterEncoding("utf-8");
 		Map<String, Object> articleMap = new HashMap<String, Object>();
@@ -261,7 +260,6 @@ public class BoardControllerImpl implements BoardController {
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 		try {
-			System.out.println("실행");
 
 			boardService.modArticle(articleMap);
 			if (fileList != null && fileList.size() != 0) {
@@ -269,7 +267,6 @@ public class BoardControllerImpl implements BoardController {
 				for (int i = 0; i < fileList.size(); i++) {
 					String fileName = fileList.get(i);
 					if (i < pre_file_num) {
-						System.out.println(fileName);
 //						if (fileName != null) {	
 						if (fileName != dummy) {
 							String[] oldName = (String[]) articleMap.get("oldFileName");
@@ -375,9 +372,6 @@ public class BoardControllerImpl implements BoardController {
 			String articleFileName = (String) request.getParameter("articleFileName");
 			String brd_no = (String) request.getParameter("brd_no");
 
-			System.out.println("imageFileNO = " + articleFileNO);
-			System.out.println("articleNO = " + brd_no);
-
 			FileVO fileVO = new FileVO();
 			fileVO.setBrd_no(Integer.parseInt(brd_no));
 			fileVO.setArticleFileNO(Integer.parseInt(articleFileNO));
@@ -435,7 +429,6 @@ public class BoardControllerImpl implements BoardController {
 				fileList.add(dummy);
 			}
 		}
-		System.out.println(fileList.toString());
 		return fileList;
 	}
 	//썸네
@@ -542,14 +535,13 @@ public class BoardControllerImpl implements BoardController {
 
 		likeVO.setBrd_no(brd_no);
 		likeVO.setMember_id(member_id);
-		System.out.println(heart);
-		if (heart == 0) {			System.out.println("쉴행");
+		if (heart == 0) {
 			boardService.insertBoardLike(likeVO);
 			heart = 1;
-		} else{			System.out.println("시횅");
+		} else{
 			boardService.deleteBoardLike(likeVO);
 			heart = 0;
-			}		System.out.println(heart);		return heart;	}
+			}		return heart;	}
 
 	@RequestMapping(value = "/YS_board/howtocome.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView howtocome(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -621,7 +613,7 @@ public class BoardControllerImpl implements BoardController {
 
 		replyMap.put("section", section);
 		replyMap.put("pageNum", pageNum);
-		System.out.println(replyMap.toString());
+
 		return replyMap;
 	}
 	
@@ -647,24 +639,20 @@ public class BoardControllerImpl implements BoardController {
 		HttpSession session = request.getSession();
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
 //		String id = memberVO.getMember_id();
-		String member_id = "lee";
+//		String member_id = "lee";
 
 		// 시큐리티용 현재 접속자 ID 수령 코드 취합 및 실 사용시 교체 해주세요.
-//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        String member_id=(String)principal;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String member_id=(String)principal;
 
 		replyMap.put("member_id", member_id);
 		String WhereFrom = request.getRequestURI().toString();
 		if(WhereFrom.equals("/project/YS_board/addNewReply.do")){
-			System.out.println("진입");
 			replyMap.put("reply_lvl", 0);
 		}else if(WhereFrom.equals("/project/YS_board/addReplyOnReply.do")){
 			String reply_lvl = (String)session.getAttribute("reply_lvl");
 			replyMap.put("reply_lvl", (reply_lvl == null ? 0: reply_lvl));
 		}
-		
-		
-		System.out.println(replyMap.toString());
 		int articleNO = Integer.parseInt(request.getParameter("brd_no"));
 		String message;
 		ResponseEntity resEnt = null;

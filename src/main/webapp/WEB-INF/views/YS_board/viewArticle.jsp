@@ -7,6 +7,7 @@
 <c:set var="article" value="${articleMap.article}" />
 <c:set var="articleFileList" value="${articleMap.articleFileList}" />
 <c:set var="heart" value="${heart}" />
+<%-- <c:set var="heart" value="${articleMap.heart}" /> --%>
 
 <c:set var="replyList"  value="${replyMap.replyList}"  />
 <c:set var="section"  value="${replyMap.section}"  />
@@ -86,7 +87,7 @@ $(document).ready(function () {
 	$(".y-detail-like").on("click", function () {
 		var that = $(".y-detail-like");
 		var sendData = {'brd_no' : '${article.brd_no}','heart' : that.prop('name')};
-		  
+		console.log(sendData);
 			$.ajax({
               url :'${contextPath}/YS_board/activeLike.do',
               type :'POST',
@@ -137,8 +138,9 @@ $(document).ready(function () {
 					</tr>
 				</table>
 			</div>
+			<pre style="white-space: pre-line;">
 			<div id='y-detail-mainIndex'>${article.support_context}</div>
-			
+			</pre>
 			<div id= detail-picture>
 				<c:forEach var="item" items="${articleFileList}" varStatus="status">
 					<c:if test="${item.articleFileName ne 'thumb.png'}">

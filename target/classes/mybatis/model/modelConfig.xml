@@ -20,6 +20,8 @@
 		<typeAlias type="com.djplat.project.suit_board.vo.PageMaker"  alias="pageMaker" />
 
 		<typeAlias type="com.djplat.project.YS_board.vo.ArticleVO" alias="YSB_articleVO"/>
+		<typeAlias type="com.djplat.project.board.vo.ArticleVO" alias="articleVO"/>
+		<typeAlias type="com.djplat.project.board.service.FileVO" alias="fileVO"/>
 		<typeAlias type="com.djplat.project.YS_board.vo.FileVO" alias="YSB_fileVO"/>
 		<typeAlias type="com.djplat.project.YS_board.vo.LikeVO" alias="YSB_likeVO"/>
 		<typeAlias type="com.djplat.project.YS_board.vo.ReplyVO" alias="YSB_replyVO"/>

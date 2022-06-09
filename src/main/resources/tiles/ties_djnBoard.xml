@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+   <definition name="/djnboard/listArticles" extends="baseLayout">
+      <put-attribute name="title" value="청춘지원게시판" />
+      <put-attribute name="body" value="/WEB-INF/views/djnboard/listArticles.jsp" />
+   </definition>
+ 
+ 
+   <definition name="/djnboard/listArticles2" extends="baseLayout">
+      <put-attribute name="title" value="청춘지원게시판" />
+      <put-attribute name="body" value="/WEB-INF/views/djnboard/listArticles2.jsp" />
+   </definition>
+<definition name="/djnboard/listArticles3" extends="baseLayout">
+      <put-attribute name="title" value="청춘지원게시판" />
+      <put-attribute name="body" value="/WEB-INF/views/djnboard/listArticles3.jsp" />
+   </definition>
+ <definition name="/djnboard/listArticles4" extends="baseLayout">
+      <put-attribute name="title" value="청춘지원게시판" />
+      <put-attribute name="body" value="/WEB-INF/views/djnboard/listArticles4.jsp" />
+   </definition>
+   <definition name="/djnboard/listArticles5" extends="baseLayout">
+      <put-attribute name="title" value="청춘지원게시판" />
+      <put-attribute name="body" value="/WEB-INF/views/djnboard/listArticles5.jsp" />
+   </definition>
+    <definition name="/djnboard/viewArticle" extends="baseLayout">
+      <put-attribute name="title" value="청춘지원게시판" />
+      <put-attribute name="body" value="/WEB-INF/views/djnboard/viewArticle.jsp" />
+   </definition>
+    <definition name="/djnboard/articleForm" extends="baseLayout">
+      <put-attribute name="title" value="청춘지원게시판" />
+      <put-attribute name="body" value="/WEB-INF/views/djnboard/articleForm.jsp" />
+   </definition>
+      <definition name="djn" extends="baseLayout">
+      <put-attribute name="title" value="대청넷소개" />
+      <put-attribute name="body" value="/WEB-INF/views/djnboard/djnintro.jsp" />
+   </definition>
+  
+</tiles-definitions>
+
+

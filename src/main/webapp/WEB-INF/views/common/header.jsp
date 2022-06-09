@@ -203,7 +203,7 @@ cursor:pointer;
 				<div class="sidebar-id"><sec:authorize access="isAuthenticated()">
 						<sec:authentication property="name" />					
 					</sec:authorize>님</div>
-				<div class="sidebar-mymenu"><span>My Menu</span></div>
+				<div class="sidebar-mymenu"><span>Admin Menu</span></div>
 			</div>
 			<ul>
 				<li class="smenu smenutop"><a href="#">청춘끼리</a></li>
@@ -300,13 +300,8 @@ cursor:pointer;
         <div id="h-nav">
             <ul class="h-nav justify-content-center">
                 <li class="h-nav-item">
-                    <a class="h-nav-link" href="#" style="color: black">청춘끼리소개</a>
-                    <ul class='h-sub'>
-                        <li><a href='#'>menu1</a></li>
-                        <li><a href='#'>menu2</a></li>
-                        <li><a href='#'>menu3</a></li>
-                        <li><a href='#'>menu4</a></li>
-                    </ul>
+                    <a class="h-nav-link" href="${path}/sogae.html" style="color: black">청춘끼리소개</a>
+              
                 </li>
                 <li class="h-nav-item">
                     <a class="h-nav-link" href="#" style="color: black">청춘공간</a>
@@ -321,7 +316,7 @@ cursor:pointer;
                     <a class="h-nav-link" href="#" style="color: black">청년마음건강</a>
                     <ul class='h-sub'>
                         <li><a href='${path}/mentalreview/introduceMental.html'>마음건강 소개</a></li>
-                        <li><a href='${path }/mentalreview/counselMental.do'>마음건강 상담신청</a></li>
+                        <li><a href='${path }/mentalreview/counselMental.do'>마음건강 상담신청 확인</a></li>
                         <li><a href='${path}/mentalreview/listArticles.do'>이용후기</a></li>
                      
                     </ul>
@@ -337,11 +332,9 @@ cursor:pointer;
                 <li class="h-nav-item">
                     <a class="h-nav-link" href="#" style="color: black">대청넷</a>
                     <ul class='h-sub'>
-                        <li><a href='#'>대청넷 소개</a></li>
-                        <li><a href='#'>대청넷 활동</a></li>
-                        <li><a href='#'>청년소통</a></li>
+                        <li><a href='${contextPath }/djplat/djn.html'>대청넷 소개</a></li>
+                        <li><a href='${contextPath }/djplat/djnboard/listArticles.do'>대청넷 활동</a></li>
                         <li><a href='#'>대청넷활동문의</a></li>
-                        <li><a href='#'>대청넷 자료실</a></li>
                         
                     </ul>
                 </li>
@@ -354,13 +347,13 @@ cursor:pointer;
                     </ul>
                 </li>
                 <li class="h-nav-item">
-                    <a class="h-nav-link" href="#" style="color: black">청춘지원</a>
-                    <ul class='h-sub'>
+                    <a class="h-nav-link" href="${contextPath }/djplat/YS_board/listArticles.do" style="color: black">청춘지원</a>
+                   <!--  <ul class='h-sub'>
                         <li><a href='#'>menu1</a></li>
                         <li><a href='#'>menu2</a></li>
                         <li><a href='#'>menu3</a></li>
                         <li><a href='#'>menu4</a></li>
-                    </ul>
+                    </ul> -->
                 </li>
             </ul>
         </div>

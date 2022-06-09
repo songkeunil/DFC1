@@ -197,7 +197,8 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	@Override
     public int getBoardLike(LikeVO likeVO) throws Exception {
-		 return sqlSession.selectOne("mapper.YS_board.getBoardLike",likeVO);
+		 int heart = sqlSession.selectOne("mapper.YS_board.getBoardLike",likeVO);
+		 return heart;
     }
 
     @Override

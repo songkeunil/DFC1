@@ -45,7 +45,7 @@ public class MemberController {
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST)
 	public String signUp(@ModelAttribute("memberVO") MemberVO memberVO, HttpServletRequest request,RedirectAttributes rttr, Model model) throws Exception {
 		// 사용자가 입력한 정보를 파라미터로 넘김
-		mailService.register(memberVO);
+		mailService.register(memberVO, request);
 		boolean isInserted = signUpService.insertUserInfo(memberVO);
 
 		model.addAttribute("member", memberVO);

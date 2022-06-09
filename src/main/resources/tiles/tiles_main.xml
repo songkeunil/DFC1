@@ -46,6 +46,21 @@
 	</definition>
 	<definition name="/member/findPw" template="/WEB-INF/views/member/findPw.jsp">
 	</definition>
+	
+	<definition name="sogae" extends="baseLayout">
+		<put-attribute name="title" value="청춘끼리소개" />
+		<put-attribute name="body" value="/WEB-INF/views/introduce/sogae.jsp" />
+	</definition>
+	
+	<definition name="saeop" extends="baseLayout">
+		<put-attribute name="title" value="청춘끼리사업소개" />
+		<put-attribute name="body" value="/WEB-INF/views/introduce/saeop.jsp" />
+	</definition>
+	
+	<definition name="sogaeRoad" extends="baseLayout">
+		<put-attribute name="title" value="청춘끼리오시는길" />
+		<put-attribute name="body" value="/WEB-INF/views/introduce/sogaeRoad.jsp" />
+	</definition>
 </tiles-definitions>
 
 

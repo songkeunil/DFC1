@@ -3,6 +3,7 @@ package com.djplat.project.mail.service;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -23,8 +24,10 @@ public class MailServiceImpl implements MailService {
 	@Autowired
 	MailDAO mailDAO;
 	@Transactional
-	public void register(MemberVO memberVO) throws Exception{
+	public void register(MemberVO memberVO, HttpServletRequest request) throws Exception{
 		mailDAO.register(memberVO);
+		
+		String path[] = request.getRequestURL().toString().split("/");
 		
 		String key = new TempKey().getKey(50,false);
 		mailDAO.createAuthKey(memberVO.getMember_email(), key);
@@ -35,7 +38,7 @@ public class MailServiceImpl implements MailService {
 						"<br/>"+memberVO.getMember_id()+"님 "+
 						"<br/>'청춘끼리'에 회원가입해주셔서 감사합니다."+
 						"<br/>아래 [이메일 인증 확인]을 눌러주세요."+
-						"<a href='http://localhost:8090/djplat/registerEmail?memberEmail=" + memberVO.getMember_email() +
+						"<a href='http://" + path[2] + "/djplat/registerEmail?memberEmail=" + memberVO.getMember_email() +
 						"&key=" + key +
 						"' target='_blenk'>이메일 인증 확인</a>");
 		sendMail.setFrom("chunkkiri@gmail.com", "청춘끼리");
@@ -60,10 +63,10 @@ public class MailServiceImpl implements MailService {
 		return mailDAO.findPwCheck(memberVO);
 	}
 	@Override
-	public void findPw(String memberEmail,String memberId) throws Exception{
+	public void findPw(String memberEmail,String memberId, HttpServletRequest request) throws Exception{
 		String memberKey = new TempKey().getKey(6, false); //난수생성(변경될 비밀번호)
 		String memberPw = BCrypt.hashpw(memberKey, BCrypt.gensalt()); //암호화
-
+		String path[] = request.getRequestURL().toString().split("/");
 		mailDAO.findPw(memberPw, memberEmail, memberId);
 		MailUtils sendMail = new MailUtils(mailSender);
 		sendMail.setSubject("[청춘끼리 임시 비밀번호 입니다]"); //메일 제목
@@ -73,7 +76,7 @@ public class MailServiceImpl implements MailService {
 			   "<br/>비밀번호 찾기를 통한 임시 비밀번호 입니다."+
 			   "<br/>임시 비밀번호  : <h2>"+memberKey+"</h2>"+
 			   "<br/>로그인 후 비밀번호 변경을 해주세요."+
-			   "<a href='http://localhost:8090/djplat/login.html"+
+			   "<a href='http://" + path[2]+ "/djplat/login.html'"+
 			   ">로그인 페이지</a>");
 		sendMail.setFrom("chunkkiri@gmail.com", "청춘끼리");
 		sendMail.setTo(memberEmail);

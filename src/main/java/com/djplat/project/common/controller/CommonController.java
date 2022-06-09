@@ -72,7 +72,25 @@ public class CommonController {
 	public String teojeon(Model model) {
 		return "teojeon";
 	}
+	@RequestMapping("/djn.html")
+	public String djn(Model model) {
+		return "djn";
+	}
+	@RequestMapping("/sogae.html")
+	public String sogae(Model model) {
+		return "sogae";
+	}
 
+	@RequestMapping("/saeop.html")
+	public String saeop(Model model) {
+		return "saeop";
+	}
+
+	@RequestMapping("/sogaeRoad.html")
+	public String sogaeRoad(Model model) {
+		return "sogaeRoad";
+	}
+	
 //	@RequestMapping("/admin")
 //	public String admin(HttpServletRequest request, Model model, Authentication authentication) {
 //		WebAuthenticationDetails wDetails = (WebAuthenticationDetails) authentication.getDetails();

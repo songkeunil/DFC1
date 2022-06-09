@@ -1,5 +1,7 @@
 package com.djplat.project.mail.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,13 +43,13 @@ public class MailController{
 		return "/member/findPwView";
 	}
 	@RequestMapping(value="/findPw",method={RequestMethod.GET, RequestMethod.POST})
-	public String findPw(MemberVO memberVO, Model model) throws Exception{
+	public String findPw(MemberVO memberVO, Model model, HttpServletRequest request) throws Exception{
 		logger.info("memberPWCheck");
 		if(mailservice.findPwCheck(memberVO)==0) {
 			model.addAttribute("msg","아이디와 이메일을 확인해주세요");
 			return "/member/findPwView";
 		}else {
-			mailservice.findPw(memberVO.getMember_email(),memberVO.getMember_id());
+			mailservice.findPw(memberVO.getMember_email(),memberVO.getMember_id(), request);
 			model.addAttribute("member",memberVO.getMember_email());
 			
 			return"/member/findPw";
