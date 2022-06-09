@@ -26,7 +26,7 @@
 		<result property="brd_no" column="brd_no" />
 		<result property="member_id" column="member_id" />
 	</resultMap>
-	
+
 	<resultMap id="replyResult" type="YSB_replyVO">
 		<result property="reply_no" column="reply_no" />
 		<result property="reply_lvl" column="reply_lvl" />
@@ -35,12 +35,12 @@
 		<result property="member_id" column="member_id" />
 		<result property="brd_no" column="brd_no" />
 	</resultMap>
-	
+
 	<!-- 글 리스트 -->
 	<select id="selectAllArticlesList" parameterType="java.util.Map"
 		resultMap="articlesResult">
   	<![CDATA[
-		SELECT a.* 
+	SELECT a.* 
 		  FROM (
 				SELECT ROW_NUMBER() over (ORDER BY recNum2 desc) as recNum,
 					   recNum2,
@@ -71,19 +71,19 @@
 										 UNION ALL
 										SELECT * 
 										  FROM ( 
-												pSELECT * 
-												  FROM youngsuport_board
+												SELECT * 
+												  FROM youngsupport_board
 												 WHERE CC NOT IN '공지사항'
 												 ORDER BY brd_no DESC)
 												))))a
 		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*10+1 and (#{section}-1)*100 + #{pageNum}*10
   	]]>
 	</select>
-	
-	
+
+
 	<!-- 바둑판글 리스트 -->
-	<select id="selectAllNewsArticlesList" parameterType="java.util.Map"
-		resultMap="articlesResult">
+	<select id="selectAllNewsArticlesList"
+		parameterType="java.util.Map" resultMap="articlesResult">
   	<![CDATA[
 		SELECT a.* FROM
 		(SELECT ROW_NUMBER() over (ORDER BY brd_no DESC) as recNum,ROW_NUMBER() over (ORDER BY brd_no) as recNum2,
@@ -94,10 +94,10 @@
 		AND (#{section}-1)*100 + #{pageNum}*12
   	]]>
 	</select>
-	
+
 	<!-- 자료실 글 리스트 -->
-	<select id="selectAllRepoArticlesList" parameterType="java.util.Map"
-		resultMap="articlesResult">
+	<select id="selectAllRepoArticlesList"
+		parameterType="java.util.Map" resultMap="articlesResult">
   	<![CDATA[
 		SELECT a.* FROM
 		(SELECT ROW_NUMBER() over (ORDER BY brd_no DESC) as recNum, ROW_NUMBER() over (ORDER BY brd_no) as recNum2, brd_no, title, support_context,
@@ -107,26 +107,38 @@
   	]]>
 	</select>
 
-	<!-- 페이지 넘버링 -->
-	<select id="selectTotArticles" resultType="int">
+	<!-- 보통 페이지 넘버링 -->
+	<select id="selectListTotArticles" resultType="int">
   	<![CDATA[
   		SELECT count(brd_no) FROM YOUNGSUPPORT_BOARD
   	]]>
 	</select>
-	
-	<!-- 댓글 리스트 -->
-<!-- 	<select id="selectAllReplyArticlesList" parameterType="java.util.Map"
-	resultMap="replyResult">
+
+	<!-- 바둑판 페이지 넘버링 -->
+	<select id="selectNewsTotArticles" resultType="int">
   	<![CDATA[
-		SELECT a.* FROM
-		(SELECT ROW_NUMBER() over (ORDER BY reply_no DESC) as recNum, ROW_NUMBER() over (ORDER BY reply_no) as recNum2, reply_no, reply_lvl, reply_text,
-		reply_time, member_id, brd_no FROM YOUNGSUPPORT_REPLY WHERE brd_no = #{brd_no}
-		) a
-		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*10+1 and (#{section}-1)*100 + #{pageNum}*10
+  		SELECT count(brd_no) FROM YOUNGSUPPORT_BOARD
+  		WHERE CC = '청춘소식'
   	]]>
-	</select> -->
-	<select id="selectAllReplyArticlesList" parameterType="java.util.Map"
-	resultMap="replyResult">
+	</select>
+
+	<!-- 자료실 페이지 넘버링 -->
+	<select id="selectRepoTotArticles" resultType="int">
+  	<![CDATA[
+  		SELECT count(brd_no) FROM YOUNGSUPPORT_BOARD
+  		WHERE CC = '자료실'
+  	]]>
+	</select>
+
+	<!-- 댓글 리스트 -->
+	<!-- <select id="selectAllReplyArticlesList" parameterType="java.util.Map" 
+		resultMap="replyResult"> <![CDATA[ SELECT a.* FROM (SELECT ROW_NUMBER() over 
+		(ORDER BY reply_no DESC) as recNum, ROW_NUMBER() over (ORDER BY reply_no) 
+		as recNum2, reply_no, reply_lvl, reply_text, reply_time, member_id, brd_no 
+		FROM YOUNGSUPPORT_REPLY WHERE brd_no = #{brd_no} ) a WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*10+1 
+		and (#{section}-1)*100 + #{pageNum}*10 ]]> </select> -->
+	<select id="selectAllReplyArticlesList"
+		parameterType="java.util.Map" resultMap="replyResult">
   	<![CDATA[
 		SELECT ROW_NUMBER() over (ORDER BY reply_no DESC) as recNum, ROW_NUMBER() over (ORDER BY reply_no) as recNum2, reply_no, reply_lvl, reply_text,
 		reply_time, member_id, brd_no FROM YOUNGSUPPORT_REPLY WHERE brd_no = #{brd_no}
@@ -134,14 +146,14 @@
 	</select>
 
 	<!-- 댓글 페이지 넘버링 -->
-	<select id="selectReplyTotArticles" parameterType="java.util.Map" 
-		resultType="int">
+	<select id="selectReplyTotArticles"
+		parameterType="java.util.Map" resultType="int">
   	<![CDATA[
   		SELECT count(brd_no) FROM YOUNGSUPPORT_REPLY
   		WHERE brd_no = #{brd_no}
   	]]>
 	</select>
-	
+
 	<!-- 댓글 삭제 -->
 	<delete id="deleteReplyArticle" parameterType="int">
  	<![CDATA[
@@ -149,8 +161,8 @@
  		WHERE reply_no = #{reply_no}
  	]]>
 	</delete>
-	
-	
+
+
 	<!-- 새글 작성 -->
 	<insert id="insertNewArticle" parameterType="java.util.Map">
  	<![CDATA[
@@ -165,7 +177,7 @@
  		SELECT nvl(max(brd_no), 0) + 1 FROM YOUNGSUPPORT_BOARD
  	]]>
 	</select>
-	
+
 	<!-- 새 댓글 작성 -->
 	<insert id="insertNewReply" parameterType="java.util.Map">
  	<![CDATA[
@@ -173,7 +185,7 @@
  		VALUES(#{reply_no},#{reply_lvl},#{reply_text},sysdate,#{member_id},#{brd_no})
  	]]>
 	</insert>
-	
+
 	<!-- 새 댓글 번호 생성 -->
 	<select id="selectNewReplyNO" resultType="int">
  	<![CDATA[
@@ -181,7 +193,7 @@
  	]]>
 	</select>
 
-	<!-- 파일 청부 -->
+	<!-- 파일 청부-->
 	<select id="insertNewArticleFile" parameterType="java.util.Map">
 		<foreach item="item" collection="list" open="INSERT ALL"
 			separator=" " close="SELECT * FROM DUAL">
@@ -279,7 +291,7 @@
 	</delete>
 
 	<!-- 게시판 검색 기능 -->
-	<select id="selectArticleBySearchWord"
+<!-- 	<select id="selectArticleBySearchWord"
 		parameterType="java.util.Map" resultMap="articlesResult">
   	<![CDATA[
 		SELECT a.* FROM
@@ -289,14 +301,35 @@
 		) a
 		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*10+1 and (#{section}-1)*100 + #{pageNum}*10
   	]]>
+	</select> -->
+	
+	<select id="selectArticleBySearchWord"
+		parameterType="java.util.Map" resultMap="articlesResult">
+		SELECT a.* FROM
+		(SELECT ROW_NUMBER() over (ORDER BY brd_no DESC) as recNum, brd_no, title, support_context,
+		cc, w_date, hits, ylike, member_id FROM YOUNGSUPPORT_BOARD Y 
+		WHERE Y.title LIKE '%'||#{searchWord}||'%'
+		<if test='!cc.equals("전체")'>
+  			and cc=#{cc}
+  		</if>
+		) a
+		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*10+1 and (#{section}-1)*100 + #{pageNum}*10
 	</select>
 
 	<!-- 게시판 검색 결과 넘버링 생성 -->
-	<select id="selectSearchTotArticles" resultType="int">
+<!-- 	<select id="selectSearchTotArticles" resultType="int">
   	<![CDATA[
   		SELECT count(brd_no) FROM YOUNGSUPPORT_BOARD Y
 		WHERE Y.title LIKE '%'||#{searchWord}||'%'
   	]]>
+	</select> -->
+	
+	<select id="selectSearchTotArticles" resultType="int">
+  		SELECT count(brd_no) FROM YOUNGSUPPORT_BOARD Y
+		WHERE Y.title LIKE '%'||#{searchWord}||'%'
+		<if test='!cc.equals("전체")'>
+  			and cc=#{cc}
+  		</if>
 	</select>
 
 	<!-- 조회수 기능 -->
@@ -321,14 +354,14 @@
 		member_id)
 		VALUES (#{likeno}, #{brd_no}, #{member_id})
 	</insert>
-	
+
 	<!-- 좋아요 추가 번호 생성 -->
 	<select id="createNewLikeNO" resultType="int">
  	<![CDATA[
  		SELECT nvl(max(likeNO), 0) + 1 FROM YOUNGSUPPORT_LIKE
  	]]>
 	</select>
-	
+
 
 	<!-- 좋아요 삭제 (글 삭제 시) -->
 	<delete id="deleteBoardLike" parameterType="int">
@@ -340,12 +373,14 @@
 	</delete>
 	<!-- 지정 게시글 테이블 좋아요 갱신 -->
 	<update id="updateBoardLike" parameterType="int">
-		UPDATE YOUNGSUPPORT_BOARD
+		UPDATE
+		YOUNGSUPPORT_BOARD
 		SET ylike = (SELECT COUNT(*)
-		FROM YOUNGSUPPORT_LIKE WHERE brd_no = #{brd_no})
+		FROM YOUNGSUPPORT_LIKE
+		WHERE brd_no = #{brd_no})
 		WHERE brd_no = #{brd_no}
 	</update>
-	
+
 	<delete id="cleanDummyFile" parameterType="int">
 	<![CDATA[
 		DELETE FROM YOUNGSUPPORT_FILE

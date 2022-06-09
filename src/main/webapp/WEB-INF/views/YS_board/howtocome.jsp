@@ -42,7 +42,7 @@
 #locationWay{
 	width: 800px;
 	text-align: center;
-	background-color: green;
+/* 	background-color: green; */
 }
 
 .way{
@@ -55,7 +55,7 @@
 .transeport_icon{
 	width: 25%;
 	height: 100%;
-	background-color: gray;
+/* 	background-color: gray; */
 	float: left;
 	font-size: 20px;
 	font-weight: bold;
@@ -66,7 +66,7 @@
 	height: 100%;
 	float: left;
 	text-align: center;
-	background-color: red;
+/* 	background-color: red; */
 }
 
 .locIndex li{
@@ -105,7 +105,7 @@
          		</div>
          		<ul class="locIndex">
          			<li>
-         				<p style="background-color: blue; font-weight: bold;  ">간선</p>
+         				<p style="font-weight: bold;  ">간선</p>
          				<p>618</p>
          				<p>둔산초등학교 정류장 하차</p>
          			</li>
@@ -137,6 +137,9 @@
     </div>
 </body>
 <script type="text/javascript">
+vw.ol3.CameraPosition.center = [14180172.101252075, 4348645.743841676];
+vw.ol3.CameraPosition.zoom = 20;
+
 vw.ol3.MapOptions = {
 	    basemapType: vw.ol3.BasemapType.GRAPHIC
 	  , controlDensity: vw.ol3.DensityType.EMPTY
@@ -145,6 +148,7 @@ vw.ol3.MapOptions = {
 	  , homePosition: vw.ol3.CameraPosition
 	  , initPosition: vw.ol3.CameraPosition
 	}; 
+
 	vmap = new vw.ol3.Map("vmap",  vw.ol3.MapOptions); 
 	
 	var markerLayer = new vw.ol3.layer.Marker(vmap); 

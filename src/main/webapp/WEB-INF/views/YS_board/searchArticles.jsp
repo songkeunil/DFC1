@@ -80,16 +80,39 @@
             
         </div>
         <div id='boardfooter'>
-
-            <div id = 'boardbtnbox'>
-            	<form name="articleSearch" action="${contextPath}/YS_board/searchArticles.do">
-            		<input name="searchWord" type="text">
-            		<button type="submit" class='boardbtn searchbtn'><i class="bi bi-search"></i></button>
-            	</form>
-            	<button type='button' class='boardbtn'><a href="${contextPath }/YS_board/articleForm.do">글 쓰기</a></button>
-            	<button type='button' onclick="location.href='#'" class='boardbtn'><i class="bi bi-justify"></i>목록</button>
-            </div>
-
+ <div id='boardbtnbox'>
+				<br>
+			<div id = 'y-boardsearch-box'>
+				<div class="footerControllBtns" style="float: left;">
+					<button type='button' class='boardbtn'
+						onclick='location.href="${contextPath }/YS_board/listArticles.do"'>
+						<i class="bi bi-justify"></i>목록
+					</button>
+				</div>
+				<form name="searchMembers" action="${contextPath}/YS_board/searchArticles.do">
+					<div class = 'y-boardsearch-box-select'>
+						<select name="cc">
+							<option inputmode="text">전체</option>
+							<option inputmode="text">청춘소식</option>
+							<option inputmode="text">자료실</option>
+						</select>
+					</div>
+					<div class = 'y-boardsearch-box-text'>
+						<input class ='y-boardsearch-box-textbox' type="text" name="searchWord" >
+					</div>
+					<div class = 'y-boardsearch-box-button'>
+						<input class='y-boardsearch-box-btn' type="submit" value="검색">
+          			</div>
+				</form>
+				<div class="footerControllBtns" style="float: right;">
+					<button type='button' class='boardbtn'
+						onclick='location.href="${contextPath }/YS_board/articleForm.do"'>
+						글 쓰기
+					</button>
+				</div>
+			</div>
+			</div>
+			<br><br><br>
          <div class="pagebtn">
         
         	<button type='button' onclick="location.href='#'"><i class="bi bi-chevron-double-left"></i></button>

@@ -29,9 +29,10 @@
             <a href='#'><i class="bi bi-house-door"></i>Home </a> > <a href='#'> 청춘지원 </a> > <a href='#'>청춘지원소식</a>
         </div>
         <div id='board'>
-            <button type='button' class = 'boardtopbutton a1' onclick='location.href=href="${contextPath}/YS_board/listArticles.do"'>전체</button>
+            <button type='button' class = 'boardtopbutton a1' onclick='location.href="${contextPath}/YS_board/listArticles.do"'>전체</button>
             <button type='button' class = 'boardtopbutton' onclick='location.href="${contextPath}/YS_board/NewsListArticles.do"'>청춘소식</button>
-            <button type='button' class = 'boardtopbutton' onclick='location.href=href="${contextPath}/YS_board/RepoListArticles.do"'>자료실</button>
+            <button type='button' class = 'boardtopbutton' onclick='location.href="${contextPath}/YS_board/RepoListArticles.do"'>자료실</button>
+            <button type='button' class = 'boardtopbutton' onclick='location.href="${contextPath}/YS_board/howtocome.do"'>지도</button>
             <table>
                 <thead>
                     <tr>
@@ -46,8 +47,8 @@
                 <tbody>
                    <c:choose>
                       <c:when test="${empty articlesList}" >
-                       <tr style="width:1000px;  height:10px; align:center;">
-                          <td colspan="4" style="width:1000px;">
+                       <tr id="emptyList">
+                          <td colspan="4">
                             <p align="center">
                                 <b><span style="font-size:9pt;">등록된 글이 없습니다.</span></b>
                             </p>
@@ -75,31 +76,44 @@
                             </tr>
                           </c:forEach>
                       </c:when>
-                      
-                      
                     </c:choose>
                 </tbody>
-            </table>
-            
-            
-            
+            </table>           
         </div>
         <div id='boardfooter'>
-            <div id = 'boardbtnbox'>
-            	<br>
-            	<form name="articleSearch" action="${contextPath}/YS_board/searchArticles.do" style="width: 48%; height: 35px; float: left;">
-            		<input id="searchWordForm" name="searchWord" type="text" style="width: ">
-            		<button type="submit" class='boardbtn searchbtn'><i class="bi bi-search"></i></button>
-            	</form>
-            	<div id="footerControllBtns" style="width: 48%; height: 35px; float: right;">
-            	<button type='button' class='boardbtn' onclick='location.href="${contextPath }/YS_board/articleForm.do"'>
-            		글 쓰기
-            	</button>
-            	<button type='button' class='boardbtn' onclick='location.href="${contextPath }/YS_board/listArticles.do"'>
-            		<i class="bi bi-justify"></i>목록
-            	</button>
-            	</div>
-            </div>
+            <div id='boardbtnbox'>
+				<br>
+			<div id = 'y-boardsearch-box'>
+				<div class="footerControllBtns" style="float: left;">
+					<button type='button' class='boardbtn'
+						onclick='location.href="${contextPath }/YS_board/listArticles.do"'>
+						<i class="bi bi-justify"></i>목록
+					</button>
+				</div>
+				<form name="searchMembers" action="${contextPath}/YS_board/searchArticles.do">
+					<div class = 'y-boardsearch-box-select'>
+						<select name="cc">
+							<option inputmode="text">전체</option>
+							<option inputmode="text">청춘소식</option>
+							<option inputmode="text">자료실</option>
+						</select>
+					</div>
+					<div class = 'y-boardsearch-box-text'>
+						<input class ='y-boardsearch-box-textbox' type="text" name="searchWord" >
+					</div>
+					<div class = 'y-boardsearch-box-button'>
+						<input class='y-boardsearch-box-btn' type="submit" value="검색">
+          			</div>
+				</form>
+				<div class="footerControllBtns" style="float: right;">
+					<button type='button' class='boardbtn'
+						onclick='location.href="${contextPath }/YS_board/articleForm.do"'>
+						글 쓰기
+					</button>
+				</div>
+			</div>
+			</div>
+			<br><br><br>
             
           <!--   ----
         <form name="frmSearch" action="${contextPath}/goods/searchGoods.do" >

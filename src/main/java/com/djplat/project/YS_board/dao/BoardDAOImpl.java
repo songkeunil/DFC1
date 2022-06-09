@@ -31,24 +31,30 @@ public class BoardDAOImpl implements BoardDAO {
 	private SqlSession sqlSession;
 	
 	@Override
-	public List selectAllArticlesList(Map pagingMap) throws DataAccessException {
-		List<ArticleVO> articlesList = sqlSession.selectList("mapper.YS_board.selectAllArticlesList",pagingMap);
-		return articlesList;
-	}
-	@Override
-	public List selectAllNewsArticlesList(Map pagingMap) throws DataAccessException {
-		List<ArticleVO> articlesList = sqlSession.selectList("mapper.YS_board.selectAllNewsArticlesList",pagingMap);
-		return articlesList;
-	}
-	@Override
-	public List selectAllRepoArticlesList(Map pagingMap) throws DataAccessException {
-		List<ArticleVO> articlesList = sqlSession.selectList("mapper.YS_board.selectAllRepoArticlesList",pagingMap);
+	public List selectArticlesList(Map pagingMap) throws DataAccessException {
+		StackTraceElement[] a = new Throwable().getStackTrace();
+		List<ArticleVO> articlesList = null;
+		if(a[1].getMethodName().equals("listArticles")) {
+			articlesList = sqlSession.selectList("mapper.YS_board.selectAllArticlesList",pagingMap);
+		}else if(a[1].getMethodName().equals("NewslistArticles")) {
+			articlesList = sqlSession.selectList("mapper.YS_board.selectAllNewsArticlesList",pagingMap);
+		}else if(a[1].getMethodName().equals("RepolistArticles")) {
+			articlesList = sqlSession.selectList("mapper.YS_board.selectAllRepoArticlesList",pagingMap);
+		}
 		return articlesList;
 	}
 	
 	@Override
 	public int selectTotArticles() throws DataAccessException{
-		int totArticles = sqlSession.selectOne("mapper.YS_board.selectTotArticles");
+		int totArticles = 0;
+		StackTraceElement[] a = new Throwable().getStackTrace();
+		if(a[1].getMethodName().equals("listArticles")) {
+			totArticles = sqlSession.selectOne("mapper.YS_board.selectListTotArticles");
+		}else if(a[1].getMethodName().equals("NewslistArticles")) {
+			totArticles = sqlSession.selectOne("mapper.YS_board.selectNewsTotArticles");
+		}else if(a[1].getMethodName().equals("RepolistArticles")) {
+			totArticles = sqlSession.selectOne("mapper.YS_board.selectRepoTotArticles");
+		}
 		return totArticles;
 	}
 	
@@ -176,8 +182,10 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	@Override
 	public List selectArticlesBySearchWord(Map pagingMap) throws DataAccessException{
+		System.out.println(pagingMap.toString());
 		List<ArticleVO> articlesList=sqlSession.selectList("mapper.YS_board.selectArticleBySearchWord",pagingMap);
-		 return articlesList;
+		System.out.println(articlesList.toString());
+		return articlesList;
 	}
 
 	@Override

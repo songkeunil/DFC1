@@ -47,7 +47,7 @@ function backToList(obj){
 						<div class="y-writetop-option-box">
 							<input type="radio" name="cc" value="청춘소식">청춘소식
 							<input type="radio" name="cc" value="자료실">자료실
-							<input type="radio" name="cc" value="공지사항">공지사항
+							<input type="radio" name="cc" checked="checked" value="공지사항">공지사항
 						</div>
 					</div>
                     

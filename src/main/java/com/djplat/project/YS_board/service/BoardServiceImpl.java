@@ -25,7 +25,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public Map listArticles(Map pagingMap) throws Exception {
 		Map articlesMap = new HashMap();
-		List<ArticleVO> articlesList = boardDAO.selectAllArticlesList(pagingMap);
+		List<ArticleVO> articlesList = boardDAO.selectArticlesList(pagingMap);
 		int totArticles = boardDAO.selectTotArticles();
 		articlesMap.put("articlesList", articlesList);
 		articlesMap.put("totArticles", totArticles);
@@ -34,7 +34,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	public Map NewslistArticles(Map pagingMap) throws Exception {
 		Map articlesMap = new HashMap();
-		List<ArticleVO> articlesList = boardDAO.selectAllNewsArticlesList(pagingMap);
+		List<ArticleVO> articlesList = boardDAO.selectArticlesList(pagingMap);
 		int totArticles = boardDAO.selectTotArticles();
 		articlesMap.put("articlesList", articlesList);
 		articlesMap.put("totArticles", totArticles);
@@ -43,7 +43,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	public Map RepolistArticles(Map pagingMap) throws Exception {
 		Map articlesMap = new HashMap();
-		List<ArticleVO> articlesList = boardDAO.selectAllRepoArticlesList(pagingMap);
+		List<ArticleVO> articlesList = boardDAO.selectArticlesList(pagingMap);
 		int totArticles = boardDAO.selectTotArticles();
 		articlesMap.put("articlesList", articlesList);
 		articlesMap.put("totArticles", totArticles);
@@ -58,12 +58,6 @@ public class BoardServiceImpl implements BoardService {
 		return brd_no;
 	}
 	
-//	@Override
-//	public void addNewFileOnMod(Map articleMap) throws Exception{
-//		boardDAO.insertNewArticleFile(articleMap);
-//	}
-	
-
 	@Override
 	public Map viewArticle(int brd_no) throws Exception {
 		Map articleMap = new HashMap();

@@ -15,9 +15,7 @@ import com.djplat.project.YS_board.vo.LikeVO;
 
 
 public interface BoardDAO {
-	public List selectAllArticlesList(Map pagingMap) throws DataAccessException;
-	public List selectAllNewsArticlesList(Map pagingMap) throws DataAccessException;
-	public List selectAllRepoArticlesList(Map pagingMap) throws DataAccessException;
+	public List selectArticlesList(Map pagingMap) throws DataAccessException;
 	public int selectTotArticles() throws DataAccessException;
 	public ArticleVO selectArticle(int brd_no) throws DataAccessException;
 	public List selectArticleFileList(int articleNO) throws DataAccessException;

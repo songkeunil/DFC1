@@ -137,22 +137,22 @@ $(document).ready(function () {
 					</tr>
 				</table>
 			</div>
-			<div id='y-detail-main'>${article.support_context}</div>
-			
+			<pre style="white-space: pre-line; ">
+				<div id='y-detail-main'>${article.support_context}</div>
+			</pre>
 			<div id= detail-picture>
 				<c:forEach var="item" items="${articleFileList}" varStatus="status">
 					<c:if test="${item.articleFileName ne 'thumb.png'}">
 						<c:if test="${item.articleFileName.contains('jpg') or item.articleFileName.contains('png')}">
 						<img class="form-img"
 						src="${contextPath}/thumbnails.do?brd_no=${article.brd_no}
-						&fileName=${item.articleFileName}" style="width: 900px; height: 900px;">
+						&fileName=${item.articleFileName}">
 						</c:if>
 					</c:if>
 				</c:forEach>
 			</div>
 			<div id='y-detail-like-rap'>
 				<button class='y-detail-like'>
-					<!--  <i class="bi bi-hand-thumbs-up">${article.ylike}</i>  -->
 					<a id="heart" /><a class="heart" />${article.ylike}
 				</button>
 			</div>

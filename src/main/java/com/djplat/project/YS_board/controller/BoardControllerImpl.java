@@ -53,12 +53,13 @@ public class BoardControllerImpl implements BoardController {
 	@Autowired
 	private ArticleVO articleVO;
 
-	// 글 목록 창
+	//게시판 글 출현
 	@Override
-	@RequestMapping(value = "/YS_board/listArticles.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView listArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@RequestMapping(value = {"/YS_board/listArticles.do","/YS_board/NewsListArticles.do", "/YS_board/RepoListArticles.do"}, method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView ListArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
-
+		String WhereFrom = request.getRequestURI().toString();
+		
 		String _section = request.getParameter("section");
 		String _pageNum = request.getParameter("pageNum");
 		int section = Integer.parseInt(((_section == null) ? "1" : _section));
@@ -68,7 +69,14 @@ public class BoardControllerImpl implements BoardController {
 		pagingMap.put("section", section);
 		pagingMap.put("pageNum", pageNum);
 
-		Map articlesMap = boardService.listArticles(pagingMap);
+		Map articlesMap = null;
+		if (WhereFrom.equals("/project/YS_board/listArticles.do")) {
+			articlesMap = boardService.listArticles(pagingMap);
+		}else if (WhereFrom.equals("/project/YS_board/NewsListArticles.do")) {
+			articlesMap = boardService.NewslistArticles(pagingMap);
+		}else if (WhereFrom.equals("/project/YS_board/RepoListArticles.do")) {
+			articlesMap = boardService.RepolistArticles(pagingMap);
+		}
 		articlesMap.put("section", section);
 		articlesMap.put("pageNum", pageNum);
 
@@ -76,7 +84,7 @@ public class BoardControllerImpl implements BoardController {
 		mav.addObject("articlesMap", articlesMap);
 		return mav;
 	}
-
+	
 	// 글 쓰기 창
 	@Override
 	@RequestMapping(value = "/YS_board/addNewArticle.do", method = RequestMethod.POST)
@@ -185,11 +193,12 @@ public class BoardControllerImpl implements BoardController {
 		likeVO.setMember_id(member_id);
 
 		int boardlike = boardService.getBoardLike(likeVO);
-
+		System.out.println(boardlike);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
 		mav.addObject("articleMap", articleMap);
 		mav.addObject("heart", boardlike);
+		System.out.println(mav.toString());
 		return mav;
 	}
 
@@ -502,9 +511,10 @@ public class BoardControllerImpl implements BoardController {
 	}
 
 	// 검색 기능
-	// 페이징/listArticls 뷰 공유 아직 없음
 	@RequestMapping(value = "/YS_board/searchArticles.do", method = RequestMethod.GET)
-	public ModelAndView searchArticles(@RequestParam("searchWord") String searchWord, HttpServletRequest request,
+	public ModelAndView searchArticles(@RequestParam("searchWord") String searchWord,
+			@RequestParam("cc") String cc,
+			HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		String _section = request.getParameter("section");
@@ -514,10 +524,10 @@ public class BoardControllerImpl implements BoardController {
 
 		Map pagingMap = new HashMap();
 		pagingMap.put("searchWord", searchWord);
+		pagingMap.put("cc", cc);
 		pagingMap.put("section", section);
 		pagingMap.put("pageNum", pageNum);
 
-//			List articlesList = boardService.searchArticles(searchWord);
 		Map articlesMap = boardService.searchArticles(pagingMap);
 		articlesMap.put("section", section);
 		articlesMap.put("pageNum", pageNum);
@@ -561,54 +571,8 @@ public class BoardControllerImpl implements BoardController {
 		return mav;
 	}
 
-	// 바둑판글 목록 창
-	@Override
-	@RequestMapping(value = "/YS_board/NewsListArticles.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView NewsListArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = (String) request.getAttribute("viewName");
-
-		String _section = request.getParameter("section");
-		String _pageNum = request.getParameter("pageNum");
-		int section = Integer.parseInt(((_section == null) ? "1" : _section));
-		int pageNum = Integer.parseInt(((_pageNum == null) ? "1" : _pageNum));
-
-		Map pagingMap = new HashMap();
-		pagingMap.put("section", section);
-		pagingMap.put("pageNum", pageNum);
-
-		Map articlesMap = boardService.NewslistArticles(pagingMap);
-		articlesMap.put("section", section);
-		articlesMap.put("pageNum", pageNum);
-
-		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("articlesMap", articlesMap);
-		return mav;
-	}
-
-	// 바둑판글 목록 창
-	@Override
-	@RequestMapping(value = "/YS_board/RepoListArticles.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView RepoListArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = (String) request.getAttribute("viewName");
-
-		String _section = request.getParameter("section");
-		String _pageNum = request.getParameter("pageNum");
-		int section = Integer.parseInt(((_section == null) ? "1" : _section));
-		int pageNum = Integer.parseInt(((_pageNum == null) ? "1" : _pageNum));
-
-		Map pagingMap = new HashMap();
-		pagingMap.put("section", section);
-		pagingMap.put("pageNum", pageNum);
-
-		Map articlesMap = boardService.RepolistArticles(pagingMap);
-		articlesMap.put("section", section);
-		articlesMap.put("pageNum", pageNum);
-
-		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("articlesMap", articlesMap);
-		return mav;
-	}
 	
+	//댓글 
 	@RequestMapping(value = "/YS_board/replyListArticles.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public Map replyListArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {
 	
@@ -625,7 +589,6 @@ public class BoardControllerImpl implements BoardController {
 
 		replyMap.put("section", section);
 		replyMap.put("pageNum", pageNum);
-		System.out.println(replyMap.toString());
 		return replyMap;
 	}
 	
@@ -747,91 +710,4 @@ public class BoardControllerImpl implements BoardController {
 		mav.addObject("replyInfo", replyInfo);
 		return mav;
 	}
-	
-
-	
-//	@RequestMapping(value = "/YS_board/replyAddArticles.do", method = { RequestMethod.GET, RequestMethod.POST })
-//	public ModelAndView replyAddArticles(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception {
-//
-//		
-//		Map replyMap = new HashMap();
-//		Enumeration enu = multipartRequest.getParameterNames();
-//		while (enu.hasMoreElements()) {
-//			String name = (String) enu.nextElement();
-//			String value = multipartRequest.getParameter(name);
-//			replyMap.put(name, value);
-//		}
-//		
-//		// 로그인 취합 시 사용
-//				HttpSession session = multipartRequest.getSession();
-//				MemberVO memberVO = (MemberVO) session.getAttribute("member");
-////				String id = memberVO.getMember_id();
-//				String id = "lee";
-//				replyMap.put("member_id", id);
-//				// 시큐리티용 현재 접속자 ID 수령 코드 취합 및 실 사용시 교체 해주세요.
-////				Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-////		        String member_id=(String)principal;
-//				
-//		
-//				
-////		____________________________________________________
-//		String _section=request.getParameter("section");
-//		String _pageNum=request.getParameter("pageNum");
-//		int section = Integer.parseInt(((_section==null)? "1":_section) );
-//		int pageNum = Integer.parseInt(((_pageNum==null)? "1":_pageNum));
-//		Map pagingMap=new HashMap();
-//		pagingMap.put("section", section);
-//		pagingMap.put("pageNum", pageNum);
-//		Map articlesMap = boardService.replyArticles(pagingMap);
-//
-//		articlesMap.put("section", section);
-//		articlesMap.put("pageNum", pageNum);
-//		
-//		String viewName = (String) request.getAttribute("viewName");
-//		
-//		ModelAndView mav = new ModelAndView(viewName);
-//		mav.addObject("articlesMap", articlesMap);
-//		return mav;
-//
-//	}
-	
-	
-//	@RequestMapping(value = "/YS_board/addNewFileOnMod.do", method = RequestMethod.POST)
-//	@ResponseBody
-//	public Map<String, Object> addNewFileOnMod(@RequestParam("brd_no") int brd_no,
-//			@RequestPart(value = "file", required = false) List<MultipartFile> fileList,
-//			MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception {
-//
-//		System.out.println("수정파일 진입");
-//		ArrayList<FileVO> articleFileList = new ArrayList<FileVO>();
-//		for (MultipartFile mf : fileList) {
-//			Thread.sleep(10);
-//			String OriginalFileName = mf.getOriginalFilename();
-//			if (new File(ARTICLE_FILE_REPO + "\\" + brd_no + "\\" + OriginalFileName).exists()) {
-//				Date nowDate = new Date();
-//				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_hhmmss_SSS");
-//				String strNowDate = sdf.format(nowDate);
-//
-//				String[] FN = OriginalFileName.split("[.]", 2);
-//				String ChangedAFN = FN[0] + "_" + strNowDate + "." + FN[1];
-//				OriginalFileName = ChangedAFN;
-//			}
-//
-//			FileVO fileVO = new FileVO();
-//			fileVO.setArticleFileName(OriginalFileName);
-//			articleFileList.add(fileVO);
-//			File srcFile = new File(ARTICLE_FILE_REPO + "\\" + brd_no + "\\" + OriginalFileName);
-//			mf.transferTo(srcFile);
-//		}
-//
-//		Map articleMap = new HashMap();
-//		articleMap.put("brd_no", brd_no);
-//		articleMap.put("articleFileList", articleFileList);
-//		boardService.addNewFileOnMod(articleMap);
-//
-//		Map<String, Object> result = new HashMap<String, Object>();
-//		result.put("SUCCESS", true);
-//		return result;
-//	}
-
 }
