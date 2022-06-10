@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.yp">
+	<resultMap id="articlesResult" type="ypVO">
+		<result property="brd_no" column="brd_no" />
+		<result property="title" column="title" />
+		<result property="young_context" column="young_context" />
+		<result property="cc" column="cc" />
+		<result property="w_date" column="w_date" />
+		<result property="hits" column="hits" />
+<!-- 		<result property="young_like" column="young_like" /> -->
+		<result property="member_id" column="member_id" />
+	</resultMap>
+
+	<!-- 글 리스트 -->
+	<select id="selectAllArticlesList" parameterType="java.util.Map"
+		resultMap="articlesResult">
+  	<![CDATA[
+		SELECT * FROM
+		(SELECT ROW_NUMBER() over (ORDER BY brd_no DESC) as recNum, ROW_NUMBER() over (ORDER BY brd_no) as two, brd_no, title, young_context,
+		cc, w_date, hits, member_id FROM youngrole_board
+		)
+		WHERE recNum between(#{section}-1)*100+(#{pageNum}-1)*12+1 
+		AND (#{section}-1)*100 + #{pageNum}*12
+  	]]>
+	</select>
+<!-- 상세조회 -->
+<select id="selectArticle" resultType="ypVO"
+		parameterType="int">
+ 	<![CDATA[
+ 		SELECT * FROM youngrole_board
+ 		WHERE brd_no = #{brd_no}
+ 	]]>
+	</select>
+
+	<!-- 새글 작성 -->
+	<select id="insertNewArticle" parameterType="java.util.Map">
+ 	<![CDATA[
+ 		INSERT INTO youngrole_board(brd_no, title, young_context, w_date, hits, member_id)
+ 		VALUES(#{brd_no},#{title},#{young_context},sysdate,0,#{member_id})
+ 	]]>
+	</select>
+<!-- 새글 번호 생성 -->
+	<select id="selectNewArticleNO" resultType="int">
+ 	<![CDATA[
+ 		SELECT nvl(max(brd_no), 0) + 1 FROM youngrole_board
+ 	]]>
+	</select>
+
+	<!-- 페이지 넘버링 -->
+	<select id="selectTotArticles" resultType="int">
+  	<![CDATA[
+  		SELECT count(brd_no) FROM youngrole_board
+  	]]>
+	</select>
+	
+	<!-- 조회수 기능 -->
+	<update id="viewArticleCounter" parameterType="int">
+  	<![CDATA[
+		UPDATE youngrole_board
+		SET HITS = HITS + 1
+		WHERE brd_no = #{brd_no}
+	]]>
+	</update>
+	<!-- 글 삭제하기 -->
+	<delete id="deleteArticle" parameterType="int">
+ 	<![CDATA[
+ 		DELETE FROM youngrole_board
+ 		WHERE brd_no = #{brd_no}
+ 	]]>
+	</delete>
+	<!-- 글 수정하기 -->
+	<update id="modypBoard" parameterType="java.util.Map">
+		UPDATE
+		youngrole_board
+		SET title=#{title},
+		young_context=#{young_context}
+		WHERE brd_no=#{brd_no}
+	</update>
+	
+	<resultMap id="replyResult" type="ReVO">
+		<result property="re_no" column="re_no" />
+		
+		<result property="re_context" column="re_context" />
+		<result property="re_date" column="re_date" />
+		<result property="member_id" column="member_id" />
+		<result property="brd_no" column="brd_no" />
+	</resultMap>
+	
+	<!-- 댓글  표시 -->
+	<select id="selectAllReplyArticlesList"
+		parameterType="java.util.Map" resultMap="replyResult">
+  	<![CDATA[
+		SELECT ROW_NUMBER() over (ORDER BY re_no DESC) as recNum, ROW_NUMBER() over (ORDER BY re_no) as recNum2, re_no, re_context,
+		re_date, member_id, brd_no FROM YOUNGROLE_RE WHERE brd_no = #{brd_no}
+  	]]>
+	</select>
+
+	<!-- 댓글 페이지 넘버링 -->
+	<select id="selectReplyTotArticles"
+		parameterType="java.util.Map" resultType="int">
+  	<![CDATA[
+  		SELECT count(brd_no) FROM YOUNGROLE_RE
+  		WHERE brd_no = #{brd_no}
+  	]]>
+	</select>
+
+	<!-- 댓글 삭제 -->
+	<delete id="deleteReplyArticle" parameterType="int">
+ 	<![CDATA[
+ 		DELETE FROM YOUNGROLE_RE
+ 		WHERE re_no = #{re_no}
+ 	]]>
+	</delete>
+
+	<!-- 새 댓글 작성 -->
+	<insert id="insertNewReply" parameterType="java.util.Map">
+ 	<![CDATA[
+		INSERT INTO YOUNGROLE_RE(re_no, re_context, re_date, member_id, brd_no)
+ 		VALUES(#{re_no},#{re_context},sysdate,#{member_id},#{brd_no})
+ 	]]>
+	</insert>
+
+	<!-- 새 댓글 번호 생성 -->
+	<select id="selectNewReplyNO" resultType="int">
+ 	<![CDATA[
+ 		SELECT nvl(max(re_no), 0) + 1 FROM YOUNGROLE_RE]]>
+	</select>
+</mapper>

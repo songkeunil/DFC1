@@ -348,12 +348,10 @@ cursor:pointer;
                 </li>
                 <li class="h-nav-item">
                     <a class="h-nav-link" href="${contextPath }/djplat/YS_board/listArticles.do" style="color: black">청춘지원</a>
-                   <!--  <ul class='h-sub'>
-                        <li><a href='#'>menu1</a></li>
-                        <li><a href='#'>menu2</a></li>
-                        <li><a href='#'>menu3</a></li>
-                        <li><a href='#'>menu4</a></li>
-                    </ul> -->
+                     <ul class='h-sub'>
+                        <li><a href='${contextPath}/djplat/yp/ypintro_Ustudent.do'>청년정책소개</a></li>
+                        <li><a href='${contextPath}/djplat/yp/ypconsult.do'>청년정책상담실</a></li>
+                    </ul> 
                 </li>
             </ul>
         </div>

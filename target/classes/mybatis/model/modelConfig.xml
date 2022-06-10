@@ -25,5 +25,9 @@
 		<typeAlias type="com.djplat.project.YS_board.vo.FileVO" alias="YSB_fileVO"/>
 		<typeAlias type="com.djplat.project.YS_board.vo.LikeVO" alias="YSB_likeVO"/>
 		<typeAlias type="com.djplat.project.YS_board.vo.ReplyVO" alias="YSB_replyVO"/>
+		<typeAlias type="com.djplat.project.yp.vo.YpVO"  alias="YpVO" />
+		<typeAlias type="com.djplat.project.yp.vo.ReVO"  alias="ReVO" />
+		
+		
 	</typeAliases>
 </configuration>

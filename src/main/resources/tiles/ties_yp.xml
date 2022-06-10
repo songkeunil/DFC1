@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+ 
+ 
+ 
+ <definition name="/yp/viewArticle" extends="baseLayout">
+      <put-attribute name="title" value="후기 보기" />
+      <put-attribute name="body" value="/WEB-INF/views/yp/boardView.jsp" />
+   </definition>
+
+<!--  <definition name="yp/boardView_re" extends="baseLayout">
+      <put-attribute name="title" value="댓글리스트" />
+      <put-attribute name="body" value="/WEB-INF/views/yp/boardView_re.jsp" />
+   </definition>
+ -->    
+      	<definition name="yp/boardView_re" template="/WEB-INF/views/yp/boardView_re.jsp">
+   </definition>
+   
+ <definition name="/yp/mrWriteForm" extends="baseLayout">
+      <put-attribute name="title" value="후기 작성" />
+      <put-attribute name="body" value="/WEB-INF/views/yp/mrWriteForm.jsp" />
+   </definition>
+ <definition name="/yp/modyp" extends="baseLayout">
+      <put-attribute name="title" value="후기 수정" />
+      <put-attribute name="body" value="/WEB-INF/views/yp/modReview.jsp" />
+   </definition>
+   <definition name="/yp/modypView" extends="baseLayout">
+      <put-attribute name="title" value="후기 수정뷰" />
+      <put-attribute name="body" value="/WEB-INF/views/yp/boardView.jsp" />
+   </definition> 
+   
+  
+   
+   
+   
+   
+   
+<!--    청년정책 JSP 타일즈 -->
+   <definition name="/yp/ypintro_Ustudent" extends="baseLayout">
+      <put-attribute name="title" value="청년정책대학생" />
+      <put-attribute name="body" value="/WEB-INF/views/yp/ypintro_Ustudent.jsp" />
+   </definition> 
+   
+   <definition name="/yp/ypintro_BeStartup" extends="baseLayout">
+      <put-attribute name="title" value="청년정책취창업준비생" />
+      <put-attribute name="body" value="/WEB-INF/views/yp/ypintro_BeStartup.jsp" />
+   </definition> 
+   
+   <definition name="/yp/ypintro_Worker" extends="baseLayout">
+      <put-attribute name="title" value="청년정책취창업자" />
+      <put-attribute name="body" value="/WEB-INF/views/yp/ypintro_Worker.jsp" />
+   </definition> 
+   
+   <definition name="/yp/ypconsult" extends="baseLayout">
+      <put-attribute name="title" value="청년정책상담실" />
+      <put-attribute name="body" value="/WEB-INF/views/yp/ypconsult.jsp" />
+   </definition> 
+   
+   <definition name="/yp/ypconsult_board" extends="baseLayout">
+      <put-attribute name="title" value="청년정책상담실" />
+      <put-attribute name="body" value="/WEB-INF/views/yp/ypconsult_board.jsp" />
+   </definition> 
+   
+   <definition name="/yp/ypconsult_faq" extends="baseLayout">
+      <put-attribute name="title" value="청년정책FAQ" />
+      <put-attribute name="body" value="/WEB-INF/views/yp/ypconsult_faq.jsp" />
+   </definition> 
+   
+   
+  
+</tiles-definitions>
+
+
