@@ -13,11 +13,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Document</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
  -->
-
+<script type="text/javascript">
+$(document).ready(function () {
+	$(function(){
+    	$("#y-detail-comment").load('${contextPath}/YS_board/MNewsListArticles.do');
+	});
+	
+});
+</script>
 </head>
 
 <style>
@@ -101,7 +107,7 @@
 	margin: 0 auto;
 	font-size: 20px;
 	border-bottom: 5px solid #18A8F1;
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 }
 
 .y-main-middle {
@@ -183,7 +189,7 @@
 	height: 400px;
 	/*    background: red;*/
 	margin: 0 auto;
-	margin-top: 200px;
+	margin-top: 100px;
 	margin-bottom: 200px;
 }
 
@@ -192,7 +198,7 @@
 	height: 295px;
 	/*    background: pink;*/
 	float: left;
-	border-bottom: 1px solid #D8D8D8;
+	/* border-bottom: 1px solid #D8D8D8; */
 }
 
 .y-main-bottom-title {
@@ -241,8 +247,8 @@
 	/*    background: red;*/
 	float: left;
 	margin: 10px;
-	border-top: 1px solid #D8D8D8;
-	border-bottom: 1px solid #D8D8D8;
+	/* border-top: 1px solid #D8D8D8;
+	border-bottom: 1px solid #D8D8D8; */
 }
 
 .thumbnail-imgbox {
@@ -387,15 +393,15 @@
 			<div class="y-main-middle">
 				<table>
 					<a href="#">
-						<th>내일센터 소식</th>
+						<th>청춘끼리 소식</th>
 					</a>
 					<a href="#">
 						<th>청춘지원 소식</th>
 					</a>
 					<a href="#">
-						<th>너나들이 소식</th>
+						<th>청년정책 상담실</th>
 					</a>
-					<a href="#">
+					<!-- <a href="#">
 						<th>나들목 소식</th>
 					</a>
 					<a href="#">
@@ -406,7 +412,7 @@
 					</a>
 					<a href="#">
 						<th>커뮤니티</th>
-					</a>
+					</a> -->
 				</table>
 				<ul>
 
@@ -421,7 +427,7 @@
 			<div class="y-main-middle-alarm-rap">
 				<div class="y-main-middle-alarm-title">청춘알림</div>
 				<div class="y-main-middle-alarm">
-					<li>제목을 입력해주세요</li>
+					<li>게시물이 없습니다.</li>
 				</div>
 			</div>
 		</div>
@@ -435,7 +441,7 @@
 			</div>
 			<div class="y-main-bottom">
 				<div class="y-main-bottom-title">청춘지원소식</div>
-				<div class="y-main-bottom-btn">
+				<!-- <div class="y-main-bottom-btn">
 					<button type='button' onclick="location.href='#'">
 						<i class="y-bi bi-chevron-left"></i>
 					</button>
@@ -445,60 +451,10 @@
 					<button type='button' onclick="location.href='#'">
 						<i class="bi bi-plus-lg"></i>
 					</button>
-				</div>
+				</div> -->
 				<div class="y-main-bottom-news">
 
-					<div class='thumbnail-imgbox'>
-						<a href='#'><img class="thumbnail-img" src="logo.png"></a>
-					</div>
-					<div class='thumbnail-namebox'>
-						<div class='thumbnail-title'>
-							<a href='#'>AI모의면접기 이용 안내</a>
-						</div>
-						<span class='thumbnail-date'>2022-05-13</span>
-
-					</div>
-
-				</div>
-				<div class="y-main-bottom-news">
-
-					<div class='thumbnail-imgbox'>
-						<a href='#'><img class="thumbnail-img" src="logo.png"></a>
-					</div>
-					<div class='thumbnail-namebox'>
-						<div class='thumbnail-title'>
-							<a href='#'>AI모의면접기 이용 안내</a>
-						</div>
-						<span class='thumbnail-date'>2022-05-13</span>
-
-					</div>
-
-				</div>
-				<div class="y-main-bottom-news">
-
-					<div class='thumbnail-imgbox'>
-						<a href='#'><img class="thumbnail-img" src="logo.png"></a>
-					</div>
-					<div class='thumbnail-namebox'>
-						<div class='thumbnail-title'>
-							<a href='#'>AI모의면접기 이용 안내</a>
-						</div>
-						<span class='thumbnail-date'>2022-05-13</span>
-
-					</div>
-
-				</div>
-				<div class="y-main-bottom-news">
-
-					<div class='thumbnail-imgbox'>
-						<a href='#'><img class="thumbnail-img" src="logo.png"></a>
-					</div>
-					<div class='thumbnail-namebox'>
-						<div class='thumbnail-title'>
-							<a href='#'>AI모의면접기 이용 안내</a>
-						</div>
-						<span class='thumbnail-date'>2022-05-13</span>
-
+								<div id=y-detail-comment>
 					</div>
 
 				</div>

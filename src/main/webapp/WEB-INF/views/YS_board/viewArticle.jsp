@@ -181,7 +181,7 @@ $(document).ready(function () {
 
 
 
-  
+ 
 			<div id=y-detail-comment>
 <%-- 				<div class='y-detail-comment-top'>
 					<h3>Comment</h3>
@@ -238,7 +238,6 @@ $(document).ready(function () {
 					<button type='button' onclick="location.href='http://localhost:8090/project/YS_board/viewArticle.do?brd_no=${article.brd_no+1}'">
 						다음<i class="y-bi bi-chevron-right"></i>
 					</button>
-					
 					<button type="button"
 						onclick="location.href='${contextPath}/YS_board/forModShowArticles.do?brd_no=${article.brd_no}'" style="float: right;">
 						수정하기</button>

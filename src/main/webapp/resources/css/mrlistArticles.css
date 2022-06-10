@@ -1,7 +1,8 @@
 #boardrap {
     width: 1400px;
-    height: 1200px;
+    height: 800px;
     margin: 0 auto;
+    margin-top:100px;
 }
 
 #boardtop {
@@ -172,21 +173,22 @@ table {
 }
 
 
-#pagebtn {
+.pagebtn {
     width: 300px;
     text-align: center;
     text-decoration: none;
     font-size: 20px;
     margin: 0 auto;
+    
 
 }
 
-#pagebtn a {
+.pagebtn a {
     text-decoration: none;
     color: black;
 }
 
-#pagebtn button {
+.pagebtn button {
     width: 30px;
     height: 35px;
     background: white;
@@ -195,7 +197,7 @@ table {
     font-weight: bold;
     cursor: pointer;
 }
-#pagebtn button:hover{
+.pagebtn button:hover{
     background:#F2F2F2; 
     
 }

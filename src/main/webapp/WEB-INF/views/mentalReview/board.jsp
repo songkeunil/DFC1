@@ -81,8 +81,8 @@
 
             <div id = 'boardbtnbox'>
             	<form name="articleSearch" action="${contextPath}/mentalreview/searchArticles.do">
-            		<input name="searchWord" type="text">
-            		<button type="submit" class='boardbtn searchbtn'><i class="bi bi-search"></i></button>
+            		<!-- <input name="searchWord" type="text">
+            		<button type="submit" class='boardbtn searchbtn'><i class="bi bi-search"></i></button> -->
             	</form>
             	<button type='button' class='boardbtn' onclick='location.href="${contextPath }/mentalreview/mrWriteForm.do"'>글 쓰기</button>
             																				 

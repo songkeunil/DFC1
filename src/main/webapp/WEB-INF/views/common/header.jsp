@@ -335,7 +335,6 @@ cursor:pointer;
                     <ul class='h-sub'>
                         <li><a href='${contextPath }/djplat/djn.html'>대청넷 소개</a></li>
                         <li><a href='${contextPath }/djplat/djnboard/listArticles.do'>대청넷 활동</a></li>
-                        <li><a href='#'>대청넷활동문의</a></li>
                         
                     </ul>
                 </li>

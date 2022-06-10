@@ -572,8 +572,8 @@ public class BoardControllerImpl implements BoardController {
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("articlesMap", articlesMap);
 		return mav;
-	}
-
+	}	//메인페이지띄우기
+	@RequestMapping(value = "/YS_board/MNewsListArticles.do", method = { RequestMethod.GET, RequestMethod.POST })	public Map MNewsListArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {		String _section=request.getParameter("section");		String _pageNum=request.getParameter("pageNum");		int section = Integer.parseInt(((_section==null)? "1":_section));		int pageNum = Integer.parseInt(((_pageNum==null)? "1":_pageNum));		Map pagingMap=new HashMap();		pagingMap.put("section", section);		pagingMap.put("pageNum", pageNum);		Map replyMap = boardService.listArticles(pagingMap);		System.out.println(replyMap.toString());		replyMap.put("section", section);		replyMap.put("pageNum", pageNum);		return replyMap;	}
 	// 자료실 목록 창
 	@Override
 	@RequestMapping(value = "/YS_board/RepoListArticles.do", method = { RequestMethod.GET, RequestMethod.POST })

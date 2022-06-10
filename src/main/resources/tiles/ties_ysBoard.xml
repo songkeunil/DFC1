@@ -37,12 +37,13 @@
       <put-attribute name="title" value="자료실 게시판" />
       <put-attribute name="body" value="/WEB-INF/views/YS_board/RepoListArticles.jsp" />
    </definition>
-   
-   <definition name="YS_board/replyListArticles" extends="baseLayout">
-      <put-attribute name="title" value="자료실 게시판" />
-      <put-attribute name="body" value="/WEB-INF/views/YS_board/replyListArticles.jsp" />
+   <!-- 메인으로 jsp보내기 -->
+       <definition name="YS_board/MNewsListArticles" template="/WEB-INF/views/YS_board/MNewsListArticles.jsp">
    </definition>
-
+   
+   
+    <definition name="YS_board/replyListArticles" template="/WEB-INF/views/YS_board/replyListArticles.jsp">
+   </definition>
 </tiles-definitions>
 
 

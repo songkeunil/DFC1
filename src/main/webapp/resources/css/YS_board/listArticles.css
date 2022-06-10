@@ -14,10 +14,7 @@
 #boardtop a {
     text-decoration: none;
     color: #848484;
-
 }
-
-
 #board {
 
     width: 1000px;
@@ -209,3 +206,75 @@ table {
     background:#F2F2F2; 
 }
 
+#emptyList td{
+	 width:1000px;
+	 height:10px; 
+	 align:center;
+}
+
+
+
+#y-boardsearch-box {
+    width: 1000px;
+    height: 50px;
+  /*  float : left; */
+    /* background: blue; */
+        display: flex;
+         justify-content: center;
+}
+    #y-boardsearch-box select{
+        width: 70px;
+        height: 45px;
+/*        border-radius: 15px 0px 0px 15px;*/
+         border: 2px solid #18A8F1;
+        /* margin-right: -6px; */
+    }
+    .y-boardsearch-box-textbox{
+        width: 300px;
+        height: 41px;
+         border: 2px solid #18A8F1;
+    }
+    .y-boardsearch-box-btn{
+        width: 60px;
+        height: 45px;
+        border-radius: 0px 15px 15px 0px;
+        padding-bottom: 4px;
+        border: 2px solid #18A8F1; 
+        background: white;
+       /*  margin-left: -6px; */
+        
+    }
+    #y-boardsearch-box select:focus{
+        outline: none;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    #y-boardsearch-box select:hover{
+     
+        cursor: pointer;
+        font-weight: bold;
+    
+    }
+    
+    .y-boardsearch-box-textbox:focus{
+         outline: none;
+    }
+    .y-boardsearch-box-btn:hover{
+         cursor: pointer;
+        background: #18A8F1;
+        color: white;
+        font-weight: bold;
+        
+    }
+    .y-boardsearch-box-select{
+        float: left;
+        
+    }
+ .y-boardsearch-box-text{
+        float: left;
+        
+    }
+    .y-boardsearch-box-button{
+        float: left;
+        
+    }
