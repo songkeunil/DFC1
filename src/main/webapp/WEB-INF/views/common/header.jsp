@@ -324,6 +324,7 @@ cursor:pointer;
                 <li class="h-nav-item">
                     <a class="h-nav-link" href="#" style="color: black">청춘끼리정장대여</a>
                     <ul class='h-sub'>
+                        <li><a href='${contextPath}/djplat//suitIntroduce.html'>정장대여 소개</a></li>
                         <li><a href='${contextPath}/djplat/listSuitAll.do'>정장대여 확인</a></li>
                         <li><a href='${contextPath}/djplat/suitForm.html'>정장대여 신청</a></li>
                      
@@ -341,16 +342,15 @@ cursor:pointer;
                 <li class="h-nav-item">
                     <a class="h-nav-link" href="#" style="color: black">청년정책</a>
                     <ul class='h-sub'>
-                        <li><a href='#'>청년정책 소개</a></li>
-                        <li><a href='#'>청년정책 상담실</a></li>
+                        <li><a href='${contextPath}/djplat/yp/ypintro_Ustudent.do'>청년정책 소개</a></li>
+                        <li><a href='${contextPath}/djplat/yp/ypconsult.do'>청년정책 상담실</a></li>
                  
                     </ul>
                 </li>
                 <li class="h-nav-item">
                     <a class="h-nav-link" href="${contextPath }/djplat/YS_board/listArticles.do" style="color: black">청춘지원</a>
                      <ul class='h-sub'>
-                        <li><a href='${contextPath}/djplat/yp/ypintro_Ustudent.do'>청년정책소개</a></li>
-                        <li><a href='${contextPath}/djplat/yp/ypconsult.do'>청년정책상담실</a></li>
+                        <li><a href='${contextPath}/djplat/YS_board/listArticles.do'>청춘지원소식</a></li>
                     </ul> 
                 </li>
             </ul>

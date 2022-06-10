@@ -343,7 +343,7 @@
 					</div>
 					<div class="y-main-top-menu-rap">
 						<div class="y-main-top-menu">
-							<a href="${contextPath}/suitForm.html"> <img
+							<a href="${contextPath}/suitIntroduce.html"> <img
 								src='${contextPath}/resources/image/jeongjang.png'></a>
 						</div>
 						<div class="y-main-top-menu">
@@ -355,7 +355,7 @@
 								src='${contextPath}/resources/image/maeum.png'></a>
 						</div>
 						<div class="y-main-top-menu">
-							<a href="#"> <img
+							<a href="${contextPath}/yp/ypconsult.do"> <img
 								src='${contextPath}/resources/image/sangdam.png'></a>
 						</div>
 						<div class="y-main-top-menu">

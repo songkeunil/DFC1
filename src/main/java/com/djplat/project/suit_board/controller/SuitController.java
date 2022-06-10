@@ -132,5 +132,7 @@ public class SuitController {
 		
 		return "redirect:/listSuitAll.do";
 	}
-	
-}
+	@RequestMapping("/suitIntroduce.html")
+	public String djn(Model model) {
+		return "suitIntro";
+	}}

@@ -19,6 +19,10 @@
 		<put-attribute name="title" value="정장대여완료 페이지" />
 		<put-attribute name="body" value="/WEB-INF/views/rentSuit/listSuit.jsp" />
 	</definition>
+		<definition name="suitIntro" extends="baseLayout">
+		<put-attribute name="title" value="정장대여완료 페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/rentSuit/SuitIntro.jsp" />
+	</definition>
 	
 </tiles-definitions>
 
