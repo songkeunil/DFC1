@@ -3,6 +3,7 @@
     isELIgnored="false" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <c:set var="articlesList"  value="${articlesMap.articlesList}"  />
 <c:set var="section"  value="${articlesMap.section}"  />
@@ -105,10 +106,12 @@
           			</div>
 				</form>
 				<div class="footerControllBtns" style="float: right;">
+					<sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
 					<button type='button' class='boardbtn'
 						onclick='location.href="${contextPath }/YS_board/articleForm.do"'>
 						글 쓰기
 					</button>
+					</sec:authorize>
 				</div>
 			</div>
 			</div>
