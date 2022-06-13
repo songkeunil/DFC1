@@ -33,9 +33,9 @@
             width: 1000px;
             height: auto;
 /*            background-image: url(logo/bonobono.jpg);*/
-            background-position: center;
+       /*      background-position: center;
             background-repeat: no-repeat;
-            background-size: cover;
+            background-size: cover; */
         }
 
 
@@ -136,10 +136,11 @@ ul#ypconsult_container_top_content_box>.on a{
             font-size: 30px;
             line-height: 30px;
             font-weight: 500;
+          border-bottom: 3px solid #18A8F1;
         }
 
         /*        전역옵션*/
-        ul {
+/*         ul {
             list-style: none;
             width: 100%;
             overflow: hidden;
@@ -148,7 +149,7 @@ ul#ypconsult_container_top_content_box>.on a{
 
         a {
             text-decoration: none;
-        }
+        } */
 
 
         ul.sp_location {
@@ -569,7 +570,7 @@ ul#ypconsult_container_top_content_box>.on a{
 }
 
         /*        공통적용*/
-        article,
+/*         article,
         aside,
         details,
         figcaption,
@@ -598,7 +599,7 @@ ul#ypconsult_container_top_content_box>.on a{
         ul ol,
         ol ol {
             margin-bottom: 0;
-        }
+        } */
 
     </style>
 </head>

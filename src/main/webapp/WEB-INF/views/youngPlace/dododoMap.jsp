@@ -24,13 +24,13 @@
  </script>
 <script>
 	//이미지슬라이드 시작
-	$('#slide3>ul>li').hide();
+/* 	$('#slide3>ul>li').hide();
 	$('#slide3>ul>li:first-child').show();
 
 	setInterval(function() {
 		$('#slide3>ul>li:first-child').fadeOut().next().fadeIn().end(1000)
 				.appendTo('#slide3>ul');
-	}, 3000);
+	}, 3000); */
 	//이미지슬라이드 끝
 </script>
 </head>
@@ -159,7 +159,7 @@
     border-bottom: 2px solid transparent;
     transition: all 0.4s;
     color: #333;
-    border-color: #fa4c06;
+    border-color: #005cb9;
 }
 .lnb-box nav#lnb-pc ul.lnb-list li.lnb-menu:hover a{
     list-style: none;
@@ -180,7 +180,7 @@
     border-bottom: 2px solid transparent;
     transition: all 0.4s;
     color: #333;
-    border-color: #fa4c06;
+    border-color: #005cb9;
 }
 .lnb-box nav#lnb-pc ul.lnb-list.lnb4 li.lnb-menu{
     font-size: 14px;
@@ -321,7 +321,7 @@
     width: 175px;
     height: 30px;
     font-size: 30px;
-    border-bottom: 3px solid #fa4c06;
+    border-bottom: 3px solid #005cb9;
 }
 /* 중앙 부분*/
 .title-box
@@ -461,7 +461,7 @@ p.sc-title-text
     border-radius: 50%;
     margin: 0 auto 20px;
     background: transparent url(${path}/resources/image/bus.png) no-repeat center center;
-    background-color: #fa4c06;
+    background-color: #005cb9;
 }
 .traffic .traffic-info .vehicle .icon + p
 {
@@ -858,7 +858,7 @@ p.sc-title-text
     border-radius: 50%;
     margin: 0 auto 20px;
     background: transparent url(${path}/resources/image/subway.png) no-repeat center center;
-    background-color: #fa4c06;
+    background-color: #005cb9;
 }
 .traffic .traffic-info .vehicle .icon + p
 {
@@ -920,9 +920,9 @@ p.sc-title-text
             <ul class="lnb-list lnb4">
                 <li class="lnb-home"><a href="${path}/main.html">메인으로 가기</a></li>
                 <li class="lnb-menu"><a href="${path}/dododo.html">두두두소개</a></li>
-                <li class="lnb-menu "><a href="https://daejeonyouth.co.kr/bbs/board.php?bo_table=program_02">프로그램</a></li>
+<!--                 <li class="lnb-menu "><a href="https://daejeonyouth.co.kr/bbs/board.php?bo_table=program_02">프로그램</a></li>
                 <li class="lnb-menu "><a href="https://daejeonyouth.co.kr/bbs/board.php?bo_table=news_02">두두두소식</a></li>
-                <li class="lnb-menu active"><a href="#">찾아오시는길</a></li>
+ -->                <li class="lnb-menu active"><a href="#">찾아오시는길</a></li>
             </ul>
         </nav>
     </div>

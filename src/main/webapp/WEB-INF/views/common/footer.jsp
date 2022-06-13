@@ -10,13 +10,18 @@
 <title>하단 부분</title>
 <style>
 * {
-	margin: 0;
+/* 	margin: 0 auto; */
 	padding: 0;
+	
 }
 
+.footer_wrap{
+width:1300px;
+margin: 0 auto;
+}
 p11 {
 	font-size: 20px;
-	text-align: center;
+/* 	text-align: center; */
 }
 
 .wrap {
@@ -178,6 +183,7 @@ a {
 
 
 <body>
+<div class="footer_wrap">
 	<div class="wrap">
 		<div class="grid1"></div>
 		<div class="grid2">
@@ -224,6 +230,6 @@ a {
 <p> 회사주소:서울시 강동구</p>
 <p>찾아오는 길:<a href="#">약도</a></p>
  -->
-
+</div>
 </body>
 </html>

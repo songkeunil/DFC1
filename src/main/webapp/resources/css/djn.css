@@ -582,7 +582,7 @@
     box-shadow: 5px 5px 0 #eee;
     }
     
-    .djnwrap ul{
+    .space-concept-summaryy ul{
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
@@ -596,6 +596,8 @@
     padding: 25px 2.5%;
     overflow: hidden; 
     }
+    
+ 
     
     .inct-sc.introduce .space-concept-summaryy ul li{
      font-size: 14px;
@@ -646,11 +648,11 @@
     line-height: 1.42857143;
     color: #333;
     letter-spacing: -1px;
-    margin-left: 250px;
+  
     padding: 0;
     box-sizing: border-box;
     clear: both;
-    width: 1000px;
+   /*  width: 1000px; */
     overflow: hidden;
     }
     
@@ -663,7 +665,7 @@
     box-sizing: border-box;
     clear: both;
     width: 1200px;
-    margin:auto;
+    margin:0 auto;
     display: block;
     text-align: center;
     }
@@ -680,7 +682,7 @@
     display: inline-block;
     
     }
-    a:link, a:visited{
+   .title-boxzx a:link, a:visited{
      font-size: 14px;
     line-height: 1.42857143;
     list-style: none;
@@ -734,7 +736,7 @@
     font-size: 0;
     float: none;
     width: 1200px;
-    max-width: 580px;
+    max-width: 400px;
     margin: 0 auto;
     border-right: 0;
  }
@@ -776,7 +778,7 @@
     line-height: 1.42857143;
     color: #333;
     list-style: none;
-    font-size: 0;
+    font-size: 20px;
     letter-spacing: -1px;
     margin: 0;
     padding: 0;

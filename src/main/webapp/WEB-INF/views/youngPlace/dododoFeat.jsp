@@ -158,7 +158,7 @@
     border-bottom: 2px solid transparent;
     transition: all 0.4s;
     color: #333;
-    border-color: #f94c07;
+    border-color: #005cb9;
 }
 .lnb-box nav#lnb-pc ul.lnb-list li.lnb-menu:hover a{
     list-style: none;
@@ -179,7 +179,7 @@
     border-bottom: 2px solid transparent;
     transition: all 0.4s;
     color: #333;
-    border-color: #f94c07
+    border-color: #005cb9
 }
 .lnb-box nav#lnb-pc ul.lnb-list.lnb4 li.lnb-menu{
     font-size: 14px;
@@ -319,7 +319,7 @@
     width: 175px;
     height: 30px;
     font-size: 30px;
-    border-bottom: 3px solid #f94c07;
+    border-bottom: 3px solid #005cb9;
 }
 
 
@@ -351,13 +351,13 @@
 
 /*박스클릭시 색상 변화*/
 .sogtopbutton:hover {
-    background: #f94c07;
+    background: #005cb9;
     color: white;
 }
 
 /*해당페이지 "청춘나들목 소개" 색상 고정*/
 .a1 {
-    background: #f94c07;
+    background: #005cb9;
     color: white;
 }
 
@@ -365,7 +365,7 @@ h2 {
     width: 138px;
     height: 30px;
     font-size: 30px;
-    border-bottom: 3px solid #f94c07;
+    border-bottom: 3px solid #005cb9;
 
 }
 
@@ -985,7 +985,7 @@ h2 {
     letter-spacing: 0;
     text-align: left;
     padding-right: 30px;
-    color: #f94c07;
+    color: #005cb9;
     width: 100%;
     height: 50px;
     padding-left: 30px;
@@ -1307,8 +1307,8 @@ h2 {
             <ul class="lnb-list lnb4">
                 <li class="lnb-home"><a href="${path}/main.html">메인으로 가기</a></li>
                 <li class="lnb-menu active"><a href="${path}/dododo.html">두두두소개</a></li>
-                <li class="lnb-menu "><a href="https://daejeonyouth.co.kr/bbs/board.php?bo_table=program_02">프로그램</a></li>
-                <li class="lnb-menu "><a href="https://daejeonyouth.co.kr/bbs/board.php?bo_table=news_02">두두두소식</a></li>
+<!--                 <li class="lnb-menu "><a href="https://daejeonyouth.co.kr/bbs/board.php?bo_table=program_02">프로그램</a></li> -->
+<!--                 <li class="lnb-menu "><a href="https://daejeonyouth.co.kr/bbs/board.php?bo_table=news_02">두두두소식</a></li> -->
                 <li class="lnb-menu "><a href="${path}/dododoMap.html">찾아오시는길</a></li>
             </ul>
 
@@ -1674,7 +1674,7 @@ h2 {
     </div>
     <!--끝-->
     <!--이미지 슬라이드-->
-    <script type="text/javascript" src="script/slide.js"></script>
+<!--     <script type="text/javascript" src="script/slide.js"></script> -->
 
 </body>
 </html>

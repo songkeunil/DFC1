@@ -21,7 +21,7 @@
 <link href="${contextPath}/resources/css/font.css" rel="stylesheet"/>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 </script>
-<script>
+<!-- <script>
         //이미지슬라이드 시작
         $('#slide3>ul>li').hide();
         $('#slide3>ul>li:first-child').show();
@@ -33,7 +33,7 @@
         }, 3000);
         //이미지슬라이드 끝
 
-    </script>
+    </script> -->
 <style>
 #sograp {
     width: 1400px;
@@ -922,8 +922,8 @@ p.sc-title-text
             <ul class="lnb-list lnb4">
                 <li class="lnb-home"><a href="${path}/main.html">메인으로 가기</a></li>
                 <li class="lnb-menu"><a href="${path}/nadeulmok.html">나들목소개</a></li>
-                <li class="lnb-menu "><a href="https://daejeonyouth.co.kr/bbs/board.php?bo_table=program_02">프로그램</a></li>
-                <li class="lnb-menu "><a href="https://daejeonyouth.co.kr/bbs/board.php?bo_table=news_02">나들목소식</a></li>
+               <!--  <li class="lnb-menu "><a href="https://daejeonyouth.co.kr/bbs/board.php?bo_table=program_02">프로그램</a></li> -->
+                <li class="lnb-menu "><a href="${path}/nadeulmokBoard.html">나들목소식</a></li>
                 <li class="lnb-menu active"><a href="#">찾아오시는길</a></li>
             </ul>
         </nav>

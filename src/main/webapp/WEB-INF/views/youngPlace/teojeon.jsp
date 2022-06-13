@@ -23,14 +23,14 @@
  </script>
 <script>
         //이미지슬라이드 시작
-        $('#slide3>ul>li').hide();
+/*         $('#slide3>ul>li').hide();
         $('#slide3>ul>li:first-child').show();
 
         setInterval(function() {
             $('#slide3>ul>li:first-child').fadeOut()
                 .next().fadeIn().end(1000)
                 .appendTo('#slide3>ul');
-        }, 3000);
+        }, 3000); */
         //이미지슬라이드 끝
 
     </script>
@@ -689,7 +689,7 @@ text-align: left;}
             <ul class="lnb-list lnb4">
                 <li class="lnb-home"><a href="${path}/main.html">메인으로 가기</a></li>
                 <li class="lnb-menu active"><a href="#">청춘터전 소개</a></li>
-                <li class="lnb-menu "><a href="#">청춘터전 소식</a></li>
+               <!--  <li class="lnb-menu "><a href="#">청춘터전 소식</a></li> -->
                 <!--
                 <li class="lnb-menu "><a href="https://daejeonyouth.co.kr/bbs/board.php?bo_table=news_02">두두두소식</a></li>
                 <li class="lnb-menu "><a href="https://daejeonyouth.co.kr/bbs/page.php?hid=sub_020501">찾아오시는길</a></li>
@@ -847,6 +847,6 @@ text-align: left;}
     </div>
     <!--끝-->
     <!--이미지 슬라이드-->
-    <script type="text/javascript" src="script/slide.js"></script>
+   <!--  <script type="text/javascript" src="script/slide.js"></script> -->
   </body>
 </html>

@@ -22,30 +22,29 @@
 <title>Document</title>
 
 <style>
-* {
-	margin: 0;
-	padding: 0;
+ * {
+	
 	box-sizing: border-box;
-}
+} 
 
 .ypconsult_wrap {
 	margin: 0 auto;
 	width: 1000px;
 	height: auto;
 	/*            background-image: url(logo/bonobono.jpg);*/
-	background-position: center;
+/* 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: cover; */
 }
 
 /*        청년정책소개 페이지 상단영역*/
 
-/*
-        .ypconsult_container_top_wrap {
-    width: 100%;
-    padding-bottom: 50px;
+
+        .ypconsult_container_top_wrap { 
+     width: 100%; 
+     padding-bottom: 50px; 
 }
-*/
+
 .ypconsult_container_top {
 	width: 100%;
 	height: auto;
@@ -116,23 +115,23 @@ ul#ypconsult_container_top_content_box a {
 	transition: all 0.3s;
 }
 
-h2.sc-item-title {
-	height: 20px;
-	margin-bottom: 20px;
-	font-size: 20px;
-	line-height: 20px;
-}
+
 
 h2.sp_title {
 	float: left;
-	width: auto;
+	width: 200px;
 	font-size: 30px;
 	line-height: 30px;
 	font-weight: 500;
+	 border-bottom: 3px solid #18A8F1;
 }
-
+/* h2 { */
+/*     width: 136px; */
+/*     height: 30px; */
+   
+/* } */
 /*        전역옵션*/
-ul {
+/* ul {
 	list-style: none;
 	width: 100%;
 	overflow: hidden;
@@ -141,7 +140,7 @@ ul {
 
 a {
 	text-decoration: none;
-}
+} */
 
 ul.sp_location {
 	float: right;
@@ -217,6 +216,7 @@ ul.sp_location li:last-child:after {
 	font-size: 28px;
 	line-height: 28px;
 	font-weight: bold;
+	
 }
 
 .youthinfo_sc .youthinfo_sc_con .banner_area {
@@ -226,12 +226,13 @@ ul.sp_location li:last-child:after {
 	padding: 30px;
 	background-color: rgb(245, 245, 245);
 	margin-bottom: 50px;
-	background-image: url(logo/youthinfo_banner_01.png);
+	/* background-image: url(logo/youthinfo_banner_01.png);
 	background-position: center;
-	background-repeat: no-repeat;
+	background-repeat: no-repeat; */
 	-webkit-background-size: cover;
 	background-size: cover;
 	text-align: center;
+	overflow: hidden;
 }
 
 .youthinfo_sc .youthinfo_sc_con .banner_area .banner_box {
@@ -298,9 +299,9 @@ ul.sp_location li:last-child:after {
 	padding: 30px 35px;
 	border: 1px solid rgb(230, 230, 230);
 	background-color: rgb(245, 245, 245);
-	background-image: url(logo/youthinfo_banner_02.png);
+	/* background-image: url(logo/youthinfo_banner_02.png);
 	background-position: center;
-	background-repeat: no-repeat;
+	background-repeat: no-repeat; */
 	-webkit-background-size: cover;
 	background-size: cover;
 }
@@ -443,7 +444,7 @@ ul.sp_location li:last-child:after {
 	margin-bottom: 20px;
 }
 
-.youthinfo_sc .youthinfo_sc_con .step_area .step_list_box .step_list>li .step_bg_01>.step_bg
+/* .youthinfo_sc .youthinfo_sc_con .step_area .step_list_box .step_list>li .step_bg_01>.step_bg
 	{
 	background-image: url(logo/youthinfo_coun_01.png);
 }
@@ -461,7 +462,7 @@ ul.sp_location li:last-child:after {
 .youthinfo_sc .youthinfo_sc_con .step_area .step_list_box .step_list>li .step_bg_04>.step_bg
 	{
 	background-image: url(logo/youthinfo_coun_04.png);
-}
+} */
 
 .youthinfo_sc .youthinfo_sc_con .step_area .step_list_box .step_list>li .step_title>.step_bg
 	{
@@ -578,7 +579,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup,
 	display: block;
 }
 
-ul, ol, dl {
+/* ul, ol, dl {
 	list-style: none;
 	width: 100%;
 	overflow: hidden;
@@ -587,7 +588,7 @@ ul, ol, dl {
 
 ul ul, ol ul, ul ol, ol ol {
 	margin-bottom: 0;
-}
+} */
 </style>
 </head>
 

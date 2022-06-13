@@ -23,20 +23,20 @@
     <title>Document</title>
 
     <style>
-        * {
+/*         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
+        } */
 
         .ypintro_wrap {
             margin: 0 auto;
             width: 1000px;
             height: auto;
-            background-image: url(logo/bonobono.jpg);
+      /*       background-image: url(logo/bonobono.jpg);
             background-position: center;
             background-repeat: no-repeat;
-            background-size: cover;
+            background-size: cover; */
         }
 
 
@@ -222,7 +222,7 @@
         }
 
         /*        전역옵션*/
-        ul {
+ /*        ul {
             list-style: none;
             width: 100%;
             overflow: hidden;
@@ -231,7 +231,7 @@
 
         a {
             text-decoration: none;
-        }
+        } */
 
 
         .work_list_wrap .work_list_content>.list_txt>li>h4:before {

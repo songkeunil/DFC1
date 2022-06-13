@@ -16,7 +16,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>청춘나들목 소개</title>
+<title>대청넷 소개</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <link href="${path}/resources/css/font.css" rel="stylesheet"/>
 <link href="${path}/resources/css/djn.css" rel="stylesheet"/>
@@ -24,14 +24,14 @@
 </script>
 <script>
         //이미지슬라이드 시작
-        $('#slide3>ul>li').hide();
+/*         $('#slide3>ul>li').hide();
         $('#slide3>ul>li:first-child').show();
 
         setInterval(function() {
             $('#slide3>ul>li:first-child').fadeOut()
                 .next().fadeIn().end(1000)
                 .appendTo('#slide3>ul');
-        }, 3000);
+        }, 3000); */
         //이미지슬라이드 끝
 
     </script>
@@ -44,8 +44,8 @@
 		<ul class="lnb-list lnb4">
 		<li class="lnb-home"><a href="${path}/main.html">메인으로 가기</a></li>
 		<li class="lnb-menu active"><a href="#">대청넷소개</a></li>
-		<li class="lnb-menu "><a href="#">대청넷활동</a></li>
-		<li class="lnb-menu "><a href="#">대청넷활동질의</a></li>
+		<li class="lnb-menu "><a href="${path }/djnboard/listArticles.do">대청넷활동</a></li>
+<!-- 		<li class="lnb-menu "><a href="#">대청넷활동질의</a></li> -->
 	</ul>
 
 	<!-- 대청넷 -->

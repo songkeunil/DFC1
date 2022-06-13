@@ -1058,7 +1058,7 @@ li:nth-child(3) .colorbox{
 		<ul class="lnb-list lnb4">
 		<li class="lnb-home"><a href="${path}/main.html">메인으로 가기</a></li>
 		<li class="lnb-menu active"><a href="#">나들목소개</a></li>
-		<li class="lnb-menu "><a href="https://daejeonyouth.co.kr/bbs/board.php?bo_table=program_02">프로그램</a></li>
+		<!-- <li class="lnb-menu "><a href="https://daejeonyouth.co.kr/bbs/board.php?bo_table=program_02">프로그램</a></li> -->
 		<li class="lnb-menu "><a href="${path}/nadeulmokBoard.html">나들목소식</a></li>
 		<li class="lnb-menu "><a href="${path}/nadeulmokMap.html">찾아오시는길</a></li>
 	</ul>
@@ -1255,6 +1255,6 @@ li:nth-child(3) .colorbox{
     </div>
     <!--끝-->
     <!--이미지 슬라이드-->
-    <script type="text/javascript" src="script/slide.js"></script>
+ <!--    <script type="text/javascript" src="script/slide.js"></script> -->
 </body>
 </html>

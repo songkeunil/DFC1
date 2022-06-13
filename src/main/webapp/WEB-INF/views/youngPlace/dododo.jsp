@@ -24,13 +24,13 @@
  </script>
 <script>
 	//이미지슬라이드 시작
-	$('#slide3>ul>li').hide();
+ 	$('#slide3>ul>li').hide();
 	$('#slide3>ul>li:first-child').show();
 
 	setInterval(function() {
 		$('#slide3>ul>li:first-child').fadeOut().next().fadeIn().end(1000)
 				.appendTo('#slide3>ul');
-	}, 3000);
+	}, 3000); 
 	//이미지슬라이드 끝
 </script>
 </head>
@@ -1230,10 +1230,10 @@ li:nth-child(3) .colorbox {
 						가기</a></li>
 				<li class="lnb-menu active"><a
 					href="#">두두두소개</a></li>
-				<li class="lnb-menu "><a
+				<!-- <li class="lnb-menu "><a
 					href="https://daejeonyouth.co.kr/bbs/board.php?bo_table=program_02">프로그램</a></li>
 				<li class="lnb-menu "><a
-					href="https://daejeonyouth.co.kr/bbs/board.php?bo_table=news_02">두두두소식</a></li>
+					href="https://daejeonyouth.co.kr/bbs/board.php?bo_table=news_02">두두두소식</a></li> -->
 				<li class="lnb-menu "><a
 					href="${path}/dododoMap.html">찾아오시는길</a></li>
 			</ul>
@@ -1484,6 +1484,6 @@ li:nth-child(3) .colorbox {
 	</div>
 	<!--끝-->
 	<!--이미지 슬라이드-->
-	<script type="text/javascript" src="script/slide.js"></script>
+<!-- 	<script type="text/javascript" src="script/slide.js"></script> -->
 </body>
 </html>

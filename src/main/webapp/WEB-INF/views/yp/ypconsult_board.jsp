@@ -26,34 +26,28 @@
 	rel="stylesheet" />
 <link href="${contextPath}/resources/css/font.css" rel="stylesheet" />
 <style>
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
+/*  * { */
+/* 	margin: 0 auto; */
+/* 	padding: 0; */
+/* 	box-sizing: border-box; */
+/* }  */
 .ypconsult_wrap {
-	margin: 0 auto;
-	width: 1000px;
+/* 	margin: 0 auto; */
+/* 	width: 1000px; */
 	height: auto;
-	/*            background-image: url(logo/bonobono.jpg);*/
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
 }
 
-/*        청년정책소개 페이지 상단영역*/
-
-
-        .ypconsult_container_top_wrap {
-    width: 100%;
-    padding-bottom: 50px;
+.ypconsult_container_top_wrap {
+	width: 1000px;
+	padding-bottom: 50px;
 }
 
 .ypconsult_container_top {
 	width: 100%;
 	height: auto;
 }
+
+
 
 .ypconsult_container_top_title {
 	width: 100%;
@@ -64,10 +58,9 @@
 }
 
 .ypconsult_container_top_content {
-	width: 1000px;
+	width: 100%;
 	height: 120px;
 	padding-bottom: 50px;
-    text-align: center;
 }
 
 .ypconsult_container_top .ypconsult_container_top_content ul#ypconsult_container_top_content_box
@@ -147,7 +140,6 @@ h2.sp_title {
 a {
 	text-decoration: none;
 } */
-
 ul.sp_location {
 	float: right;
 	width: auto;
@@ -578,7 +570,7 @@ ul.sp_location li:last-child:after {
 }
 
 /*        공통적용*/
-article, aside, details, figcaption, figure, footer, header, hgroup,
+/* article, aside, details, figcaption, figure, footer, header, hgroup,
 	main, nav, section, summary {
 	display: block;
 }
@@ -592,26 +584,37 @@ ul, ol, dl {
 
 ul ul, ol ul, ul ol, ol ol {
 	margin-bottom: 0;
-}
+} */
 </style>
 </head>
 <body>
-	<div id='boardrap'>
-		<div id='boardtop'>
-			<h2>
-				청년정책상담<br>
-			</h2>
-			<br> <br> <a href='#'><i class="bi bi-house-door"></i>Home
-			</a> > <a href='#'> 청년정책 </a> > <a
-				href='${contextPath }/yp/ypconsult_board.do'>청년정책상담</a>
-		</div>
+	<div id="ypconsult_wrap">
+		<div class="ypconsult_container_top_wrap">
+			<div class="ypconsult_container_top">
 
-		<div class="ypconsult_container_top_content">
-			<ul id="ypconsult_container_top_content_box">
-				<li><a href="${contextPath}/yp/ypconsult.do">청년정책상담실</a></li>
-				<li class="on"><a href="${contextPath}/yp/ypconsult_board.do">상담</a></li>
-				<li><a href="${contextPath}/yp/ypconsult_faq.do">자주묻는질문(FAQ)</a></li>
-			</ul>
+
+				<!--           상단 메뉴&현재화면 경로 표시바 시작   -->
+				<div class="ypconsult_container_top_title">
+					<h2 class="sp_title">청년정책상담실</h2>
+					<ul class="sp_location inct_tab_mt_b inct_m_none">
+						<li class="sp_home"><a href="#">HOME</a></li>
+						<li class="sp_category"><a href="#">대전청년내일센터</a></li>
+						<li class="sp_now"><a href="#">청년정책상담실</a></li>
+
+					</ul>
+
+
+				</div>
+
+				<!--           상단 메뉴&현재화면 경로 표시바 끝   -->
+				<div class="ypconsult_container_top_content">
+					<ul id="ypconsult_container_top_content_box">
+						<li><a href="${contextPath}/yp/ypconsult.do">청년정책상담실</a></li>
+						<li class="on"><a href="${contextPath}/yp/ypconsult_board.do">상담</a></li>
+						<li><a href="${contextPath}/yp/ypconsult_faq.do">자주묻는질문(FAQ)</a></li>
+					</ul>
+				</div>
+			</div>
 		</div>
 
 		<div id='board'>
@@ -663,7 +666,7 @@ ul ul, ol ul, ul ol, ol ol {
 		<div id='boardfooter'>
 
 			<div id='boardbtnbox'>
-			<%-- 	<form name="articleSearch"
+				<%-- 	<form name="articleSearch"
 					action="${contextPath}/yp/searchArticles.do">
 					<input name="searchWord" type="text">
 					<button type="submit" class='boardbtn searchbtn'>
