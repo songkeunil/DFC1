@@ -17,6 +17,46 @@
 	</script>
 </c:if>
 </head>
+<style>
+    .id-search-rap{
+    width: 1000px;
+    height: auto;
+    margin: 0 auto;
+/*    background: red;*/
+}
+	.id-search-form{
+    width: 400px;
+    height: auto;
+    border: 2px solid #b4b4b4	;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    
+}
+.form-group input{
+    width: 300px;
+    height: 30px;
+    margin: 0 auto;
+}
+.form-group input:focus{
+     outline-color: #18A8F1;
+     box-shadow: 0px 0px 3px 0px #18A8F1;
+}
+.btn-primary{
+    width: 200px;
+    height: 30px;
+    background: white;
+    border: 2px solid #18A8F1;
+    font-weight: bold;
+    
+}
+.btn-primary:hover{
+    background: #18A8F1;
+    color: white;
+    cursor: pointer;
+}
+</style>
 <body>
 	<script type="text/javascript">
 		var msg = "${msg}";
@@ -25,7 +65,8 @@
 			alert(msg);
 		}
 	</script>
-	<div class="p-5">
+	<div class="id-search-rap">
+	 <div id="id-search-form">
 		<div class="text-center">
 			<h1 class="h4 text-gray-900 mb-2">비밀번호 찾기</h1>
 			<p class="mb-4">아이디와 이메일을 입력해주세요!</p>
@@ -51,6 +92,7 @@
 		<hr>
 		<div class="text-center">
 			<a class="small" href="/djplat/main.html">메인페이지</a>
+		</div>
 		</div>
 	</div>
 </body>

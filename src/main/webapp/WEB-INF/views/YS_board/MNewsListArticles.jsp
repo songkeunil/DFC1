@@ -19,6 +19,7 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 </head>
 <body>
+<br>
 			<div id='thumbnail-rap'>
 				<c:choose>
 					<c:when test="${empty articlesList}">

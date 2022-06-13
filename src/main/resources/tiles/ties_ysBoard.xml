@@ -38,10 +38,12 @@
       <put-attribute name="body" value="/WEB-INF/views/YS_board/RepoListArticles.jsp" />
    </definition>
    <!-- 메인으로 jsp보내기 -->
-       <definition name="YS_board/MNewsListArticles" template="/WEB-INF/views/YS_board/MNewsListArticles.jsp">
+   <definition name="YS_board/MNewsListArticles" template="/WEB-INF/views/YS_board/MNewsListArticles.jsp">
    </definition>
    
-   
+   <definition name="YS_board/cmmn_YSListArticles" template="/WEB-INF/views/YS_board/cmmn_YSListArticles.jsp">
+   </definition>
+
     <definition name="YS_board/replyListArticles" template="/WEB-INF/views/YS_board/replyListArticles.jsp">
    </definition>
 </tiles-definitions>

@@ -16,14 +16,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
  -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(document).ready(function () {
 	$(function(){
     	$("#y-detail-comment").load('${contextPath}/YS_board/MNewsListArticles.do');
 	});
-	
 });
-</script>
+</script> -->
 </head>
 
 <style>
@@ -125,7 +124,7 @@ $(document).ready(function () {
 	/*    border: 1px solid #D8D8D8;*/
 }
 
-.y-main-middle table th {
+.y-main-middle table th{
 	width: 128px;
 	height: 40px;
 	border: 1px solid #D8D8D8;
@@ -134,7 +133,21 @@ $(document).ready(function () {
 	color: black;
 }
 
-.y-main-middle table th:hover {
+/* .y-main-middle table a:hover {
+	background: #18A8F1;
+	color: white;
+} */
+
+.common_tab{
+	width: 128px;
+	height: 40px;
+	border: 1px solid #D8D8D8;
+	font-size: 20px;
+	line-height: 50px;
+	color: black;
+}
+
+.common_tab:hover{
 	background: #18A8F1;
 	color: white;
 }
@@ -154,6 +167,15 @@ $(document).ready(function () {
 
 .y-main-middle ul li a {
 	color: #848484;
+}
+
+.y-main-middle-headLine-index{
+	width: 128px;
+	height: 40px;
+	border: 1px solid #D8D8D8;
+	font-size: 20px;
+	line-height: 50px;
+	color: black;
 }
 
 .y-main-middle-alarm-rap {
@@ -386,22 +408,25 @@ $(document).ready(function () {
 			</div>
 		</div>
 
-		<div class="y-main-middle-rap">
+<!-- 		<div class="y-main-middle-rap">
 			<div class="y-main-middle-title">
 				<h1>청춘 NOTICE</h1>
 			</div>
 			<div class="y-main-middle">
 				<table>
+					<th>
+						<a href="#">청춘끼리 소식</a>
+					</th>
+					
+					<th>
+						<a href="#">청춘지원 소식</a>
+					</th>
+					
+					<th>
+						<a href="#">청년정책 소식</a>
+					</th>
+
 					<a href="#">
-						<th>청춘끼리 소식</th>
-					</a>
-					<a href="#">
-						<th>청춘지원 소식</th>
-					</a>
-					<a href="#">
-						<th>청년정책 상담실</th>
-					</a>
-					<!-- <a href="#">
 						<th>나들목 소식</th>
 					</a>
 					<a href="#">
@@ -412,17 +437,15 @@ $(document).ready(function () {
 					</a>
 					<a href="#">
 						<th>커뮤니티</th>
-					</a> -->
-				</table>
+					</a>
 				<ul>
-
 					<li><a href="#">제목을 입력해주세요</a></li>
-
 					<li><a href="#">제목을 입력해주세요</a></li>
 					<li><a href="#">제목을 입력해주세요</a></li>
 					<li><a href="#">제목을 입력해주세요</a></li>
 					<li><a href="#">제목을 입력해주세요</a></li>
 				</ul>
+			</table>
 			</div>
 			<div class="y-main-middle-alarm-rap">
 				<div class="y-main-middle-alarm-title">청춘알림</div>
@@ -430,7 +453,7 @@ $(document).ready(function () {
 					<li>게시물이 없습니다.</li>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 
 
@@ -440,6 +463,7 @@ $(document).ready(function () {
 				<h1>청춘 NEWS</h1>
 			</div>
 			<div class="y-main-bottom">
+			<br><br>
 				<div class="y-main-bottom-title">청춘지원소식</div>
 				<!-- <div class="y-main-bottom-btn">
 					<button type='button' onclick="location.href='#'">
@@ -454,8 +478,7 @@ $(document).ready(function () {
 				</div> -->
 				<div class="y-main-bottom-news">
 
-								<div id=y-detail-comment>
-					</div>
+					<div id=y-detail-comment></div>
 
 				</div>
 			</div>
@@ -468,9 +491,13 @@ $(document).ready(function () {
 
 $(document).ready(function () {
 	$(".mySlideDiv").not(".active").hide(); //화면 로딩 후 첫번째 div를 제외한 나머지 숨김
-	
 	setInterval(nextSlide, 6000); //4초(4000)마다 다음 슬라이드로 넘어감
+	
+	$(function(){
+    	$("#y-detail-comment").load('${contextPath}/YS_board/MNewsListArticles.do');
+	});
 });
+
 
 //이전 슬라이드
 function prevSlide() {
