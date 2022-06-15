@@ -241,74 +241,74 @@ table {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
+                        <td>10</td>
                         <td class = 'text-color'><a href = '#'>[소식]</a></td>
-                        <td class='text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2022.05.01</td>
-                        <td>22</td>
+                        <td class='text-left'><a href='#'>[결과발표]『2021 청나 북살롱 하반기』 파트장 선정결과 발표</a></td>
+                        <td>2021.09.27</td>
+                        <td>547</td>
                     </tr>
                     <tr>
-                        <td>2</td>
+                        <td>9</td>
                         <td class = 'text-color'><a href = '#'>[공지]</a></td>
-                        <td class='text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2022.05.01</td>
-                        <td>22</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td class = 'text-color'><a href = '#'>[소식]</a></td>
-                        <td class='text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2022.05.01</td>
-                        <td>22</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td class = 'text-color'><a href = '#'>[공지]</a></td>
-                        <td class='text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2022.05.01</td>
-                        <td>22</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td class = 'text-color'><a href = '#'>[소식]</a></td>
-                        <td class='text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2022.05.01</td>
-                        <td>22</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td class = 'text-color'><a href = '#'>[공지]</a></td>
-                        <td class='text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2022.05.01</td>
-                        <td>22</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td class = 'text-color'><a href = '#'>[소식]</a></td>
-                        <td class='text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2022.05.01</td>
-                        <td>22</td>
+                        <td class='text-left'><a href='#'>청춘나들목 북살롱 하반기 파트장 모집공고</a></td>
+                        <td>2021.08.30</td>
+                        <td>589</td>
                     </tr>
                     <tr>
                         <td>8</td>
                         <td class = 'text-color'><a href = '#'>[공지]</a></td>
-                        <td class='text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2022.05.01</td>
-                        <td>22</td>
+                        <td class='text-left'><a href='#'>[행사공지]8월 원데이클래스 행사날짜 변경(8월26일 ▶ 9월 9일)</a></td>
+                        <td>2021.08.20</td>
+                        <td>526</td>
                     </tr>
                     <tr>
-                        <td>9</td>
-                        <td class = 'text-color'><a href = '#'>[소식]</a></td>
-                        <td class='text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2022.05.01</td>
-                        <td>22</td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
+                        <td>7</td>
                         <td class = 'text-color'><a href = '#'>[공지]</a></td>
-                        <td class='text-left'><a href='#'>청춘끼리</a></td>
-                        <td>2022.05.01</td>
-                        <td>22</td>
+                        <td class='text-left'><a href='#'>[휴관연장]사회적거리두기 4단계 상향으로 인한 공간휴관 연장(~9/5)</a></td>
+                        <td>2021.08.20</td>
+                        <td>463</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td class = 'text-color'><a href = '#'>[공지]</a></td>
+                        <td class='text-left'><a href='#'>대전 청년 사진 공모전 결과발표 재공고</a></td>
+                        <td>2021.08.12</td>
+                        <td>466</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td class = 'text-color'><a href = '#'>[공지]</a></td>
+                        <td class='text-left'><a href='#'>대전 청년 사진 공모전 결과발표</a></td>
+                        <td>2021.08.05</td>
+                        <td>517</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td class = 'text-color'><a href = '#'>[공지]</a></td>
+                        <td class='text-left'><a href='#'>사회적거리두기 4단계 상향으로 인한 공간휴관 연장(7/27~8/8)</a></td>
+                        <td>2021.07.26</td>
+                        <td>498</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td class = 'text-color'><a href = '#'>[공지]</a></td>
+                        <td class='text-left'><a href='#'>사회적거리두기 3단계 상향으로 인한 공간휴관(7/22~8/4)</a></td>
+                        <td>2021.07.21</td>
+                        <td>498</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td class = 'text-color'><a href = '#'>[소식]</a></td>
+                        <td class='text-left'><a href='#'>[사진 공모전]대전 청년 사진 공모전(~7월 18일까지)</a></td>
+                        <td>2021.06.17</td>
+                        <td>750</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td class = 'text-color'><a href = '#'>[공지]</a></td>
+                        <td class='text-left'><a href='#'>[휴관공지]청년공간 네트워킹 활동으로 인한 공간 휴관(4월 8일 ~ 4월 9일)</a></td>
+                        <td>2021.04.07</td>
+                        <td>760</td>
                     </tr>
                 </tbody>
             </table>

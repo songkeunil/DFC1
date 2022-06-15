@@ -21,7 +21,7 @@ public interface MemberDAO {
 	public String duplicateID(String member_id);
 	
 	//회원탈퇴
-	public String deleteID(String member_id);
+	public void deleteID(String member_id);
 
 
 //	public int findIdCheck(String member_email);

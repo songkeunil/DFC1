@@ -216,7 +216,8 @@ table {
 
 
 #y-boardsearch-box {
-    width: 1000px;
+	
+    width: 100%;
     height: 50px;
   /*  float : left; */
     /* background: blue; */
@@ -279,3 +280,16 @@ table {
         float: left;
         
     }
+    
+    .footerControllBtns_box{
+    width:240px;
+    position: relative;
+    margin-left:750px;
+    
+    
+    }
+    .searchMembers{
+    position: absolute;
+    }
+    .footerControllBtns{
+    float:left;}

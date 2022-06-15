@@ -38,6 +38,7 @@ function fn_remove_Replyarticle(url,reply_no){
 </script>
 </head>
 <body>
+<div class="y-detail-comment-wrap">
 	<div id=y-detail-comment>
 		<div class='y-detail-comment-top'>
 			<h3>Comment</h3>
@@ -78,6 +79,7 @@ function fn_remove_Replyarticle(url,reply_no){
 				</c:forEach>
 			</c:when>
 		</c:choose>
+	</div>
 	</div>
 </body>
 </html>

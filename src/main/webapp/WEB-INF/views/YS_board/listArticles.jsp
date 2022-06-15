@@ -84,12 +84,7 @@
             <div id='boardbtnbox'>
 				<br>
 			<div id = 'y-boardsearch-box'>
-				<div class="footerControllBtns" style="float: left;">
-					<button type='button' class='boardbtn'
-						onclick='location.href="${contextPath }/YS_board/listArticles.do"'>
-						<i class="bi bi-justify"></i>목록
-					</button>
-				</div>
+				<div class="searchMembers">
 				<form name="searchMembers" action="${contextPath}/YS_board/searchArticles.do">
 					<div class = 'y-boardsearch-box-select'>
 						<select name="cc">
@@ -105,13 +100,22 @@
 						<input class='y-boardsearch-box-btn' type="submit" value="검색">
           			</div>
 				</form>
-				<div class="footerControllBtns" style="float: right;">
+				</div>
+				<div class="footerControllBtns_box">
+				<div class="footerControllBtns">
+					<button type='button' class='boardbtn'
+						onclick='location.href="${contextPath }/YS_board/listArticles.do"'>
+						<i class="bi bi-justify"></i>목록
+					</button>
+				</div>
+				<div class="footerControllBtns" >
 					<sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
 					<button type='button' class='boardbtn'
 						onclick='location.href="${contextPath }/YS_board/articleForm.do"'>
 						글 쓰기
 					</button>
 					</sec:authorize>
+				</div>
 				</div>
 			</div>
 			</div>

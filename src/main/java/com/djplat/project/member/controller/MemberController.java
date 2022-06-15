@@ -75,7 +75,7 @@ public class MemberController {
 //		memberService.deleteID(member_id);
 //		return "main";
 				
-				
+	@RequestMapping(value="/deleteID.do")			
 	public String deleteID(HttpServletRequest request, RedirectAttributes redirectAttr) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String member_id=(String)principal;

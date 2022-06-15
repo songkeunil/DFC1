@@ -494,7 +494,6 @@ public class BoardControllerImpl implements BoardController {
 	}
 
 	// 검색 기능
-	// 페이징/listArticls 뷰 공유 아직 없음
 	@RequestMapping(value = "/YS_board/searchArticles.do", method = RequestMethod.GET)
 	public ModelAndView searchArticles(@RequestParam("searchWord") String searchWord, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {

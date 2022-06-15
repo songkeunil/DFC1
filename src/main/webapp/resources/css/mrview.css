@@ -106,9 +106,16 @@
     color: #18A8F1;
     
 }
+
+.y-detail-comment-wrap{
+	margin: 0 auto;
+}
+
 #y-detail-comment{
     width: 1000px;
     height: auto;
+    margin-left:100px;
+    
 /*    background: red;*/
 }
 .y-detail-comment-top{
